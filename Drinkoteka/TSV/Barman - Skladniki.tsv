@@ -1,0 +1,158 @@
+skladnikID	sklNazwa	sklKat	sklProc	sklKolor	sklFoto	sklStan	sklOpis	sklKal	sklMiara	sklWWW
+absynt	Absynt	Alkohol	60	Zielony	absynt	0	Mocny napój alkoholowy o charakterystycznym ziołowym smaku, wytwarzany z piołunu, anyżu i innych ziół. Często stosowany w koktajlach.	295	ml	
+amaretto	Amaretto	Alkohol	28	Pomarańczowy	amaretto	0	Słodki likier migdałowy, o orzechowym smaku. Wytwarzany z migdałów lub pestek moreli.	270	ml	
+amargobitters	Amargo Bitters	Przyprawy	35	Brązowy	amargo	0	Gorzkie ziołowe bitters o intensywnym smaku. Używane w koktajlach do dodania głębi smaku i równowagi.	255	ml	
+ananas	Ananas	Owoce	0	Żółty	ananas	0	Owoc tropikalny o słodkim, soczystym miąższu. Często wykorzystywany w napojach i koktajlach.	40	plaster	
+angosturabitters	Angostura Bitters	Przyprawy	45	Brązowy	angostura	1	Jeden z najstarszych i najbardziej znanych bittersów, o bardzo intensywnym, ziołowym smaku, dodawany do koktajli w celu poprawy smaku.	295	ml	
+aperol	Aperol	Alkohol	11	Pomarańczowy	aperol	1	Włoski likier o niskiej zawartości alkoholu, pomarańczowy z nutą gorzkości, stosowany w popularnym koktajlu Aperol Spritz.	150	ml	
+apricotbrandy	Apricot Brandy	Alkohol	40	Pomarańczowy	brandy	0	Alkohol destylowany z moreli, zazwyczaj o wyższej zawartości alkoholu.	250	ml	
+baileys	Baileys	Alkohol	17	Czerwony		0	Baileys to irlandzka marka likieru, która łączy irlandzką whiskey, śmietankę mleczną i inne składniki smakowe. Jest to jeden z najbardziej znanych likierów na świecie, ceniony za swoją kremową konsystencję i łagodny, słodki smak. Baileys jest często spożywany na lodzie, w kawie, w koktajlach lub po prostu jako deserowy napój. Marka została stworzona w 1974 roku przez firmę Gilbeys of Ireland.	350	ml	
+bazylia	Bazylia	Przyprawy	0	Zielony		0		22	gr	
+benedictine	Bénédictine	Likiery	40	Pomarańczowy	benedictine	0	Słodki, ziołowy likier produkowany na bazie brandy, wzbogacony o różnorodne zioła, miód i przyprawy.	250	ml	
+bialewinogrona	Białe Winogrona	Owoce	0	Zielony	bialewinogrona	0	Owoc, który może być używany w koktajlach w formie świeżych winogron, soków lub win.	4	owoc	
+bitasmietana	Bita Śmietana	Inne	0	Biały		0		257	gr	
+bourbon	Bourbon	Alkohol	40	Brązowy	bourbon	0	Amerykańska whiskey, której głównym składnikiem jest kukurydza. Ma łagodny smak, z nutami wanilii, karmelu i dębu.	250	ml	
+brandy	Brandy	Alkohol	40	Pomarańczowy	brandy	0	Alkohol destylowany z wina lub innych owoców, zazwyczaj o wyższej zawartości alkoholu.	250	ml	
+brzoskwiniazpuszki	Brzoskwinia z puszki	Owoce	0	Czerwony		0		72	owoc	
+cachaca	Cachaça	Alkohol	40	Żółty	cachaca	0	Brazylijski alkohol wytwarzany z soku trzcinowego. Używany głównie do przygotowywania koktajlu Caipirinha.	230	ml	
+calvados	Calvados	Alkohol	40	Brązowy		0	Francuska brandy produkowana z jabłek, o owocowym, jabłkowym smaku.	240	ml	
+campari	Campari	Alkohol	25	Czerwony		1	Włoski gorzki likier o czerwonym kolorze, wykorzystywany w wielu klasycznych koktajlach, takich jak Negroni.	160	ml	
+chamomilecordial	Chamomile cordial	Syropy	22	Żółty		0	Słodki likier na bazie rumianku, z lekkim, kwiatowym smakiem.	150	ml	
+cocacola	Coca Cola	Inne	0	Czerwony		1	Popularny napój gazowany, słodzony, o wyrazistym smaku.	42	ml	
+cointreau	Cointreau	Likiery	40	Pomarańczowy		1	Wysokiej jakości likier pomarańczowy, o słodko-gorzkim smaku, wykorzystywany w wielu klasycznych koktajlach, takich jak Margarita.	290	ml	
+cukierbialy	Cukier Biały	Przyprawy	0	Biały		1	Najczęściej używany cukier, stosowany w koktajlach do słodzenia napojów.	400	gr	
+cukierbialywkostkach	Cukier Biały w Kostkach	Przyprawy	0	Biały		0	Cukier biały sprasowany w małe kostki, używany do słodzenia napojów.	400	gr	
+cukiertrzcinowy	Cukier Trzcinowy	Przyprawy	0	Brązowy		1	Brązowy cukieru uzyskany z trzciny cukrowej.	380	gr	
+cukiertrzcinowywkostkach	Cukier Trzcinowy w Kostkach	Przyprawy	0	Brązowy		0	Brązowy cukier z trzciny cukrowej sprasowany w kostki.	380	gr	
+cytryna	Cytryna	Owoce	0	Żółty		1	Owoc cytrusowy o kwaskowatym smaku, wykorzystywany w koktajlach do nadania świeżości i kwasowości.	30	gr	
+czekolada	Czekolada	Inne	0	Brązowy		0		545	gr	
+fernet	Fernet	Alkohol	40	Brązowy		0	Gorzkie, ziołowe wino likierowe, o bardzo intensywnym smaku, często dodawane do koktajli jako element kontrastowy.	270	ml	
+galkamuszkatalowa	Gałka Muszkatałowa	Przyprawy	0	Pomarańczowy		0	Przyprawa o ciepłym, korzennym smaku, używana do aromatyzowania koktajli i napojów.	525	gr	
+gin	Gin	Alkohol	40	Turkusowy		0	Alkohol o wyraźnym smaku jałowca, często stosowany w koktajlach takich jak Gin Tonic, Martini czy Negroni.	263	ml	
+gingerale	Ginger Ale	Inne	0	Żółty		0	Napój gazowany o smaku imbirowym, często stosowany jako mixer do koktajli, np. w połączeniu z whisky.	40	ml	
+granat	Granat	Owoce	0	Czerwony		0		83	gr	
+grejpfrut	Grejpfrut	Owoce	0	Żółty		0		42	gr	
+grenadyna	Grenadyna	Syropy	0	Czerwony		1	Słodki syrop o smaku owoców granatu, używany do dodawania słodkości i koloru do koktajli.	270	ml	
+imbir	Imbir	Przyprawy	0	Żółty		0	Korzeń o ostrym, lekko piekącym smaku, stosowany do aromatyzowania koktajli i napojów, np. w formie świeżego imbiru lub syropu.	80	gr	
+imbirkandyzowany	Imbir Kandyzowany	Inne	0	Żółty		0	Kandyzowany korzeń o ostrym, lekko piekącym smaku, stosowany do aromatyzowania koktajli i napojów.	300	gr	
+irishwhiskey	Irish Whiskey	Alkohol	40	Brązowy		0	Irish whiskey, znana z łagodnego smaku, idealna do koktajli takich jak Irish Coffee.	250	ml	
+jajko	Jajko	Inne	0	Żółty		1	Używane do tworzenia koktajli o kremowej konsystencji, takich jak Ramos Gin Fizz czy Pisco Sour.	143	gr	
+jezyny	Jeżyny	Owoce	0	Fioletowy		0	Owoc leśny, używany w koktajlach do nadania im owocowego smaku.	43	gr	
+kakao	Kakao	Inne	0	Brązowy		0		228	gr	
+karambola	Karambola	Owoce	0	Żółty		0		31	gr	
+kawa	Kawa	Inne	0	Brązowy		1	Napój uzyskany z palonych ziaren kawy, wykorzystywany w koktajlach takich jak Espresso Martini czy Irish Coffee.	2	ml	
+kiwi	Kiwi	Owoce	0	Zielony		0		71	gr	
+koniak	Koniak	Alkohol	40	Brązowy		0	Rodzaj brandy produkowanej w regionie Cognac we Francji, znana z pełnego smaku, bogata w nuty dębowe i owocowe.	225	ml	
+kremkakaowy	Krem Kakaowy	Inne	0	Brązowy		0	Likier o smaku czekoladowym, często wykorzystywany w deserowych koktajlach.	350	ml	
+kremkokosowy	Krem Kokosowy	Inne	0	Biały		0	Słodki, kremowy likier o smaku kokosa, stosowany w koktajlach tropikalnych, np. Piña Colada.	330	ml	
+likieramarononino	Likier Amaro Nonino	Likiery	28	Brązowy		0	Włoski likier ziołowy, o gorzkim smaku, znany ze swojej głębi i złożoności.	200	ml	
+likierbrzoskwiniowy	Likier Brzoskwiniowy	Likiery	25	Pomarańczowy		1	Likier z brzoskwiń	250	ml	
+likiercuracao	Likier Curaçao	Likiery	35	Niebieski		0	Likier pomarańczowy, wytwarzany na bazie skórek pomarańczy. Może występować w różnych kolorach (np. niebieski, pomarańczowy).	250	ml	
+likierdombenedictine	Likier Dom Bénédictine	Likiery	40	Pomarańczowy		0	Ziołowy likier o słodkawym smaku, produkowany z mieszanki 27 ziół, miodu i brandy.	250	ml	
+likierdrambuie	Likier Drambuie	Likiery	40	Pomarańczowy		0	Szkocki likier na bazie whisky, miodu, ziół i przypraw, o słodkim, ziołowym smaku.	330	ml	
+likierfiolkowy	Likier Fiołkowy	Likiery	20	Fioletowy		0	Likier o kwiatowym, delikatnym smaku fiołków, stosowany w koktajlach o subtelnym aromacie.	300	ml	
+likiergalliano	Likier Galliano	Likiery	35	Żółty		0	Włoski likier o unikalnym smaku waniliowym i ziołowym, używany w koktajlach takich jak Harvey Wallbanger.	300	ml	
+likiergrandmarnier	Likier Grand Marnier	Likiery	40	Pomarańczowy		0	Likier pomarańczowy na bazie koniaku, o bogatym smaku, wykorzystywany w koktajlach i deserach.	320	ml	
+likiergreenchartreuse	Likier Green Chartreuse	Likiery	55	Zielony		0	Zielony likier o wyrazistym ziołowym smaku, produkowany przez mnichów w Francji.	270	ml	
+likierjezynowy	Likier Jeżynowy	Likiery	25	Fioletowy		0	Likier o smaku jeżyn, często używany w koktajlach jako słodki składnik.	250	ml	
+likierkakaowy	Likier Kakaowy	Likiery	18	Brązowy		0	Likier czekoladowy, używany do koktajli deserowych, takich jak Chocolate Martini.	290	ml	
+likierkawowy	Likier Kawowy	Likiery	16	Brązowy		1	Likier kawowy, używany do koktajli deserowych, takich jak Espresso Martini.	300	ml	
+likiermalinowy	Likier Malinowy	Likiery	20	Różowy		0	Likier o smaku malinowym, stosowany do koktajli, aby dodać owocowej słodyczy i aromatu.	250	ml	
+likiermaraschino	Likier Maraschino	Likiery	35	Czerwony		0	Likier wiśniowy na bazie owoców maraschino, wykorzystywany w koktajlach, takich jak Aviation.	250	ml	
+likiermietowy	Likier Miętowy	Likiery	30	Zielony		0	Likier o smaku mięty, stosowany do koktajli, takich jak Mojito czy Mint Julep.	270	ml	
+likierorzechowy	Likier Orzechowy	Likiery	35	Brązowy		0	Likier o smaku orzechów, idealny do koktajli z orzechową nutą.	250	ml	
+likierwhitecremedementhe	Likier White Crème de Menthe	Likiery	40	Turkusowy		0	Biały likier miętowy, bardzo słodki, stosowany w koktajlach, takich jak Grasshopper.	270	ml	
+likierwisniowy	Likier Wiśniowy	Likiery	17	Czerwony		0	Likier o smaku wiśniowym, często wykorzystywany w koktajlach takich jak Manhattan.	250	ml	
+likieryellowchartreuse	Likier Yellow Chartreuse	Likiery	40	Żółty		0	Żółty likier Chartreuse, o ziołowym smaku, słodszy niż zielona wersja.	280	ml	
+likierzczarnejporzeczki	Likier z Czarnej Porzeczki	Likiery	20	Brązowy		0	Likier o intensywnym smaku czarnej porzeczki, wykorzystywany w koktajlach o owocowym profilu smakowym.	250	ml	
+lilletblanc	Lillet Blanc	Alkohol	17	Beżowy		0	Francuski wermut na bazie winogron, często używany w koktajlach takich jak Vesper Martini.	140	ml	
+limonka	Limonka	Owoce	0	Żółty		1	Owoc cytrusowy, mniejszy i bardziej kwaśny niż cytryna, używany do wyciskania soku w koktajlach.	30	gr	
+lodduzakostka	Lód Duża Kostka	Inne	0	Bezbarwny		1	Duże kostki lodu, które wolniej się topnieją, idealne do długich drinków, takich jak Old Fashioned.	0	gr	
+lodkruszony	Lód Kruszony	Inne	0	Bezbarwny		0	Lód w postaci drobnych kawałków, stosowany w koktajlach, które wymagają schłodzenia, np. w Daiquiri.	0	gr	
+lodwkostkach	Lód w Kostkach	Inne	0	Bezbarwny		1	Lód w formie kostek, używany do schładzania napojów i koktajli, najczęściej w szklankach.	0	gr	
+lodywaniliowe	Lody Waniliowe	Inne	0	Biały		0		207	gr	
+malibou	Malibou	Alkohol	40	Biały		0		175	ml	
+maliny	Maliny	Owoce	0	Czerwony		0	Owoc leśny o słodko-kwaśnym smaku, wykorzystywany w koktajlach i deserach.	50	gr	
+meskal	Meskal	Alkohol	40	Biały		0	Mekskański alkohol produkowany z agawy, o dymnym smaku.	230	ml	
+miechunka	Miechunka	Owoce	0	Pomarańczowy		0		300	gr	
+mieta	Mięta	Przyprawy	0	Zielony		0	Świeża roślina o charakterystycznym, chłodnym smaku, wykorzystywana w koktajlach takich jak Mojito czy Mint Julep.	40	gr	
+miod	Miód	Inne	0	Żółty		1	Naturalny słodzik produkowany przez pszczoły, wykorzystywany w koktajlach do dodania słodyczy i głębi smaku.	300	ml	
+mleczkoskond	Mleczko Skond.	Inne	0	Biały		0		130	ml	
+ogorek	Ogórek	Owoce	0	Zielony		0		15	gr	
+olejekwaniliowy	Olejek Waniliowy	Inne	0	Żółty		0	Aromatyczny olejek o zapachu wanilii, wykorzystywany do aromatyzowania napojów i koktajli.	288	ml	
+oliwki	Oliwki	Owoce	0	Czarny		0	Owoce drzew oliwnych, często używane jako dekoracja do koktajli, takich jak Martini.	115	gr	
+orangebitters	Orange Bitters	Przyprawy	45	Pomarańczowy		0	Bitters o smaku pomarańczy, wykorzystywany do nadania koktajlom wytrawnego i owocowego charakteru.	200	ml	
+orangeflowerwater	Orange Flower Water	Inne	0	Żółty		0	Woda kwiatowa z pomarańczy, używana do aromatyzowania koktajli i deserów.	80	ml	
+papryczkachili	Papryczka Chili	Przyprawy	0	Czerwony		0	Pikantna papryczka, używana w koktajlach, by dodać im ostrości i głębi smaku.	40	gr	
+peachschnapps	Peach Schnapps	Alkohol	17	Beżowy		0	Likier o smaku brzoskwiniowym, wykorzystywany do koktajli o owocowym charakterze.	230	ml	
+peychaudsbitters	Peychaud's Bitters	Przyprawy	35	Brązowy		0	Gorzkie bitters o ziołowym smaku, używane głównie w koktajlu Sazerac.	250	ml	
+pieprz	Pieprz	Przyprawy	0	Czarny		1	Przyprawa, dodawana do koktajli, by nadać im ostrości i głębi.	255	gr	
+pinkgrapefruitsoda	Pink Grapefruit Soda	Inne	0	Różowy		0	Napój gazowany o smaku grejpfruta, często wykorzystywany w koktajlach o orzeźwiającym smaku.	40	ml	
+piwoimbirowe	Piwo Imbirowe	Alkohol	8	Żółty		0	Napój gazowany o smaku imbirowym, wykorzystywany w koktajlach takich jak Moscow Mule.	35	ml	
+pomarancza	Pomarańcza	Owoce	0	Pomarańczowy		1	Owoc cytrusowy, używany do wyciskania soku lub jako dekoracja koktajli.	47	gr	
+porto	Porto	Alkohol	20	Czerwony		0	Wino wzmacniane z Portugalii, często wykorzystywane do koktajli lub jako aperitif.	160	ml	
+prosecco	Prosecco	Alkohol	12	Bezbarwny		1	Włoskie wino musujące, wykorzystywane w koktajlach, np. Bellini, Aperol Spritz.	80	ml	
+purezbrzoskwini	Pure z Brzoskwini	Inne	0	Pomarańczowy		0	Puree z brzoskwiń, wykorzystywane w koktajlach o owocowym charakterze.	50	gr	
+pureztruskawek	Pure z Truskawek	Inne	0	Czerwony		0	Puree z truskawek, wykorzystywane w koktajlach do nadania owocowego smaku.	40	gr	
+rumbialy	Rum Biały	Alkohol	40	Bezbarwny		1	Rum o lekkim smaku, często używany w koktajlach takich jak Mojito czy Daiquiri.	230	ml	
+rumciemny	Rum Ciemny	Alkohol	40	Brązowy		1	Rum o bogatszym smaku, stosowany w koktajlach, takich jak Dark 'n' Stormy.	230	ml	
+scotchwhiskey	Scotch Whiskey	Alkohol	40	Brązowy		0	Szkocka whiskey, o dymnym smaku, wykorzystywana w klasycznych koktajlach.	250	ml	
+seler	Seler	Owoce	0	Zielony		0	Warzywo, wykorzystywane do tworzenia koktajli warzywnych lub jako dekoracja.	16	gr	
+smietana	Śmietana	Inne	0	Biały		1	Śmietana, która nie została przetworzona, dodająca koktajlom bogatego, kremowego	200	ml	
+sokbananowy	Sok Bananowy	Soki	0	Żółty		0		52	ml	
+sokkaktusowy	Sok Kaktusowy	Soki	0	Zielony		0		47	ml	
+sokpomaranczowy	Sok Pomarańczowy	Soki	0	Pomarańczowy		1	Sok Pomarańczowy, używany w koktajlach do nadania słodyczy i świeżości.	45	ml	
+sokzananasa	Sok z Ananasa	Soki	0	Żółty		1	Sok z ananasa, często używany w koktajlach tropikalnych, takich jak Piña Colada.	50	ml	
+sokzcytryny	Sok z Cytryny	Soki	0	Żółty		1	Sok cytrynowy, często używany do dodania kwasowości do koktajli.	30	ml	
+sokzczarnejporzeczki	Sok z Czarnej Porzeczki	Soki	0	Czerwony		0		21	ml	
+sokzgranatu	Sok z Granatu	Soki	0	Czerwony		0	Sok z granatu, wykorzystywany w koktajlach o owocowym, lekko kwaśnym smaku.	80	ml	
+sokzgrejpfruta	Sok z Grejpfruta	Soki	0	Różowy		0	Sok z grejpfruta, używany w koktajlach do nadania orzeźwiającej goryczki.	40	ml	
+sokzjablek	Sok z Jabłek	Soki	0	Żółty		0		48	ml	
+sokzlimonki	Sok z Limonki	Soki	0	Żółty		1	Sok limonkowy, popularny w koktajlach tropikalnych i orzeźwiających, takich jak Margarita.	25	ml	
+sokzmandarynki	Sok z Mandarynki	Soki	0	Pomarańczowy		0	Sok Pomarańczowy, używany w koktajlach do nadania słodyczy i świeżości.	40	ml	
+sokzmango	Sok z Mango	Soki	0	Czerwony		0		40	ml	
+sokzpomidorow	Sok z Pomidorów	Soki	0	Pomarańczowy		0	Sok pomidorowy, wykorzystywany w koktajlach takich jak Bloody Mary.	18	ml	
+sokzwisni	Sok z Wiśni	Soki	0	Czerwony		0		45	ml	
+sokzzurawiny	Sok z Żurawiny	Soki	0	Czerwony		0	Sok z żurawiny, dodawany do koktajli dla uzyskania kwaskowego smaku.	45	ml	
+sol	Sól	Przyprawy	0	Biały		1	Przyprawa, używana do nadania smaku i aromatu, czasem używana do osolonej krawędzi szklanki w koktajlach.	0	gr	
+solselerowa	Sól Selerowa	Przyprawy	0	Biały		0	Sól z dodatkiem selera, wykorzystywana do koktajli w połączeniu z sokiem pomidorowym.	0	gr	
+sosworcestershire	Sos Worcestershire	Przyprawy	0	Brązowy		0	Sos o wyrazistym, umami smaku, używany głównie w koktajlu Bloody Mary.	70	ml	
+sprite	Sprite	Inne	0	Bezbarwny		0		42	ml	
+sugarcanejuice	Sugar Cane Juice	Soki	0	Szary		0	Sok z trzciny cukrowej, wykorzystywany w koktajlach tropikalnych.	220	ml	
+syropbluecuracao	Syrop Blue Curaçao	Syropy	0	Niebieski		0		348	ml	
+syropcukrowy	Syrop Cukrowy	Syropy	0	Bezbarwny		1	Prosty syrop na bazie cukru i wody, wykorzystywany w koktajlach do słodzenia.	300	ml	
+syropczekoladowy	Syrop Czekoladowy	Syropy	0	Brązowy		0		300	ml	
+syropdonnsmix	Syrop Donn's Mix	Syropy	0	Żółty		0	Syrop na bazie soku z cytryny i cynamonu, stosowany w klasycznym koktajlu Trader Vic's Mai Tai.	250	ml	
+syropfalernum	Syrop Falernum	Syropy	0	Pomarańczowy		0	Syrop o smaku migdałowym i przyprawowym, wykorzystywany w koktajlach tropikalnych.	300	ml	
+syropklonowy	Syrop Klonowy	Syropy	0	Żółty		0	Syrop wykorzystywany do nadania słodyczy i głębi koktajlom.	250	ml	
+syropkokosowy	Syrop Kokosowy	Syropy	0	Biały		0		319	ml	
+syropmigdalowy	Syrop Migdałowy	Syropy	0	Pomarańczowy		0	Syrop o smaku migdałów, wykorzystywany w koktajlach z nutą orzechową.	250	ml	
+syroppomaranczowy	Syrop Pomarańczowy	Syropy	0	Pomarańczowy		0	Syrop o smaku pomarańczowym, używany w koktajlach owocowych.	250	ml	
+syropzagawy	Syrop z Agawy	Syropy	0	Żółty		0	Syrop pozyskiwany z rośliny agawy, o delikatnym smaku, wykorzystywany w koktajlach jako alternatywa dla cukru.	270	ml	
+syropzbzu	Syrop z Bzu	Syropy	0	Niebieski		0	Syrop o kwiatowym smaku bzu, wykorzystywany w koktajlach do nadania aromatycznej nuty.	260	ml	
+syropzmalin	Syrop z Malin	Syropy	0	Czerwony		0	Syrop o smaku malinowym, wykorzystywany w koktajlach owocowych.	250	ml	
+syropzmiodu	Syrop z Miodu	Syropy	0	Żółty		0	Syrop na bazie miodu, wykorzystywany do nadania słodyczy i głębi koktajlom.	300	ml	
+syropztruskawek	Syrop z Truskawek	Syropy	0	Czerwony		0	Syrop o smaku truskawkowym, wykorzystywany w koktajlach owocowych.	240	ml	
+syropzurawinowy	Syrop Żurawinowy	Syropy	0	Czerwony		1	Syrop o smaku żurawinowym, wykorzystywany w koktajlach owocowych.	250	ml	
+szampan	Szampan	Alkohol	12	Bezbarwny		1	Wino musujące z regionu Szampanii, wykorzystywane w koktajlach takich jak Mimosa czy Champagne Cocktail.	80	ml	
+tabasco	Tabasco	Przyprawy	0	Czerwony		0	Ostre, pikantne sosy na bazie papryki chili, używane w koktajlach takich jak Bloody Mary do nadania ostrości.	0	gr	
+tequila	Tequila	Alkohol	40	Zielony		1	Mekskański alkohol wytwarzany z agawy, o charakterystycznym, ziemistym smaku, używany w koktajlach takich jak Margarita.	210	ml	
+tonic	Tonic	Inne	0	Bezbarwny		0		35	ml	
+triplesec	Triple Sec	Likiery	40	Żółty		0	Przejrzysty, słodko-gorzki likier pomarańczowy, wykorzystywany w koktajlach takich jak Margarita i Cosmopolitan.	250	ml	
+truskawka	Truskawka	Owoce	0	Czerwony		0		33	gr	
+vermouthslodkiczerwony	Vermouth Słodki Czerwony	Alkohol	17	Czerwony		0	Wermut o słodkim smaku, zazwyczaj czerwony, używany w klasycznych koktajlach takich jak Manhattan.	150	ml	
+vermouthwytrawny	Vermouth Wytrawny	Alkohol	17	Brązowy		1	Wytrawny wermut, używany w koktajlach takich jak Martini, często o ziołowym smaku.	120	ml	
+whiskey	Whiskey	Alkohol	40	Brązowy		1	Ogólna nazwa dla różnych rodzajów alkoholu destylowanego z ziarna, często używanego w koktajlach takich jak Old Fashioned, Whiskey Sour.	250	ml	
+whitesmoothgrappa	White Smooth Grappa	Alkohol	40	Szary		0	Włoski alkohol destylowany z wytłoków winogron, o intensywnym smaku, wykorzystywany w koktajlach lub piciu na czysto.	250	ml	
+winobiale	Wino Białe	Alkohol	12	Żółty		1	Wino o jasnej barwie, często używane w koktajlach lub jako aperitif.	66	ml	
+winoczerwone	Wino Czerwone	Alkohol	12	Czerwony		1	Wino o ciemnej barwie, stosowane w koktajlach lub jako składnik do tworzenia sferycznych efektów.	68	ml	
+wisnia	Wiśnia	Owoce	0	Czerwony		0	Owoc, który często jest używany jako dekoracja w koktajlach lub w postaci soku w połączeniu z innymi składnikami.	50	gr	
+wisniakoktailowa	Wiśnia koktailowa	Owoce	0	Czerwony		0	Wiśnia zanurzona w likierze maraschino, często używana jako ozdoba w koktajlach.	70	gr	
+woda	Woda	Inne	0	Bezbarwny		1	Neutralna woda, używana do rozcieńczania koktajli lub jako baza w niektórych mieszankach.	0	ml	
+wodasodowa	Woda Sodowa	Inne	0	Bezbarwny		1	Gazowana woda, używana jako mixer w koktajlach, nadająca orzeźwiający efekt.	0	ml	
+wodka	Wódka	Alkohol	40	Bezbarwny		1	Neutralny alkohol, podstawowy składnik wielu koktajli, takich jak Moscow Mule, Cosmopolitan, Bloody Mary.	230	ml	
+wodkacytrynowa	Wódka Cytrynowa	Alkohol	28	Żółty		0	Wódka o cytrynowym smaku, używana w koktajlach, dodająca im świeżości i kwasowości.	230	ml	
+wodkapigwowa	Wódka Pigwowa	Alkohol	36	Bezbarwny		0		309	ml	
+wodkasliwkowa	Wódka Śliwkowa	Alkohol	28	Brązowy		0		309	ml	
+wodkawaniliowa	Wódka Waniliowa	Alkohol	38	Bezbarwny		0	Wódka o smaku waniliowym	230	ml	
+wodkazczarnejporzeczki	Wódka z Czarnej Porzeczki	Alkohol	40	Brązowy		0		270	ml	

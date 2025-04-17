@@ -1,0 +1,953 @@
+drinkID	skladnikID	skladIlosc	skladMiara	skladNotka	skladOpcja
+alexander	koniak	30	ml		0
+alexander	likierkakaowy	30	ml		0
+alexander	smietana	30	ml		0
+alexander	lodwkostkach				0
+alexander	galkamuszkatalowa				1
+americano	campari	30	ml		0
+americano	vermouthslodkiczerwony	30	ml		0
+americano	wodasodowa		odrobina		0
+americano	lodwkostkach				0
+americano	cytryna				1
+americano	pomarancza				1
+angelface	apricotbrandy	30	ml		0
+angelface	calvados	30	ml		0
+angelface	gin	30	ml		0
+angelface	lodwkostkach				0
+armageddon	grenadyna	20	ml		0
+armageddon	sokzcytryny	25	ml		0
+armageddon	malibou	30	ml		0
+armageddon	rumbialy	50	ml		0
+armageddon	sokpomaranczowy	100	ml		0
+armageddon	sokzmango	100	ml		0
+armageddon	lodwkostkach				0
+aviation	likierfiolkowy	15	ml		0
+aviation	likiermaraschino	15	ml		0
+aviation	sokzcytryny	15	ml		0
+aviation	gin	45	ml		0
+aviation	lodwkostkach				0
+aviation	wisniakoktailowa				1
+b52	baileys	15	ml		0
+b52	likierkawowy	15	ml		0
+b52	cointreau	15	ml		0
+barracuda	prosecco		dopelnienie	do dopełnienia	0
+barracuda	sokzlimonki	1	kropla		0
+barracuda	likiergalliano	15	ml		0
+barracuda	rumciemny	45	ml		0
+barracuda	sokzananasa	60	ml		0
+barracuda	lodwkostkach				0
+barracuda	ananas				1
+barracuda	mieta				1
+barracuda	wisnia				1
+beesknees	syropzmiodu	10	ml		0
+beesknees	gin	52,5	ml		0
+beesknees	sokpomaranczowy	22.5	ml		0
+beesknees	sokzcytryny	22.5	ml		0
+beesknees	lodwkostkach				0
+beesknees	cytryna				1
+beesknees	pomarancza				1
+bellini	purezbrzoskwini	50	ml		0
+bellini	prosecco	100	ml		0
+bellini	lodwkostkach				0
+bemylover	sprite		dopelnienie	do dopełnienia	0
+bemylover	kiwi	70	gr	jeden owoc	0
+bemylover	imbir	1	kawalek		0
+bemylover	sokzcytryny	10	ml		0
+bemylover	gin	50	ml		0
+bemylover	lodwkostkach				0
+betweenthesheets	sokzcytryny	20	ml		0
+betweenthesheets	koniak	30	ml		0
+betweenthesheets	rumbialy	30	ml		0
+betweenthesheets	triplesec	30	ml		0
+billiejean	likiercuracao	20	ml		0
+billiejean	sokpomaranczowy	30	ml		0
+billiejean	wodka	100	ml		0
+billiejean	lodkruszony				0
+blackrussian	likierkawowy	20	ml		0
+blackrussian	wodka	50	ml		0
+bloodymary	pieprz		szczypta	do smaku	0
+bloodymary	sosworcestershire	2	kropla		0
+bloodymary	sokzcytryny	15	ml		0
+bloodymary	wodka	45	ml		0
+bloodymary	sokzpomidorow	90	ml		0
+bloodymary	solselerowa		szczypta		0
+bloodymary	tabasco		szczypta		0
+bloodymary	cytryna				1
+bloodymary	seler				1
+bluepinacolada	likiercuracao	20	ml		0
+bluepinacolada	syropkokosowy	20	ml		0
+bluepinacolada	mleczkoskond	70	ml		0
+bluepinacolada	rumbialy	100	ml		0
+bluepinacolada	sokzananasa	200	ml		0
+bluepinacolada	lodwkostkach				0
+boombastic	mieta		listek	4 listki	0
+boombastic	sprite		dopelnienie	do dopełnienia	0
+boombastic	pomarancza	1	kawalek	plaster	0
+boombastic	likiermalinowy	50	ml		0
+boombastic	lodwkostkach				0
+bornintheusa	likiercuracao	50	ml		0
+bornintheusa	rumbialy	50	ml		0
+bornintheusa	sokzgrejpfruta	70	ml		0
+bornintheusa	lodwkostkach				0
+boulevardier	campari	30	ml		0
+boulevardier	vermouthslodkiczerwony	30	ml		0
+boulevardier	bourbon	45	ml		0
+boulevardier	cytryna				1
+boulevardier	pomarancza				1
+bramble	syropcukrowy	12,5	ml		0
+bramble	likierjezynowy	15	ml		0
+bramble	sokzcytryny	25	ml		0
+bramble	gin	50	ml		0
+bramble	cytryna				1
+bramble	jezyny				1
+brandycrusta	angosturabitters	2	kropla		0
+brandycrusta	syropcukrowy	5	ml		1
+brandycrusta	likiermaraschino	7,5	ml		0
+brandycrusta	likiercuracao	15	ml		0
+brandycrusta	sokzcytryny	15	ml		0
+brandycrusta	syropcukrowy	15	ml		0
+brandycrusta	brandy	52,5	ml		0
+brandycrusta	cytryna				1
+brandycrusta	pomarancza				1
+caipirinha	limonka	1	kawalek	mały	0
+caipirinha	cukierbialy	20	gr		0
+caipirinha	cachaca	60	ml		0
+caipiroska	limonka	1	kawalek	mały	0
+caipiroska	cukiertrzcinowy	10	gr		0
+caipiroska	wodka	60	ml		0
+canchanchara	miod	15	ml		0
+canchanchara	sokzlimonki	15	ml		0
+canchanchara	woda	50	ml		0
+canchanchara	rumbialy	60	ml		0
+canchanchara	limonka				1
+captainjack	kawa	45	ml		0
+captainjack	malibou	50	ml		0
+captainjack	mleczkoskond	100	ml		0
+captainjack	lodwkostkach				0
+casino	orangebitters	2	kropla		0
+casino	likiermaraschino	10	ml		0
+casino	sokzcytryny	10	ml		0
+casino	gin	40	ml		0
+casino	cytryna				1
+casino	wisniakoktailowa				1
+casinoroyale	likiercuracao	30	ml		0
+casinoroyale	wodka	50	ml		0
+casinoroyale	sokpomaranczowy	100	ml		0
+casinoroyale	lodwkostkach				0
+castaway	likiercuracao	20	ml		0
+castaway	sokzjablek	50	ml		0
+castaway	wodkacytrynowa	50	ml		0
+castaway	sokzgrejpfruta	100	ml		0
+castaway	lodwkostkach		ml		0
+champagnecocktail	likiergrandmarnier		kropla	kilka kropli	1
+champagnecocktail	szampan	90	ml	schłodzony	0
+champagnecocktail	cukierbialywkostkach	1	kostka		0
+champagnecocktail	angosturabitters	2	kropla		0
+champagnecocktail	koniak	10	ml		0
+champagnecocktail	pomarancza				1
+champagnecocktail	wisniakoktailowa				1
+cloverclub	jajko		kropla	białko kilka kropli	0
+cloverclub	sokzcytryny	15	ml		0
+cloverclub	syropzmalin	15	ml		0
+cloverclub	gin	45	ml		0
+cloverclub	maliny				1
+cocoextasy	likiercuracao	30	ml		0
+cocoextasy	malibou	40	ml		0
+cocoextasy	syropbluecuracao	40	ml		0
+cocoextasy	wodka	40	ml		0
+cocoextasy	sokzananasa	120	ml		0
+cocoextasy	lodwkostkach				0
+coolnight	grenadyna	10	ml		0
+coolnight	sokzcytryny	40	ml		0
+coolnight	gin	100	ml		0
+coolnight	lodwkostkach				0
+corpsereviver2	absynt	1	kropla		0
+corpsereviver2	cointreau	30	ml		0
+corpsereviver2	gin	30	ml		0
+corpsereviver2	lilletblanc	30	ml		0
+corpsereviver2	sokzcytryny	30	ml		0
+corpsereviver2	pomarancza				1
+cosmopolitan	cointreau	15	ml		0
+cosmopolitan	sokzlimonki	15	ml		0
+cosmopolitan	sokzzurawiny	30	ml		0
+cosmopolitan	wodkacytrynowa	40	ml		0
+cosmopolitan	cytryna				1
+costamesa	grenadyna	20	ml		0
+costamesa	likiercuracao	20	ml		0
+costamesa	syropcukrowy	25	ml		0
+costamesa	wodka	50	ml		0
+costamesa	wodka	50	ml		0
+costamesa	sokzcytryny	75	ml		0
+costamesa	sokpomaranczowy	100	ml		0
+costamesa	lodwkostkach				0
+cottoneyejoe	malibou	50	ml		0
+cottoneyejoe	wodka	50	ml		0
+cottoneyejoe	sokpomaranczowy	100	ml		0
+cottoneyejoe	sokbananowy	150	ml		0
+cottoneyejoe	lodwkostkach				0
+cruelsummer	sokzananasa		dopelnienie	do dopełnienia	0
+cruelsummer	ananas	1	kawalek	plaster	1
+cruelsummer	sokzcytryny	5	ml		0
+cruelsummer	grenadyna	15	ml		0
+cruelsummer	malibou	20	ml		0
+cruelsummer	rumbialy	50	ml		0
+cruelsummer	lodwkostkach				0
+cubalibre	sokzlimonki	10	ml		0
+cubalibre	rumbialy	50	ml		0
+cubalibre	cocacola	120	ml		0
+cubalibre	lodwkostkach				0
+czasapokalipsy	mleczkoskond	50	ml	niesłodzone	0
+czasapokalipsy	syropzmalin	20	ml		0
+czasapokalipsy	malibou	100	ml		0
+czasapokalipsy	lodwkostkach				0
+daiquiri	cukierbialy	10	gr		0
+daiquiri	sokzlimonki	20	ml		0
+daiquiri	rumbialy	60	ml		0
+darknstormy	rumciemny	60	ml		0
+darknstormy	piwoimbirowe	100	ml		0
+darknstormy	limonka				1
+devilinside	grenadyna	20	ml		0
+devilinside	wodka	50	ml		0
+devilinside	sokzgrejpfruta	100	ml		0
+devilinside	sokzgranatu	150	ml		0
+devilinside	lodwkostkach				0
+dirtydancing	sprite		dopelnienie	do dopełnienia	0
+dirtydancing	cytryna	1	kawalek	plaster	0
+dirtydancing	grenadyna	30	ml		0
+dirtydancing	rumbialy	50	ml		0
+dirtydancing	sokzcytryny	50	ml		0
+dirtydancing	lodwkostkach				0
+drymartini	vermouthwytrawny	10	ml		0
+drymartini	gin	60	ml		0
+drymartini	cytryna				1
+drymartini	oliwki				1
+dzidzi	sokzwisni	50	ml		0
+dzidzi	wodka	50	ml		0
+dzidzi	vermouthwytrawny	100	ml		0
+dzidzi	lodwkostkach				0
+easylover	syropzmalin		kropla	kilka kropli do każdego kieliszka	0
+easylover	sokpomaranczowy	50	ml		0
+easylover	rumbialy	100	ml		0
+easylover	lodwkostkach				0
+espressomartini	kawa	45	ml	espresso	0
+espressomartini	syropcukrowy	10	ml		0
+espressomartini	likierkawowy	30	ml		0
+espressomartini	wodka	50	ml		0
+eternalflame	sokzcytryny	15	ml		0
+eternalflame	syropzmalin	15	ml		0
+eternalflame	sokzmango	50	ml		0
+eternalflame	tequila	50	ml		0
+eternalflame	sokpomaranczowy	100	ml		0
+eternalflame	lodwkostkach				0
+eyeofthetiger	grejpfrut	1	kawalek	plaster	0
+eyeofthetiger	grenadyna	40	ml		0
+eyeofthetiger	sokzcytryny	40	ml		0
+eyeofthetiger	gin	50	ml		0
+eyeofthetiger	sokpomaranczowy	100	ml		0
+eyeofthetiger	sokzgrejpfruta	150	ml		0
+eyeofthetiger	lodwkostkach				0
+fernandito	cocacola		dopelnienie	do dopełnienia	0
+fernandito	fernet	50	ml		0
+firestarter	sokzgrejpfruta		dopelnienie	do dopełnienia	0
+firestarter	grenadyna	20	ml		0
+firestarter	rumbialy	50	ml		0
+firestarter	sokzczarnejporzeczki	100	ml		0
+firestarter	lodwkostkach				0
+footloose	sprite		dopelnienie	do dopełnienia	0
+footloose	sokpomaranczowy	50	ml		0
+footloose	wodka	50	ml		0
+footloose	sokzgrejpfruta	100	ml		0
+footloose	lodwkostkach				0
+freestyler	likiercuracao	5	ml		0
+freestyler	likierorzechowy	50	ml		0
+freestyler	sokbananowy	100	ml		0
+freestyler	lodwkostkach				0
+french75	sokzcytryny	15	ml		0
+french75	syropcukrowy	15	ml		0
+french75	gin	30	ml		0
+french75	szampan	60	ml		0
+frenchconnection	amaretto	35	ml		0
+frenchconnection	koniak	35	ml		0
+frenchmartini	likiermalinowy	15	ml		0
+frenchmartini	sokzananasa	15	ml		0
+frenchmartini	wodka	45	ml		0
+frenchmartini	cytryna				1
+gangstaparadise	malibou	30	ml		0
+gangstaparadise	rumbialy	50	ml		0
+gangstaparadise	sokpomaranczowy	150	ml		0
+gangstaparadise	sokzczarnejporzeczki	150	ml		0
+gangstaparadise	lodwkostkach				0
+ginfizz	syropcukrowy	10	ml		0
+ginfizz	sokzcytryny	30	ml		0
+ginfizz	gin	45	ml		0
+ginfizz	wodasodowa		odrobina		0
+ginfizz	cytryna				1
+goldendream	smietana	10	ml		0
+goldendream	likiergalliano	20	ml		0
+goldendream	sokpomaranczowy	20	ml		0
+goldendream	triplesec	20	ml		0
+grasshopper	kremkakaowy	20	ml	biały	0
+grasshopper	likiermietowy	20	ml	zielony	0
+grasshopper	smietana	20	ml		0
+grasshopper	mieta				1
+gromwraju	likiercuracao	20	ml		0
+gromwraju	rumbialy	50	ml		0
+gromwraju	sokpomaranczowy	50	ml		0
+gromwraju	sokkaktusowy	150	ml		0
+gromwraju	lodwkostkach				0
+groundzero	sokzcytryny	25	ml		0
+groundzero	syropbluecuracao	25	ml		0
+groundzero	syropcukrowy	25	ml		0
+groundzero	rumbialy	50	ml		0
+groundzero	sokzmango	100	ml		0
+groundzero	sokzwisni	100	ml		0
+groundzero	lodwkostkach				0
+hankypanky	fernet	7,5	ml		0
+hankypanky	gin	45	ml		0
+hankypanky	vermouthslodkiczerwony	45	ml		0
+hankypanky	pomarancza				1
+heartbreaker	tequila	70	ml		0
+heartbreaker	sokzczarnejporzeczki	100	ml		0
+heartbreaker	sokpomaranczowy	150	ml		0
+heartbreaker	lodwkostkach				0
+hemingwayspecial	likiermaraschino	15	ml		0
+hemingwayspecial	limonka	15	ml		0
+hemingwayspecial	sokzgrejpfruta	40	ml		0
+hemingwayspecial	rumbialy	60	ml		0
+horsesneck	angosturabitters	1	kropla		1
+horsesneck	koniak	40	ml		0
+horsesneck	gingerale	120	ml		0
+horsesneck	cytryna				1
+illegal	jajko		kropla	białka kilka kropli	1
+illegal	likiermaraschino	15	ml		0
+illegal	rumbialy	15	ml		0
+illegal	syropcukrowy	15	ml		0
+illegal	syropfalernum	15	ml		0
+illegal	meskal	30	ml		0
+illegal	sokzlimonki	22.5	ml		0
+invisibleman	kawa	5	ml	łyżeczka rozpuszczalnej	0
+invisibleman	likierorzechowy	50	ml		0
+invisibleman	mleczkoskond	100	ml		0
+invisibleman	lodwkostkach				0
+irishcoffee	smietana	50	ml	schłodzone	0
+irishcoffee	cukierbialy	5	gr		0
+irishcoffee	irishwhiskey	50	ml		0
+irishcoffee	kawa	120	ml		0
+jacuzi	angosturabitters	3	kropla		0
+jacuzi	grenadyna	10	ml		0
+jacuzi	syropzurawinowy	10	ml		0
+jacuzi	sokpomaranczowy	70	ml		0
+jacuzi	sokzananasa	70	ml		0
+jacuzi	lodwkostkach				0
+johncollins	syropcukrowy	15	ml		0
+johncollins	sokzcytryny	30	ml		0
+johncollins	gin	45	ml		0
+johncollins	wodasodowa	60	ml		0
+johncollins	cytryna				1
+johncollins	wisniakoktailowa				1
+johnybravo	grenadyna	20	ml		0
+johnybravo	sokzcytryny	20	ml		0
+johnybravo	sokzgrejpfruta	50	ml		0
+johnybravo	sokpomaranczowy	70	ml		0
+johnybravo	wodkazczarnejporzeczki	70	ml		0
+johnybravo	lodduzakostka				0
+joyride	pomarancza	1	kawalek	plaster	0
+joyride	karambola	1	kawalek		0
+joyride	grenadyna	10	ml		0
+joyride	gin	50	ml		0
+joyride	sokzzurawiny	50	ml		0
+joyride	sokpomaranczowy	100	ml		0
+joyride	lodwkostkach				0
+kamikaze	sokzlimonki	15	ml		0
+kamikaze	likiercuracao	50	ml		0
+kamikaze	sokzcytryny	50	ml		0
+kamikaze	wodka	50	ml		0
+kamikaze	lodwkostkach				0
+kir	likierzczarnejporzeczki	10	ml		0
+kir	winobiale	90	ml		0
+kirroyal	likierzczarnejporzeczki	10	ml		0
+kirroyal	szampan	90	ml		0
+kiwidaiquiri	kiwi	35	gr	pół owocu	0
+kiwidaiquiri	syropcukrowy	20	ml		0
+kiwidaiquiri	sokzlimonki	40	ml		0
+kiwidaiquiri	rumbialy	80	ml		0
+kiwidaiquiri	lodwkostkach				0
+labamba	pomarancza	1	kawalek		0
+labamba	syropcukrowy	20	ml		0
+labamba	sokzcytryny	30	ml		0
+labamba	sokpomaranczowy	100	ml		0
+labamba	wodka	100	ml		0
+labamba	sokzczarnejporzeczki	200	ml		0
+labamba	lodwkostkach				0
+laislabonita	wodasodowa		dopelnienie	do dopełnienia	0
+laislabonita	cytryna	1	kawalek	plaster	0
+laislabonita	sokzcytryny	25	ml		0
+laislabonita	sokzczarnejporzeczki	50	ml		0
+laislabonita	gin	100	ml		0
+laislabonita	lodwkostkach				0
+lastword	gin	22.5	ml		0
+lastword	likiergreenchartreuse	22.5	ml		0
+lastword	likiermaraschino	22.5	ml		0
+lastword	sokzlimonki	22.5	ml		0
+lemondropmartini	sokzcytryny	15	ml		0
+lemondropmartini	triplesec	20	ml		0
+lemondropmartini	wodkacytrynowa	30	ml		0
+lemondropmartini	cukierbialy				1
+letsdance	likierwisniowy	50	ml		0
+letsdance	sokzgrejpfruta	50	ml		0
+letsdance	sokzjablek	100	ml		0
+letsdance	lodwkostkach				0
+littlerock	sokzgrejpfruta	50	ml		0
+littlerock	wodka	50	ml		0
+littlerock	wodkacytrynowa	50	ml		0
+littlerock	lodkruszony				0
+longislandicetea	cocacola		dopelnienie	do dopełnienia	0
+longislandicetea	cointreau	15	ml		0
+longislandicetea	gin	15	ml		0
+longislandicetea	rumbialy	15	ml		0
+longislandicetea	tequila	15	ml		0
+longislandicetea	wodka	15	ml		0
+longislandicetea	syropcukrowy	20	ml		0
+longislandicetea	sokzcytryny	30	ml		0
+longislandicetea	cytryna				1
+lowcaandroidow	tonic		dopelnienie	do dopełnienia	0
+lowcaandroidow	cytryna	10	ml		0
+lowcaandroidow	wodkasliwkowa	70	ml		0
+lowcaandroidow	lodwkostkach				0
+maitai	syropcukrowy	7,5	ml		0
+maitai	syropmigdalowy	15	ml		0
+maitai	syroppomaranczowy	15	ml		0
+maitai	rumbialy	30	ml		0
+maitai	rumciemny	30	ml		0
+maitai	sokzlimonki	30	ml		0
+maitai	ananas				1
+maitai	limonka				1
+maitai	mieta				1
+manhattan	angosturabitters	1	kropla		0
+manhattan	vermouthslodkiczerwony	20	ml		0
+manhattan	whiskey	50	ml		0
+manhattan	wisnia				1
+maninthemirror	rumbialy	50	ml		0
+maninthemirror	sokzczarnejporzeczki	70	ml		0
+maninthemirror	sokzananasa	150	ml		0
+maninthemirror	lodwkostkach				0
+margarita	sokzlimonki	15	ml		0
+margarita	triplesec	20	ml		0
+margarita	tequila	50	ml		0
+margarita	sol				1
+margaritatruskawkowa	sokzcytryny	30	ml		0
+margaritatruskawkowa	triplesec	40	ml		0
+margaritatruskawkowa	tequila	80	ml		0
+margaritatruskawkowa	truskawka	2	sztuka		0
+margaritatruskawkowa	lodwkostkach				0
+marktwaincoctail	angosturabitters	2	kropla		0
+marktwaincoctail	syropcukrowy	30	ml		0
+marktwaincoctail	whiskey	45	ml		0
+marktwaincoctail	sokzcytryny	22.5	ml		0
+martinez	orangebitters	2	kropla		0
+martinez	likiermaraschino	15	ml		0
+martinez	gin	45	ml		0
+martinez	vermouthslodkiczerwony	45	ml		0
+martinez	cytryna				1
+marypickford	grenadyna	5	ml		0
+marypickford	likiermaraschino	7,5	ml		0
+marypickford	rumbialy	45	ml		0
+marypickford	sokzananasa	45	ml		0
+miamivice	tonic		dopelnienie	do dopełnienia	0
+miamivice	grenadyna	15	ml		0
+miamivice	wodka	50	ml		0
+miamivice	sokzczarnejporzeczki	150	ml		0
+miamivice	lodwkostkach				0
+mimosa	prosecco	75	ml		0
+mimosa	sokpomaranczowy	75	ml		0
+mimosa	pomarancza				1
+mintjulep	mieta		galazka	4 gałązki	0
+mintjulep	cukierbialy	5	gr	cukier puder	0
+mintjulep	woda	10	ml		0
+mintjulep	bourbon	60	ml		0
+mintjulep	mieta				1
+mojito	mieta		galazka	6 gałązek	0
+mojito	wodasodowa		dopelnienie	do dopełnienia	0
+mojito	cukierbialy	10	gr		0
+mojito	sokzlimonki	20	ml		0
+mojito	rumbialy	45	ml		0
+mojito	lodkruszony				0
+mojito	limonka				1
+mojito	mieta				1
+mojitozogorkiemiimbirem	sprite		dopelnienie	do dopełnienia	0
+mojitozogorkiemiimbirem	mieta		listek	kilka listków	0
+mojitozogorkiemiimbirem	imbir	5	gr		0
+mojitozogorkiemiimbirem	cukiertrzcinowy	10	gr		0
+mojitozogorkiemiimbirem	ogorek	15	gr		0
+mojitozogorkiemiimbirem	limonka	35	gr		0
+mojitozogorkiemiimbirem	rumbialy	40	ml		0
+mojitozogorkiemiimbirem	lodwkostkach				0
+monkeygland	absynt	15	ml		0
+monkeygland	grenadyna	15	ml		0
+monkeygland	gin	45	ml		0
+monkeygland	sokpomaranczowy	45	ml		0
+moscowmule	sokzlimonki	10	ml		0
+moscowmule	wodka	45	ml		0
+moscowmule	piwoimbirowe	120	ml		0
+moscowmule	limonka				1
+mrocznyrycerz	cocacola		dopelnienie	do dopełnienia	0
+mrocznyrycerz	pomarancza		kawalek	plaster	0
+mrocznyrycerz	cytryna	10	ml		0
+mrocznyrycerz	likiercuracao	20	ml		0
+mrocznyrycerz	wodkacytrynowa	50	ml		0
+mrocznyrycerz	lodwkostkach				0
+mudslide	lodywaniliowe	20	gr		1
+mudslide	wodka	30	ml		0
+mudslide	likierkawowy	30	ml		0
+mudslide	baileys	30	ml		0
+mudslide	smietana	45	ml		1
+mudslide	lodkruszony				0
+nakedandfamous	aperol	22.5	ml		0
+nakedandfamous	likieryellowchartreuse	22.5	ml		0
+nakedandfamous	meskal	22.5	ml		0
+nakedandfamous	sokzlimonki	22.5	ml		0
+negroni	campari	30	ml		0
+negroni	gin	30	ml		0
+negroni	vermouthslodkiczerwony	30	ml		0
+negroni	pomarancza				1
+newyorksour	winoczerwone	15	ml	(Shiraz lub Malbech)	0
+newyorksour	jajko		kropla	białko kilka kropli	0
+newyorksour	sokzcytryny	30	ml		0
+newyorksour	whiskey	60	ml		0
+newyorksour	syropcukrowy	22.5	ml		0
+newyorksour	cytryna				1
+newyorksour	pomarancza				1
+newyorksour	wisnia				1
+nosferatu	sokzcytryny	30	ml		0
+nosferatu	syropcukrowy	30	ml		0
+nosferatu	gin	50	ml		0
+nosferatu	sokzczarnejporzeczki	50	ml		0
+nosferatu	sokzgrejpfruta	100	ml		0
+nosferatu	lodwkostkach				0
+novemberrain	cocacola		dopelnienie	do dopełnienia	0
+novemberrain	sokzcytryny	10	ml		0
+novemberrain	likierwisniowy	50	ml		0
+novemberrain	lodwkostkach				0
+oceanside	syropzmalin	20	ml		0
+oceanside	tequila	50	ml		0
+oceanside	sokpomaranczowy	70	ml		0
+oceanside	sokzzurawiny	70	ml		0
+oceanside	sokzgranatu	100	ml		0
+oceanside	lodwkostkach				0
+oldcuban	mieta		listek	6-8 listków	0
+oldcuban	angosturabitters	2	kropla		0
+oldcuban	syropcukrowy	30	ml		0
+oldcuban	rumciemny	45	ml		0
+oldcuban	prosecco	60	ml		0
+oldcuban	sokzlimonki	22.5	ml		0
+oldcuban	mieta				1
+oldfashioned	angosturabitters		kropla	kilka kropli	0
+oldfashioned	woda		kropla	kilka kropli	0
+oldfashioned	cukierbialywkostkach	1	kostka		0
+oldfashioned	bourbon	45	ml		0
+oldfashioned	pomarancza				1
+oldfashioned	wisnia				1
+oldfield	cytryna	1	kawalek		0
+oldfield	syropbluecuracao	20	ml		0
+oldfield	sokzcytryny	30	ml		0
+oldfield	gin	50	ml		0
+oldfield	sokpomaranczowy	150	ml		0
+oldfield	lodwkostkach				0
+oneofus	sprite		dopelnienie	do dopełnienia	0
+oneofus	pomarancza	2	kawalek	plastry	0
+oneofus	syropzmalin	10	ml		0
+oneofus	rumbialy	50	ml		0
+oneofus	lodkruszony				0
+oneonone	malibou	50	ml		0
+oneonone	rumbialy	50	ml		0
+oneonone	sokzananasa	50	ml		0
+oneonone	lodwkostkach				0
+palmbay	sokzcytryny	20	ml		0
+palmbay	wodkapigwowa	50	ml		0
+palmbay	sokpomaranczowy	70	ml		0
+palmbay	sokzananasa	100	ml		0
+palmbay	lodwkostkach				0
+paloma	limonka	5	ml		0
+paloma	tequila	50	ml		0
+paloma	pinkgrapefruitsoda	100	ml		0
+paloma	sol		odrobina		0
+paloma	limonka				1
+paperplane	aperol	30	ml		0
+paperplane	bourbon	30	ml		0
+paperplane	likieramarononino	30	ml		0
+paperplane	sokzcytryny	30	ml		0
+paradise	sokpomaranczowy	15	ml		0
+paradise	apricotbrandy	20	ml		0
+paradise	gin	30	ml		0
+paradisecity	likiercuracao	30	ml		0
+paradisecity	sokzcytryny	40	ml		0
+paradisecity	wodka	70	ml		0
+paradisecity	sokpomaranczowy	120	ml		0
+paradisecity	sokpomaranczowy	150	ml		0
+paradisecity	lodwkostkach				0
+parttimelover	tonic		dopelnienie	do dopełnienia	0
+parttimelover	pomarancza		kawalek	pół plastra	1
+parttimelover	grenadyna	20	ml		0
+parttimelover	wodka	50	ml		0
+parttimelover	sokzgrejpfruta	150	ml		0
+parttimelover	lodwkostkach				0
+penicillin	imbir	2-3	kawalek		0
+penicillin	whiskey	7,5	ml		0
+penicillin	scotchwhiskey	60	ml		0
+penicillin	sokzcytryny	22.5	ml		0
+penicillin	syropzmiodu	22.5	ml		0
+penicillin	imbirkandyzowany				1
+pigwowekamikaze	likiercuracao	40	ml		0
+pigwowekamikaze	sokzcytryny	40	ml		0
+pigwowekamikaze	wodkapigwowa	40	ml		0
+pigwowekamikaze	lodkruszony				0
+pinacolada	kremkokosowy	30	ml		0
+pinacolada	rumbialy	50	ml		0
+pinacolada	sokzananasa	50	ml		0
+pinacolada	lodkruszony				0
+pinacolada	ananas				1
+pinacolada	wisniakoktailowa				1
+piscosour	jajko	1	sztuka	białko	0
+piscosour	syropcukrowy	20	ml		0
+piscosour	sokzcytryny	30	ml		0
+piscosour	brandy	60	ml		0
+piscosour	amargobitters				1
+planterspunch	sokzlimonki	15	ml		0
+planterspunch	sugarcanejuice	30	ml		0
+planterspunch	rumbialy	45	ml		0
+planterspunch	pomarancza				1
+portoflip	jajko	10	ml	źółtka	0
+portoflip	brandy	15	ml		0
+portoflip	porto	45	ml		0
+portoflip	galkamuszkatalowa				1
+privatedancer	sprite		dopelnienie	do dopełnienia	0
+privatedancer	likiercuracao	20	ml		0
+privatedancer	sokzcytryny	20	ml		0
+privatedancer	wodka	50	ml		0
+privatedancer	lodwkostkach				0
+puccini	sokzmandarynki	50	ml		0
+puccini	prosecco	100	ml		0
+ramosfizz	jajko	30	ml	białka	0
+ramosfizz	wodasodowa		dopelnienie	do dopełnienia	0
+ramosfizz	olejekwaniliowy	2	kropla		0
+ramosfizz	orangeflowerwater	3	kropla		0
+ramosfizz	sokzcytryny	15	ml		0
+ramosfizz	sokzlimonki	15	ml		0
+ramosfizz	syropcukrowy	30	ml		0
+ramosfizz	gin	45	ml		0
+ramosfizz	smietana	60	ml		0
+readyornot	syropbluecuracao		kropla	kilka kropli do każdego kieliszka	0
+readyornot	malibou	50	ml		0
+readyornot	rumbialy	100	ml		0
+readyornot	lodwkostkach				0
+redfruitmojito	sprite		dopelnienie	do dopełnienia	0
+redfruitmojito	truskawka	25	gr	dwie truskawki	0
+redfruitmojito	mieta		listek	kilka listków	0
+redfruitmojito	granat	120	gr	pestki z połówki owocu	0
+redfruitmojito	limonka	35	gr	połówka owocu	0
+redfruitmojito	cukiertrzcinowy	10	gr		0
+redfruitmojito	rumbialy	40	ml		0
+redfruitmojito	lodkruszony				0
+renegat	pomarancza	1	kawalek	połówka plastra	1
+renegat	grenadyna	20	ml		0
+renegat	sokzgrejpfruta	50	ml		0
+renegat	wodka	50	ml		0
+renegat	sokzzurawiny	100	ml		0
+renegat	lodwkostkach				0
+riverside	grenadyna	15	ml		0
+riverside	sokzcytryny	15	ml		0
+riverside	sokpomaranczowy	50	ml		0
+riverside	wodka	50	ml		0
+riverside	sokbananowy	100	ml		0
+riverside	lodwkostkach				0
+rossini	pureztruskawek	50	ml		0
+rossini	prosecco	100	ml		0
+runawaytrain	sokzcytryny	20	ml		0
+runawaytrain	syropcukrowy	20	ml		0
+runawaytrain	likiercuracao	50	ml		0
+runawaytrain	sokpomaranczowy	70	ml		0
+runawaytrain	vermouthwytrawny	70	ml		0
+runawaytrain	lodwkostkach				0
+russianspringpunch	prosecco		dopelnienie	do dopełnienia	0
+russianspringpunch	syropcukrowy	10	ml		0
+russianspringpunch	likierzczarnejporzeczki	15	ml		0
+russianspringpunch	sokzcytryny	25	ml		0
+russianspringpunch	wodka	25	ml		0
+russianspringpunch	cytryna				1
+russianspringpunch	jezyny				1
+rustynail	likierdrambuie	25	ml		0
+rustynail	whiskey	45	ml		0
+rustynail	cytryna				1
+sambadejaneiro	sokpomaranczowy		dopelnienie	do dopełnienia	0
+sambadejaneiro	likiercuracao	50	ml		0
+sambadejaneiro	wodka	50	ml		0
+sambadejaneiro	sokzgrejpfruta	150	ml		0
+sambadejaneiro	lodkruszony				0
+satisfaction	grenadyna	20	ml		0
+satisfaction	sokzcytryny	20	ml		0
+satisfaction	wodkasliwkowa	50	ml		0
+satisfaction	sokpomaranczowy	150	ml		0
+satisfaction	lodwkostkach				0
+sazerac	cukierbialywkostkach	1	kostka		0
+sazerac	peychaudsbitters	2	kropla		0
+sazerac	absynt	10	ml		0
+sazerac	koniak	50	ml		0
+sazerac	cytryna				1
+seabreeze	sokzgrejpfruta	30	ml		0
+seabreeze	wodka	40	ml		0
+seabreeze	sokzzurawiny	120	ml		0
+seabreeze	pomarancza				1
+seabreeze	wisnia				1
+sexonthebeach	peachschnapps	20	ml		0
+sexonthebeach	sokpomaranczowy	40	ml		0
+sexonthebeach	sokzzurawiny	40	ml		0
+sexonthebeach	wodka	40	ml		0
+sexonthebeach	pomarancza				1
+sidecar	sokzcytryny	20	ml		0
+sidecar	triplesec	20	ml		0
+sidecar	koniak	50	ml		0
+sincity	mleczkoskond	50	ml	niesłodzone	0
+sincity	likiercuracao	50	ml		0
+sincity	malibou	50	ml		0
+sincity	lodwkostkach				0
+singaporesling	angosturabitters	1	kropla		0
+singaporesling	cointreau	7,5	ml		0
+singaporesling	likierdombenedictine	7,5	ml		0
+singaporesling	grenadyna	10	ml		0
+singaporesling	likierwisniowy	15	ml		0
+singaporesling	sokzlimonki	15	ml		0
+singaporesling	gin	30	ml		0
+singaporesling	sokzananasa	120	ml		0
+singaporesling	wisniakoktailowa				0
+singaporesling	ananas				1
+slonecznypatrol	mieta		listek	kilka listków	0
+slonecznypatrol	pomarancza	1	kawalek	plaster	0
+slonecznypatrol	grenadyna	5	ml		0
+slonecznypatrol	sokzgrejpfruta	50	ml		0
+slonecznypatrol	vermouthwytrawny	50	ml		0
+slonecznypatrol	wodka	50	ml		0
+slonecznypatrol	sokzmango	100	ml		0
+slonecznypatrol	lodwkostkach		ml		0
+smellsliketeenspirit	syropbluecuracao	5	ml		0
+smellsliketeenspirit	malibou	30	ml		0
+smellsliketeenspirit	wodka	50	ml		0
+smellsliketeenspirit	sokbananowy	100	ml		0
+smellsliketeenspirit	sokkaktusowy	100	ml		0
+smellsliketeenspirit	lodwkostkach				0
+smoothcriminal	mieta		listek	5-6 listków	0
+smoothcriminal	sprite		dopelnienie	do dopełnienia	0
+smoothcriminal	wodka	50	ml		0
+smoothcriminal	lodkruszony		ml		0
+smoothcriminal	brzoskwiniazpuszki	0,5	sztuka		0
+southpark	grenadyna	20	ml		0
+southpark	malibou	20	ml		0
+southpark	sokpomaranczowy	50	ml		0
+southpark	sokzczarnejporzeczki	50	ml		0
+southpark	wodka	70	ml		0
+southpark	lodwkostkach				0
+southside	mieta		listek	5-6 listków	0
+southside	jajko		kropla	białka kilka kropli	1
+southside	syropcukrowy	15	ml		0
+southside	sokzcytryny	30	ml		0
+southside	gin	60	ml		0
+southside	mieta				1
+spicyfifty	papryczkachili	2	kawalek		0
+spicyfifty	syropzmiodu	10	ml		0
+spicyfifty	sokzlimonki	15	ml		0
+spicyfifty	syropzbzu	15	ml		0
+spicyfifty	wodkawaniliowa	50	ml		0
+spicyfifty	papryczkachili				1
+spritz	aperol	60	ml		0
+spritz	prosecco	90	ml		0
+spritz	wodasodowa		odrobina		0
+spritz	pomarancza				1
+standbyme	sokzcytryny	20	ml		0
+standbyme	sokpomaranczowy	50	ml		0
+standbyme	wodka	50	ml		0
+standbyme	sokzwisni	150	ml		0
+standbyme	lodwkostkach				0
+stepbystep	tonic		dopelnienie	do dopełnienia	0
+stepbystep	pomarancza	2	kawalek	plastry	0
+stepbystep	syropbluecuracao	15	ml		0
+stepbystep	wodka	50	ml		0
+stepbystep	lodwkostkach				0
+stinger	likierwhitecremedementhe	20	ml		0
+stinger	koniak	50	ml		0
+stinger	mieta				1
+streetsofphiladelphia	tonic		dopelnienie	do dopełnienia	0
+streetsofphiladelphia	syropbluecuracao	20	ml		0
+streetsofphiladelphia	tequila	50	ml		0
+streetsofphiladelphia	sokzgrejpfruta	100	ml		0
+streetsofphiladelphia	lodwkostkach				0
+sufferingbastard	piwoimbirowe		dopelnienie	do dopełnienia	0
+sufferingbastard	angosturabitters	2	kropla		0
+sufferingbastard	sokzlimonki	15	ml		0
+sufferingbastard	gin	30	ml		0
+sufferingbastard	koniak	30	ml		0
+sufferingbastard	mieta				1
+sufferingbastard	pomarancza				1
+summerjam	sokpomaranczowy		dopelnienie	do dopełnienia	0
+summerjam	sokzcytryny	15	ml		0
+summerjam	malibou	70	ml		0
+summerjam	truskawka	2	sztuka		0
+summerjam	lodwkostkach				0
+tearsinheaven	bazylia		listek	4 listki	0
+tearsinheaven	tonic		dopelnienie	do dopełnienia	0
+tearsinheaven	limonka	35	gr		0
+tearsinheaven	likiercuracao	80	ml		0
+tearsinheaven	lodwkostkach				0
+tequilasunrise	grenadyna	15	ml		0
+tequilasunrise	tequila	45	ml		0
+tequilasunrise	sokpomaranczowy	90	ml		0
+tequilasunrise	pomarancza				1
+terazpolska	sokzlimonki		kropla	kilka kropli	1
+terazpolska	syropzmalin	20	ml		0
+terazpolska	wodka	20	ml		0
+thetimeofmylife	vermouthwytrawny	30	ml		0
+thetimeofmylife	sokzgrejpfruta	50	ml		0
+thetimeofmylife	wodka	50	ml		0
+thetimeofmylife	sokkaktusowy	150	ml		0
+thetimeofmylife	lodwkostkach				0
+tintoretto	sokzgranatu	50	ml		0
+tintoretto	prosecco	100	ml		0
+tipperary	angosturabitters	2	kropla		0
+tipperary	likiergreenchartreuse	15	ml		0
+tipperary	vermouthslodkiczerwony	25	ml		0
+tipperary	irishwhiskey	50	ml		0
+tipperary	pomarancza				1
+tommysmargarita	syropzagawy	15	ml		0
+tommysmargarita	sokzlimonki	30	ml		0
+tommysmargarita	woda	30	ml		0
+tommysmargarita	tequila	60	ml		0
+tommysmargarita	limonka				1
+touchme	sprite		dopelnienie	do dopełnienia	0
+touchme	pomarancza	1	kawalek	plaster	0
+touchme	likiercuracao	40	ml		0
+touchme	sokzcytryny	40	ml		0
+touchme	gin	50	ml		0
+touchme	lodwkostkach				0
+toysoldier	sokpomaranczowy	50	ml		0
+toysoldier	wodkazczarnejporzeczki	50	ml		0
+toysoldier	sokzgrejpfruta	100	ml		0
+toysoldier	sokzzurawiny	100	ml		0
+toysoldier	lodwkostkach				0
+trinidadsour	whiskey	15	ml		0
+trinidadsour	syropmigdalowy	30	ml		0
+trinidadsour	angosturabitters	45	ml		0
+trinidadsour	sokzcytryny	22.5	ml		0
+tuxedo	orangebitters	3	kropla		0
+tuxedo	absynt	5	ml		0
+tuxedo	likiermaraschino	12,5	ml		0
+tuxedo	gin	30	ml		0
+tuxedo	vermouthwytrawny	30	ml		0
+tuxedo	cytryna				1
+tuxedo	wisnia				1
+twinpeaks	syropbluecuracao	45	ml	po 15ml do każdego kieliszka	0
+twinpeaks	gin	50	ml		0
+twinpeaks	sokzgrejpfruta	50	ml		0
+twinpeaks	lodwkostkach				0
+twoprincess	wodasodowa		dopelnienie	do dopełnienia	0
+twoprincess	mieta		listek	kilka listków	0
+twoprincess	grenadyna	20	ml		0
+twoprincess	sokzcytryny	40	ml		0
+twoprincess	likiermalinowy	50	ml		0
+twoprincess	lodwkostkach				0
+underthebridge	cocacola		dopelnienie	do dopełnienia	0
+underthebridge	cytryna		kawalek	plaster	0
+underthebridge	grenadyna	20	ml		0
+underthebridge	sokzcytryny	40	ml		0
+underthebridge	rumbialy	50	ml		0
+underthebridge	wodka	50	ml		0
+underthebridge	lodwkostkach				0
+upiorwoperze	sokzcytryny	40	ml		0
+upiorwoperze	wodka	50	ml		0
+upiorwoperze	likiercuracao	70	ml		0
+upiorwoperze	sokzgrejpfruta	100	ml		0
+upiorwoperze	sokpomaranczowy	150	ml		0
+upiorwoperze	lodwkostkach				0
+vento	jajko	10	ml	białka	1
+vento	chamomilecordial	15	ml		0
+vento	syropzmiodu	15	ml		0
+vento	whitesmoothgrappa	45	ml		0
+vento	sokzcytryny	22.5	ml		0
+vento	bialewinogrona				1
+vento	cytryna				1
+vesper	lilletblanc	7,5	ml		0
+vesper	wodka	15	ml		0
+vesper	gin	45	ml		0
+vesper	cytryna				1
+vieuxcarre	peychaudsbitters	2	kropla		0
+vieuxcarre	benedictine	15	ml		0
+vieuxcarre	koniak	30	ml		0
+vieuxcarre	vermouthslodkiczerwony	30	ml		0
+vieuxcarre	whiskey	30	ml		0
+vieuxcarre	pomarancza				1
+vieuxcarre	wisniakoktailowa				1
+viper	likiercuracao	20	ml		0
+viper	rumbialy	100	ml		0
+viper	sokpomaranczowy	100	ml		0
+viper	sokzananasa	100	ml		0
+viper	lodwkostkach				0
+wakabayashi	kakao	10	gr		0
+wakabayashi	tequila	50	ml		0
+wakabayashi	mleczkoskond	100	ml		0
+wakabayashi	czekolada		odrobina		0
+wakabayashi	lodwkostkach				0
+walkoflife	tonic		dopelnienie	do dopełnienia	0
+walkoflife	syropzmalin	20	ml		0
+walkoflife	wodka	50	ml		0
+walkoflife	sokzwisni	100	ml		0
+walkoflife	lodwkostkach				0
+whiskeysour	jajko	20	ml	białka	1
+whiskeysour	syropcukrowy	20	ml		0
+whiskeysour	sokzcytryny	25	ml		0
+whiskeysour	bourbon	45	ml		0
+whiskeysour	pomarancza				1
+whiskeysour	wisniakoktailowa				1
+whitelady	sokzcytryny	20	ml		0
+whitelady	triplesec	30	ml		0
+whitelady	gin	40	ml		0
+whiterussian	smietana			na wierzchu	0
+whiterussian	likierkawowy	20	ml		0
+whiterussian	wodka	50	ml		0
+windofchange	pomarancza	1	kawalek	plaster	0
+windofchange	miechunka	1	kawalek		0
+windofchange	grenadyna	20	ml		0
+windofchange	sokzcytryny	20	ml		0
+windofchange	gin	50	ml		0
+windofchange	sokpomaranczowy	150	ml		0
+windofchange	lodwkostkach				0
+wscieklypies	tabasco	3	kropla		0
+wscieklypies	syropzmalin	15	ml		0
+wscieklypies	wodka	25	ml		0
+yattaman	cocacola		dopelnienie	do dopełnienia	0
+yattaman	cytryna		ćwiartka		0
+yattaman	wodkapigwowa	50	ml		0
+yattaman	lodwkostkach				0
+yellowbird	likiergalliano	15	ml		0
+yellowbird	sokzlimonki	15	ml		0
+yellowbird	triplesec	15	ml		0
+yellowbird	rumbialy	30	ml		0
+zabojczabron	granat	10	gr		0
+zabojczabron	wodkacytrynowa	70	ml		0
+zabojczabron	sokzmango	300	ml		0
+zabojczabron	lodwkostkach				0
+zabojczynumer	syropbluecuracao		kropla	kilka kropli	0
+zabojczynumer	gin	70	ml		0
+zabojczynumer	sokpomaranczowy	100	ml		0
+zabojczynumer	lodwkostkach				0
+zartropikow	grenadyna	20	ml		0
+zartropikow	likiercuracao	50	ml		0
+zartropikow	rumbialy	50	ml		0
+zartropikow	sokpomaranczowy	300	ml		0
+zartropikow	lodwkostkach				0
+zombie	angosturabitters	1	kropla		0
+zombie	pieprz	6	kropla		0
+zombie	grenadyna	5	ml		0
+zombie	syropdonnsmix	15	ml		0
+zombie	syropfalernum	15	ml		0
+zombie	sokzlimonki	20	ml		0
+zombie	rumbialy	30	ml		0
+zombie	rumciemny	45	ml		0
+zombie	rumciemny	45	ml		0
+zombie	mieta				1
