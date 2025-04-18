@@ -4,12 +4,12 @@ import SwiftUI
 struct zamienniki: View {
 	@Environment(\.modelContext) private var modelContext
 	
-	@Query(sort: [SortDescriptor(\Drink.drNazwa)])
-	private var wszystkieDrinki: [Drink]
+	@Query(sort: [SortDescriptor(\Drink_M.drNazwa)])
+	private var wszystkieDrinki: [Drink_M]
 	
 	@State private var tekstFiltru: String = ""
 	
-	var przefiltrowaneDrinki: [Drink] {
+	var przefiltrowaneDrinki: [Drink_M] {
 		if tekstFiltru.isEmpty {
 			return wszystkieDrinki
 		} else {
@@ -29,9 +29,62 @@ struct zamienniki: View {
 				List {
 					ForEach(przefiltrowaneDrinki) { drink in
 						NavigationLink {
-							Text("\(drink.drNazwa)")
+							VStack{
+								List {
+									Text("Nazwa: \(drink.drNazwa)")
+										.font(.headline)
+									Text("Kat.: \(drink.drKat.rawValue)")
+									Text("Żródło: \(drink.drZrodlo)")
+									Text("Kolor: \(drink.drKolor)")
+									Text("Foto: \(drink.drFoto)")
+									Text("Proc.: \(drink.drProc)")
+									Text("Słodycz: \(drink.drSlodycz.rawValue)")
+									Text("Szkło: \(drink.drSzklo.opis)")
+									Text("Ulubiony: \(drink.drUlubiony)")
+									Text("Notatka: \(drink.drNotatka)")
+									Text("Uwagi: \(drink.drUwagi)")
+									Text("WWW: \(drink.drWWW)")
+									Text("Kalorie: \(drink.drKalorie)")
+									Text("Moc: \(drink.drMoc.opisLong)")
+									Text("Brak: \(drink.drBrakuje)")
+									if drink.drAlkGlowny.count == 1 {
+										Text("Alk gł.: \(drink.drAlkGlowny[0].opis)")
+									}
+									if drink.drAlkGlowny.count == 2 {
+										Text("Alk gł.: \(drink.drAlkGlowny[0].opis), \(drink.drAlkGlowny[1].opis)")
+									}
+									
+								}
+								Divider()
+								List {
+									ForEach(drink.drPrzepis.sorted { $0.przepNo < $1.przepNo }) { przep in
+										HStack {
+											Text("\(przep.przepNo)")
+											Text("\(przep.przepOpis)")
+											Spacer()
+											Text("\(przep.przepOpcja)")
+										}
+									}
+								}
+								Divider()
+								List {
+									ForEach(drink.drSklad) { sklad in
+										HStack {
+											Text("\(sklad.sklNo)")
+											Text("\(sklad.skladnikID)")
+											Text("\(sklad.sklIlosc)")
+											Text("\(sklad.sklMiara)")
+											Text("\(sklad.sklInfo)")
+											Spacer()
+											Text("\(sklad.sklOpcja)")
+										}
+									}
+								}
+							}
 						} label: {
-							Text(drink.drNazwa)
+							Text("\(drink.drNazwa)")
+							Text("P: \(drink.drPrzepis.count)")
+							Text("S: \(drink.drSklad.count)")
 						}
 					}
 					.onDelete(perform: deleteDrink)
@@ -40,9 +93,11 @@ struct zamienniki: View {
 			.onAppear {
 				if !UserDefaults.standard.bool(forKey: "zamiennikiWczytane") {
 					UserDefaults.standard.set(true, forKey: "zamiennikiWczytane")
-					deleteAll(modelContext: modelContext)
-					loadZamCSV(modelContext: modelContext)
-					loadDrinkiCSV(modelContext: modelContext)
+//				deleteAll(modelContext: modelContext)
+				loadDrinkiCSV_V(modelContext: modelContext)
+				loadDrinkiAlkGlownyCSV_V(modelContext: modelContext)
+				loadDrinkiPrzepisyCSV_V(modelContext: modelContext)
+				loadDrinkiSkladnikiCSV_V(modelContext: modelContext)
 				}
 			}
 #if os(macOS)
@@ -81,10 +136,9 @@ struct zamienniki: View {
 	}
 	
 	func deleteAll(modelContext: ModelContext) {
-		let fetchDescriptor = FetchDescriptor<Drink>()
-		
+		let fetchDescriptor1 = FetchDescriptor<Drink_M>()
 		do {
-			let drinki = try modelContext.fetch(fetchDescriptor)
+			let drinki = try modelContext.fetch(fetchDescriptor1)
 			for drink in drinki {
 				modelContext.delete(drink)
 			}
@@ -92,6 +146,28 @@ struct zamienniki: View {
 		} catch {
 			print("Błąd przy usuwaniu drinków: \(error)")
 		}
+//		
+//		let fetchDescriptor2 = FetchDescriptor<DrinkSkladnik_M>()
+//		do {
+//			let skladniki = try modelContext.fetch(fetchDescriptor2)
+//			for skladnik in skladniki {
+//				modelContext.delete(skladnik)
+//			}
+//			try modelContext.save()
+//		} catch {
+//			print("Błąd przy usuwaniu drinków: \(error)")
+//		}
+//		
+//		let fetchDescriptor3 = FetchDescriptor<DrinkPrzepis_M>()
+//		do {
+//			let przepisy = try modelContext.fetch(fetchDescriptor3)
+//			for przepis in przepisy {
+//				modelContext.delete(przepis)
+//			}
+//			try modelContext.save()
+//		} catch {
+//			print("Błąd przy usuwaniu drinków: \(error)")
+//		}
 	}
 }
 

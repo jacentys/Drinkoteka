@@ -1,11 +1,11 @@
 import SwiftData
 import SwiftUI
 
-// MARK: DRINK STRUCT
 @Model
-class Drink: Identifiable {
-	var id: String
-	var drNazwa: String
+class Drink_M: Identifiable {
+	@Attribute(.unique) var id: String
+	@Attribute(.unique) var drinkID: String
+	@Attribute(.unique) var drNazwa: String
 	var drKat: drKatEnum
 	var drZrodlo: String
 	var drKolor: String
@@ -17,15 +17,16 @@ class Drink: Identifiable {
 	var drNotatka: String
 	var drUwagi: String
 	var drWWW: String
-//	var drSklad: [DrinkSkladnik]
-//	var drPrzepis: [DrinkiPrzepisy]
 	var drKalorie: Int
 	var drMoc: drMocEnum
 	var drBrakuje: Int
 	var drAlkGlowny: [alkGlownyEnum]
+	@Relationship(deleteRule: .cascade, inverse: \DrinkSkladnik_M.relacjaDrink) var drSklad: [DrinkSkladnik_M] = []
+	@Relationship(deleteRule: .cascade, inverse: \DrinkPrzepis_M.relacjaDrink) var drPrzepis: [DrinkPrzepis_M] = []
 
 	init(
-		id: String,
+		id: String = UUID().uuidString,
+		drinkID: String,
 		drNazwa: String,
 		drKat: drKatEnum,
 		drZrodlo: String,
@@ -38,14 +39,15 @@ class Drink: Identifiable {
 		drNotatka: String,
 		drUwagi: String,
 		drWWW: String = "",
-//		drSklad: [DrinkSkladnik],
-//		drPrzepis: [DrinkiPrzepisy],
 		drKalorie: Int,
 		drMoc: drMocEnum,
 		drBrakuje: Int,
-		drAlkGlowny: [alkGlownyEnum]
+		drAlkGlowny: [alkGlownyEnum],
+		drSklad: [DrinkSkladnik_M],
+		drPrzepis: [DrinkPrzepis_M]
 	) {
 		self.id = id
+		self.drinkID = drinkID
 		self.drNazwa = drNazwa
 		self.drKat = drKat
 		self.drZrodlo = drZrodlo
@@ -58,14 +60,16 @@ class Drink: Identifiable {
 		self.drNotatka = drNotatka
 		self.drUwagi = drUwagi
 		self.drWWW = drWWW
-//		self.drSklad = drSklad
-//		self.drPrzepis = drPrzepis
 		self.drKalorie = drKalorie
 		self.drMoc = drMoc
 		self.drBrakuje = drBrakuje
 		self.drAlkGlowny = drAlkGlowny
+		self.drSklad = drSklad
+		self.drPrzepis = drPrzepis
 	}
+}
 
+/*
 		// MARK: SET SKLADNIKI
 //	func setSkladnikiAll(_ drSkladniki: [DrinkSkladnik]) -> Drink {
 //		return Drink(
@@ -97,9 +101,10 @@ class Drink: Identifiable {
 //	}
 
 	// MARK: ULUBIONY TOGGLE
-	func ulubionyToggle() -> Drink {
-		return Drink(
+	func ulubionyToggle() -> Drink_M {
+		return Drink_M(
 			id: id,
+			drinkID: drinkID,
 			drNazwa: drNazwa,
 			drKat: drKat,
 			drZrodlo: drZrodlo,
@@ -112,8 +117,8 @@ class Drink: Identifiable {
 			drNotatka: drNotatka,
 			drUwagi: drUwagi,
 			drWWW: drWWW,
-//			drSklad: drSklad,
-//			drPrzepis: drPrzepis,
+			drSklad: drSklad,
+			drPrzepis: drPrzepis,
 			drKalorie: drKalorie,
 			drMoc: drMoc,
 			drBrakuje: drBrakuje,
@@ -122,9 +127,10 @@ class Drink: Identifiable {
 	}
 
 	// MARK: SET NOTATKA
-	func setNotatka(tekst: String) -> Drink {
-		return Drink(
+	func setNotatka(tekst: String) -> Drink_M {
+		return Drink_M(
 			id: id,
+			drinkID: drinkID,
 			drNazwa: drNazwa,
 			drKat: drKat,
 			drZrodlo: drZrodlo,
@@ -137,8 +143,8 @@ class Drink: Identifiable {
 			drNotatka: tekst,
 			drUwagi: drUwagi,
 			drWWW: drWWW,
-//			drSklad: drSklad,
-//			drPrzepis: drPrzepis,
+			drSklad: drSklad,
+			drPrzepis: drPrzepis,
 			drKalorie: drKalorie,
 			drMoc: drMoc,
 			drBrakuje: drBrakuje,
@@ -147,7 +153,7 @@ class Drink: Identifiable {
 	}
 
 	// MARK: SET MOC
-	func setMoc() -> Drink {
+	func setMoc() -> Drink_M {
 
 		var moc: drMocEnum = drMocEnum.brakDanych
 
@@ -156,8 +162,9 @@ class Drink: Identifiable {
 		if (self.drProc > 12 && self.drProc < 21) { moc = drMocEnum.sredni }
 		if (self.drProc > 20) { moc = drMocEnum.mocny }
 
-		return Drink(
+		return Drink_M(
 			id: id,
+			drinkID: drinkID,
 			drNazwa: drNazwa,
 			drKat: drKat,
 			drZrodlo: drZrodlo,
@@ -170,8 +177,8 @@ class Drink: Identifiable {
 			drNotatka: drNotatka,
 			drUwagi: drUwagi,
 			drWWW: drWWW,
-//			drSklad: drSklad,
-//			drPrzepis: drPrzepis,
+			drSklad: drSklad,
+			drPrzepis: drPrzepis,
 			drKalorie: drKalorie,
 			drMoc: moc,
 			drBrakuje: drBrakuje,
@@ -180,9 +187,10 @@ class Drink: Identifiable {
 	}
 
 	// MARK: SET BRAKUJE
-	func setBrakuje(brak: Int) -> Drink {
-		return Drink(
+	func setBrakuje(brak: Int) -> Drink_M {
+		return Drink_M(
 			id: id,
+			drinkID: drinkID,
 			drNazwa: drNazwa,
 			drKat: drKat,
 			drZrodlo: drZrodlo,
@@ -195,8 +203,8 @@ class Drink: Identifiable {
 			drNotatka: drNotatka,
 			drUwagi: drUwagi,
 			drWWW: drWWW,
-//			drSklad: drSklad,
-//			drPrzepis: drPrzepis,
+			drSklad: drSklad,
+			drPrzepis: drPrzepis,
 			drKalorie: drKalorie,
 			drMoc: drMoc,
 			drBrakuje: brak,
@@ -205,9 +213,10 @@ class Drink: Identifiable {
 	}
 
 	// MARK: SET KALORIE
-	func setKalorie(kalorie: Int) -> Drink {
-		return Drink(
+	func setKalorie(kalorie: Int) -> Drink_M {
+		return Drink_M(
 			id: id,
+			drinkID: drinkID,
 			drNazwa: drNazwa,
 			drKat: drKat,
 			drZrodlo: drZrodlo,
@@ -220,8 +229,8 @@ class Drink: Identifiable {
 			drNotatka: drNotatka,
 			drUwagi: drUwagi,
 			drWWW: drWWW,
-//			drSklad: drSklad,
-//			drPrzepis: drPrzepis,
+			drSklad: drSklad,
+			drPrzepis: drPrzepis,
 			drKalorie: kalorie,
 			drMoc: drMoc,
 			drBrakuje: drBrakuje,
@@ -230,9 +239,10 @@ class Drink: Identifiable {
 	}
 
 		// MARK: SET ALK GŁÓWNY
-	func setalkGlowny(alkGlowny: [alkGlownyEnum]) -> Drink {
-		return Drink(
+	func setalkGlowny(alkGlowny: [alkGlownyEnum]) -> Drink_M {
+		return Drink_M(
 			id: id,
+			drinkID: drinkID,
 			drNazwa: drNazwa,
 			drKat: drKat,
 			drZrodlo: drZrodlo,
@@ -245,8 +255,8 @@ class Drink: Identifiable {
 			drNotatka: drNotatka,
 			drUwagi: drUwagi,
 			drWWW: drWWW,
-//			drSklad: drSklad,
-//			drPrzepis: drPrzepis,
+			drSklad: drSklad,
+			drPrzepis: drPrzepis,
 			drKalorie: drKalorie,
 			drMoc: drMoc,
 			drBrakuje: drBrakuje,
@@ -260,3 +270,5 @@ class Drink: Identifiable {
 //	}
 	
 }
+
+*/

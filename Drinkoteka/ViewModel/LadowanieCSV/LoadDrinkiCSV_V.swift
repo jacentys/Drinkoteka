@@ -1,14 +1,14 @@
 import SwiftData
 import Foundation
 
-	// MARK: Load Drinki
-func loadDrinkiCSV(modelContext: ModelContext){
+func loadDrinkiCSV_V(modelContext: ModelContext){
+	
 	let nazwaPliku = "Barman - Drinki"
 	let iloscKolumn = 13
 	
 	guard let filePath = Bundle.main.path(forResource: nazwaPliku, ofType: "tsv") else {
 		print("Plik \(nazwaPliku) nie znaleziony")
-		exit(2) // Nie jestem pewien
+		return
 	}
 	do {
 		let zawartoscPliku = try String(contentsOfFile: filePath, encoding: .utf8)
@@ -18,7 +18,7 @@ func loadDrinkiCSV(modelContext: ModelContext){
 			let kolumny = row.components(separatedBy: "\t") // Tab separat.
 			if kolumny.count == iloscKolumn { // Ilość kolumn się zgadza?
 				
-				let id = kolumny[0]
+				let drinkID = kolumny[0]
 				let nazwa = kolumny[1]
 				let kategoria = stringToDrKat(kolumny[2])
 				let zrodlo = kolumny[3]
@@ -31,18 +31,14 @@ func loadDrinkiCSV(modelContext: ModelContext){
 				let notatka = kolumny[10]
 				let uwagi = kolumny[11]
 				let drWWW = kolumny[12]
-				
-				
-//				let skladniki: [DrinkSkladnik] = []
-//				let przepisy: [DrinkPrzepis] = []
-					//					let skladniki = getSkladnikiDrinkaFromID(drinkID: clearStr(kolumny[0]))
-					//					let przepisy = getDrinkiPrzepisyByDrinkID(drinkID: clearStr(kolumny[0]))
 				let mocDrinka = setMocDrinka(procenty: Int(kolumny[5]) ?? 0)
 				let brakuje = 0
 				let alkGlowny: [alkGlownyEnum] = []
-				
-				let drineczek = Drink(
-					id: id,
+				let skladniki: [DrinkSkladnik_M] = []
+				let przepisy: [DrinkPrzepis_M] = []
+
+				let drineczek = Drink_M(
+					drinkID: drinkID,
 					drNazwa: nazwa,
 					drKat: kategoria,
 					drZrodlo: zrodlo,
@@ -55,12 +51,12 @@ func loadDrinkiCSV(modelContext: ModelContext){
 					drNotatka: notatka,
 					drUwagi: uwagi,
 					drWWW: drWWW,
-//					drSklad: skladniki,
-//					drPrzepis: przepisy,
 					drKalorie: 0,
 					drMoc: mocDrinka,
 					drBrakuje: brakuje,
-					drAlkGlowny: alkGlowny
+					drAlkGlowny: alkGlowny,
+					drSklad: skladniki,
+					drPrzepis: przepisy
 				)
 				modelContext.insert(drineczek)
 			}
@@ -68,4 +64,18 @@ func loadDrinkiCSV(modelContext: ModelContext){
 	} catch {
 		print("Błąd wczytywania pliku \(nazwaPliku): \(error)")
 	}
-	} // Load Drinki
+}
+
+//func getSkladnikiDrinkaFromID(drinkID: String) -> [DrinkSkladnik_M] {
+//	let skladnikiFiltrowane = self.drSklArray.filter {
+//		$0.drinkID == drinkID
+//	}
+//	return skladnikiFiltrowane
+//}
+
+//func getSkladnikiDrinkaFromID(drinkID: String) -> [DrinkSkladnik_M] {
+//	let skladnikiFiltrowane = self.drSklArray.filter {
+//		$0.drinkID == drinkID
+//	}
+//	return skladnikiFiltrowane
+//}

@@ -16,8 +16,8 @@ struct DrinkotekaApp: App {
 			  zamienniki()
         }
 		  .modelContainer(
-			//			for: [Skladnik.self, Drink.self, DrinkSkladnik.self, DrinkPrzepis.self, SklZamiennik.self],
-			for: [SklZamiennik.self, Drink.self],
+			for: [Drink_M.self],
+			//			for: [Skladnik.self, SklZamiennik.self],
 			inMemory: false,
 			isUndoEnabled: false)
     }

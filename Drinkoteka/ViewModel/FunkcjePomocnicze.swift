@@ -31,10 +31,10 @@ func stringToColor(_ kolorString: String?) -> Color {
 
 			// Usuwanie wszystkich znaków innych niż małe litery a-z i cyfry 0-9
 		let tekst = bezDiakrytycznych.filter { $0.isLetter || $0.isNumber }
-
-		if let color = UIColor(named: tekst) {
-			return Color(color)
-		}
+		return Color.white
+//		if let color = UIColor(named: tekst) {
+//			return Color(color)
+//		}
 	}
 	return Color.white
 }

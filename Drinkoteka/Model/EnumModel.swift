@@ -192,6 +192,20 @@ enum szkloEnum: String, CaseIterable, Codable {
 	case kieliszek = "kieliszek"
 	case inne = "inne"
 
+	var opis: String {
+		switch self {
+			case .collins: return "Szklanka Collins"
+			case .whiskey: return "Szklanka Whiskey"
+			case .oldFashioned: return "Szklanka Old Fashioned"
+			case .koktailowy: return "Kieliszek Koktailowy"
+			case .szampan: return "Kielliszek do Szampana"
+			case .wino: return "Kieliszek do Wina"
+			case .margarita: return "Kieliszek do Margarity"
+			case .kieliszek: return "Kieliszek do Wódki"
+			default: return "Brak danyh"
+		}
+	}
+	
 	var foto: String {
 		switch self {
 			case .collins: return "szkloCollins"
@@ -279,7 +293,7 @@ enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 	case rum = "rum"
 	case whiskey = "whiskey"
 	case gin = "gin"
-	case tequila = "tequilaMez"
+	case tequila = "tequilamez"
 	case brandy = "brandy"
 	case vodka = "vodka"
 	case champagne = "champagne"
