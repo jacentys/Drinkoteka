@@ -15,7 +15,10 @@ class Skl_M: Identifiable {
 	var sklKal: Int
 	var sklMiara: miaraEnum
 	var sklWWW: String
-	@Relationship(deleteRule: .cascade, inverse: \SklZamiennik_M.relacjaSkladnik) var sklZamArray: [SklZamiennik_M] = []
+	@Relationship(deleteRule: .nullify)
+	var sklZamArray: [Skl_M] = []
+	@Relationship(deleteRule: .nullify, inverse: \Skl_M.sklZamArray)
+	var Original: Skl_M?
 	init(
 		id: String = UUID().uuidString,
 		sklID: String,

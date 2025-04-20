@@ -99,10 +99,10 @@ struct skladniki: View {
 	
 	private func addZam() {
 		print("Funkcja addZam uruchomiona")
-		withAnimation {
-			let zam = SklZamiennik(skladnikID: "SkładnikID", zamiennikID: "ID zamiennika")
-			modelContext.insert(zam)
-		}
+//		withAnimation {
+//			let zam = SklZamiennik(skladnikID: "SkładnikID", zamiennikID: "ID zamiennika")
+//			modelContext.insert(zam)
+//		}
 	}
 	
 	private func delSkladnik(offsets: IndexSet) {

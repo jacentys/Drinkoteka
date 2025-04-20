@@ -134,10 +134,10 @@ struct drinki: View {
 	
 	private func addZam() {
 		print("Funkcja addZam uruchomiona")
-		withAnimation {
-			let zam = SklZamiennik(skladnikID: "SkładnikID", zamiennikID: "ID zamiennika")
-			modelContext.insert(zam)
-		}
+//		withAnimation {
+//			let zam = SklZamiennik(skladnikID: "SkładnikID", zamiennikID: "ID zamiennika")
+//			modelContext.insert(zam)
+//		}
 	}
 	
 	private func delDrink(offsets: IndexSet) {
@@ -167,5 +167,5 @@ struct drinki: View {
 	NavigationStack {
 		drinki()
 	}
-	.modelContainer(for: SklZamiennik.self, inMemory: true)
+	.modelContainer(for: Dr_M.self, inMemory: true)
 }
