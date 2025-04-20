@@ -13,11 +13,10 @@ struct DrinkotekaApp: App {
     var body: some Scene {
 		 
         WindowGroup {
-			  zamienniki()
+			  skladniki()
         }
 		  .modelContainer(
-			for: [Drink_M.self],
-			//			for: [Skladnik.self, SklZamiennik.self],
+			for: [Dr_M.self, Skl_M.self],
 			inMemory: false,
 			isUndoEnabled: false)
     }

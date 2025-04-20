@@ -2,7 +2,7 @@ import SwiftData
 import SwiftUI
 
 @Model
-class Drink_M: Identifiable {
+class Dr_M: Identifiable {
 	@Attribute(.unique) var id: String
 	@Attribute(.unique) var drinkID: String
 	@Attribute(.unique) var drNazwa: String
@@ -17,12 +17,12 @@ class Drink_M: Identifiable {
 	var drNotatka: String
 	var drUwagi: String
 	var drWWW: String
-	var drKalorie: Int
+	var drKal: Int
 	var drMoc: drMocEnum
 	var drBrakuje: Int
 	var drAlkGlowny: [alkGlownyEnum]
-	@Relationship(deleteRule: .cascade, inverse: \DrinkSkladnik_M.relacjaDrink) var drSklad: [DrinkSkladnik_M] = []
-	@Relationship(deleteRule: .cascade, inverse: \DrinkPrzepis_M.relacjaDrink) var drPrzepis: [DrinkPrzepis_M] = []
+	@Relationship(deleteRule: .cascade, inverse: \DrSkladnik_M.relacjaDrink) var drSklad: [DrSkladnik_M] = []
+	@Relationship(deleteRule: .cascade, inverse: \DrPrzepis_M.relacjaDrink) var drPrzepis: [DrPrzepis_M] = []
 
 	init(
 		id: String = UUID().uuidString,
@@ -39,12 +39,12 @@ class Drink_M: Identifiable {
 		drNotatka: String,
 		drUwagi: String,
 		drWWW: String = "",
-		drKalorie: Int,
+		drKal: Int,
 		drMoc: drMocEnum,
 		drBrakuje: Int,
 		drAlkGlowny: [alkGlownyEnum],
-		drSklad: [DrinkSkladnik_M],
-		drPrzepis: [DrinkPrzepis_M]
+		drSklad: [DrSkladnik_M],
+		drPrzepis: [DrPrzepis_M]
 	) {
 		self.id = id
 		self.drinkID = drinkID
@@ -60,7 +60,7 @@ class Drink_M: Identifiable {
 		self.drNotatka = drNotatka
 		self.drUwagi = drUwagi
 		self.drWWW = drWWW
-		self.drKalorie = drKalorie
+		self.drKal = drKal
 		self.drMoc = drMoc
 		self.drBrakuje = drBrakuje
 		self.drAlkGlowny = drAlkGlowny
@@ -88,7 +88,7 @@ class Drink_M: Identifiable {
 //			drWWW: drWWW,
 //			drSklad: drSkladniki,
 //			drPrzepis: drPrzepis,
-//			drKalorie: drKalorie,
+//			drKal: drKal,
 //			drMoc: drMoc,
 //			drBrakuje: drBrakuje,
 //			drAlkGlowny: drAlkGlowny
@@ -119,7 +119,7 @@ class Drink_M: Identifiable {
 			drWWW: drWWW,
 			drSklad: drSklad,
 			drPrzepis: drPrzepis,
-			drKalorie: drKalorie,
+			drKal: drKal,
 			drMoc: drMoc,
 			drBrakuje: drBrakuje,
 			drAlkGlowny: drAlkGlowny
@@ -145,7 +145,7 @@ class Drink_M: Identifiable {
 			drWWW: drWWW,
 			drSklad: drSklad,
 			drPrzepis: drPrzepis,
-			drKalorie: drKalorie,
+			drKal: drKal,
 			drMoc: drMoc,
 			drBrakuje: drBrakuje,
 			drAlkGlowny: drAlkGlowny
@@ -179,7 +179,7 @@ class Drink_M: Identifiable {
 			drWWW: drWWW,
 			drSklad: drSklad,
 			drPrzepis: drPrzepis,
-			drKalorie: drKalorie,
+			drKal: drKal,
 			drMoc: moc,
 			drBrakuje: drBrakuje,
 			drAlkGlowny: drAlkGlowny
@@ -205,7 +205,7 @@ class Drink_M: Identifiable {
 			drWWW: drWWW,
 			drSklad: drSklad,
 			drPrzepis: drPrzepis,
-			drKalorie: drKalorie,
+			drKal: drKal,
 			drMoc: drMoc,
 			drBrakuje: brak,
 			drAlkGlowny: drAlkGlowny
@@ -231,7 +231,7 @@ class Drink_M: Identifiable {
 			drWWW: drWWW,
 			drSklad: drSklad,
 			drPrzepis: drPrzepis,
-			drKalorie: kalorie,
+			drKal: kalorie,
 			drMoc: drMoc,
 			drBrakuje: drBrakuje,
 			drAlkGlowny: drAlkGlowny
@@ -257,7 +257,7 @@ class Drink_M: Identifiable {
 			drWWW: drWWW,
 			drSklad: drSklad,
 			drPrzepis: drPrzepis,
-			drKalorie: drKalorie,
+			drKal: drKal,
 			drMoc: drMoc,
 			drBrakuje: drBrakuje,
 			drAlkGlowny: alkGlowny
@@ -266,7 +266,7 @@ class Drink_M: Identifiable {
 
 
 //	func getSilaDrinka() -> String {
-//		return self.drMoc.opisShort + " (" + String(self.drProc) + "%) "  + String(self.drKalorie) + " kCal"
+//		return self.drMoc.opisShort + " (" + String(self.drProc) + "%) "  + String(self.drKal) + " kCal"
 //	}
 	
 }

@@ -3,13 +3,13 @@ import SwiftUI
 // MARK: SKL KATEGORIE
 enum sklKatEnum: String, CaseIterable, Codable, Identifiable {
 	var id: Self { self }
-	case alkohol = "Alkohol"
-	case likiery = "Likiery"
-	case syropy = "Syropy"
-	case soki = "Soki"
-	case przyprawy = "Przyprawy"
-	case owoce = "Owoce"
-	case inne = "Inne"
+	case alkohol = "alkohol"
+	case likiery = "likiery"
+	case syropy = "syropy"
+	case soki = "soki"
+	case przyprawy = "przyprawy"
+	case owoce = "owoce"
+	case inne = "inne"
 
 	var opis: String {
 		switch self {
@@ -56,7 +56,7 @@ enum sklStanEnum: String, CaseIterable, Codable {
 				return "repeat.circle"
 		}
 	}
-	var tekst: String {
+	var opis: String {
 		switch self {
 			case .jest:
 				return "W Barku"

@@ -1,93 +1,62 @@
 import SwiftData
 import SwiftUI
 
-struct zamienniki: View {
+struct skladniki: View {
 	@Environment(\.modelContext) private var modelContext
 	
-	@Query(sort: [SortDescriptor(\Dr_M.drNazwa)])
-	private var wszystkieDrinki: [Dr_M]
+	@Query(sort: [SortDescriptor(\Skl_M.sklNazwa)])
+	private var wszystkieSkladniki: [Skl_M]
 	
 	@State private var tekstFiltru: String = ""
 	
-	var przefiltrowaneDrinki: [Dr_M] {
+	var przefiltrowaneSkladniki: [Skl_M] {
 		if tekstFiltru.isEmpty {
-			return wszystkieDrinki
+			return wszystkieSkladniki
 		} else {
-			return wszystkieDrinki.filter {
-				$0.drNazwa.localizedCaseInsensitiveContains(tekstFiltru)
+			return wszystkieSkladniki.filter {
+				$0.sklNazwa.localizedCaseInsensitiveContains(tekstFiltru)
 			}
 		}
 	}
 	
 	var body: some View {
 		NavigationSplitView {
-			Text("\(przefiltrowaneDrinki.count)")
+			Text("\(przefiltrowaneSkladniki.count)")
 			VStack {
 				TextField("Szukaj drinka...", text: $tekstFiltru)
 					.textFieldStyle(.roundedBorder)
 					.padding()
 				List {
-					ForEach(przefiltrowaneDrinki) { drink in
+					ForEach(przefiltrowaneSkladniki) { skladnik in
 						NavigationLink {
 							VStack{
 								List {
-									Text("Nazwa: \(drink.drNazwa)")
+									Text("Nazwa: \(skladnik.sklNazwa)")
 										.font(.headline)
-									Text("Kat.: \(drink.drKat.rawValue)")
-									Text("Żródło: \(drink.drZrodlo)")
-									Text("Kolor: \(drink.drKolor)")
-									Text("Foto: \(drink.drFoto)")
-									Text("Proc.: \(drink.drProc)")
-									Text("Słodycz: \(drink.drSlodycz.rawValue)")
-									Text("Szkło: \(drink.drSzklo.opis)")
-									Text("Ulubiony: \(drink.drUlubiony)")
-									Text("Notatka: \(drink.drNotatka)")
-									Text("Uwagi: \(drink.drUwagi)")
-									Text("WWW: \(drink.drWWW)")
-									Text("Kalorie: \(drink.drKalorie)")
-									Text("Moc: \(drink.drMoc.opisLong)")
-									Text("Brak: \(drink.drBrakuje)")
-									if drink.drAlkGlowny.count == 1 {
-										Text("Alk gł.: \(drink.drAlkGlowny[0].opis)")
-									}
-									if drink.drAlkGlowny.count == 2 {
-										Text("Alk gł.: \(drink.drAlkGlowny[0].opis), \(drink.drAlkGlowny[1].opis)")
-									}
-									
+									Text("Kat.: \(skladnik.sklKat.opis)")
+									Text("Proc.: \(skladnik.sklProc)")
+									Text("Kolor: \(skladnik.sklKolor)")
+									Text("Foto: \(skladnik.sklFoto)")
+									Text("Opis.: \(skladnik.sklOpis)")
+									Text("Stan: \(skladnik.sklStan.opis)")
+									Text("Kalorie: \(skladnik.sklKal)")
+									Text("Miara: \(skladnik.sklMiara.opis)")
+									Text("WWW: \(skladnik.sklWWW)")
+									Text("Zamienniki: \(skladnik.sklZamArray)")
 								}
+								
 								Divider()
 								List {
-									ForEach(drink.drPrzepis.sorted { $0.przepNo < $1.przepNo }) { przep in
-										HStack {
-											Text("\(przep.przepNo)")
-											Text("\(przep.przepOpis)")
-											Spacer()
-											Text("\(przep.przepOpcja)")
-										}
-									}
-								}
-								Divider()
-								List {
-									ForEach(drink.drSklad) { sklad in
-										HStack {
-											Text("\(sklad.sklNo)")
-											Text("\(sklad.skladnikID)")
-											Text("\(sklad.sklIlosc)")
-											Text("\(sklad.sklMiara)")
-											Text("\(sklad.sklInfo)")
-											Spacer()
-											Text("\(sklad.sklOpcja)")
-										}
+									ForEach(skladnik.sklZamArray) { zamiennik in
+											Text("\(zamiennik.sklNazwa)")
 									}
 								}
 							}
 						} label: {
-							Text("\(drink.drNazwa)")
-							Text("P: \(drink.drPrzepis.count)")
-							Text("S: \(drink.drSklad.count)")
+							Text("\(skladnik.sklNazwa)")
 						}
 					}
-					.onDelete(perform: delDrink)
+					.onDelete(perform: delSkladnik)
 				}
 			}
 			.onAppear {
@@ -96,10 +65,8 @@ struct zamienniki: View {
 				if !UserDefaults.standard.bool(forKey: "setupDone")
 				{
 					delAll()
-					loadDrCSV_V(modelContext: modelContext)
-					loadDrAlkGlownyCSV_V(modelContext: modelContext)
-					loadDrPrzepisyCSV_V(modelContext: modelContext)
-					loadDrSkladnikiCSV_V(modelContext: modelContext)
+					loadSklCSV_V(modelContext: modelContext)
+					loadSklZamiennikiCSV_V(modelContext: modelContext)
 					UserDefaults.standard.set(true, forKey: "setupDone")
 				}
 				print("Koniec onAppear: \(UserDefaults.standard.bool(forKey: "setupDone"))")
@@ -116,10 +83,8 @@ struct zamienniki: View {
 				ToolbarItem {
 					Button(action: {
 						delAll()
-						loadDrCSV_V(modelContext: modelContext)
-						loadDrAlkGlownyCSV_V(modelContext: modelContext)
-						loadDrPrzepisyCSV_V(modelContext: modelContext)
-						loadDrSkladnikiCSV_V(modelContext: modelContext)
+						loadSklCSV_V(modelContext: modelContext)
+						loadSklZamiennikiCSV_V(modelContext: modelContext)
 					}) { Image(systemName: "restart.circle.fill") }
 					
 					Button(action: addZam) {
@@ -140,11 +105,11 @@ struct zamienniki: View {
 		}
 	}
 	
-	private func delDrink(offsets: IndexSet) {
+	private func delSkladnik(offsets: IndexSet) {
 		withAnimation {
 			for index in offsets {
-				print("Funkcja delDrink \(przefiltrowaneDrinki[index].drNazwa) uruchomiona")
-				modelContext.delete(przefiltrowaneDrinki[index])
+				print("Funkcja delSkladnik \(przefiltrowaneSkladniki[index].sklNazwa) uruchomiona")
+				modelContext.delete(przefiltrowaneSkladniki[index])
 			}
 		}
 	}
@@ -152,9 +117,9 @@ struct zamienniki: View {
 	func delAll() {
 		print("Funkcja delAll uruchomiona")
 		do {
-			try modelContext.delete(model: Dr_M.self)
+			try modelContext.delete(model: Skl_M.self)
 		} catch {
-			print("Błąd przy usuwaniu drinków: \(error)")
+			print("Błąd przy usuwaniu skladnikow: \(error)")
 		}
 	}
 }
@@ -163,9 +128,8 @@ struct zamienniki: View {
 
 
 #Preview {
-	
 	NavigationStack {
-		zamienniki()
+		skladniki()
 	}
-	.modelContainer(for: SklZamiennik.self, inMemory: true)
+	.modelContainer(for: Skl_M.self, inMemory: true)
 }

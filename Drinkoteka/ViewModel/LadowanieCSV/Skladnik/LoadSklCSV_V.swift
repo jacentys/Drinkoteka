@@ -30,7 +30,7 @@ func loadSklCSV_V(modelContext: ModelContext) {
 				let sklMiara = strToSklMiaraEnum(kolumny[9])
 				let sklWWW = kolumny[10]
 				
-				let skladniczek = Skl_M(
+				let skladnik = Skl_M(
 					sklID: sklID,
 					sklNazwa: sklNazwa,
 					sklKat: sklKat,
@@ -44,7 +44,7 @@ func loadSklCSV_V(modelContext: ModelContext) {
 					sklWWW: sklWWW,
 					sklZamArray: []
 				)
-//				modelContext.insert(skladniczek)
+				modelContext.insert(skladnik)
 			}
 		}
 	} catch {

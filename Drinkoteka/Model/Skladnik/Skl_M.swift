@@ -1,21 +1,21 @@
 import SwiftData
 import SwiftUI
 
-// MARK: SKLADNIKI STRUCT
-class Skladnik: Identifiable {
+@Model
+class Skl_M: Identifiable {
 	@Attribute(.unique) var id: String
 	@Attribute(.unique) var sklID: String
 	@Attribute(.unique) var sklNazwa: String
-	let sklKat: sklKatEnum
-	let sklProc: Int
-	let sklKolor: String
-	let sklFoto: String
-	let sklStan: sklStanEnum
-	let sklOpis: String
-	let sklKal: Int
-	let sklMiara: miaraEnum
-	let sklWWW: String
-	let sklZamArray: [String]
+	var sklKat: sklKatEnum
+	var sklProc: Int
+	var sklKolor: String
+	var sklFoto: String
+	var sklStan: sklStanEnum
+	var sklOpis: String
+	var sklKal: Int
+	var sklMiara: miaraEnum
+	var sklWWW: String
+	@Relationship(deleteRule: .cascade, inverse: \SklZamiennik_M.relacjaSkladnik) var sklZamArray: [SklZamiennik_M] = []
 	init(
 		id: String = UUID().uuidString,
 		sklID: String,
@@ -29,7 +29,7 @@ class Skladnik: Identifiable {
 		sklKal: Int,
 		sklMiara: miaraEnum,
 		sklWWW: String,
-		sklZamArray: [String]
+		sklZamArray: [Skl_M]
 	) {
 		self.id = id
 		self.sklID = sklID
@@ -47,8 +47,8 @@ class Skladnik: Identifiable {
 	}
 	
 		// MARK: STAN TOGGLE
-	func stanToggle(_ stan: sklStanEnum) -> Skladnik {
-		return Skladnik(
+	func stanToggle(_ stan: sklStanEnum) -> Skl_M {
+		return Skl_M(
 			id: id,
 			sklID: sklID,
 			sklNazwa: sklNazwa,
@@ -71,8 +71,8 @@ class Skladnik: Identifiable {
 	}
 
 		// MARK: SET ALL ZAMIENNIK
-	func setAllZamienniki(_ zamienniki: [String]) -> Skladnik {
-		return Skladnik(
+	func setAllZamienniki(_ zamienniki: [Skl_M]) -> Skl_M {
+		return Skl_M(
 			id: id,
 			sklID: sklID,
 			sklNazwa: sklNazwa,
@@ -90,10 +90,10 @@ class Skladnik: Identifiable {
 	}
 
 		// MARK: ADD ZAMIENNIK
-	func addZamiennik(zamID: String) -> Skladnik {
+	func addZamiennik(zamID: Skl_M) -> Skl_M {
 		var zamSklArrayTemp = self.sklZamArray
 		zamSklArrayTemp.append(zamID)
-		return Skladnik(
+		return Skl_M(
 			id: id,
 			sklID: sklID,
 			sklNazwa: sklNazwa,
@@ -111,8 +111,8 @@ class Skladnik: Identifiable {
 	}
 
 		// MARK: SET OPIS
-	func setOpis(_ opis: String) -> Skladnik {
-		return Skladnik(
+	func setOpis(_ opis: String) -> Skl_M {
+		return Skl_M(
 			id: id,
 			sklID: sklID,
 			sklNazwa: sklNazwa,

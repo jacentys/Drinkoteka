@@ -1,60 +1,38 @@
 import SwiftUI
 
-	// MARK: STRING TO DRINK KAT
-func stringToDrinkKat(string: String) -> drKatEnum {
-	let cleanedString = string.trimmingCharacters(in: .punctuationCharacters)
-	switch cleanedString {
+	// MARK: CLEARSTR
+func clearStr(_ tekst: String) -> String {
+	let trimmed = tekst.trimmingCharacters(in: .punctuationCharacters.union(.whitespacesAndNewlines)).lowercased()
+		// Usuwanie znaków diakrytycznych (np. ą -> a, ó -> o)
+	let bezDiakrytycznych = trimmed.folding(options: .diacriticInsensitive, locale: .current)
+		// Usuwanie wszystkich znaków innych niż małe litery a-z i cyfry 0-9
+	let clear = bezDiakrytycznych.filter { $0.isLetter || $0.isNumber }
+	return clear.replacingOccurrences(of: "ł", with: "l")
+}
+
+	// MARK: STRING -> ENUM DRINKA
+func strToDrKatEnum(_ tekst: String) -> drKatEnum {
+	let clear = clearStr(tekst)
+	
+	switch clear {
 		case "koktail": return .koktail
 		case "shot": return .shot
 		default: return .brakDanych
 	}
 }
-
-	// MARK: STRING -> MIARA
-func strtoMiaraEnum(string: String) -> miaraEnum {
-	let strClean = string.trimmingCharacters(in: .punctuationCharacters.union(.whitespacesAndNewlines)).lowercased()
-	for jednostka in miaraEnum.allCases {
-		if String(describing: jednostka).trimmingCharacters(in: .punctuationCharacters.union(.whitespacesAndNewlines)).lowercased() == strClean {
-			return jednostka
-		}
-	}
-	return .brak
-} // STRING -> jednEnum
-
-
-// MARK: STRING -> COLOR
-func stringToColor(_ kolorString: String?) -> Color {
-
-	if let tekstVar = kolorString {
-			// Usuwanie znaków diakrytycznych (np. ą -> a, ó -> o)
-		let bezDiakrytycznych = tekstVar.folding(options: .diacriticInsensitive, locale: .current).lowercased()
-
-			// Usuwanie wszystkich znaków innych niż małe litery a-z i cyfry 0-9
-		let tekst = bezDiakrytycznych.filter { $0.isLetter || $0.isNumber }
-		return Color.white
-//		if let color = UIColor(named: tekst) {
-//			return Color(color)
-//		}
-	}
-	return Color.white
-}
-
-	// MARK: STRING TO DRINK SLODYCZ
-func stringToDrinkSlodycz(_ tekst: String?) -> drSlodyczEnum {
-	switch tekst {
-		case "Nie Słodki": return .nieSlodki
-		case "Lekko Słodki": return .lekkoSlodki
-		case "Słodki": return .slodki
-		case "Bardzo Słodki": return .bardzoSlodki
+func strToDrSlodycz(_ tekst: String) -> drSlodyczEnum {
+	let clear = clearStr(tekst)
+	switch clear {
+		case "nieslodki": return .nieSlodki
+		case "lekkoslodki": return .lekkoSlodki
+		case "slodki": return .slodki
+		case "bardzoslodki": return .bardzoSlodki
 		default: return .brakDanych
 	}
 }
-
-	// MARK: STRING TO SZKLO
-func stringToSzklo(string: String) -> szkloEnum {
-	let cleanedString = string.trimmingCharacters(in: .punctuationCharacters)
-
-	switch cleanedString {
+func strToDrSzklo(_ tekst: String) -> szkloEnum {
+	let clear = clearStr(tekst)
+	switch clear {
 		case "collins": return .collins
 		case "whiskey": return .whiskey
 		case "oldFashioned": return .oldFashioned
@@ -66,20 +44,19 @@ func stringToSzklo(string: String) -> szkloEnum {
 		default: return .inne
 	}
 }
-
-	// MARK: STRING TO DR KAT
-func stringToDrKat(_ string: String) -> drKatEnum {
-	let cleanedString = string.trimmingCharacters(in: .punctuationCharacters)
-	
-	switch cleanedString {
-		case "koktail": return .koktail
-		case "shot": return .shot
-		default: return .brakDanych
-	}
+func strToDrMoc(_ procenty: Int) -> drMocEnum {
+	if (procenty == 0) {return .bezalk}
+	if (procenty > 0 && procenty < drMocEnum.sredni.start) { return .delik}
+	if (procenty >= drMocEnum.sredni.start && procenty < drMocEnum.mocny.start) { return .sredni}
+	if (procenty >= drMocEnum.mocny.start) { return .mocny }
+	return .brakDanych
 }
-
-	// MARK: SET MOC DRINKA
-func setMocDrinka(procenty: Int) -> drMocEnum {
+func strToDrMoc(_ tekst: String) -> drMocEnum {
+	let clear = clearStr(tekst)
+	guard let procenty = Int(clear) else {
+		print("Błąd: strToDrMoc string wejściowy \(tekst) to nie liczba")
+		return drMocEnum.brakDanych
+	}
 	if (procenty == 0) {return .bezalk}
 	if (procenty > 0 && procenty < drMocEnum.sredni.start) { return .delik}
 	if (procenty >= drMocEnum.sredni.start && procenty < drMocEnum.mocny.start) { return .sredni}
@@ -87,9 +64,87 @@ func setMocDrinka(procenty: Int) -> drMocEnum {
 	return .brakDanych
 }
 
+	// MARK: STRING -> ENUM SKŁADNIKA
+func strToSklKatEnum(_ tekst: String) -> sklKatEnum {
+	let clear = clearStr(tekst)
+	guard let kategoria = sklKatEnum(rawValue: clear) else {
+		print("strToSklKatEnum niepoprawne dane: \(tekst)")
+		return sklKatEnum.inne
+	}
+	return kategoria
+}
+func strToSklStanEnum(_ tekst: String) -> sklStanEnum {
+	let clear = clearStr(tekst)
+	guard let liczba = Int(clear) else {
+		print("strToStanEnum tekst \(tekst) nie jest Int")
+		return sklStanEnum.brak
+	}
+	if liczba == 1 { return sklStanEnum.jest }
+	return sklStanEnum.brak
+}
+/// To jest chyba najlepiej zrobiona funkcja do konwersji.
+func strToSklMiaraEnum(_ tekst: String) -> miaraEnum {
+	let clear = clearStr(tekst)
+	for jednostka in miaraEnum.allCases {
+		if String(describing: jednostka).trimmingCharacters(in: .punctuationCharacters.union(.whitespacesAndNewlines)).lowercased() == clear {
+			return jednostka
+		}
+	}
+	return .brak
+}
 
-// MARK: MIARA ODMIANY
-func miara(miara: miaraEnum, ilosc: String) -> String {
+	// MARK: STRING -> BOOL
+func strToBool(_ tekst: String) -> Bool {
+	let clear = clearStr(tekst)
+	guard let liczba = Int(clear) else {
+		print("strToBool tekst \(tekst) nie jest int")
+		return false
+	}
+	if liczba == 1 { return true }
+	return false
+}
+	// MARK: STRING -> COLOR
+func strToColor(_ tekst: String) -> Color {
+	let clear = clearStr(tekst)
+	if let color = UIColor(named: clear) {
+		return Color(color)
+	}
+	return Color.white
+}
+
+	// MARK: CHECKBOX
+struct iOSCheckboxToggleStyle: ToggleStyle {
+	func makeBody(configuration: Configuration) -> some View {
+		Button(action: {
+			configuration.isOn.toggle()
+		}, label: {
+			HStack {
+				configuration.label
+					.foregroundStyle(Color.secondary)
+				Spacer()
+				Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
+//					.foregroundColor(configuration.isOn ? Color.accent : Color.secondary)
+			}
+		})
+	}
+}
+
+	// MARK: ODMIANA DRINKÓW
+func drOdm(_ ilosc: Int) -> String {
+	if ilosc < 1 { return "brak drinków" }
+	if ilosc == 1 { return "jeden drink" }
+	else if (ilosc > 1 && ilosc < 5) { return "\(ilosc) drinki" }
+	else { return "\(ilosc) drinków" }
+}
+
+	// MARK: ODMIANA SKŁADNIKÓW
+func sklOdmiana(_ ilosc: Int) -> String {
+	if ilosc == 0 { return "Masz wszystkie skł." }
+	else { return "Brak \(ilosc) skł." }
+}
+
+	// MARK: ODMIANA MIAR
+func miaraOdm(_ miara: miaraEnum, ilosc: String) -> String {
 	switch miara {
 		case .gr: return "gr."
 		case .ml: return "ml."
@@ -140,35 +195,4 @@ func miara(miara: miaraEnum, ilosc: String) -> String {
 		default:
 			return ""
 	}
-}
-
-// MARK: CHECKBOX
-struct iOSCheckboxToggleStyle: ToggleStyle {
-	func makeBody(configuration: Configuration) -> some View {
-		Button(action: {
-			configuration.isOn.toggle()
-		}, label: {
-			HStack {
-				configuration.label
-					.foregroundStyle(Color.secondary)
-				Spacer()
-				Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
-//					.foregroundColor(configuration.isOn ? Color.accent : Color.secondary)
-			}
-		})
-	}
-}
-
-// MARK: ODMIANA DRINKÓW
-func odmianaDrinkow(_ ilosc: Int) -> String {
-	if ilosc < 1 { return "brak drinków" }
-	if ilosc == 1 { return "jeden drink" }
-	else if (ilosc > 1 && ilosc < 5) { return "\(ilosc) drinki" }
-	else { return "\(ilosc) drinków" }
-}
-
-// MARK: ODMIANA SKŁADNIKÓW
-func odmianaSkladnikow(_ ilosc: Int) -> String {
-	if ilosc == 0 { return "Masz wszystkie skł." }
-	else { return "Brak \(ilosc) skł." }
 }

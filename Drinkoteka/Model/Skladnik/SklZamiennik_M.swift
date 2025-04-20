@@ -3,8 +3,8 @@ import Foundation
 
 	// MARK: STRUCT SKLADNIKI ZAMIENNIKI
 @Model
-class SklZamiennik: Identifiable {
-	var id: String
+class SklZamiennik_M: Identifiable {
+	@Attribute(.unique) var id: String
 	var skladnikID: String
 	var zamiennikID: String
 	init(

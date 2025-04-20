@@ -1,10 +1,10 @@
 import SwiftData
 import Foundation
 
-func loadDrPrzepisyCSV_V(modelContext: ModelContext) {
-	print("Start loadDrinkiPrzepisyCSV_V")
-	let nazwaPliku = "DTeka - DrinkiPrzepisy"
-	let iloscKolumn = 4
+func loadSklZamiennikiCSV_V(modelContext: ModelContext) {
+	print("Start loadSklZamiennikiCSV_V")
+	let nazwaPliku = "DTeka - SkladnikiZamienniki"
+	let iloscKolumn = 2
 	
 	guard let filePath = Bundle.main.path(forResource: nazwaPliku, ofType: "tsv") else {
 		print("Plik \(nazwaPliku) nie znaleziony")
@@ -15,39 +15,35 @@ func loadDrPrzepisyCSV_V(modelContext: ModelContext) {
 		let zawartoscPliku = try String(contentsOfFile: filePath, encoding: .utf8)
 		let rows = zawartoscPliku.components(separatedBy: "\n").dropFirst()
 		
-			// 1. Pobierz wszystkie drinki z modelContext
-		let fetchDescriptor = FetchDescriptor<Dr_M>()
-		let drinki = try modelContext.fetch(fetchDescriptor)
+			// 1. Pobierz wszystkie skladniki z modelContext
+		let fetchDescriptor = FetchDescriptor<Skl_M>()
+		let skladniki = try modelContext.fetch(fetchDescriptor)
+		print(skladniki.count)
 		
-			// 2. Utwórz słownik dla szybkiego dostępu po drinkID
-		let drinkMap = Dictionary(uniqueKeysWithValues: drinki.map { ($0.drinkID, $0) })
+			// 2. Utwórz słownik dla szybkiego dostępu po skladnikID
+		let skladnikMap = Dictionary(uniqueKeysWithValues: skladniki.map { ($0.sklID, $0) })
 		
 		for row in rows {
-			let kolumny = row.components(separatedBy: "\t")
-			if kolumny.count == iloscKolumn {
-				let drinkID = clearStr(kolumny[0])
-				let no = Int(kolumny[1]) ?? 0
-				let opis = kolumny[2].trimmingCharacters(in: .whitespacesAndNewlines)
-				let opcjonalne = strToBool(kolumny[3])
+			let kolumny = row.components(separatedBy: "\t") // Kolumny odseparowane tabulatorem
+			if kolumny.count >= iloscKolumn { // Sprawdzenie czy ilość kolumn się zgadza
+				let skladnikID = kolumny[0]
+				let zamiennikID = kolumny[1]
 				
-					// 3. Znajdź drink po drinkID
-				if let powiazanyDrink = drinkMap[drinkID] {
-						// 4. Utwórz nowy przepis z relacją do drinka
-					let drinkPrzepis = DrPrzepis_M(
-						relacjaDrink: powiazanyDrink,
-						drinkID: drinkID,
-						przepNo: no,
-						przepOpis: opis,
-						przepOpcja: opcjonalne
-					)
+					// 3. Znajdź skladnik po skladnikID
+				if let powiazanySkladnik = skladnikMap[skladnikID] {
 					
-						// 5. Dodaj przepis do relacji
-					powiazanyDrink.drPrzepis.append(drinkPrzepis)
-					
-						// 6. Zapisz do modelContext
-					modelContext.insert(drinkPrzepis)
+						// 4. Znajdź zamiennik po zamiennikID
+					if let powiazanyZamiennik = skladnikMap[zamiennikID] {
+						print("Skladnik: \(powiazanySkladnik.sklNazwa), zamiennik \(powiazanyZamiennik.sklNazwa)")
+						
+							// 5. Dodaj przepis do relacji
+						powiazanySkladnik.sklZamArray.append(powiazanyZamiennik)
+						
+							// 6. Zapisz do modelContext
+						modelContext.insert(powiazanyZamiennik)
+					}
 				} else {
-					print("Nie znaleziono drinka o drinkID: \(drinkID)")
+					print("Nie znaleziono skladnika o ID: \(skladnikID)")
 				}
 			}
 		}

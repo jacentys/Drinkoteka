@@ -2,9 +2,9 @@ import SwiftData
 import Foundation
 
 @Model
-class DrinkSkladnik_M: Identifiable {
+class DrSkladnik_M: Identifiable {
 	@Attribute(.unique) var id: String
-	@Relationship var relacjaDrink: Drink_M
+	@Relationship var relacjaDrink: Dr_M
 	var drinkID: String
 	var skladnikID: String
 	var sklNo: Int
@@ -14,7 +14,7 @@ class DrinkSkladnik_M: Identifiable {
 	var sklOpcja: Bool
 	init(
 		id: String = UUID().uuidString,
-		relacjaDrink: Drink_M,
+		relacjaDrink: Dr_M,
 		drinkID: String,
 		skladnikID: String,
 		sklNo: Int,

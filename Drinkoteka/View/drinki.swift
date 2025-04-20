@@ -1,7 +1,7 @@
 import SwiftData
 import SwiftUI
 
-struct zamienniki: View {
+struct drinki: View {
 	@Environment(\.modelContext) private var modelContext
 	
 	@Query(sort: [SortDescriptor(\Dr_M.drNazwa)])
@@ -44,7 +44,7 @@ struct zamienniki: View {
 									Text("Notatka: \(drink.drNotatka)")
 									Text("Uwagi: \(drink.drUwagi)")
 									Text("WWW: \(drink.drWWW)")
-									Text("Kalorie: \(drink.drKalorie)")
+									Text("Kalorie: \(drink.drKal)")
 									Text("Moc: \(drink.drMoc.opisLong)")
 									Text("Brak: \(drink.drBrakuje)")
 									if drink.drAlkGlowny.count == 1 {
@@ -165,7 +165,7 @@ struct zamienniki: View {
 #Preview {
 	
 	NavigationStack {
-		zamienniki()
+		drinki()
 	}
 	.modelContainer(for: SklZamiennik.self, inMemory: true)
 }

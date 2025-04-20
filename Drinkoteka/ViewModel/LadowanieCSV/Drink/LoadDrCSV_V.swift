@@ -51,7 +51,7 @@ func loadDrCSV_V(modelContext: ModelContext){
 					drNotatka: notatka,
 					drUwagi: uwagi,
 					drWWW: drWWW,
-					drKalorie: 0,
+					drKal: 0,
 					drMoc: mocDrinka,
 					drBrakuje: brakuje,
 					drAlkGlowny: alkGlowny,
