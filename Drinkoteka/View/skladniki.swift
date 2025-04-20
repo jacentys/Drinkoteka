@@ -82,9 +82,11 @@ struct skladniki: View {
 #endif
 				ToolbarItem {
 					Button(action: {
+						UserDefaults.standard.set(false, forKey: "setupDone")
 						delAll()
 						loadSklCSV_V(modelContext: modelContext)
 						loadSklZamiennikiCSV_V(modelContext: modelContext)
+						UserDefaults.standard.set(true, forKey: "setupDone")
 					}) { Image(systemName: "restart.circle.fill") }
 					
 					Button(action: addZam) {
