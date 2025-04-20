@@ -1,8 +1,9 @@
 import SwiftData
 import Foundation
 
-func loadDrinkiAlkGlownyCSV_V(modelContext: ModelContext) {
-	let nazwaPliku = "Barman - DrinkiAlkGlowny"
+func loadDrAlkGlownyCSV_V(modelContext: ModelContext) {
+	print("Start loadDrinkiAlkGlownyCSV_V")
+	let nazwaPliku = "DTeka - DrinkiAlkGlowny"
 	let iloscKolumn = 2
 	
 	guard let filePath = Bundle.main.path(forResource: nazwaPliku, ofType: "tsv") else {
@@ -15,7 +16,7 @@ func loadDrinkiAlkGlownyCSV_V(modelContext: ModelContext) {
 		let rows = zawartoscPliku.components(separatedBy: "\n").dropFirst()
 		
 			// 1. Pobierz wszystkie drinki z modelContext
-		let fetchDescriptor = FetchDescriptor<Drink_M>()
+		let fetchDescriptor = FetchDescriptor<Dr_M>()
 		let drinki = try modelContext.fetch(fetchDescriptor)
 		
 			// 2. Utwórz słownik dla szybkiego dostępu po drinkID

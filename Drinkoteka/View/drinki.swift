@@ -4,12 +4,12 @@ import SwiftUI
 struct zamienniki: View {
 	@Environment(\.modelContext) private var modelContext
 	
-	@Query(sort: [SortDescriptor(\Drink_M.drNazwa)])
-	private var wszystkieDrinki: [Drink_M]
+	@Query(sort: [SortDescriptor(\Dr_M.drNazwa)])
+	private var wszystkieDrinki: [Dr_M]
 	
 	@State private var tekstFiltru: String = ""
 	
-	var przefiltrowaneDrinki: [Drink_M] {
+	var przefiltrowaneDrinki: [Dr_M] {
 		if tekstFiltru.isEmpty {
 			return wszystkieDrinki
 		} else {
@@ -87,18 +87,22 @@ struct zamienniki: View {
 							Text("S: \(drink.drSklad.count)")
 						}
 					}
-					.onDelete(perform: deleteDrink)
+					.onDelete(perform: delDrink)
 				}
 			}
 			.onAppear {
-				if !UserDefaults.standard.bool(forKey: "zamiennikiWczytane") {
-					UserDefaults.standard.set(true, forKey: "zamiennikiWczytane")
-//				deleteAll(modelContext: modelContext)
-				loadDrinkiCSV_V(modelContext: modelContext)
-				loadDrinkiAlkGlownyCSV_V(modelContext: modelContext)
-				loadDrinkiPrzepisyCSV_V(modelContext: modelContext)
-				loadDrinkiSkladnikiCSV_V(modelContext: modelContext)
+				print("Początek onAppear: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+				
+				if !UserDefaults.standard.bool(forKey: "setupDone")
+				{
+					delAll()
+					loadDrCSV_V(modelContext: modelContext)
+					loadDrAlkGlownyCSV_V(modelContext: modelContext)
+					loadDrPrzepisyCSV_V(modelContext: modelContext)
+					loadDrSkladnikiCSV_V(modelContext: modelContext)
+					UserDefaults.standard.set(true, forKey: "setupDone")
 				}
+				print("Koniec onAppear: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 			}
 #if os(macOS)
 			.navigationSplitViewColumnWidth(min: 180, ideal: 200)
@@ -110,6 +114,14 @@ struct zamienniki: View {
 				}
 #endif
 				ToolbarItem {
+					Button(action: {
+						delAll()
+						loadDrCSV_V(modelContext: modelContext)
+						loadDrAlkGlownyCSV_V(modelContext: modelContext)
+						loadDrPrzepisyCSV_V(modelContext: modelContext)
+						loadDrSkladnikiCSV_V(modelContext: modelContext)
+					}) { Image(systemName: "restart.circle.fill") }
+					
 					Button(action: addZam) {
 						Label("Add Zamiennik", systemImage: "plus")
 					}
@@ -121,53 +133,29 @@ struct zamienniki: View {
 	}
 	
 	private func addZam() {
+		print("Funkcja addZam uruchomiona")
 		withAnimation {
 			let zam = SklZamiennik(skladnikID: "SkładnikID", zamiennikID: "ID zamiennika")
 			modelContext.insert(zam)
 		}
 	}
 	
-	private func deleteDrink(offsets: IndexSet) {
+	private func delDrink(offsets: IndexSet) {
 		withAnimation {
 			for index in offsets {
+				print("Funkcja delDrink \(przefiltrowaneDrinki[index].drNazwa) uruchomiona")
 				modelContext.delete(przefiltrowaneDrinki[index])
 			}
 		}
 	}
 	
-	func deleteAll(modelContext: ModelContext) {
-		let fetchDescriptor1 = FetchDescriptor<Drink_M>()
+	func delAll() {
+		print("Funkcja delAll uruchomiona")
 		do {
-			let drinki = try modelContext.fetch(fetchDescriptor1)
-			for drink in drinki {
-				modelContext.delete(drink)
-			}
-			try modelContext.save()
+			try modelContext.delete(model: Dr_M.self)
 		} catch {
 			print("Błąd przy usuwaniu drinków: \(error)")
 		}
-//		
-//		let fetchDescriptor2 = FetchDescriptor<DrinkSkladnik_M>()
-//		do {
-//			let skladniki = try modelContext.fetch(fetchDescriptor2)
-//			for skladnik in skladniki {
-//				modelContext.delete(skladnik)
-//			}
-//			try modelContext.save()
-//		} catch {
-//			print("Błąd przy usuwaniu drinków: \(error)")
-//		}
-//		
-//		let fetchDescriptor3 = FetchDescriptor<DrinkPrzepis_M>()
-//		do {
-//			let przepisy = try modelContext.fetch(fetchDescriptor3)
-//			for przepis in przepisy {
-//				modelContext.delete(przepis)
-//			}
-//			try modelContext.save()
-//		} catch {
-//			print("Błąd przy usuwaniu drinków: \(error)")
-//		}
 	}
 }
 

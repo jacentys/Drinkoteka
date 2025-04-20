@@ -2,9 +2,9 @@ import SwiftData
 import Foundation
 
 @Model
-class DrinkPrzepis_M: Identifiable {
+class DrPrzepis_M: Identifiable {
 	@Attribute(.unique) var id: String
-	@Relationship var relacjaDrink: Drink_M
+	@Relationship var relacjaDrink: Drink_M?
 	var drinkID: String
 	var przepNo: Int
 	var przepOpis: String

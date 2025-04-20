@@ -1,9 +1,9 @@
 import SwiftData
 import Foundation
 
-func loadDrinkiCSV_V(modelContext: ModelContext){
-	
-	let nazwaPliku = "Barman - Drinki"
+func loadDrCSV_V(modelContext: ModelContext){
+	print("Start loadDrinkiCSV_V")
+	let nazwaPliku = "DTeka - Drinki"
 	let iloscKolumn = 13
 	
 	guard let filePath = Bundle.main.path(forResource: nazwaPliku, ofType: "tsv") else {

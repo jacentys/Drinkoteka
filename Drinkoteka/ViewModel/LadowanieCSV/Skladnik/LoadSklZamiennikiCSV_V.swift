@@ -1,8 +1,9 @@
 import SwiftData
 import Foundation
 
-func loadDrinkiPrzepisyCSV_V(modelContext: ModelContext) {
-	let nazwaPliku = "Barman - DrinkiPrzepisy"
+func loadDrPrzepisyCSV_V(modelContext: ModelContext) {
+	print("Start loadDrinkiPrzepisyCSV_V")
+	let nazwaPliku = "DTeka - DrinkiPrzepisy"
 	let iloscKolumn = 4
 	
 	guard let filePath = Bundle.main.path(forResource: nazwaPliku, ofType: "tsv") else {
@@ -15,7 +16,7 @@ func loadDrinkiPrzepisyCSV_V(modelContext: ModelContext) {
 		let rows = zawartoscPliku.components(separatedBy: "\n").dropFirst()
 		
 			// 1. Pobierz wszystkie drinki z modelContext
-		let fetchDescriptor = FetchDescriptor<Drink_M>()
+		let fetchDescriptor = FetchDescriptor<Dr_M>()
 		let drinki = try modelContext.fetch(fetchDescriptor)
 		
 			// 2. Utwórz słownik dla szybkiego dostępu po drinkID
@@ -24,15 +25,15 @@ func loadDrinkiPrzepisyCSV_V(modelContext: ModelContext) {
 		for row in rows {
 			let kolumny = row.components(separatedBy: "\t")
 			if kolumny.count == iloscKolumn {
-				let drinkID = kolumny[0]
+				let drinkID = clearStr(kolumny[0])
 				let no = Int(kolumny[1]) ?? 0
 				let opis = kolumny[2].trimmingCharacters(in: .whitespacesAndNewlines)
-				let opcjonalne = Bool(kolumny[3]) ?? false
+				let opcjonalne = strToBool(kolumny[3])
 				
 					// 3. Znajdź drink po drinkID
 				if let powiazanyDrink = drinkMap[drinkID] {
 						// 4. Utwórz nowy przepis z relacją do drinka
-					let drinkPrzepis = DrinkPrzepis_M(
+					let drinkPrzepis = DrPrzepis_M(
 						relacjaDrink: powiazanyDrink,
 						drinkID: drinkID,
 						przepNo: no,
