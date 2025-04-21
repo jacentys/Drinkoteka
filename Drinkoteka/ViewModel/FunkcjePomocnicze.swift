@@ -98,6 +98,7 @@ func strToBool(_ tekst: String) -> Bool {
 	let clear = clearStr(tekst)
 	guard let liczba = Int(clear) else {
 		print("strToBool tekst \(tekst) nie jest int")
+		if clear == "true" { return true }
 		return false
 	}
 	if liczba == 1 { return true }
@@ -111,6 +112,22 @@ func strToColor(_ tekst: String) -> Color {
 	}
 	return Color.white
 }
+	// MARK: STRING -> DOUBLE
+func stringToDouble(_ tekst: String) -> Double {
+	
+	if let numer = Double(tekst.trimmingCharacters(in: .whitespacesAndNewlines)) {
+		return numer
+	}
+	return 0.0
+}
+	// MARK: STRING -> INT
+func stringToInt(_ tekst: String) -> Int {
+	if let numer = Int(tekst.trimmingCharacters(in: .whitespacesAndNewlines)) {
+		return numer
+	}
+	return 0
+}
+
 
 	// MARK: CHECKBOX
 struct iOSCheckboxToggleStyle: ToggleStyle {
@@ -194,5 +211,16 @@ func miaraOdm(_ miara: miaraEnum, ilosc: String) -> String {
 			}
 		default:
 			return ""
+	}
+}
+
+	// MARK: FORMATOWANIE CYFR
+func formatNumber(_ liczba: Double) -> String {
+	if liczba == 0 {
+		return "Pusty"
+	} else if liczba.truncatingRemainder(dividingBy: 1) == 0 {
+		return String(Int(liczba)) // np. 5.0 → "5"
+	} else {
+		return String(format: "%.1f", liczba) // np. 5.3 → "5.3"
 	}
 }

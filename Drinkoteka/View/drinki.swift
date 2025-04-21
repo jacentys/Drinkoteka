@@ -56,16 +56,7 @@ struct drinki: View {
 									
 								}
 								Divider()
-								List {
-									ForEach(drink.drPrzepis.sorted { $0.przepNo < $1.przepNo }) { przep in
-										HStack {
-											Text("\(przep.przepNo)")
-											Text("\(przep.przepOpis)")
-											Spacer()
-											Text("\(przep.przepOpcja)")
-										}
-									}
-								}
+								DrinkPrzepisView(drSelID: drink.drinkID)
 								Divider()
 								List {
 									ForEach(drink.drSklad) { sklad in

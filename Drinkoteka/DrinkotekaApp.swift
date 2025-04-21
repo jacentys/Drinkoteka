@@ -13,7 +13,7 @@ struct DrinkotekaApp: App {
     var body: some Scene {
 		 
         WindowGroup {
-			  skladniki()
+			  drinki()
         }
 		  .modelContainer(
 			for: [Dr_M.self, Skl_M.self],
