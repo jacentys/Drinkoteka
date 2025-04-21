@@ -224,3 +224,15 @@ func formatNumber(_ liczba: Double) -> String {
 		return String(format: "%.1f", liczba) // np. 5.3 → "5.3"
 	}
 }
+
+func zamiennikiOn(stan: sklStanEnum, pref: Bool, uwzglPref: Bool) -> sklStanEnum {
+	if pref && uwzglPref {
+		return stan
+	} else {
+		if (stan == .jest) {
+			return .jest
+		} else {
+			return .brak
+		}
+	}
+}

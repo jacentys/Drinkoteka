@@ -37,6 +37,7 @@
 		F3095A9D2DB66F5A00481E4F /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9C2DB66F5A00481E4F /* BackgroundView.swift */; };
 		F3095A9F2DB66FF000481E4F /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */; };
 		F3095AA22DB670B700481E4F /* DrinkPrzepisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA12DB670B700481E4F /* DrinkPrzepisView.swift */; };
+		F3095AA82DB693AA00481E4F /* IkonaJestBrak.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA72DB693AA00481E4F /* IkonaJestBrak.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,11 @@
 		F3095A9C2DB66F5A00481E4F /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackgroundView.swift; path = Drinkoteka/View/Wspolne/BackgroundView.swift; sourceTree = SOURCE_ROOT; };
 		F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		F3095AA12DB670B700481E4F /* DrinkPrzepisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPrzepisView.swift; sourceTree = "<group>"; };
+		F3095AA32DB68EA900481E4F /* DrinkSkladnikiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladnikiView.swift; sourceTree = "<group>"; };
+		F3095AA42DB68EA900481E4F /* DrinkSkladnikiLinijkaV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladnikiLinijkaV.swift; sourceTree = "<group>"; };
+		F3095AA72DB693AA00481E4F /* IkonaJestBrak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkonaJestBrak.swift; sourceTree = "<group>"; };
+		F3095AA92DB6945200481E4F /* PrefClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefClass.swift; sourceTree = "<group>"; };
+		F3095AAA2DB6945200481E4F /* Preferencje.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferencje.swift; sourceTree = "<group>"; };
 		F324A3092DB19E0C00B21F83 /* Drinkoteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drinkoteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A98E9E2DB55F3700C70D01 /* DeleteSkl_V 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeleteSkl_V 2.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,6 +204,9 @@
 		F3095A992DB66E1C00481E4F /* Wspolne */ = {
 			isa = PBXGroup;
 			children = (
+				F3095AA92DB6945200481E4F /* PrefClass.swift */,
+				F3095AAA2DB6945200481E4F /* Preferencje.swift */,
+				F3095AA72DB693AA00481E4F /* IkonaJestBrak.swift */,
 				F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */,
 				F3095A9C2DB66F5A00481E4F /* BackgroundView.swift */,
 				F3095A9A2DB66E2300481E4F /* Back.swift */,
@@ -208,6 +217,8 @@
 		F3095AA02DB670B000481E4F /* Drinki */ = {
 			isa = PBXGroup;
 			children = (
+				F3095AA32DB68EA900481E4F /* DrinkSkladnikiView.swift */,
+				F3095AA42DB68EA900481E4F /* DrinkSkladnikiLinijkaV.swift */,
 				F3095AA12DB670B700481E4F /* DrinkPrzepisView.swift */,
 			);
 			path = Drinki;
@@ -323,6 +334,7 @@
 				F3095A662DB3C1E000481E4F /* LoadDrAlkGlownyCSV_V.swift in Sources */,
 				F3095A672DB3C1E000481E4F /* LoadDrCSV_V.swift in Sources */,
 				F3095A682DB3C1E000481E4F /* LoadDrPrzepisyCSV_V.swift in Sources */,
+				F3095AA82DB693AA00481E4F /* IkonaJestBrak.swift in Sources */,
 				F3095A6A2DB3C1E000481E4F /* LodaDrSkladnikiCSV_V.swift in Sources */,
 				F3095A6B2DB3C1E000481E4F /* FunkcjePomocnicze.swift in Sources */,
 				F3095A872DB3EC5900481E4F /* Skl_M.swift in Sources */,
