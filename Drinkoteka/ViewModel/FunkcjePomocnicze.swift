@@ -1,4 +1,11 @@
 import SwiftUI
+#if os(iOS) || os(tvOS) || os(watchOS)
+import UIKit
+typealias PlatformColor = UIColor
+#elseif os(macOS)
+import AppKit
+typealias PlatformColor = NSColor
+#endif
 
 	// MARK: CLEARSTR
 func clearStr(_ tekst: String) -> String {
@@ -107,7 +114,7 @@ func strToBool(_ tekst: String) -> Bool {
 	// MARK: STRING -> COLOR
 func strToColor(_ tekst: String) -> Color {
 	let clear = clearStr(tekst)
-	if let color = UIColor(named: clear) {
+	if let color = OSColor(named: clear) {
 		return Color(color)
 	}
 	return Color.white
@@ -225,8 +232,10 @@ func formatNumber(_ liczba: Double) -> String {
 	}
 }
 
-func zamiennikiOn(stan: sklStanEnum, pref: Bool, uwzglPref: Bool) -> sklStanEnum {
-	if pref && uwzglPref {
+	// Opcja zamienników włączona
+func zamiennikiOn(stan: sklStanEnum, pref: Bool, _ wylaczTrybZamiennikow: Bool) -> sklStanEnum {
+	/// Jeśli
+	if pref && wylaczTrybZamiennikow {
 		return stan
 	} else {
 		if (stan == .jest) {

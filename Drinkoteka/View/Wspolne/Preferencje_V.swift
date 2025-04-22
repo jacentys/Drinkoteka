@@ -1,8 +1,17 @@
 import SwiftData
 import SwiftUI
 
-struct Preferencje: View {
-	
+struct Preferencje_V: View {
+
+	@AppStorage("zalogowany") var zalogowany: Bool?
+	@AppStorage("uzytkownik") var uzytkownik: String?
+
+	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
+	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
+	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
+	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
+
+
 	@Environment(\.modelContext) private var modelContext
 	
 	@Query(sort: [SortDescriptor(\Dr_M.drNazwa)])
@@ -10,63 +19,62 @@ struct Preferencje: View {
 	
 	@Query(sort: [SortDescriptor(\Skl_M.sklNazwa)])
 	private var wszystkieSkladniki: [Skl_M]
-	
-	@EnvironmentObject var pref: PrefClass
+
 	let spacje: CGFloat = 10
 	
 	var body: some View {
 		Form {
 			Section( // MARK: TYLKO KOMPLETNE
-				header: Label("Dostępne", systemImage: pref.dostepne ? "checkmark.circle.fill" : "checkmark.circle")
+				header: Label("Dostępne", systemImage: tylkoDostepne ? "checkmark.circle.fill" : "checkmark.circle")
 					.font(.headline)
-					.foregroundStyle(pref.dostepne ? Color.accent : Color.secondary),
+					.foregroundStyle(tylkoDostepne ? Color.accent : Color.secondary),
 				footer: Text("Pokazuj tylko drinki które mogą zostać przyrządzone z dostępnych składników.\nTa opcja ukrywa pozostałe składniki gdy nie ma wszystkich składników.\n Dwie poniższe opcje są brane pod uwagę.")) {
-					Toggle(isOn: $pref.dostepne) {
+					Toggle(isOn: $tylkoDostepne) {
 						Text("Pokazuj tylko drinki dostępne")
 					}
-//					.onChange(of: pref.dostepne) { _, _ in
+//					.onChange(of: tylkoDostepne) { _, _ in
 //						drinkiClass.setWszystkieBraki()
 //					}
 				}
 
 			Section( // MARK: Ulubione
-				header: Label("Ulubione", systemImage: pref.ulubione ? "star.circle.fill" : "star.circle")
+				header: Label("Ulubione", systemImage: tylkoUlubione ? "star.circle.fill" : "star.circle")
 					.font(.headline)
-					.foregroundStyle(pref.ulubione ? Color.accent : Color.secondary),
+					.foregroundStyle(tylkoUlubione ? Color.accent : Color.secondary),
 				footer: Text("Pokazuj tylko drinki zaznaczone gwiazdką jako ulubione.")) {
-					Toggle(isOn: $pref.ulubione) {
+					Toggle(isOn: $tylkoUlubione) {
 						Text("Pokazuj tylko ulubione")
 					}
 				}
 
 			Section( // MARK: Zamienniki
-				header: Label("Zamienniki", systemImage: pref.zamienniki ? "repeat.circle.fill" : "repeat.circle")
+				header: Label("Zamienniki", systemImage: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
 					.font(.headline)
-					.foregroundStyle(pref.zamienniki ? Color.accent : Color.secondary),
+					.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary),
 				footer: Text("Jeśli zaznaczono, przy sprawdzaniu dostępności składników brane są pod uwagę zamienniki. Zwiększa to ilość możliwych do zrobienia drinków. Trzeba liczyć się z delikatną zmianą smaku w stosunku do oryginału.")) {
-					Toggle(isOn: $pref.zamienniki) {
+					Toggle(isOn: $zamiennikiDozwolone) {
 						Text("Dopuszczaj zamienniki")
 					}
-//					.onChange(of: pref.zamienniki) { _, _ in
+//					.onChange(of: zamiennikiDozwolone) { _, _ in
 //						drinkiClass.setWszystkieBraki()
 //					}
 				}
 			
 			Section( // MARK: Opcjonalne
-				header: Label("Opcjonalne", systemImage: pref.opcjonalne ? "list.bullet.circle.fill" : "list.bullet.circle")
+				header: Label("Opcjonalne", systemImage: opcjonalneWymagane ? "list.bullet.circle.fill" : "list.bullet.circle")
 					.font(.headline)
-					.foregroundStyle(pref.opcjonalne ? Color.accent : Color.secondary),
+					.foregroundStyle(opcjonalneWymagane ? Color.accent : Color.secondary),
 				footer: Text("Przy sprawdzaniu dostępności składników w drinku wymuszaj branie pod uwagę składników opcjonalnych. Składniki te często używane są do przyozdabiania drinków lub wzbogacania smaku.")) {
-					Toggle(isOn: $pref.opcjonalne) {
+					Toggle(isOn: $opcjonalneWymagane) {
 						Text("Składniki opcjonalne wymagane")
 					}
-//					.onChange(of: pref.zamienniki) { _, _ in
+//					.onChange(of: zamiennikiDozwolone) { _, _ in
 //						drinkiClass.setWszystkieBraki()
 //					}
 				}
 
 			Section( // MARK: Reset składników
-				header: Label("Reset!!!", systemImage: pref.opcjonalne ? "exclamationmark.square.fill" : "exclamationmark.square.fill")
+				header: Label("Reset!!!", systemImage: opcjonalneWymagane ? "exclamationmark.square.fill" : "exclamationmark.square.fill")
 					.font(.headline)
 					.foregroundStyle(Color.red),
 				footer: Text("Resetuje stan wszystkich składników! \nOpcja przydatna gdy chcesz od nowa wprowadzić składniki do programu.").padding(.bottom, 30)) {
@@ -87,10 +95,8 @@ struct Preferencje: View {
 
 #Preview {
 	NavigationStack{
-		Preferencje()
+		Preferencje_V()
 			.modelContainer(for: Dr_M.self, inMemory: true)
 			.modelContainer(for: Skl_M.self, inMemory: true)
-			.environmentObject(PrefClass())
-
 	}
 }

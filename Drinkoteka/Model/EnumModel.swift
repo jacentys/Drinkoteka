@@ -236,12 +236,12 @@ enum szkloEnum: String, CaseIterable, Codable {
 }
 
 // MARK: SORTOWANIE
-enum sortEnum {
-	case nazwa
-	case slodycz
-	case procenty
-	case kcal
-	case sklad
+enum sortEnum: String {
+	case nazwa = "nazwa"
+	case slodycz = "slodycz"
+	case procenty = "procenty"
+	case kcal = "kcal"
+	case sklad = "sklad"
 }
 
 // MARK: MIARA

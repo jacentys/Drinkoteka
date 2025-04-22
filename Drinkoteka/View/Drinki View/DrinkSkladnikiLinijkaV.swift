@@ -18,12 +18,12 @@ struct DrinkSkladnikView: View {
 	@State var skladnikDr: DrSkladnik_M
 	
 	var body: some View {
-		if let skladnik = wybranySkladnik.first {
+		if let skladnik = wybranySkladnik.first
 		{
 			HStack {
 					// MARK: Kółeczko
-				IkonaJestBrak(
-					sklSelID: skladnik.id,
+				IkonaJestBrak_V(
+					skladnik: skladnik,
 					wielkosc: 17)
 
 					// MARK: Prostokąt przed tekstem
@@ -34,7 +34,7 @@ struct DrinkSkladnikView: View {
 
 					// MARK: Nazwa składnika i informacja
 				if !(skladnikDr.sklIlosc == 0) {
-					Text("\(skladnik.sklNazwa ) \(skladnikDr.sklInfo) \(formatNumber(skladnikDr.sklIlosc)) \(miara(miara: skladnikDr.sklMiara, ilosc: String(skladnikDr.sklIlosc)))")
+					Text("\(skladnik.sklNazwa ) \(skladnikDr.sklInfo) \(formatNumber(skladnikDr.sklIlosc)) \(miaraOdm(skladnikDr.sklMiara, ilosc: String(skladnikDr.sklIlosc)))")
 					.fontWeight(.light)
 					.multilineTextAlignment(.leading)
 					.foregroundColor(skladnik.sklStan.stan ? Color.primary : Color.secondary)
@@ -59,7 +59,7 @@ struct DrinkSkladnikView: View {
 				Rectangle()
 					.frame(width: 5, height: 15)
 					.cornerRadius(2)
-					.foregroundColor(sklClass.getSklFromID(sklID: skladnikDr.skladnikID).getColor())
+					.foregroundColor(skladnik.getColor())
 			}
 		} else {
 			Text("Nie znaleziono skladnika.")
@@ -68,13 +68,13 @@ struct DrinkSkladnikView: View {
 }
 
 #Preview {
-	@Previewable var drink = DrClass(sklClass: SklClass(), pref: PrefClass()).mock()
+//	@Previewable var drink = DrClass(sklClass: SklClass(), pref: PrefClass()).mock()
 	NavigationStack{
-		DrinkSkladnikView(skladnikDr: drink.drSklad[1])
-		DrinkSkladnikView(skladnikDr: drink.drSklad[2])
-		DrinkSkladnikView(skladnikDr: drink.drSklad[3])
+		Text("test")
+//		DrinkSkladnikView(skladnikDr: drink.drSklad[1])
+//		DrinkSkladnikView(skladnikDr: drink.drSklad[2])
+//		DrinkSkladnikView(skladnikDr: drink.drSklad[3])
 	}
-	.environmentObject(PrefClass())
-	.environmentObject(SklClass())
-	.environmentObject(DrClass(sklClass: SklClass(), pref: PrefClass()))
+	.modelContainer(for: Dr_M.self, inMemory: true)
+
 }

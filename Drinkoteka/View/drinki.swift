@@ -82,9 +82,9 @@ struct drinki: View {
 				}
 			}
 			.onAppear {
-				print("Początek onAppear: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-				
-				if !UserDefaults.standard.bool(forKey: "setupDone")
+				print("Początek onAppear drinków: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+
+				if UserDefaults.standard.bool(forKey: "setupDone")
 				{
 					delAll()
 					loadDrCSV_V(modelContext: modelContext)
@@ -93,7 +93,7 @@ struct drinki: View {
 					loadDrSkladnikiCSV_V(modelContext: modelContext)
 					UserDefaults.standard.set(true, forKey: "setupDone")
 				}
-				print("Koniec onAppear: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+				print("Koniec onAppear drinków: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 			}
 #if os(macOS)
 			.navigationSplitViewColumnWidth(min: 180, ideal: 200)

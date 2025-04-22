@@ -1,11 +1,12 @@
-//
-//  Back.swift
-//  Barman
-//
-//  Created by Jacek Skrobisz on 2025.03.20.
-//
-
 import SwiftUI
+#if os(iOS) || os(tvOS) || os(watchOS)
+import UIKit
+typealias OSColor = UIColor
+#elseif os(macOS)
+import AppKit
+typealias OSColor = NSColor
+#endif
+
 let kolor1 = Color.accent
 let kolor2 = Color.gray
 
@@ -93,8 +94,8 @@ extension Color {
 		// Funkcja RANDOMIZACJI
 	func randomizeColor(by factor: CGFloat) -> Color {
 		
-		let uiColor = UIColor(self)
-		
+		let uiColor = OSColor(self)
+
 		var red: CGFloat = 0
 		var green: CGFloat = 0
 		var blue: CGFloat = 0
@@ -113,7 +114,7 @@ extension Color {
 		green = min(max(randomG, 0), 1)
 		blue = min(max(randomB, 0), 1)
 
-		return Color(UIColor(red: red, green: green, blue: blue, alpha: alpha))
+		return Color(OSColor(red: red, green: green, blue: blue, alpha: alpha))
 	}
 }
 

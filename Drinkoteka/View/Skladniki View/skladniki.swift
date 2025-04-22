@@ -37,14 +37,16 @@ struct skladniki: View {
 									Text("Proc.: \(skladnik.sklProc)")
 									Text("Kolor: \(skladnik.sklKolor)")
 									Text("Foto: \(skladnik.sklFoto)")
-									Text("Opis.: \(skladnik.sklOpis)")
 									Text("Stan: \(skladnik.sklStan.opis)")
 									Text("Kalorie: \(skladnik.sklKal)")
 									Text("Miara: \(skladnik.sklMiara.opis)")
 									Text("WWW: \(skladnik.sklWWW)")
 									Text("Zamienniki: \(skladnik.sklZamArray)")
+									IkonaJestBrak_V(skladnik: skladnik, txtShow: true, wielkosc: 50)
 								}
-								
+								SkladnikOpis_V(skladnik: skladnik)
+								SkladnikZamiennikiAll_V(skladnik: skladnik)
+								SkladnikFoto_V(skladnik: skladnik)
 								Divider()
 								List {
 									ForEach(skladnik.sklZamArray) { zamiennik in
@@ -61,8 +63,7 @@ struct skladniki: View {
 			}
 			.onAppear {
 				print("Początek onAppear: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-				
-				if !UserDefaults.standard.bool(forKey: "setupDone")
+				if UserDefaults.standard.bool(forKey: "setupDone")
 				{
 					delAll()
 					loadSklCSV_V(modelContext: modelContext)

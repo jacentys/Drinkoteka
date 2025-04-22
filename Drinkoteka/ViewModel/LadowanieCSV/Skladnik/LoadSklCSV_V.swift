@@ -50,4 +50,5 @@ func loadSklCSV_V(modelContext: ModelContext) {
 	} catch {
 		print("Błąd wczytywania pliku \(nazwaPliku): \(error)")
 	}
+	print("Koniec loadSklCSV_V")
 }
