@@ -1,14 +1,6 @@
-	//
-	//  DrinkFotoV.swift
-	//  Barman
-	//
-	//  Created by Jacek Skrobisz on 2025.02.04.
-	//
-
 import SwiftUI
 
 struct SkladnikFoto_V: View {
-	
 	@Bindable var skladnik: Skl_M
 
 	let wysokosc: CGFloat = 300

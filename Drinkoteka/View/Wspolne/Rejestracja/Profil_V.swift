@@ -52,5 +52,5 @@ struct Profil_V: View {
 
 #Preview {
     Profil_V()
-		.background(Back(kolor: .accent))
+		.background(Back_V(kolor: .accent))
 }

@@ -1,10 +1,3 @@
-//
-//  SkladnikV.swift
-//  Barman
-//
-//  Created by Jacek Skrobisz on 2025.02.03.
-//
-
 import SwiftUI
 
 struct Skladnik_V: View {
@@ -17,7 +10,7 @@ struct Skladnik_V: View {
 			// Wyciągnięcie danych  za pomocą if let i first
 		ZStack {
 				// MARK: Background
-			BackgroundView(foto: skladnik.sklFoto, kolor: skladnik.getColor())
+			Background_V(foto: skladnik.sklFoto, kolor: skladnik.getColor())
 				// MARK: Data
 			ScrollView { // Główny
 				VStack(spacing: 12) {

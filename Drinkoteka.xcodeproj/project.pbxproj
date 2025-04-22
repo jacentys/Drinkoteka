@@ -32,23 +32,33 @@
 		F3095A942DB543F300481E4F /* LoadSklZamiennikiCSV_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A922DB53DE900481E4F /* LoadSklZamiennikiCSV_V.swift */; };
 		F3095A972DB66DC500481E4F /* JSON_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A962DB66DC500481E4F /* JSON_VM.swift */; };
 		F3095A982DB66DC500481E4F /* AES_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A952DB66DC500481E4F /* AES_VM.swift */; };
-		F3095A9B2DB66E2300481E4F /* Back.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9A2DB66E2300481E4F /* Back.swift */; };
-		F3095A9D2DB66F5A00481E4F /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9C2DB66F5A00481E4F /* BackgroundView.swift */; };
+		F3095A9B2DB66E2300481E4F /* Back_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9A2DB66E2300481E4F /* Back_V.swift */; };
+		F3095A9D2DB66F5A00481E4F /* Background_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9C2DB66F5A00481E4F /* Background_V.swift */; };
 		F3095A9F2DB66FF000481E4F /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */; };
-		F3095AA22DB670B700481E4F /* DrinkPrzepisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA12DB670B700481E4F /* DrinkPrzepisView.swift */; };
+		F3095AA22DB670B700481E4F /* DrinkPrzepis_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA12DB670B700481E4F /* DrinkPrzepis_V.swift */; };
 		F3095AA82DB693AA00481E4F /* IkonaJestBrak_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */; };
 		F36F1E822DB783E6000775D6 /* PrefClass_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA92DB6945200481E4F /* PrefClass_VM.swift */; };
 		F36F1E842DB78BC2000775D6 /* Logowanie_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E832DB78BC2000775D6 /* Logowanie_V.swift */; };
 		F36F1E862DB78E4E000775D6 /* Rejestracja_v.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E852DB78E4E000775D6 /* Rejestracja_v.swift */; };
 		F36F1E892DB7A66A000775D6 /* Profil_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E882DB7A66A000775D6 /* Profil_V.swift */; };
 		F36F1E8A2DB7AB8A000775D6 /* Preferencje_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AAA2DB6945200481E4F /* Preferencje_V.swift */; };
-		F36F1E8B2DB7BAFE000775D6 /* DrinkSkladnikiLinijkaV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA42DB68EA900481E4F /* DrinkSkladnikiLinijkaV.swift */; };
+		F36F1E8B2DB7BAFE000775D6 /* DrinkSkladnikLinijka_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA42DB68EA900481E4F /* DrinkSkladnikLinijka_V.swift */; };
 		F36F1E902DB7DF32000775D6 /* SkladnikOpis_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E8F2DB7DF32000775D6 /* SkladnikOpis_V.swift */; };
 		F36F1E922DB7E085000775D6 /* SkladnikZamiennikLinia_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E912DB7E085000775D6 /* SkladnikZamiennikLinia_V.swift */; };
 		F36F1E942DB7E21E000775D6 /* SkladnikZamiennikiAll_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E932DB7E21E000775D6 /* SkladnikZamiennikiAll_V.swift */; };
 		F36F1E962DB7E356000775D6 /* SkladnikStan_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E952DB7E356000775D6 /* SkladnikStan_V.swift */; };
 		F36F1E982DB7E3E8000775D6 /* SkladnikFoto_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E972DB7E3E8000775D6 /* SkladnikFoto_V.swift */; };
 		F36F1E9A2DB7E4A3000775D6 /* Skladnik_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E992DB7E4A3000775D6 /* Skladnik_V.swift */; };
+		F3BEA8702DB7F737001E6801 /* drinki.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A522DB3C1E000481E4F /* drinki.swift */; };
+		F3BEA8712DB7FF91001E6801 /* DrinkSkladniki_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA32DB68EA900481E4F /* DrinkSkladniki_V.swift */; };
+		F3BEA8732DB8067C001E6801 /* Drink_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E812DB77A29000775D6 /* Drink_V.swift */; };
+		F3BEA8752DB807F1001E6801 /* DrinkTitle_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA8742DB807F1001E6801 /* DrinkTitle_V.swift */; };
+		F3BEA8772DB80F91001E6801 /* DrinkDane_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA8762DB80F91001E6801 /* DrinkDane_V.swift */; };
+		F3BEA87A2DB81435001E6801 /* DrinkFoto_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA8782DB81435001E6801 /* DrinkFoto_V.swift */; };
+		F3BEA87B2DB81435001E6801 /* DrinkSkala_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA8792DB81435001E6801 /* DrinkSkala_V.swift */; };
+		F3BEA87D2DB81CEC001E6801 /* DrinkNotatka_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA87C2DB81CEC001E6801 /* DrinkNotatka_V.swift */; };
+		F3BEA87F2DB820AB001E6801 /* DrinkWWW_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA87E2DB820AB001E6801 /* DrinkWWW_V.swift */; };
+		F3BEA8812DB82A9B001E6801 /* DrinkBack_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA8802DB82A9B001E6801 /* DrinkBack_V.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,19 +89,19 @@
 		F3095A922DB53DE900481E4F /* LoadSklZamiennikiCSV_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSklZamiennikiCSV_V.swift; sourceTree = "<group>"; };
 		F3095A952DB66DC500481E4F /* AES_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES_VM.swift; sourceTree = "<group>"; };
 		F3095A962DB66DC500481E4F /* JSON_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_VM.swift; sourceTree = "<group>"; };
-		F3095A9A2DB66E2300481E4F /* Back.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Back.swift; sourceTree = "<group>"; };
-		F3095A9C2DB66F5A00481E4F /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackgroundView.swift; path = Drinkoteka/View/Wspolne/BackgroundView.swift; sourceTree = SOURCE_ROOT; };
+		F3095A9A2DB66E2300481E4F /* Back_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Back_V.swift; sourceTree = "<group>"; };
+		F3095A9C2DB66F5A00481E4F /* Background_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Background_V.swift; path = Drinkoteka/View/Wspolne/Background_V.swift; sourceTree = SOURCE_ROOT; };
 		F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
-		F3095AA12DB670B700481E4F /* DrinkPrzepisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPrzepisView.swift; sourceTree = "<group>"; };
-		F3095AA32DB68EA900481E4F /* DrinkSkladnikiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladnikiView.swift; sourceTree = "<group>"; };
-		F3095AA42DB68EA900481E4F /* DrinkSkladnikiLinijkaV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladnikiLinijkaV.swift; sourceTree = "<group>"; };
+		F3095AA12DB670B700481E4F /* DrinkPrzepis_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPrzepis_V.swift; sourceTree = "<group>"; };
+		F3095AA32DB68EA900481E4F /* DrinkSkladniki_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladniki_V.swift; sourceTree = "<group>"; };
+		F3095AA42DB68EA900481E4F /* DrinkSkladnikLinijka_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladnikLinijka_V.swift; sourceTree = "<group>"; };
 		F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkonaJestBrak_V.swift; sourceTree = "<group>"; };
 		F3095AA92DB6945200481E4F /* PrefClass_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefClass_VM.swift; sourceTree = "<group>"; };
 		F3095AAA2DB6945200481E4F /* Preferencje_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferencje_V.swift; sourceTree = "<group>"; };
 		F324A3092DB19E0C00B21F83 /* Drinkoteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drinkoteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F36F1E7F2DB77A29000775D6 /* DrinkiListaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkiListaView.swift; sourceTree = "<group>"; };
-		F36F1E802DB77A29000775D6 /* DrinkiListaRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkiListaRowView.swift; sourceTree = "<group>"; };
-		F36F1E812DB77A29000775D6 /* DrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkView.swift; sourceTree = "<group>"; };
+		F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkiLista_V.swift; sourceTree = "<group>"; };
+		F36F1E802DB77A29000775D6 /* DrinkiListaRow_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkiListaRow_V.swift; sourceTree = "<group>"; };
+		F36F1E812DB77A29000775D6 /* Drink_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink_V.swift; sourceTree = "<group>"; };
 		F36F1E832DB78BC2000775D6 /* Logowanie_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logowanie_V.swift; sourceTree = "<group>"; };
 		F36F1E852DB78E4E000775D6 /* Rejestracja_v.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rejestracja_v.swift; sourceTree = "<group>"; };
 		F36F1E882DB7A66A000775D6 /* Profil_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profil_V.swift; sourceTree = "<group>"; };
@@ -103,6 +113,13 @@
 		F36F1E972DB7E3E8000775D6 /* SkladnikFoto_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkladnikFoto_V.swift; sourceTree = "<group>"; };
 		F36F1E992DB7E4A3000775D6 /* Skladnik_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skladnik_V.swift; sourceTree = "<group>"; };
 		F3A98E9E2DB55F3700C70D01 /* DeleteSkl_V 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeleteSkl_V 2.swift"; sourceTree = "<group>"; };
+		F3BEA8742DB807F1001E6801 /* DrinkTitle_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTitle_V.swift; sourceTree = "<group>"; };
+		F3BEA8762DB80F91001E6801 /* DrinkDane_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDane_V.swift; sourceTree = "<group>"; };
+		F3BEA8782DB81435001E6801 /* DrinkFoto_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFoto_V.swift; sourceTree = "<group>"; };
+		F3BEA8792DB81435001E6801 /* DrinkSkala_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkala_V.swift; sourceTree = "<group>"; };
+		F3BEA87C2DB81CEC001E6801 /* DrinkNotatka_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkNotatka_V.swift; sourceTree = "<group>"; };
+		F3BEA87E2DB820AB001E6801 /* DrinkWWW_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWWW_V.swift; sourceTree = "<group>"; };
+		F3BEA8802DB82A9B001E6801 /* DrinkBack_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrinkBack_V.swift; path = "Drinkoteka/View/Drinki View/DrinkBack_V.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +175,6 @@
 				F36F1E8E2DB7DF24000775D6 /* Skladniki View */,
 				F3095AA02DB670B000481E4F /* Drinki View */,
 				F3095A992DB66E1C00481E4F /* Wspolne */,
-				F3095A522DB3C1E000481E4F /* drinki.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,8 +250,8 @@
 				F3095AAA2DB6945200481E4F /* Preferencje_V.swift */,
 				F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */,
 				F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */,
-				F3095A9C2DB66F5A00481E4F /* BackgroundView.swift */,
-				F3095A9A2DB66E2300481E4F /* Back.swift */,
+				F3095A9C2DB66F5A00481E4F /* Background_V.swift */,
+				F3095A9A2DB66E2300481E4F /* Back_V.swift */,
 			);
 			path = Wspolne;
 			sourceTree = "<group>";
@@ -243,12 +259,20 @@
 		F3095AA02DB670B000481E4F /* Drinki View */ = {
 			isa = PBXGroup;
 			children = (
-				F36F1E7F2DB77A29000775D6 /* DrinkiListaView.swift */,
-				F36F1E802DB77A29000775D6 /* DrinkiListaRowView.swift */,
-				F36F1E812DB77A29000775D6 /* DrinkView.swift */,
-				F3095AA32DB68EA900481E4F /* DrinkSkladnikiView.swift */,
-				F3095AA42DB68EA900481E4F /* DrinkSkladnikiLinijkaV.swift */,
-				F3095AA12DB670B700481E4F /* DrinkPrzepisView.swift */,
+				F3095A522DB3C1E000481E4F /* drinki.swift */,
+				F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */,
+				F36F1E802DB77A29000775D6 /* DrinkiListaRow_V.swift */,
+				F36F1E812DB77A29000775D6 /* Drink_V.swift */,
+				F3BEA8742DB807F1001E6801 /* DrinkTitle_V.swift */,
+				F3BEA8762DB80F91001E6801 /* DrinkDane_V.swift */,
+				F3BEA8792DB81435001E6801 /* DrinkSkala_V.swift */,
+				F3BEA8782DB81435001E6801 /* DrinkFoto_V.swift */,
+				F3BEA87C2DB81CEC001E6801 /* DrinkNotatka_V.swift */,
+				F3BEA87E2DB820AB001E6801 /* DrinkWWW_V.swift */,
+				F3095AA32DB68EA900481E4F /* DrinkSkladniki_V.swift */,
+				F3095AA42DB68EA900481E4F /* DrinkSkladnikLinijka_V.swift */,
+				F3095AA12DB670B700481E4F /* DrinkPrzepis_V.swift */,
+				F3BEA8802DB82A9B001E6801 /* DrinkBack_V.swift */,
 			);
 			path = "Drinki View";
 			sourceTree = "<group>";
@@ -330,7 +354,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F324A3042DB19E0C00B21F83 /* Build configuration list for PBXProject "drinkoteka" */;
+			buildConfigurationList = F324A3042DB19E0C00B21F83 /* Build configuration list for PBXProject "Drinkoteka" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -371,15 +395,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3BEA8712DB7FF91001E6801 /* DrinkSkladniki_V.swift in Sources */,
 				F3095A602DB3C1E000481E4F /* Dr_M.swift in Sources */,
 				F3095A942DB543F300481E4F /* LoadSklZamiennikiCSV_V.swift in Sources */,
 				F36F1E922DB7E085000775D6 /* SkladnikZamiennikLinia_V.swift in Sources */,
 				F3095A612DB3C1E000481E4F /* DrPrzepis_M.swift in Sources */,
-				F3095A9D2DB66F5A00481E4F /* BackgroundView.swift in Sources */,
+				F3095A9D2DB66F5A00481E4F /* Background_V.swift in Sources */,
 				F3095A622DB3C1E000481E4F /* DrSkladnik_M.swift in Sources */,
 				F3095A972DB66DC500481E4F /* JSON_VM.swift in Sources */,
 				F36F1E982DB7E3E8000775D6 /* SkladnikFoto_V.swift in Sources */,
+				F3BEA87F2DB820AB001E6801 /* DrinkWWW_V.swift in Sources */,
 				F3095A982DB66DC500481E4F /* AES_VM.swift in Sources */,
+				F3BEA8812DB82A9B001E6801 /* DrinkBack_V.swift in Sources */,
 				F3095A632DB3C1E000481E4F /* EnumModel.swift in Sources */,
 				F3095A8D2DB3F8E900481E4F /* LoadSklCSV_V.swift in Sources */,
 				F3095A9F2DB66FF000481E4F /* ViewModifiers.swift in Sources */,
@@ -387,13 +414,18 @@
 				F3095A642DB3C1E000481E4F /* SklZamiennik_M.swift in Sources */,
 				F36F1E902DB7DF32000775D6 /* SkladnikOpis_V.swift in Sources */,
 				F36F1E9A2DB7E4A3000775D6 /* Skladnik_V.swift in Sources */,
+				F3BEA8702DB7F737001E6801 /* drinki.swift in Sources */,
 				F3095A912DB52EE100481E4F /* skladniki.swift in Sources */,
+				F3BEA8732DB8067C001E6801 /* Drink_V.swift in Sources */,
 				F3095A662DB3C1E000481E4F /* LoadDrAlkGlownyCSV_V.swift in Sources */,
-				F36F1E8B2DB7BAFE000775D6 /* DrinkSkladnikiLinijkaV.swift in Sources */,
+				F36F1E8B2DB7BAFE000775D6 /* DrinkSkladnikLinijka_V.swift in Sources */,
+				F3BEA87D2DB81CEC001E6801 /* DrinkNotatka_V.swift in Sources */,
 				F3095A672DB3C1E000481E4F /* LoadDrCSV_V.swift in Sources */,
 				F36F1E942DB7E21E000775D6 /* SkladnikZamiennikiAll_V.swift in Sources */,
 				F3095A682DB3C1E000481E4F /* LoadDrPrzepisyCSV_V.swift in Sources */,
 				F3095AA82DB693AA00481E4F /* IkonaJestBrak_V.swift in Sources */,
+				F3BEA87A2DB81435001E6801 /* DrinkFoto_V.swift in Sources */,
+				F3BEA87B2DB81435001E6801 /* DrinkSkala_V.swift in Sources */,
 				F3095A6A2DB3C1E000481E4F /* LodaDrSkladnikiCSV_V.swift in Sources */,
 				F36F1E8A2DB7AB8A000775D6 /* Preferencje_V.swift in Sources */,
 				F3095A6B2DB3C1E000481E4F /* FunkcjePomocnicze.swift in Sources */,
@@ -402,10 +434,12 @@
 				F36F1E842DB78BC2000775D6 /* Logowanie_V.swift in Sources */,
 				F3095A8B2DB3ECB500481E4F /* SklStanModel.swift in Sources */,
 				F36F1E962DB7E356000775D6 /* SkladnikStan_V.swift in Sources */,
+				F3BEA8772DB80F91001E6801 /* DrinkDane_V.swift in Sources */,
 				F36F1E862DB78E4E000775D6 /* Rejestracja_v.swift in Sources */,
-				F3095A9B2DB66E2300481E4F /* Back.swift in Sources */,
+				F3095A9B2DB66E2300481E4F /* Back_V.swift in Sources */,
 				F3095A6C2DB3C1E000481E4F /* DrinkotekaApp.swift in Sources */,
-				F3095AA22DB670B700481E4F /* DrinkPrzepisView.swift in Sources */,
+				F3095AA22DB670B700481E4F /* DrinkPrzepis_V.swift in Sources */,
+				F3BEA8752DB807F1001E6801 /* DrinkTitle_V.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,7 +649,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F324A3042DB19E0C00B21F83 /* Build configuration list for PBXProject "drinkoteka" */ = {
+		F324A3042DB19E0C00B21F83 /* Build configuration list for PBXProject "Drinkoteka" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F324A3152DB19E0F00B21F83 /* Debug */,

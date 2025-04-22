@@ -6,7 +6,7 @@ struct Logowanie_V: View {
 
     var body: some View {
 		 ZStack {
-			 Back(kolor: .accent)
+			 Back_V(kolor: .accent)
 
 			 if zalogowany {
 				 Profil_V()

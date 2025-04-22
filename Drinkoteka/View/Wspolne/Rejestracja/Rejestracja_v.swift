@@ -47,7 +47,7 @@ struct Rejestracja_v: View {
 
 #Preview {
     Rejestracja_v()
-		.background(Back(kolor: .accent))
+		.background(Back_V(kolor: .accent))
 }
 
 // MARK: KOMPONENTY

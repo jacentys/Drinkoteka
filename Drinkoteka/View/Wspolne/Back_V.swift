@@ -10,25 +10,7 @@ typealias OSColor = NSColor
 let kolor1 = Color.accent
 let kolor2 = Color.gray
 
-struct BackOld: View {
-	@Environment(\.colorScheme) var colorScheme
-	var body: some View {
-		ZStack {
-			MeshGradient(width: 3, height: 3, points: [
-				.init(0, 0), .init(0.5, 0), .init(1, 0),
-				.init(0, 0.5), .init(0.7, 0.2), .init(1, 0.5),
-				.init(0, 1), .init(0.2, 1), .init(1, 1)],
-							 colors: [
-								.accent, .accent, .yellow,
-								.yellow, .white, .yellow,
-								.yellow, .accent, .white]
-			)
-			.brightness(colorScheme == .dark ? -0.8 : 0)
-		}
-	}
-}
-
-struct Back: View {
+struct Back_V: View {
 	@Environment(\.colorScheme) var colorScheme
 	@State var kolor: Color = Color.accent
 	@State var xCount: Int = 5
@@ -91,33 +73,46 @@ func dodajKolory (xCount: Int, yCount: Int, tint: Color) -> [Color]{
 
 	// MARK: Extension Koloru
 extension Color {
-		// Funkcja RANDOMIZACJI
 	func randomizeColor(by factor: CGFloat) -> Color {
-		
-		let uiColor = OSColor(self)
-
+#if os(iOS) || os(tvOS) || os(watchOS)
+		let baseColor = UIColor(self)
 		var red: CGFloat = 0
 		var green: CGFloat = 0
 		var blue: CGFloat = 0
 		var alpha: CGFloat = 0
+		baseColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+#elseif os(macOS)
+		let nsColor = NSColor(self)
+		guard let baseColor = nsColor.usingColorSpace(.deviceRGB) else {
+			return self // nie udało się przekonwertować do RGB
+		}
+		var red: CGFloat = 0
+		var green: CGFloat = 0
+		var blue: CGFloat = 0
+		var alpha: CGFloat = 0
+		baseColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
 
-			// Pobieramy komponenty koloru
-		uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-
-			// Randomizujemy kolory
-		let randomR = CGFloat.random(in: red-factor...red+factor)
-		let randomG = CGFloat.random(in: green-factor...green+factor)
-		let randomB = CGFloat.random(in: blue-factor...blue+factor)
-
-			// Zmieniamy wartości
-		red = min(max(randomR, 0), 1)
-		green = min(max(randomG, 0), 1)
-		blue = min(max(randomB, 0), 1)
-
-		return Color(OSColor(red: red, green: green, blue: blue, alpha: alpha))
+#endif
+		
+			// Randomizacja
+		let randomR = CGFloat.random(in: (red - factor)...(red + factor))
+		let randomG = CGFloat.random(in: (green - factor)...(green + factor))
+		let randomB = CGFloat.random(in: (blue - factor)...(blue + factor))
+		
+		let newRed = min(max(randomR, 0), 1)
+		let newGreen = min(max(randomG, 0), 1)
+		let newBlue = min(max(randomB, 0), 1)
+		
+#if os(iOS) || os(tvOS) || os(watchOS)
+		return Color(UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: alpha))
+#elseif os(macOS)
+		return Color(NSColor(red: newRed, green: newGreen, blue: newBlue, alpha: alpha))
+#endif
 	}
 }
 
+
+
 #Preview {
-	Back(kolor: .pink)
+	Back_V(kolor: .pink)
 }

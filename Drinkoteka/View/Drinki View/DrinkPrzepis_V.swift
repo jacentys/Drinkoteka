@@ -2,7 +2,7 @@
 import SwiftData
 import SwiftUI
 
-struct DrinkPrzepisView: View {
+struct DrinkPrzepis_V: View {
 	@Bindable var drink: Dr_M
 
 	var body: some View {
@@ -23,10 +23,12 @@ struct DrinkPrzepisView: View {
 							.foregroundColor(przepisLinia.przepOpcja ? Color.secondary: Color.accent)
 							.font(.headline)
 							// MARK: OPIS
-						Text(" \(przepisLinia.przepOpis)")
-							.fontWeight(.light)
-							//								.multilineTextAlignment(.leading)
-							.foregroundStyle(!przepisLinia.przepOpcja ? Color.primary : Color.secondary)
+						HStack(spacing: 0) {
+							Text(" \(przepisLinia.przepOpis)")
+								.fontWeight(.light)
+								//								.multilineTextAlignment(.leading)
+								.foregroundStyle(!przepisLinia.przepOpcja ? Color.primary : Color.secondary)
+						}
 						Spacer()
 					}
 					.padding(.vertical, 2)

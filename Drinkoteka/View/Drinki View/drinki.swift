@@ -29,53 +29,10 @@ struct drinki: View {
 				List {
 					ForEach(przefiltrowaneDrinki) { drink in
 						NavigationLink {
-							VStack{
-								List {
-									Text("Nazwa: \(drink.drNazwa)")
-										.font(.headline)
-									Text("Kat.: \(drink.drKat.rawValue)")
-									Text("Żródło: \(drink.drZrodlo)")
-									Text("Kolor: \(drink.drKolor)")
-									Text("Foto: \(drink.drFoto)")
-									Text("Proc.: \(drink.drProc)")
-									Text("Słodycz: \(drink.drSlodycz.rawValue)")
-									Text("Szkło: \(drink.drSzklo.opis)")
-									Text("Ulubiony: \(drink.drUlubiony)")
-									Text("Notatka: \(drink.drNotatka)")
-									Text("Uwagi: \(drink.drUwagi)")
-									Text("WWW: \(drink.drWWW)")
-									Text("Kalorie: \(drink.drKal)")
-									Text("Moc: \(drink.drMoc.opisLong)")
-									Text("Brak: \(drink.drBrakuje)")
-									if drink.drAlkGlowny.count == 1 {
-										Text("Alk gł.: \(drink.drAlkGlowny[0].opis)")
-									}
-									if drink.drAlkGlowny.count == 2 {
-										Text("Alk gł.: \(drink.drAlkGlowny[0].opis), \(drink.drAlkGlowny[1].opis)")
-									}
-									
-								}
-								Divider()
-								DrinkPrzepisView(drSelID: drink.drinkID)
-								Divider()
-								List {
-									ForEach(drink.drSklad) { sklad in
-										HStack {
-											Text("\(sklad.sklNo)")
-											Text("\(sklad.skladnikID)")
-											Text("\(sklad.sklIlosc)")
-											Text("\(sklad.sklMiara)")
-											Text("\(sklad.sklInfo)")
-											Spacer()
-											Text("\(sklad.sklOpcja)")
-										}
-									}
-								}
-							}
+							Drink_V(drink: drink)
 						} label: {
 							Text("\(drink.drNazwa)")
-							Text("P: \(drink.drPrzepis.count)")
-							Text("S: \(drink.drSklad.count)")
+								.font(.headline)
 						}
 					}
 					.onDelete(perform: delDrink)

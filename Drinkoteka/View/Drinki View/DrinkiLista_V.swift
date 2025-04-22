@@ -1,18 +1,12 @@
 import SwiftData
 import SwiftUI
 
-struct DrinkiListaView: View {
-
-	@Query private var drinki: [Drink]
-	@Query private var skladniki: [Skladnik]
-
-	@EnvironmentObject var pref: PrefClass
-	@EnvironmentObject var drClass: DrClass
-	@EnvironmentObject var skladnikiClass: SklClass
+struct DrinkiLista_V: View {
+	@Environment(\.modelContext) private var modelContext
+	@Query private var drinki: [Dr_M]
+	@Query private var skladniki: [Skl_M]
 
 	@State var pokazFiltr: Bool = false
-	@State var drinkSearchString: String = ""
-
 
 	var body: some View {
 		NavigationStack {
@@ -136,10 +130,6 @@ struct DrinkiListaView: View {
  
 	// MARK: NAZWA LUB KALORIE
 struct SortNazwaView: View {
-	@EnvironmentObject var pref: PrefClass
-	@EnvironmentObject var drClass: DrClass
-	@EnvironmentObject var skladnikiClass: SklClass
-
 	var body: some View {
 		let macierz = drClass.filtrujDrinki(pref: pref)
 			.sorted {
@@ -193,10 +183,6 @@ struct SortNazwaView: View {
 
 	// MARK: SORT SŁODYCZ
 struct SortSlodyczView: View {
-	@EnvironmentObject var pref: PrefClass
-	@EnvironmentObject var drClass: DrClass
-	@EnvironmentObject var skladnikiClass: SklClass
-	
 	var body: some View {
 		ScrollView {
 
@@ -241,10 +227,6 @@ struct SortSlodyczView: View {
 
 	// MARK: MOC
 struct SortMocView: View {
-	@EnvironmentObject var pref: PrefClass
-	@EnvironmentObject var drClass: DrClass
-	@EnvironmentObject var skladnikiClass: SklClass
-
 	var body: some View {
 		ScrollView {
 
@@ -294,10 +276,6 @@ struct SortMocView: View {
 
 	// MARK: SKLAD VIEW
 struct SortSkladView: View {
-	@EnvironmentObject var pref: PrefClass
-	@EnvironmentObject var drClass: DrClass
-	@EnvironmentObject var skladnikiClass: SklClass
-
 	var body: some View {
 		ScrollView {
 
@@ -342,9 +320,7 @@ struct SortSkladView: View {
 
 #Preview {
 	NavigationStack {
-		DrinkiListaView()
+		Text("SortSkladView")
+//		DrinkiListaView()
 	}
-	.environmentObject(SklClass())
-	.environmentObject(PrefClass())
-	.environmentObject(DrClass(sklClass: SklClass(), pref: PrefClass()))
 }

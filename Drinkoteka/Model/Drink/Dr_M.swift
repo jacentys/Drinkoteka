@@ -67,6 +67,11 @@ class Dr_M: Identifiable {
 		self.drSklad = drSklad
 		self.drPrzepis = drPrzepis
 	}
+	
+		// MARK: GET COLOR
+	func getKolor () -> Color {
+		return strToColor(self.drKolor)
+	}
 }
 
 /*
@@ -93,11 +98,6 @@ class Dr_M: Identifiable {
 //			drBrakuje: drBrakuje,
 //			drAlkGlowny: drAlkGlowny
 //		)
-//	}
-
-//	// MARK: GET COLOR
-//	func getKolor () -> Color {
-//		return stringToColor(self.drKolor)
 //	}
 
 	// MARK: ULUBIONY TOGGLE

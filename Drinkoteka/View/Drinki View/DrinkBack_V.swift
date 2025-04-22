@@ -1,17 +1,13 @@
 import SwiftUI
 
-struct BackgroundView: View {
-
-	let foto: String
-	var kolor: Color = Color.accent
+struct DrinkBack_V: View {
+	@Bindable var drink: Dr_M
 	
 	var body: some View {
-	
 		ZStack {
-
-			Back(kolor: kolor)
-
-			Image(foto) // MARK: FOTA Z MASKĄ NA TŁO
+			Back_V(kolor: drink.getKolor())
+				.font(.largeTitle)
+			Image(drink.drFoto) // MARK: FOTA Z MASKĄ NA TŁO
 				.resizable()
 				.scaledToFit()
 				.clipped()
@@ -24,5 +20,5 @@ struct BackgroundView: View {
 }
 
 #Preview {
-	BackgroundView(foto: "whiskey", kolor: .red)
+	Background_V(foto: "whiskey", kolor: .red)
 }
