@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct DrinkTitle_V: View {
-	@Bindable var drink: Dr_M
+struct SkladnikTitle_V: View {
+	@Bindable var skladnik: Skl_M
 
 	var body: some View {
 		
@@ -11,14 +11,11 @@ struct DrinkTitle_V: View {
 					HStack {
 						Spacer()
 						VStack {
-							Text(drink.drNazwa)
+							Text(skladnik.sklNazwa)
 								.font(.title)
 								.fontWeight(.black)
 								.foregroundColor(Color.primary)
 								.multilineTextAlignment(.center)
-							Text(drink.drZrodlo)
-								.font(.footnote)
-								.foregroundStyle(.secondary)
 						}
 
 						Spacer()
@@ -28,9 +25,10 @@ struct DrinkTitle_V: View {
 				Divider().padding(4)
 				
 				HStack {
-					Kategoria(kat: drink.drKat.rawValue)
-					Proc(proc: drink.drProc)
-//					Miara(miara: drink.drMiara)
+					Kategoria(kat: skladnik.sklKat.rawValue)
+					Proc(proc: skladnik.sklProc)
+					Kal(kal: skladnik.sklKal)
+//					Miara(miara: skladnik.sklMiara)
 				}
 			}
 			.shadow(color: .white, radius: 20)
@@ -44,6 +42,6 @@ struct DrinkTitle_V: View {
 }
 
 #Preview {
-	Text("DrinkTitle")
+	Text("Skladnik Title")
 //	TitleView(nazwa: "Amaretto", proc: 20, kal: 130, miara: miaraEnum.galazka, kat: "alkochol")
 }

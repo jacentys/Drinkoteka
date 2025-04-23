@@ -1,10 +1,3 @@
-//
-//  SkladnikStanV.swift
-//  Barman
-//
-//  Created by Jacek Skrobisz on 2025.02.04.
-//
-
 import SwiftUI
 
 struct SkladnikStan_V: View {

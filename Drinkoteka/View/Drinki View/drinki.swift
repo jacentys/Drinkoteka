@@ -3,25 +3,45 @@ import SwiftUI
 
 struct drinki: View {
 	@Environment(\.modelContext) private var modelContext
-	
+
 	@Query(sort: [SortDescriptor(\Dr_M.drNazwa)])
-	private var wszystkieDrinki: [Dr_M]
-	
+	private var drinki: [Dr_M]
+	@State private var selectedDrink: Dr_M?
+
 	@State private var tekstFiltru: String = ""
-	
+
 	var przefiltrowaneDrinki: [Dr_M] {
 		if tekstFiltru.isEmpty {
-			return wszystkieDrinki
+			return drinki
 		} else {
-			return wszystkieDrinki.filter {
+			return drinki.filter {
 				$0.drNazwa.localizedCaseInsensitiveContains(tekstFiltru)
 			}
 		}
 	}
-	
+
 	var body: some View {
 		NavigationSplitView {
-			Text("\(przefiltrowaneDrinki.count)")
+			TextField("Szukaj drinka...", text: $tekstFiltru)
+				.textFieldStyle(.roundedBorder)
+				.padding()
+			List(drinki, selection: $selectedDrink) { drink in
+				DrinkiListaRow_V(drink: drink)
+			}
+			.navigationTitle("Drinki")
+		} detail: {
+			if let selectedDrink = selectedDrink {
+				Drink_V(drink: selectedDrink)
+			} else {
+				Text("Wybierz drinka z listy")
+					.font(.title)
+					.foregroundStyle(.secondary)
+			}
+		}
+	}
+}
+
+/*			Text("\(przefiltrowaneDrinki.count)")
 			VStack {
 				TextField("Szukaj drinka...", text: $tekstFiltru)
 					.textFieldStyle(.roundedBorder)
@@ -61,6 +81,8 @@ struct drinki: View {
 					EditButton()
 				}
 #endif
+
+					// Przyciski macOS/iOS w osobnych ToolbarItemach
 				ToolbarItem {
 					Button(action: {
 						delAll()
@@ -68,18 +90,42 @@ struct drinki: View {
 						loadDrAlkGlownyCSV_V(modelContext: modelContext)
 						loadDrPrzepisyCSV_V(modelContext: modelContext)
 						loadDrSkladnikiCSV_V(modelContext: modelContext)
-					}) { Image(systemName: "restart.circle.fill") }
-					
+					}) {
+						Image(systemName: "restart.circle.fill")
+					}
+				}
+
+				ToolbarItem {
 					Button(action: addZam) {
 						Label("Add Zamiennik", systemImage: "plus")
 					}
 				}
+
+				ToolbarItem {
+					Button("Filtry") {
+//						openFiltryWindow()
+					}
+				}
 			}
+
 		} detail: {
 			Text("Wybierz")
 		}
 	}
-	
+
+//	func openFiltryWindow() {
+//		let window = NSWindow(
+//			contentRect: NSRect(x: 0, y: 0, width: 400, height: 300),
+//			styleMask: [.titled, .closable, .resizable],
+//			backing: .buffered, defer: false
+//		)
+//		window.title = "Filtry drinków"
+//		window.isReleasedWhenClosed = false
+//		window.center()
+//		window.contentView = NSHostingView(rootView: DrinkFiltry_V())
+//		window.makeKeyAndOrderFront(nil)
+//	}
+
 	private func addZam() {
 		print("Funkcja addZam uruchomiona")
 //		withAnimation {
@@ -108,7 +154,7 @@ struct drinki: View {
 }
 
 
-
+*/
 
 #Preview {
 	

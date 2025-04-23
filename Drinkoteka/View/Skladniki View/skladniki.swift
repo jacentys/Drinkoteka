@@ -30,29 +30,8 @@ struct skladniki: View {
 					ForEach(przefiltrowaneSkladniki) { skladnik in
 						NavigationLink {
 							VStack{
-								List {
-									Text("Nazwa: \(skladnik.sklNazwa)")
-										.font(.headline)
-									Text("Kat.: \(skladnik.sklKat.opis)")
-									Text("Proc.: \(skladnik.sklProc)")
-									Text("Kolor: \(skladnik.sklKolor)")
-									Text("Foto: \(skladnik.sklFoto)")
-									Text("Stan: \(skladnik.sklStan.opis)")
-									Text("Kalorie: \(skladnik.sklKal)")
-									Text("Miara: \(skladnik.sklMiara.opis)")
-									Text("WWW: \(skladnik.sklWWW)")
-									Text("Zamienniki: \(skladnik.sklZamArray)")
-									IkonaJestBrak_V(skladnik: skladnik, txtShow: true, wielkosc: 50)
-								}
-								SkladnikOpis_V(skladnik: skladnik)
-								SkladnikZamiennikiAll_V(skladnik: skladnik)
-								SkladnikFoto_V(skladnik: skladnik)
-								Divider()
-								List {
-									ForEach(skladnik.sklZamArray) { zamiennik in
-											Text("\(zamiennik.sklNazwa)")
-									}
-								}
+								Text("Miara: \(skladnik.sklMiara.opis)")
+								Skladnik_V(skladnik: skladnik)
 							}
 						} label: {
 							Text("\(skladnik.sklNazwa)")

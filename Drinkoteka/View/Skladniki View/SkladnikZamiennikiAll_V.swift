@@ -20,7 +20,6 @@ struct SkladnikZamiennikiAll_V: View {
 				 
 					 // MARK: LISTA ZAMIENNIKÓW
 				 ForEach (skladnik.sklZamArray, id: \.self) { zamiennik in
-					 Text(zamiennik.sklNazwa)
 					 NavigationLink(destination: Skladnik_V(skladnik: zamiennik)) {
 						 SkladnikZamiennikLinia_V(skladnik: zamiennik)
 					 }

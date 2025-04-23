@@ -17,7 +17,7 @@ struct DrinkiListaRow_V: View {
 					ZStack {
 						Circle()
 							.fill(.regularMaterial.opacity(drink.drBrakuje == 0 ? 0.8 : 0.8))
-//							.stroke(drink.getKolor().opacity(drink.drBrakuje == 0 ? 0.8 : 0.8), lineWidth: drink.drBrakuje == 0 ? 1 : 1)
+							.stroke(drink.getKolor().opacity(drink.drBrakuje == 0 ? 0.8 : 0.8), lineWidth: drink.drBrakuje == 0 ? 1 : 1)
 						
 						Image(!drink.drFoto.isEmpty ? drink.drFoto :  drink.drSzklo.foto)
 							.resizable()
@@ -55,7 +55,7 @@ struct DrinkiListaRow_V: View {
 					Spacer()
 					
 					VStack {
-//						DrinkSkala_V(slodycz: drink.drSlodycz, wielkosc: 20, etykieta: false)
+						DrinkSkala_V(drink: drink, wielkosc: 20, etykieta: false)
 					}
 					
 					Image(systemName: drink.drUlubiony ? "star.fill" : "star")

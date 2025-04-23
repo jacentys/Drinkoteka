@@ -245,3 +245,92 @@ func zamiennikiOn(stan: sklStanEnum, pref: Bool, _ wylaczTrybZamiennikow: Bool) 
 		}
 	}
 }
+
+
+	// MARK: KATEGORIA
+struct Kategoria: View {
+	var kat: String
+	var body: some View {
+		HStack {
+			if kat != "" {
+				HStack(alignment: .lastTextBaseline, spacing: 0) {
+					Text("kat.: ")
+						.font(.caption)
+						.fontWeight(.light)
+						.fontWidth(.condensed)
+
+					Text("\(kat) ")
+						.font(.headline)
+						.fontWeight(.black)
+						.fontWidth(.condensed)
+				}
+			}
+		}
+		.foregroundStyle(Color.secondary)
+	}
+} // KATEGORIA
+
+	// MARK: PROC
+struct Proc: View {
+	var proc: Int
+	var body: some View {
+		HStack(alignment: .lastTextBaseline, spacing: 0) {
+
+			Text("alk.:")
+				.font(.caption)
+				.fontWeight(.light)
+				.fontWidth(.condensed)
+
+			Text("\(proc)%")
+				.font(.headline)
+				.fontWeight(.black)
+				.fontWidth(.condensed)
+
+		}
+		.foregroundColor(Color.secondary)
+	}
+} // PROC
+
+	// MARK: KAL
+struct Kal: View {
+
+	let kal: Int
+
+	var body: some View {
+
+		HStack(alignment: .lastTextBaseline, spacing: 0) {
+
+			Text("kCal.:")
+				.font(.caption)
+				.fontWeight(.light)
+				.fontWidth(.condensed)
+
+			Text("\(kal)")
+				.font(.headline)
+				.fontWeight(.black)
+				.fontWidth(.condensed)
+		}
+		.foregroundColor(Color.secondary)
+	}
+} // KAL
+
+	// MARK: MIARA
+struct Miara: View {
+	var miara: miaraEnum
+	var body: some View {
+		if miara != miaraEnum.brak {
+			HStack(alignment: .lastTextBaseline, spacing: 0) {
+				Text("miara: ")
+					.font(.caption)
+					.fontWeight(.light)
+					.fontWidth(.condensed)
+
+				Text("\(miara.rawValue)".lowercased())
+					.font(.headline)
+					.fontWeight(.black)
+					.fontWidth(.condensed)
+			}
+			.foregroundStyle(Color.secondary)
+		}
+	}
+} // MIARA

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct Skladnik_V: View {
 	
-	@State var skladnik: Skl_M
+	@Bindable var skladnik: Skl_M
 	@State var showEdycja: Bool = false
 
 	var body: some View {
@@ -14,17 +14,16 @@ struct Skladnik_V: View {
 				// MARK: Data
 			ScrollView { // Główny
 				VStack(spacing: 12) {
-//					TitleView(nazwa: skladnik.sklNazwa, proc: skladnik.sklProc, kal: skladnik.sklKal, miara: skladnik.sklMiara, kat: skladnik.sklKat.rawValue)
-
-						// MARK: NAZWA
-
+					SkladnikTitle_V(skladnik:  skladnik)
 					SkladnikFoto_V(skladnik: skladnik) // MARK: FOTO
 
 					if skladnik.sklZamArray.count != 0 { // MARK: ZAMIENNIKI
 						SkladnikZamiennikiAll_V(skladnik: skladnik)
 					}
 					SkladnikOpis_V(skladnik: skladnik)
+					SkladnikWWW_V(skladnik: skladnik)
 				}
+				.padding(.vertical, 30)
 			}
 			.toolbar {
 				ToolbarItem(placement: .confirmationAction) {
