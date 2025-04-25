@@ -73,7 +73,7 @@ func strToDrSzklo(_ tekst: String) -> szkloEnum {
 	switch clear {
 		case "collins": return .collins
 		case "whiskey": return .whiskey
-		case "oldFashioned": return .oldFashioned
+		case "oldfashioned": return .oldfashioned
 		case "koktailowy": return .koktailowy
 		case "szampan": return .szampan
 		case "wino": return .wino

@@ -1,10 +1,4 @@
-//
-//  UIApplication.swift
-//  Barman
-//
-//  Created by Jacek Skrobisz on 2025.04.02.
-//
-
+import Foundation
 import SwiftUI
 
 extension UIApplication {
