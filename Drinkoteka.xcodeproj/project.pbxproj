@@ -28,7 +28,6 @@
 		F3095A872DB3EC5900481E4F /* Skl_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A862DB3EC5900481E4F /* Skl_M.swift */; };
 		F3095A8B2DB3ECB500481E4F /* SklStanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A8A2DB3ECB500481E4F /* SklStanModel.swift */; };
 		F3095A8D2DB3F8E900481E4F /* LoadSklCSV_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A8C2DB3F8E900481E4F /* LoadSklCSV_V.swift */; };
-		F3095A912DB52EE100481E4F /* skladniki.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A902DB52EE100481E4F /* skladniki.swift */; };
 		F3095A942DB543F300481E4F /* LoadSklZamiennikiCSV_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A922DB53DE900481E4F /* LoadSklZamiennikiCSV_V.swift */; };
 		F3095A972DB66DC500481E4F /* JSON_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A962DB66DC500481E4F /* JSON_VM.swift */; };
 		F3095A982DB66DC500481E4F /* AES_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A952DB66DC500481E4F /* AES_VM.swift */; };
@@ -38,6 +37,7 @@
 		F3095AA22DB670B700481E4F /* DrinkPrzepis_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA12DB670B700481E4F /* DrinkPrzepis_V.swift */; };
 		F3095AA82DB693AA00481E4F /* IkonaJestBrak_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */; };
 		F3201BDB2DB941CC00BFF5A1 /* tbtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3201BDA2DB941CC00BFF5A1 /* tbtest.swift */; };
+		F34D9EAC2DBC2BE000D484DC /* SkladnikiLista_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34D9EA82DBC250400D484DC /* SkladnikiLista_V.swift */; };
 		F36F1E822DB783E6000775D6 /* PrefClass_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA92DB6945200481E4F /* PrefClass_VM.swift */; };
 		F36F1E842DB78BC2000775D6 /* Logowanie_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E832DB78BC2000775D6 /* Logowanie_V.swift */; };
 		F36F1E862DB78E4E000775D6 /* Rejestracja_v.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E852DB78E4E000775D6 /* Rejestracja_v.swift */; };
@@ -107,6 +107,7 @@
 		F3095AAA2DB6945200481E4F /* Preferencje_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferencje_V.swift; sourceTree = "<group>"; };
 		F3201BDA2DB941CC00BFF5A1 /* tbtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tbtest.swift; sourceTree = "<group>"; };
 		F324A3092DB19E0C00B21F83 /* Drinkoteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drinkoteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F34D9EA82DBC250400D484DC /* SkladnikiLista_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkladnikiLista_V.swift; sourceTree = "<group>"; };
 		F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkiLista_V.swift; sourceTree = "<group>"; };
 		F36F1E812DB77A29000775D6 /* Drink_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink_V.swift; sourceTree = "<group>"; };
 		F36F1E832DB78BC2000775D6 /* Logowanie_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logowanie_V.swift; sourceTree = "<group>"; };
@@ -329,6 +330,7 @@
 		F36F1E8E2DB7DF24000775D6 /* Skladniki View */ = {
 			isa = PBXGroup;
 			children = (
+				F34D9EA82DBC250400D484DC /* SkladnikiLista_V.swift */,
 				F3095A902DB52EE100481E4F /* skladniki.swift */,
 				F36F1E992DB7E4A3000775D6 /* Skladnik_V.swift */,
 				F377B09D2DB8BBBE00FE8CE3 /* SkladnikTitle_V.swift */,
@@ -452,7 +454,6 @@
 				F3095A642DB3C1E000481E4F /* SklZamiennik_M.swift in Sources */,
 				F36F1E902DB7DF32000775D6 /* SkladnikOpis_V.swift in Sources */,
 				F36F1E9A2DB7E4A3000775D6 /* Skladnik_V.swift in Sources */,
-				F3095A912DB52EE100481E4F /* skladniki.swift in Sources */,
 				F3BEA8732DB8067C001E6801 /* Drink_V.swift in Sources */,
 				F3095A662DB3C1E000481E4F /* LoadDrAlkGlownyCSV_V.swift in Sources */,
 				F36F1E8B2DB7BAFE000775D6 /* DrinkSkladnikLinijka_V.swift in Sources */,
@@ -478,6 +479,7 @@
 				F3BEA8772DB80F91001E6801 /* DrinkDane_V.swift in Sources */,
 				F36F1E862DB78E4E000775D6 /* Rejestracja_v.swift in Sources */,
 				F3095A9B2DB66E2300481E4F /* Back_V.swift in Sources */,
+				F34D9EAC2DBC2BE000D484DC /* SkladnikiLista_V.swift in Sources */,
 				F3095A6C2DB3C1E000481E4F /* DrinkotekaApp.swift in Sources */,
 				F3095AA22DB670B700481E4F /* DrinkPrzepis_V.swift in Sources */,
 				F377B0A32DB8C40C00FE8CE3 /* DrinkFiltry_V.swift in Sources */,

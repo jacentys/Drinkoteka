@@ -9,20 +9,24 @@ struct SkladnikWWW_V: View {
 				
 				VStack(alignment: .leading) {
 					
-						// MARK: Nagłówek
+						// MARK: NAGŁOWEK
 					HStack(alignment: .firstTextBaseline) {
 						Text("Strona WWW:".uppercased())
 							.TitleStyle()
 						Spacer()
 					}
 					
-						// MARK: TEKST NOTATKI
-					Text("\(skladnik.sklWWW)")
-						.frame(maxWidth: .infinity)
-						.font(.title2)
-						.fontWeight(.light)
-						.multilineTextAlignment(.leading)
-						.foregroundStyle(.accent)
+						// MARK: LINK
+					if let url = URL(string: "skladnik.sklWWW") {
+						Link(skladnik.sklWWW, destination: url)
+							.frame(maxWidth: .infinity)
+							.font(.title2)
+							.fontWeight(.light)
+							.multilineTextAlignment(.leading)
+							.foregroundStyle(.accent)
+					} else {
+						Text("Problem z linkiem: \(skladnik.sklWWW)")
+					}
 				}
 			}
 			.padding(20)

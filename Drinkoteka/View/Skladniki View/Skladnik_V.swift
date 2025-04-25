@@ -16,7 +16,6 @@ struct Skladnik_V: View {
 				VStack(spacing: 12) {
 					SkladnikTitle_V(skladnik:  skladnik)
 					SkladnikFoto_V(skladnik: skladnik) // MARK: FOTO
-
 					if skladnik.sklZamArray.count != 0 { // MARK: ZAMIENNIKI
 						SkladnikZamiennikiAll_V(skladnik: skladnik)
 					}

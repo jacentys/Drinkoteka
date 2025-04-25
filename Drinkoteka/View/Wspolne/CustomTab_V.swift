@@ -46,7 +46,7 @@ struct CustomTab_V: View {
 					 .toolbar(.hidden, for: .tabBar)
 #endif
 				 Text("Skladniki")
-				 skladniki()
+				 SkladnikiLista_V()
 					 .tag(Tab.skladniki)
 					 // Ukrycie natywnego tab bar
 #if os(iOS)

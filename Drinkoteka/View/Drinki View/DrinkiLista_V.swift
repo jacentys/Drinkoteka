@@ -6,7 +6,7 @@ struct DrinkiLista_V: View {
 	@Query(sort: \Dr_M.drNazwa) private var drinki: [Dr_M]
 	@Query private var skladniki: [Skl_M]
 
-//	var drinki = drMockArray()
+//	var drinki2 = drMockArray()
 
 	// MARK: - PREFERENCJE
 	@AppStorage("zalogowany") var zalogowany: Bool = false
@@ -73,6 +73,7 @@ struct DrinkiLista_V: View {
 					.fontWeight(.light)
 					.foregroundColor(Color.primary)
 					.listRowBackground(Color.white.opacity(0.7))
+					.padding(.horizontal, 12)
 						// MARK: - DRINKI
 					if !drinki.isEmpty {
 						ForEach(filtrujDrinki()) { drink in
@@ -83,10 +84,9 @@ struct DrinkiLista_V: View {
 										.listRowBackground(Color.white.opacity(0.4))
 								})
 							.buttonStyle(.plain)
-							}
+						}
 					}
 				}
-				// FIXME: DO ZMIANY W MACOS I IOS
 #if os(iOS)
 				.listRowSpacing(2)
 				.listStyle(.grouped)
