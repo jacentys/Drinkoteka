@@ -113,6 +113,11 @@ extension Rejestracja_v {
 				.background(.white)
 				.foregroundColor(.accent)
 				.cornerRadius(8)
+				.disableAutocorrection(true)
+#if os(iOS)
+				.keyboardType(.emailAddress)   // Sets the keyboard type
+				.autocapitalization(.none)     // Disables auto-capitalization
+#endif
 			Divider()
 		}
 		.padding(30)

@@ -3,64 +3,102 @@ import SwiftUI
 
 struct DrinkiLista_V: View {
 	@Environment(\.modelContext) private var modelContext
-//	@Query private var drinki: [Dr_M]
+	@Query(sort: \Dr_M.drNazwa) private var drinki: [Dr_M]
 	@Query private var skladniki: [Skl_M]
 
-	var drinki = drMockArray()
+//	var drinki = drMockArray()
 
-	@AppStorage("sortowEnum") var sortowEnum: sortEnum?
+	// MARK: - PREFERENCJE
+	@AppStorage("zalogowany") var zalogowany: Bool = false
+	@AppStorage("uzytkownik") var uzytkownik: String = ""
+	@AppStorage("uzytkownikMail") var uzytkownikMail: String = ""
+	
+	@AppStorage("sortowEnum") var sortowEnum: sortEnum = .nazwa
 	@AppStorage("sortowRosn") var sortowRosn: Bool = true
 	
+	@AppStorage("filtrAlkGlownyRum") var filtrAlkGlownyRum: Bool = true
+	@AppStorage("filtrAlkGlownyWhiskey") var filtrAlkGlownyWhiskey: Bool = true
+	@AppStorage("filtrAlkGlownyTequila") var filtrAlkGlownyTequila: Bool = true
+	@AppStorage("filtrAlkGlownyBrandy") var filtrAlkGlownyBrandy: Bool = true
+	@AppStorage("filtrAlkGlownyGin") var filtrAlkGlownyGin: Bool = true
+	@AppStorage("filtrAlkGlownyVodka") var filtrAlkGlownyVodka: Bool = true
+	@AppStorage("filtrAlkGlownyChampagne") var filtrAlkGlownyChampagne: Bool = true
+	@AppStorage("filtrAlkGlownyInny") var filtrAlkGlownyInny: Bool = true
+	
+	@AppStorage("filtrSlodkoscNieSlodki") var filtrSlodkoscNieSlodki: Bool = true
+	@AppStorage("filtrSlodkoscLekkoSlodki") var filtrSlodkoscLekkoSlodki: Bool = true
+	@AppStorage("filtrSlodkoscSlodki") var filtrSlodkoscSlodki: Bool = true
+	@AppStorage("filtrSlodkoscBardzoSlodki") var filtrSlodkoscBardzoSlodki: Bool = true
+	
+	@AppStorage("filtrMocBezalk") var filtrMocBezalk: Bool = true
+	@AppStorage("filtrMocDelik") var filtrMocDelik: Bool = true
+	@AppStorage("filtrMocSredni") var filtrMocSredni: Bool = true
+	@AppStorage("filtrMocMocny") var filtrMocMocny: Bool = true
+	
 	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
-	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
+	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = true
 	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
 	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
 
 	@State var szukaj: String = ""
 	@State var pokazFiltr: Bool = false
 
+	var drinkiFiltered: [Dr_M] {
+		if szukaj.isEmpty {
+			return drinki
+		} else {
+			return drinki.filter {
+				$0.drNazwa.localizedCaseInsensitiveContains(szukaj)
+			}
+		}
+	}
+	
 	var body: some View {
 		NavigationStack {
 			VStack(spacing: 0) {
 				VStack {
-					TextField("Szukaj...", text: $szukaj)
-						.font(.headline)
+						// MARK: - POLE WYSZUKIWANIA
+					SearchBar_V(searchText: $szukaj)
 				}
-				.padding(.horizontal, 16)
-				.padding(.vertical, 12)
 				.background(.regularMaterial)
-
-				VStack {
-					List {
-						Section("Test sekcji") {
-
-							HStack(alignment: .firstTextBaseline, spacing: 0) {
-								Text("\(drinki.count) ")
-									.font(.title2)
-								Text("przep..")
-									.font(.footnote)
-								Spacer()
-							}
-							.fontWeight(.light)
-							.foregroundColor(Color.primary)
-//							.listRowBackground(background(.regularMaterial))
-
-						if !drinki.isEmpty {
-							ForEach(drinki) { drink in
-									rowek(drink: drink)
-									.listRowBackground(Color.clear)
-
-								}
-						}
-						}
-//						.padding(.bottom, 30)
+					// MARK: - LISTA
+				List {
+					HStack(alignment: .firstTextBaseline, spacing: 0) {
+						Text("\(filtrujDrinki().count) ")
+							.font(.title2)
+						Text("przep..")
+							.font(.footnote)
+						Spacer()
 					}
-					.listStyle(.plain)
-					.scrollContentBackground(.hidden)
+					.fontWeight(.light)
+					.foregroundColor(Color.primary)
+					.listRowBackground(Color.white.opacity(0.7))
+						// MARK: - DRINKI
+					if !drinki.isEmpty {
+						ForEach(filtrujDrinki()) { drink in
+							NavigationLink(
+								destination: Drink_V(drink: drink),
+								label: {
+									DrinkListaRow(drink: drink)
+										.listRowBackground(Color.white.opacity(0.4))
+								})
+							.buttonStyle(.plain)
+							}
+					}
 				}
+				// FIXME: DO ZMIANY W MACOS I IOS
+#if os(iOS)
+				.listRowSpacing(2)
+				.listStyle(.grouped)
+#endif
+				.listRowSeparator(.hidden)
+#if os(macOS)
+				.listStyle(.automatic)
+#endif
+				.scrollContentBackground(.hidden)
 			}
 			.background(Back_V().ignoresSafeArea())
-
+			
 			.toolbar {
 					// MARK: - TOOLBAR LEWO
 				ToolbarItemGroup(placement: .navigation) {
@@ -101,6 +139,7 @@ struct DrinkiLista_V: View {
 				}
 
 					// MARK: - TOOLBAR PRAWO
+				
 				ToolbarItemGroup(placement: .destructiveAction) {
 					HStack(spacing: 0) {
 						Button {
@@ -125,11 +164,9 @@ struct DrinkiLista_V: View {
 			.toolbarBackground(Material.thinMaterial)
 			.navigationViewStyle(.automatic)
 			.navigationTitle("Drinki")
-
 		}
 	}
 		// MARK: - LOAD ALL DRINKS
-
 	private func loadAllDrinks() {
 			//			debugPobrane(miejsce: "Ładowanie drinków")
 		if !UserDefaults.standard.bool(forKey: "setupDone")
@@ -145,7 +182,6 @@ struct DrinkiLista_V: View {
 			//			debugPobrane(miejsce: "Koniec Ładowania")
 	}
 		// MARK: - RESET ALL
-
 	private func resetAll() {
 		UserDefaults.standard.set(false, forKey: "setupDone")
 			//							debugPobrane(miejsce: "Przed")
@@ -159,7 +195,6 @@ struct DrinkiLista_V: View {
 		UserDefaults.standard.set(true, forKey: "setupDone")
 	}
 		// MARK: - ADD DRINK
-
 	private func addDrink() {
 		print("Funkcja addDrink uruchomiona")
 			//		withAnimation {
@@ -168,7 +203,6 @@ struct DrinkiLista_V: View {
 			//		}
 	}
 		// MARK: - DEL DRINK
-
 	private func delDrink(offsets: IndexSet) {
 		withAnimation {
 //			for index in offsets {
@@ -178,7 +212,6 @@ struct DrinkiLista_V: View {
 		}
 	}
 		// MARK: - DEL ALL
-
 	private func delAll() {
 		print("Funkcja delAll uruchomiona")
 		do {
@@ -188,9 +221,7 @@ struct DrinkiLista_V: View {
 			print("Błąd przy usuwaniu drinków: \(error)")
 		}
 	}
-
 		// MARK: - DEBUG POBRANE
-
 	private func debugPobrane(miejsce: String) {
 		do {
 			let fetchRequestDR = FetchDescriptor<Dr_M>()
@@ -202,6 +233,47 @@ struct DrinkiLista_V: View {
 			print("W miejscu \(miejsce) \(allDrinks.count) drinków i \(allSkladniki.count) składników")
 		} catch {
 			print("Błąd przy pobieraniu drinków: \(error)")
+		}
+	}
+		// MARK: - FILTR
+	func filtrujDrinki() -> [Dr_M] {
+		
+		return drinkiFiltered.filter { drink in
+			
+				// Filtrowanie po słodkości
+			let filtrSlodkosci =
+			(filtrSlodkoscNieSlodki && drink.drSlodycz == drSlodyczEnum.nieSlodki) ||
+			(filtrSlodkoscLekkoSlodki && drink.drSlodycz == drSlodyczEnum.lekkoSlodki) ||
+			(filtrSlodkoscSlodki && drink.drSlodycz == drSlodyczEnum.slodki) ||
+			(filtrSlodkoscBardzoSlodki && drink.drSlodycz == drSlodyczEnum.bardzoSlodki) ||
+			(drink.drSlodycz == drSlodyczEnum.brakDanych)
+			
+				// Filtrowanie po głównym alkoholu
+			let filtrAlkGlownego =
+			(filtrAlkGlownyRum && drink.drAlkGlowny.contains { $0 == .rum }) ||
+			(filtrAlkGlownyWhiskey && drink.drAlkGlowny.contains { $0 == .whiskey }) ||
+			(filtrAlkGlownyTequila && drink.drAlkGlowny.contains { $0 == .tequila }) ||
+			(filtrAlkGlownyBrandy && drink.drAlkGlowny.contains { $0 == .brandy }) ||
+			(filtrAlkGlownyGin && drink.drAlkGlowny.contains { $0 == .gin }) ||
+			(filtrAlkGlownyVodka && drink.drAlkGlowny.contains { $0 == .vodka }) ||
+			(filtrAlkGlownyChampagne && drink.drAlkGlowny.contains { $0 == .champagne }) ||
+			(filtrAlkGlownyInny && drink.drAlkGlowny.contains { $0 == .inny })
+			
+				// Filtrowanie po mocy alkoholu
+			let filtrMocy =
+			((filtrMocBezalk && drink.drMoc == drMocEnum.bezalk) ||
+			 (filtrMocDelik && drink.drMoc == drMocEnum.delik) ||
+			 (filtrMocSredni && drink.drMoc == drMocEnum.sredni) ||
+			 (filtrMocMocny && drink.drMoc == drMocEnum.mocny)) ||
+			drink.drMoc == drMocEnum.brakDanych
+			
+				// Filtrowanie po preferencjach
+			let filtrPreferencji =
+			(!tylkoUlubione || drink.drUlubiony) &&
+			(!tylkoDostepne || drink.drBrakuje == 0)
+			
+				//			return filtrSlodkosci && filtrMocy && filtrAlkGlownego && filtrPreferencji
+			return filtrSlodkosci && filtrMocy && filtrAlkGlownego && filtrPreferencji
 		}
 	}
 }
@@ -383,66 +455,55 @@ private func rowek2(drink: Dr_M) -> some View {
 	Text("Test")
 }
 
-private func rowek(drink: Dr_M) -> some View {
+private func DrinkListaRow(drink: Dr_M) -> some View {
+	HStack {
+			// MARK: - IKONKA
 		ZStack {
-			Rectangle()
-				.frame(minHeight: 66, maxHeight: 100)
-				.frame(maxWidth: .infinity)
-				.foregroundStyle(.thinMaterial)
-
-//			HStack {
-//				ZStack {
-//					Circle()
-//						.fill(.regularMaterial.opacity(drink.drBrakuje == 0 ? 0.8 : 0.8))
-//						.stroke(drink.getKolor().opacity(drink.drBrakuje == 0 ? 0.8 : 0.8), lineWidth: drink.drBrakuje == 0 ? 1 : 1)
-//
-//					Image(!drink.drFoto.isEmpty ? drink.drFoto :  drink.drSzklo.foto)
-//						.resizable()
-//						.aspectRatio(contentMode: .fit)
-//						.frame(width: 35, height: 35)
-//						.foregroundStyle(Color.primary)
-//
-//					Image(systemName: "checkmark")
-//						.font(.system(size: 12))
-//						.fontWeight(.black)
-//						.frame(width: 60, height: 50, alignment: .bottomTrailing)
-//						.foregroundStyle(Color.primary.opacity(drink.drBrakuje == 0 ? 1 : 0))
-//				}
-//				.frame(width: 60, height: 50)
-//
-//				Divider()
-//
-//				VStack {
-//					Spacer()
-//
-//					HStack(spacing: 0) {
-//						VStack(alignment: .leading) {
-//							Text("\(drink.drNazwa)")
-//								.font(.headline)
-//								.foregroundStyle(Color.primary)
-//							Text("\(drink.drMoc)")
-//								.foregroundColor(Color.secondary)
-//								.font(.footnote)
-//						}
-//						Spacer()
-//					}
-//					Spacer()
-//				}
-//				.frame(width: 180)
-//				Spacer()
-//
-//				VStack {
-//					DrinkSkala_V(drink: drink, wielkosc: 20, etykieta: false)
-//				}
-//
-//				Image(systemName: drink.drUlubiony ? "star.fill" : "star")
-//					.font(.system(size: 23))
-//					.foregroundStyle(drink.drUlubiony ? Color.accent : Color.gray)
-//					//						.onTapGesture {
-//					//							drinkiClass.updateDrinkUlubiony(drink: drink)
-//					//						}
-//			}
+			Circle()
+				.fill(.regularMaterial)
+				.stroke(drink.getKolor(), lineWidth: drink.drBrakuje == 0 ? 2 : 1)
+			
+			Image(!drink.drFoto.isEmpty ? drink.drFoto :  drink.drSzklo.foto)
+				.resizable()
+				.aspectRatio(contentMode: .fit)
+				.frame(width: 35, height: 35)
+				.foregroundStyle(Color.primary)
+			
+			Image(systemName: "checkmark")
+				.font(.system(size: 12))
+				.fontWeight(.black)
+				.frame(width: 60, height: 50, alignment: .bottomTrailing)
+				.foregroundStyle(Color.primary.opacity(drink.drBrakuje == 0 ? 1 : 0))
 		}
+		.frame(width: 50, height: 50)
+		Divider().frame(height: 50)
+			// MARK: - OPIS
+		VStack(spacing: 0) {
+			VStack(alignment: .leading) {
+				Text("\(drink.drNazwa)")
+					.font(.headline)
+					.foregroundStyle(Color.primary)
+				Divider()
+				Text("\(drink.drMoc)")
+					.foregroundColor(Color.secondary)
+					.font(.footnote)
+			}
+		}
+		.frame(maxWidth: .infinity)
+		Divider().frame(height: 50)
+			// MARK: - SKALA
+		DrinkSkala_V(drink: drink, wielkosc: 20, etykieta: false)
+			.shadow(color: .white, radius: 20)
+			.shadow(color: .white, radius: 20)
+			.padding(.leading, 8)
+			// MARK: - GWIAZDKA
+		Image(systemName: drink.drUlubiony ? "star.fill" : "star")
+			.font(.system(size: 23))
+			.foregroundStyle(drink.drUlubiony ? Color.accent : Color.gray)
+			//						.onTapGesture {
+			//							drinkiClass.updateDrinkUlubiony(drink: drink)
+			//						}
+	}
 }
 
 

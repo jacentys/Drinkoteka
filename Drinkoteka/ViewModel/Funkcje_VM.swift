@@ -7,37 +7,6 @@ import AppKit
 typealias PlatformColor = NSColor
 #endif
 
-//@AppStorage("zalogowany") var zalogowany: Bool = true
-//@AppStorage("uzytkownik") var uzytkownik: String = ""
-//@AppStorage("uzytkownikMail") var uzytkownikMail: String = ""
-//
-//@AppStorage("sortowEnum") var sortowEnum: sortEnum?
-//@AppStorage("sortowRosn") var sortowRosn: Bool = true
-//
-//@AppStorage("filtrAlkGlownyRum") var filtrAlkGlownyRum: Bool = true
-//@AppStorage("filtrAlkGlownyWhiskey") var filtrAlkGlownyWhiskey: Bool = true
-//@AppStorage("filtrAlkGlownyTequila") var filtrAlkGlownyTequila: Bool = true
-//@AppStorage("filtrAlkGlownyBrandy") var filtrAlkGlownyBrandy: Bool = true
-//@AppStorage("filtrAlkGlownyGin") var filtrAlkGlownyGin: Bool = true
-//@AppStorage("filtrAlkGlownyVodka") var filtrAlkGlownyVodka: Bool = true
-//@AppStorage("filtrAlkGlownyChampagne") var filtrAlkGlownyChampagne: Bool = true
-//@AppStorage("filtrAlkGlownyInny") var filtrAlkGlownyInny: Bool = true
-//
-//@AppStorage("filtrSlodkoscNieSlodki") var filtrSlodkoscNieSlodki: Bool = true
-//@AppStorage("filtrSlodkoscLekkoSlodki") var filtrSlodkoscLekkoSlodki: Bool = true
-//@AppStorage("filtrSlodkoscSlodki") var filtrSlodkoscSlodki: Bool = true
-//@AppStorage("filtrSlodkoscBardzoSlodki") var filtrSlodkoscBardzoSlodki: Bool = true
-//
-//@AppStorage("filtrMocBezalk") var filtrMocBezalk: Bool = true
-//@AppStorage("filtrMocDelik") var filtrMocDelik: Bool = true
-//@AppStorage("filtrMocSredni") var filtrMocSredni: Bool = true
-//@AppStorage("filtrMocMocny") var filtrMocMocny: Bool = true
-//
-//@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = true
-//@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = true
-//@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = true
-//@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = true
-
 	// MARK: CLEARSTR
 func clearStr(_ tekst: String) -> String {
 	let trimmed = tekst.trimmingCharacters(in: .punctuationCharacters.union(.whitespacesAndNewlines)).lowercased()

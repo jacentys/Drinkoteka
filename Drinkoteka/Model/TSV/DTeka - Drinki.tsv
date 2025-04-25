@@ -6,12 +6,12 @@ armageddon	Armageddon	koktail	Przepisy na proste drinki	Pomarańczowy		36	Lekko 
 aviation	Aviation	koktail	IBA Niezapomniane	Niebieski		28	Lekko Słodki	koktailowy	0			
 b52	B-52	shot	Wikipedia	Różnokolorowy		26	Lekko Słodki	kieliszek	0			https://www.wikidata.org/wiki/Q594392
 barracuda	Barracuda	koktail	IBA Nowa Era	Turkusowy		23	Słodki	collins	0			
-bemylover	Be My Lover	koktail	Przepisy na proste drinki	Zielony		25	Słodki	collins	0			
 beesknees	Bee's Knees	koktail	IBA Nowa Era	Żółty		26	Lekko Słodki	koktailowy	0			
 bellini	Bellini	koktail	IBA Klasyki	Żółty		9	Lekko Słodki	szampan	0			
+bemylover	Be My Lover	koktail	Przepisy na proste drinki	Zielony		25	Słodki	collins	0			
 betweenthesheets	Between the Sheets	koktail	IBA Niezapomniane	Czerwony		24	Słodki	koktailowy	0			
 billiejean	Billie Jean	shot	Przepisy na proste drinki	Zielony		23	Słodki	kieliszek	0			
-blackrussian	Black Russian	koktail	IBA Klasyki	Czerwony		21	Nie Słodki	oldFashioned	0			
+blackrussian	Black Russian	koktail	IBA Klasyki	Czerwony		21	Nie Słodki	oldfashioned	0			
 bloodymary	Bloody Mary	koktail	IBA Klasyki	Czerwony		13	Nie Słodki	collins	0			
 bluepinacolada	Blue Pina Colada	koktail	Przepisy na proste drinki	Turkusowy		23	Słodki	collins	0			
 boombastic	Boombastic	koktail	Przepisy na proste drinki	Czerwony		25	Lekko Słodki	collins	0			
@@ -19,9 +19,9 @@ bornintheusa	Born in the USA	koktail	Przepisy na proste drinki	Turkusowy		25	Lek
 boulevardier	Boulevardier	koktail	IBA Niezapomniane	Czerwony		28	Nie Słodki	whiskey	0			
 bramble	Bramble	koktail	IBA Nowa Era	Fioletowy		24	Słodki	whiskey	0			
 brandycrusta	Brandy Crusta	koktail	IBA Niezapomniane	Czerwony		33	Lekko Słodki	koktailowy	0			
-caipirinha	Caipirinha	koktail	IBA Klasyki	Zielony		28	Lekko Słodki	oldFashioned	0			
-caipiroska	Caipiroska	koktail	IBA Klasyki	Zielony		28	Lekko Słodki	oldFashioned	1			
-canchanchara	Canchanchara	koktail	IBA Nowa Era	Zielony		28	Słodki	oldFashioned	0			
+caipirinha	Caipirinha	koktail	IBA Klasyki	Zielony		28	Lekko Słodki	oldfashioned	0			
+caipiroska	Caipiroska	koktail	IBA Klasyki	Zielony		28	Lekko Słodki	oldfashioned	1			
+canchanchara	Canchanchara	koktail	IBA Nowa Era	Zielony		28	Słodki	oldfashioned	0			
 captainjack	Captain Jack	koktail	Przepisy na proste drinki	Beżowy		25	Słodki	whiskey	0			
 casino	Casino	koktail	IBA Niezapomniane	Zielony		23	Słodki	koktailowy	0			
 casinoroyale	Casino Royale	koktail	Przepisy na proste drinki	Zielony		25	Lekko Słodki	koktailowy	0			
@@ -52,7 +52,7 @@ firestarter	Firestarter	koktail	Przepisy na proste drinki	Czerwony		25	Słodki	c
 footloose	Footloose	koktail	Przepisy na proste drinki	Żółty		23	Słodki	collins	0			
 freestyler	Free Styler	koktail	Przepisy na proste drinki	Zielony		27	Lekko Słodki	koktailowy	0			
 french75	French 75	koktail	IBA Klasyki	Bezbarwny		13	Lekko Słodki	szampan	0			
-frenchconnection	French Connection	koktail	IBA Klasyki	Brązowy		27	Lekko Słodki	oldFashioned	0			
+frenchconnection	French Connection	koktail	IBA Klasyki	Brązowy		27	Lekko Słodki	oldfashioned	0			
 frenchmartini	French Martini	koktail	IBA Nowa Era	Fioletowy		27	Słodki	koktailowy	0			
 gangstaparadise	Gangsta Paradise	koktail	Przepisy na proste drinki	Czerwony		25	Lekko Słodki	collins	0			
 ginfizz	Gin Fizz	koktail	IBA Niezapomniane	Bezbarwny		13	Lekko Słodki	collins	0		Podawaj bez lodu.	
@@ -67,7 +67,7 @@ horsesneck	Horse's Neck	koktail	IBA Klasyki	Bezbarwny		13	Lekko Słodki	collins	
 illegal	Illegal	koktail	IBA Nowa Era	Fioletowy		26	Słodki	koktailowy	0			
 invisibleman	Invisible Man	koktail	Przepisy na proste drinki	Beżowy		13	Słodki	koktailowy	0			
 irishcoffee	Irish Coffee	koktail	IBA Klasyki	Brązowy		20	Słodki	collins	0			
-jacuzi	Jacuzi	koktail	Własne	Pomarańczowy		17	Słodki	collins	1			
+jacuzi	Jacuzi	koktail	Własne	Pomarańczowy		0	Słodki	collins	1			
 johncollins	John Collins	koktail	IBA Niezapomniane	Żółty		23	Lekko Słodki	collins	0		Do Tom Collins użyj ginu Old Tom.	
 johnybravo	Johny Bravo	koktail	Przepisy na proste drinki	Czerwony		23	Słodki	whiskey	0			
 joyride	Joy Ride	koktail	Przepisy na proste drinki	Pomarańczowy		25	Słodki	whiskey	0			
@@ -84,8 +84,8 @@ littlerock	Little Rock	koktail	Przepisy na proste drinki	Zielony		25	Słodki	whi
 longislandicetea	Long Island Ice Tea	koktail	IBA Klasyki	Bezbarwny		19	Bardzo Słodki	collins	0			
 lowcaandroidow	Łowca Androidów	koktail	Przepisy na proste drinki	Fioletowy		23	Nie Słodki	collins	0			
 maitai	Mai-Tai	koktail	IBA Klasyki	Turkusowy		25	Słodki	collins	0			
-maninthemirror	Man in the Mirror	koktail	Przepisy na proste drinki	Czerwony		25	Lekko Słodki	collins	0			
 manhattan	Manhattan	koktail	IBA Niezapomniane	Czerwony		28	Nie Słodki	koktailowy	0			
+maninthemirror	Man in the Mirror	koktail	Przepisy na proste drinki	Czerwony		25	Lekko Słodki	collins	0			
 margarita	Margarita	koktail	IBA Klasyki	Zielony		28	Lekko Słodki	margarita	0			
 margaritatruskawkowa	Margarita Truskawkowa	koktail	Przepisy na proste drinki	Czerwony		16	Słodki	margarita	0			
 marktwaincoctail	Mark Twain Coctail	koktail	Własne	Czerwony		28	Słodki	koktailowy	1			
@@ -120,7 +120,7 @@ parttimelover	Part Time Lover	koktail	Przepisy na proste drinki	Różowy		16	Lek
 penicillin	Penicillin	koktail	IBA Nowa Era	Żółty		22	Słodki	whiskey	0			
 pigwowekamikaze	Pigwowe Kamikaze	shot	Przepisy na proste drinki	Turkusowy		23	Lekko Słodki	kieliszek	0			
 pinacolada	Pina Colada	koktail	IBA Klasyki	Turkusowy		23	Bardzo Słodki	collins	0		Dawniej do smaku dodawano kilka kropli świeżego soku z limonki. Zamiast soku można użyć 4 plasterków świeżego ananasa.	
-piscosour	Pisco Sour	koktail	IBA Klasyki	Zielony		23	Lekko Słodki	oldFashioned	0			
+piscosour	Pisco Sour	koktail	IBA Klasyki	Zielony		23	Lekko Słodki	oldfashioned	0			
 planterspunch	Planter's Punch	koktail	IBA Niezapomniane	Czerwony		25	Słodki	collins	0		Dodaj wodę, lód lub świeży sok do rozcieńczenia smaku.	
 portoflip	Porto Flip	koktail	IBA Niezapomniane	Brązowy		25	Słodki	koktailowy	0			
 privatedancer	Private Dancer	koktail	Przepisy na proste drinki	Turkusowy		16	Słodki	collins	0			
@@ -136,7 +136,7 @@ russianspringpunch	Russian Spring Punch	koktail	IBA Nowa Era	Fioletowy		27	Słod
 rustynail	Rusty Nail	koktail	IBA Niezapomniane	Brązowy		25	Lekko Słodki	whiskey	0			
 sambadejaneiro	Samba De Janeiro	koktail	Przepisy na proste drinki	Pomarańczowy		18	Słodki	collins	0			
 satisfaction	Satisfaction	koktail	Przepisy na proste drinki	Czerwony		25	Słodki	whiskey	0			
-sazerac	Sazerac	koktail	IBA Niezapomniane	Brązowy		25	Nie Słodki	oldFashioned	0			
+sazerac	Sazerac	koktail	IBA Niezapomniane	Brązowy		25	Nie Słodki	oldfashioned	0			
 seabreeze	Sea Breeze	koktail	IBA Klasyki	Turkusowy		23	Lekko Słodki	collins	0			
 sexonthebeach	Sex on the Beach	koktail	IBA Klasyki	Różowy		16	Bardzo Słodki	collins	0			
 sidecar	Sidecar	koktail	IBA Niezapomniane	Bezbarwny		13	Nie Słodki	koktailowy	0			
@@ -172,18 +172,18 @@ underthebridge	Under the Bridge	koktail	Przepisy na proste drinki	Czerwony		23	S
 upiorwoperze	Upiór w Operze	koktail	Przepisy na proste drinki	Turkusowy		25	Lekko Słodki	collins	0			
 vento	VE.N.TO	koktail	IBA Nowa Era	Zielony		23	Słodki	wino	0		Jeśli chcesz, wodę można zastąpić naparem rumianku w mieszance z miodem.	
 vesper	Vesper	koktail	IBA Klasyki	Bezbarwny		13	Lekko Słodki	koktailowy	0			
-vieuxcarre	Vieux Carrè	koktail	IBA Niezapomniane	Brązowy		25	Słodki	oldFashioned	0			
+vieuxcarre	Vieux Carrè	koktail	IBA Niezapomniane	Brązowy		25	Słodki	oldfashioned	0			
 viper	Viper	koktail	Przepisy na proste drinki	Zielony		23	Słodki	collins	0			
 wakabayashi	Wakabayashi	koktail	Przepisy na proste drinki	Brązowy		23	Słodki	koktailowy	0			
 walkoflife	Walk of Life	koktail	Przepisy na proste drinki	Czerwony		23	Lekko Słodki	whiskey	0			
 whiskeysour	Whiskey Sour	koktail	IBA Niezapomniane	Żółty		23	Lekko Słodki	whiskey	0		Jeśli używasz białka jajka, wstrząśnij mocniej, aby uwolnić i połączyć pianę z białka.	
 whitelady	White Lady	koktail	IBA Niezapomniane	Bezbarwny		13	Słodki	koktailowy	0			
-whiterussian	White Russian	koktail	IBA Klasyki	Bezbarwny		13	Słodki	oldFashioned	0			
+whiterussian	White Russian	koktail	IBA Klasyki	Bezbarwny		13	Słodki	oldfashioned	0			
 windofchange	Wind of Change	koktail	Przepisy na proste drinki	Czerwony		23	Lekko Słodki	collins	0			
 wscieklypies	Wściekły Pies	shot	Wikipedia	Czerwony		25	Nie Słodki	kieliszek	0			https://pl.wikipedia.org/wiki/W%C5%9Bciek%C5%82y_pies
 yattaman	Yattaman	koktail	Przepisy na proste drinki	Czerwony		23	Lekko Słodki	collins	0			
 yellowbird	Yellow Bird	koktail	IBA Nowa Era	Żółty		23	Słodki	koktailowy	0			
 zabojczabron	Zabójcza Broń	koktail	Przepisy na proste drinki	Pomarańczowy		25	Słodki	collins	0			
 zabojczynumer	Zabójczy Numer	koktail	Przepisy na proste drinki	Zielony		25	Lekko Słodki	koktailowy	0			
-zombie	Zombie	koktail	IBA Klasyki	Zielony		23	Bardzo Słodki	collins	0		Donn's Mix: 2 części świeżego żółtego grejpfruta i 1 część syropu cynamonowego.	
 zartropikow	Żar Tropików	koktail	Przepisy na proste drinki	Zielony		18	Bardzo Słodki	collins	0			
+zombie	Zombie	koktail	IBA Klasyki	Zielony		23	Bardzo Słodki	collins	0		Donn's Mix: 2 części świeżego żółtego grejpfruta i 1 część syropu cynamonowego.	

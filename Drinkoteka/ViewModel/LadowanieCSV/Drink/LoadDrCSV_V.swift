@@ -23,7 +23,7 @@ func loadDrCSV_V(modelContext: ModelContext){
 				let kategoria = strToDrKatEnum(kolumny[2])
 				let zrodlo = kolumny[3]
 				let kolor = kolumny[4]
-				let foto = kolumny[5] != "" ? kolumny[5] : strToDrSzklo(kolumny[7]).foto
+				let foto = kolumny[5] != "" ? kolumny[5] : strToDrSzklo(kolumny[8]).foto
 				let procenty = Int(kolumny[6]) ?? 0
 				let slodycz = strToDrSlodycz(kolumny[7])
 				let szklo = strToDrSzklo(kolumny[8])

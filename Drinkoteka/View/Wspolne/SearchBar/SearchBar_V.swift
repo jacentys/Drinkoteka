@@ -13,7 +13,9 @@ struct SearchBar_V: View {
 				 
 				 TextField("Szukaj...", text: $searchText)
 					 .foregroundColor(Color.primary)
+#if os(iOS)
 					 .autocapitalization(.none)
+#endif
 					 .disableAutocorrection(true)
 					 .overlay(
 						Image(systemName: "xmark.circle.fill")
@@ -22,7 +24,9 @@ struct SearchBar_V: View {
 							.foregroundColor(Color.primary)
 							.opacity(searchText.isEmpty ? 0.0 : 1.0)
 							.onTapGesture {
+#if os(iOS)
 								UIApplication.shared.koniecEdycjiExt()
+#endif
 								searchText = ""
 							}
 						

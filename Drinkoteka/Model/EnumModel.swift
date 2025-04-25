@@ -184,7 +184,7 @@ enum drSlodyczEnum: String, CaseIterable, Codable  {
 enum szkloEnum: String, CaseIterable, Codable {
 	case collins = "collins"
 	case whiskey = "whiskey"
-	case oldFashioned = "oldFashioned"
+	case oldfashioned = "oldFashioned"
 	case koktailowy = "koktailowy"
 	case szampan = "szampan"
 	case wino = "wino"
@@ -196,7 +196,7 @@ enum szkloEnum: String, CaseIterable, Codable {
 		switch self {
 			case .collins: return "Szklanka Collins"
 			case .whiskey: return "Szklanka Whiskey"
-			case .oldFashioned: return "Szklanka Old Fashioned"
+			case .oldfashioned: return "Szklanka Old Fashioned"
 			case .koktailowy: return "Kieliszek Koktailowy"
 			case .szampan: return "Kielliszek do Szampana"
 			case .wino: return "Kieliszek do Wina"
@@ -210,7 +210,7 @@ enum szkloEnum: String, CaseIterable, Codable {
 		switch self {
 			case .collins: return "szkloCollins"
 			case .whiskey: return "szkloWhiskey"
-			case .oldFashioned: return "szkloOldFashioned"
+			case .oldfashioned: return "szkloOldFashioned"
 			case .koktailowy: return "szkloKoktailowy"
 			case .szampan: return "szkloSzampan"
 			case .wino: return "szkloWino"
@@ -224,7 +224,7 @@ enum szkloEnum: String, CaseIterable, Codable {
 		switch self {
 			case .collins: return 350
 			case .whiskey: return 180
-			case .oldFashioned: return 300
+			case .oldfashioned: return 300
 			case .koktailowy: return 130
 			case .szampan: return 150
 			case .wino: return 150

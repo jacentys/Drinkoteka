@@ -1,36 +1,36 @@
 import SwiftUI
 
 class PrefClass_VM: ObservableObject {
-	@AppStorage("zalogowany") var zalogowany: Bool?
-	@AppStorage("uzytkownik") var uzytkownik: String?
-	@AppStorage("uzytkownikMail") var uzytkownikMail: String?
+	@AppStorage("zalogowany") var zalogowany: Bool = false
+	@AppStorage("uzytkownik") var uzytkownik: String = ""
+	@AppStorage("uzytkownikMail") var uzytkownikMail: String = ""
 
-	@AppStorage("sortowEnum") var sortowEnum: sortEnum?
-	@AppStorage("sortowRosn") var sortowRosn: Bool?
+	@AppStorage("sortowEnum") var sortowEnum: sortEnum = .nazwa
+	@AppStorage("sortowRosn") var sortowRosn: Bool = true
 
-	@AppStorage("filtrAlkGlownyRum") var filtrAlkGlownyRum: Bool?
-	@AppStorage("filtrAlkGlownyWhiskey") var filtrAlkGlownyWhiskey: Bool?
-	@AppStorage("filtrAlkGlownyTequila") var filtrAlkGlownyTequila: Bool?
-	@AppStorage("filtrAlkGlownyBrandy") var filtrAlkGlownyBrandy: Bool?
-	@AppStorage("filtrAlkGlownyGin") var filtrAlkGlownyGin: Bool?
-	@AppStorage("filtrAlkGlownyVodka") var filtrAlkGlownyVodka: Bool?
-	@AppStorage("filtrAlkGlownyChampagne") var filtrAlkGlownyChampagne: Bool?
-	@AppStorage("filtrAlkGlownyInny") var filtrAlkGlownyInny: Bool?
+	@AppStorage("filtrAlkGlownyRum") var filtrAlkGlownyRum: Bool = true
+	@AppStorage("filtrAlkGlownyWhiskey") var filtrAlkGlownyWhiskey: Bool = true
+	@AppStorage("filtrAlkGlownyTequila") var filtrAlkGlownyTequila: Bool = true
+	@AppStorage("filtrAlkGlownyBrandy") var filtrAlkGlownyBrandy: Bool = true
+	@AppStorage("filtrAlkGlownyGin") var filtrAlkGlownyGin: Bool = true
+	@AppStorage("filtrAlkGlownyVodka") var filtrAlkGlownyVodka: Bool = true
+	@AppStorage("filtrAlkGlownyChampagne") var filtrAlkGlownyChampagne: Bool = true
+	@AppStorage("filtrAlkGlownyInny") var filtrAlkGlownyInny: Bool = true
 
-	@AppStorage("filtrSlodkoscNieSlodki") var filtrSlodkoscNieSlodki: Bool?
-	@AppStorage("filtrSlodkoscLekkoSlodki") var filtrSlodkoscLekkoSlodki: Bool?
-	@AppStorage("filtrSlodkoscSlodki") var filtrSlodkoscSlodki: Bool?
-	@AppStorage("filtrSlodkoscBardzoSlodki") var filtrSlodkoscBardzoSlodki: Bool?
+	@AppStorage("filtrSlodkoscNieSlodki") var filtrSlodkoscNieSlodki: Bool = true
+	@AppStorage("filtrSlodkoscLekkoSlodki") var filtrSlodkoscLekkoSlodki: Bool = true
+	@AppStorage("filtrSlodkoscSlodki") var filtrSlodkoscSlodki: Bool = true
+	@AppStorage("filtrSlodkoscBardzoSlodki") var filtrSlodkoscBardzoSlodki: Bool = true
 
-	@AppStorage("filtrMocBezalk") var filtrMocBezalk: Bool?
-	@AppStorage("filtrMocDelik") var filtrMocDelik: Bool?
-	@AppStorage("filtrMocSredni") var filtrMocSredni: Bool?
-	@AppStorage("filtrMocMocny") var filtrMocMocny: Bool?
+	@AppStorage("filtrMocBezalk") var filtrMocBezalk: Bool = true
+	@AppStorage("filtrMocDelik") var filtrMocDelik: Bool = true
+	@AppStorage("filtrMocSredni") var filtrMocSredni: Bool = true
+	@AppStorage("filtrMocMocny") var filtrMocMocny: Bool = true
 
-	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool?
-	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool?
-	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool?
-	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool?
+	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
+	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = true
+	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
+	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
 
 	init(
 		zalogowany: Bool = false,
