@@ -2,7 +2,7 @@ import SwiftData
 import Foundation
 
 func loadDrCSV_V(modelContext: ModelContext){
-	print("Start loadDrinkiCSV_V")
+	print("Start loadDrCSV_V")
 	let nazwaPliku = "DTeka - Drinki"
 	let iloscKolumn = 13
 	
@@ -64,6 +64,7 @@ func loadDrCSV_V(modelContext: ModelContext){
 	} catch {
 		print("Błąd wczytywania pliku \(nazwaPliku): \(error)")
 	}
+	print("Koniec loadDrCSV_V")
 }
 
 //func getSkladnikiDrinkaFromID(drinkID: String) -> [DrinkSkladnik_M] {

@@ -39,7 +39,6 @@ struct Skladnik_V: View {
 
 #Preview {
 	NavigationStack {
-		Text("skltest")
-//		SkladnikView(sklSelID: skladnik.id)
+		Skladnik_V(skladnik: sklMock())
 	}
 }

@@ -42,6 +42,5 @@ struct SkladnikTitle_V: View {
 }
 
 #Preview {
-	Text("Skladnik Title")
-//	TitleView(nazwa: "Amaretto", proc: 20, kal: 130, miara: miaraEnum.galazka, kat: "alkochol")
+	SkladnikTitle_V(skladnik: sklMock())
 }

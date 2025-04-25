@@ -35,7 +35,6 @@ struct SkladnikWWW_V: View {
 
 #Preview {
 	NavigationStack {
-		Text("WWW V")
-			//		DrinkNotatka(drSelID: drink.id)
+		SkladnikWWW_V(skladnik: sklMock())
 	}
 }

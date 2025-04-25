@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct DrinkiView: View {
+struct Dr_V: View {
 
 	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
 	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
@@ -76,7 +76,7 @@ struct DrinkiView: View {
 				Spacer()
 
 					// Dolny pasek (TabBar)
-				CustomTabView()
+				CustomTab_V()
 			}
 		}
 #elseif os(macOS)
@@ -148,5 +148,5 @@ struct DrinkiView: View {
 }
 
 #Preview {
-	DrinkiView()
+	Dr_V()
 }

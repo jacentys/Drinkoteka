@@ -7,6 +7,8 @@ struct DrinkFiltry_V: View {
 		case moc
 	}
 
+	@Environment(\.dismiss) var dismiss
+
 	@AppStorage("zalogowany") var zalogowany: Bool?
 
 	@AppStorage("sortowEnum") var sortowEnum: sortEnum?
@@ -36,9 +38,6 @@ struct DrinkFiltry_V: View {
 	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
 	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
 
-//	@EnvironmentObject var drClass: DrClass
-	@Environment(\.dismiss) var dismiss
-
 	@State var rodzajBledu: blad = blad.alkGlowny
 	@State var pokazBlad: Bool = false
 
@@ -46,232 +45,295 @@ struct DrinkFiltry_V: View {
 	@State var toggleSlodkosc: Bool = true
 	@State var toggleMoc: Bool = true
 
+	@State var allAlkGlowny: Bool = true
+	@State var allSlodkosc: Bool = true
+	@State var allMoc: Bool = true
+
+	let paddingHoriz: CGFloat = 20
+	let paddingVert: CGFloat = 6
+
+
 	var body: some View {
 		NavigationStack {
-			Form{
-				Section( // MARK: Sortowanie
-					header: Text("Sortowanie"),
-					footer: Text("Sortuj wg. nazwy, słodkości, zawartości alkoholu, kalorii lub ilości składników dostępnych do zrobienia drinka.\nKliknij na strzałki, aby zmienić kierunek sortowania")) {
-						HStack {
-							Picker("Sortowanie wg.", selection: $sortowEnum) {
-								Text("Nazwa").tag(sortEnum.nazwa)
-								Text("Słodkość").tag(sortEnum.slodycz)
-								Text("Moc").tag(sortEnum.procenty)
-								Text("Ilość Kalorii").tag(sortEnum.kcal)
-								Text("Skład").tag(sortEnum.sklad)
+			ScrollView {
+				VStack {
+						// MARK: - SORTOWANIE
+					GroupBox(label: Label("Sortowanie", systemImage: "line.3.horizontal.decrease")
+						.foregroundColor(.accent)
+						.font(.headline)
+						.fontWeight(.light))
+					{
+						VStack(spacing: 6) {
+							HStack {
+								Picker("Sortuj wg.", selection: $sortowEnum) {
+									Text("Nazwa").tag(sortEnum.nazwa)
+									Text("Słodkość").tag(sortEnum.slodycz)
+									Text("Moc").tag(sortEnum.procenty)
+									Text("Ilość Kalorii").tag(sortEnum.kcal)
+									Text("Skład").tag(sortEnum.sklad)
+								}
+									//							.onChange(of: pref.sortowEnum) { oldValue, newValue in
+									//								drClass.sortujDrinki()
+
+								Button {
+									sortowRosn.toggle()
+								} label: {
+									Image(systemName: sortowRosn ? "chevron.up" : "chevron.down")
+										.foregroundStyle(Color.accent)
+								}
 							}
-							.pickerStyle(.menu)
-//							.onChange(of: pref.sortowEnum) { oldValue, newValue in
-//								drClass.sortujDrinki()
-//							}
+							Divider()
+							Text("Sortuj wg. nazwy, słodkości, zawartości alkoholu, kalorii lub ilości składników dostępnych do zrobienia drinka.\nKliknij na strzałkę aby zmienić kierunek sortowania")
+								.padding(.top, 8)
+								.foregroundStyle(.secondary)
+								.font(.footnote)
+								.multilineTextAlignment(.center)
+						}
+						.padding(.horizontal, paddingHoriz)
+						.padding(.vertical, paddingVert)
+					}
+					.backgroundStyle(.regularMaterial)
 
-							Button {
-								sortowRosn.toggle()
-							} label: {
-								Image(systemName: "chevron.up")
-									.foregroundStyle(sortowRosn ? Color.accent : Color.secondary)
-									.font(sortowRosn ? .title : .caption)
-								Image(systemName: "chevron.down")
-									.foregroundStyle(sortowRosn ? Color.accent : Color.secondary)
-									.font(!sortowRosn ? .title : .caption)
+						// MARK: - ALKOHOL GŁÓWNY
+					GroupBox(label: Label("Alkohol główny", systemImage: "bubbles.and.sparkles.fill")
+						.foregroundColor(.accent)
+						.font(.headline)
+						.fontWeight(.light))
+					{
+						VStack(spacing: 6) {
+							HStack {
+								Spacer()
+								Button(action: {
+									toggleAlkGlowny.toggle()
+									setAllAlkGlownyTrue()
+								}) {
+									Image(systemName: "checkmark.square")
+								}
+								.foregroundStyle(Color.secondary)
 							}
+
+
+							Toggle(isOn: $filtrAlkGlownyRum) {
+								Text(alkGlownyEnum.rum.opis)
+							}
+							.onChange(of: filtrAlkGlownyRum) { _, _ in SprawdzCzyJestJeden() }
+
+							Toggle(isOn: $filtrAlkGlownyWhiskey) {
+								Text(alkGlownyEnum.whiskey.opis)
+							}
+							.onChange(of: filtrAlkGlownyWhiskey) { _, _ in SprawdzCzyJestJeden() }
+
+							Toggle(isOn: $filtrAlkGlownyTequila) {
+								Text(alkGlownyEnum.tequila.opis)
+							}
+							.onChange(of: filtrAlkGlownyTequila) { _, _ in SprawdzCzyJestJeden() }
+
+							Toggle(isOn: $filtrAlkGlownyBrandy) {
+								Text(alkGlownyEnum.brandy.opis)
+							}
+							.onChange(of: filtrAlkGlownyBrandy) { _, _ in SprawdzCzyJestJeden() }
+
+							Toggle(isOn: $filtrAlkGlownyGin) {
+								Text(alkGlownyEnum.gin.opis)
+							}
+							.onChange(of: filtrAlkGlownyGin) { _, _ in SprawdzCzyJestJeden() }
+
+							Toggle(isOn: $filtrAlkGlownyVodka) {
+								Text(alkGlownyEnum.vodka.opis)
+							}
+							.onChange(of: filtrAlkGlownyVodka) { _, _ in SprawdzCzyJestJeden() }
+
+							Toggle(isOn: $filtrAlkGlownyChampagne) {
+								Text(alkGlownyEnum.champagne.opis)
+							}
+							.onChange(of: filtrAlkGlownyChampagne) { _, _ in SprawdzCzyJestJeden() }
+
+							Toggle(isOn: $filtrAlkGlownyInny) {
+								Text(alkGlownyEnum.inny.opis)
+							}
+							.onChange(of: filtrAlkGlownyInny) { _, _ in SprawdzCzyJestJeden() }
+
+							Divider()
+
+							Text("Wybierz alkohol, który ma być głównym składnikiem drinków")
+								.padding(.top, 8)
+								.foregroundStyle(.secondary)
+								.font(.footnote)
+								.multilineTextAlignment(.center)
 						}
-					} // Sortowanie
+						.padding(.horizontal, paddingHoriz)
+						.padding(.vertical, paddingVert)
+					}
+					.toggleStyle(iOSCheckboxToggleStyle())
+					.backgroundStyle(.regularMaterial)
 
-				Section( // MARK: Alkohol główny
-					header: HStack {
-						Text("Alkohol główny")
-						Spacer()
-						Button(action: {
-							toggleAlkGlowny.toggle()
-							setAllAlkGlownyTrue()
-						}) {
-							Image(systemName: filtrAlkGlownyRum && filtrAlkGlownyWhiskey && filtrAlkGlownyTequila && filtrAlkGlownyBrandy && filtrAlkGlownyGin && filtrAlkGlownyVodka && filtrAlkGlownyChampagne && filtrAlkGlownyInny ? "checkmark.square" : "square")
-								.foregroundStyle(Color.secondary)
+						// MARK: - SŁODKOŚĆ
+					GroupBox(label: Label("Słodkość drinka", systemImage: "drop.degreesign.fill")
+						.foregroundColor(.accent)
+						.font(.headline)
+						.fontWeight(.light))
+					{
+						VStack(spacing: 6) {
+							HStack {
+								Spacer()
+								Button(action: {
+									toggleSlodkosc.toggle()
+									setAllSlodkoscTrue()
+								}) {
+									Image(systemName: "checkmark.square")
+										.foregroundStyle(Color.secondary)
+								}
+							}
+
+							Toggle(isOn: $filtrSlodkoscNieSlodki) {
+								Text(drSlodyczEnum.nieSlodki.rawValue)
+							}
+							.onChange(of: filtrSlodkoscNieSlodki) { _, _ in SprawdzCzyJestJeden() }
+
+							Toggle(isOn: $filtrSlodkoscLekkoSlodki) {
+								Text(drSlodyczEnum.lekkoSlodki.rawValue)
+							}
+							.onChange(of: filtrSlodkoscLekkoSlodki) { _, _ in SprawdzCzyJestJeden() }
+
+							Toggle(isOn: $filtrSlodkoscSlodki) {
+								Text(drSlodyczEnum.slodki.rawValue)
+							}
+							.onChange(of: filtrSlodkoscSlodki) { _, _ in SprawdzCzyJestJeden() }
+
+							Toggle(isOn: $filtrSlodkoscBardzoSlodki) {
+								Text(drSlodyczEnum.bardzoSlodki.rawValue)
+							}
+							.onChange(of: filtrSlodkoscBardzoSlodki) { _, _ in SprawdzCzyJestJeden() }
+
+							Divider()
+
+							Text("Wybierz poziom słodkości drinka")
+								.padding(.top, 8)
+								.foregroundStyle(.secondary)
+								.font(.footnote)
+								.multilineTextAlignment(.center)
 						}
-					},
-					footer: Text("Wybierz alkohol, który ma być głównym składnikiem drinków"))
-				{
-					Toggle(isOn: $filtrAlkGlownyRum) {
-						Text(alkGlownyEnum.rum.rawValue)
+						.padding(.horizontal, paddingHoriz)
+						.padding(.vertical, paddingVert)
 					}
-					.onChange(of: filtrAlkGlownyRum) { _, _ in SprawdzCzyJestJeden() }
+					.toggleStyle(iOSCheckboxToggleStyle())
+					.backgroundStyle(.regularMaterial)
 
-					Toggle(isOn: $filtrAlkGlownyWhiskey) {
-						Text(alkGlownyEnum.whiskey.rawValue)
-					}
-					.onChange(of: filtrAlkGlownyWhiskey) { _, _ in SprawdzCzyJestJeden() }
+						// MARK: - MOC
+					GroupBox(label: Label("Moc drinka", systemImage: "bolt.fill")
+						.foregroundColor(.accent)
+						.font(.headline)
+						.fontWeight(.light))
+					{
+						VStack(spacing: 6) {
+							HStack {
+								Spacer()
+								Button(action: {
+									toggleMoc.toggle()
+									setAllMocTrue()
+								}) {
+									Image(systemName: "checkmark.square")
+										.foregroundStyle(Color.secondary)
+								}
+							}
 
-					Toggle(isOn: $filtrAlkGlownyTequila) {
-						Text(alkGlownyEnum.tequila.rawValue)
-					}
-					.onChange(of: filtrAlkGlownyTequila) { _, _ in SprawdzCzyJestJeden() }
 
-					Toggle(isOn: $filtrAlkGlownyBrandy) {
-						Text(alkGlownyEnum.brandy.rawValue)
-					}
-					.onChange(of: filtrAlkGlownyBrandy) { _, _ in SprawdzCzyJestJeden() }
+							Toggle(isOn: $filtrMocBezalk) {
+								Text("Bezalkoholowy (0%)")
+							}
+							.onChange(of: filtrMocBezalk) { _, _ in SprawdzCzyJestJeden() }
 
-					Toggle(isOn: $filtrAlkGlownyGin) {
-						Text(alkGlownyEnum.gin.rawValue)
-					}
-					.onChange(of: filtrAlkGlownyGin) { _, _ in SprawdzCzyJestJeden() }
+							Toggle(isOn: $filtrMocDelik) {
+								Text("Delikatny (1% - \(drMocEnum.sredni.start-1)%)")
+							}
+							.onChange(of: filtrMocDelik) { _, _ in SprawdzCzyJestJeden() }
 
-					Toggle(isOn: $filtrAlkGlownyVodka) {
-						Text(alkGlownyEnum.vodka.rawValue)
-					}
-					.onChange(of: filtrAlkGlownyVodka) { _, _ in SprawdzCzyJestJeden() }
+							Toggle(isOn: $filtrMocSredni) {
+								Text("Średni (\(drMocEnum.sredni.start)% - \(drMocEnum.mocny.start-1)%)")
+							}
+							.onChange(of: filtrMocSredni) { _, _ in SprawdzCzyJestJeden() }
 
-					Toggle(isOn: $filtrAlkGlownyChampagne) {
-						Text(alkGlownyEnum.champagne.rawValue)
-					}
-					.onChange(of: filtrAlkGlownyChampagne) { _, _ in SprawdzCzyJestJeden() }
+							Toggle(isOn: $filtrMocMocny) {
+								Text("Mocny (powyżej \(drMocEnum.mocny.start-1)%")
+							}
+							.onChange(of: filtrMocMocny) { _, _ in SprawdzCzyJestJeden() }
 
-					Toggle(isOn: $filtrAlkGlownyInny) {
-						Text(alkGlownyEnum.inny.rawValue)
-					}
-					.onChange(of: filtrAlkGlownyInny) { _, _ in SprawdzCzyJestJeden() }
-				}
-				.toggleStyle(iOSCheckboxToggleStyle()) // Alkohol główny
+							Divider()
 
-				Section( // MARK: Słodkość
-					header: HStack {
-						Text("Słodkość drinka")
-						Spacer()
-						Button(action: {
-							toggleSlodkosc.toggle()
-							setAllSlodkoscTrue()
-						}) {
-							Image(systemName: filtrSlodkoscNieSlodki && filtrSlodkoscLekkoSlodki && filtrSlodkoscSlodki && filtrSlodkoscBardzoSlodki ? "checkmark.square" : "square")
-								.foregroundStyle(Color.secondary)
+							Text("Wybierz poziom zawartości alkoholu w drinku")
+								.padding(.top, 8)
+								.foregroundStyle(.secondary)
+								.font(.footnote)
+								.multilineTextAlignment(.center)
 						}
-					},
-					footer: Text("Wybierz poziom słodkości drinka"))
-				{
-					Toggle(isOn: $filtrSlodkoscNieSlodki) {
-						Text(drSlodyczEnum.nieSlodki.rawValue)
-					}
-					.onChange(of: filtrSlodkoscNieSlodki) { _, _ in SprawdzCzyJestJeden() }
-
-					Toggle(isOn: $filtrSlodkoscLekkoSlodki) {
-						Text(drSlodyczEnum.lekkoSlodki.rawValue)
-					}
-					.onChange(of: filtrSlodkoscLekkoSlodki) { _, _ in SprawdzCzyJestJeden() }
-
-					Toggle(isOn: $filtrSlodkoscSlodki) {
-						Text(drSlodyczEnum.slodki.rawValue)
-					}
-					.onChange(of: filtrSlodkoscSlodki) { _, _ in SprawdzCzyJestJeden() }
-
-					Toggle(isOn: $filtrSlodkoscBardzoSlodki) {
-						Text(drSlodyczEnum.bardzoSlodki.rawValue)
-					}
-					.onChange(of: filtrSlodkoscBardzoSlodki) { _, _ in SprawdzCzyJestJeden() }
-				}
-				.toggleStyle(iOSCheckboxToggleStyle()) // Słodkość
-
-				Section( // MARK: Moc
-					header: HStack {
-						Text("Moc drinka")
-						Spacer()
-						Button(action: {
-							toggleMoc.toggle()
-							setAllMocTrue()
-						}) {
-							Image(systemName: filtrMocBezalk && filtrMocDelik && filtrMocSredni && filtrMocMocny ? "checkmark.square" : "square")
-								.foregroundStyle(Color.secondary)
-						}
-					},
-					footer: Text("Wybierz poziom zawartości alkoholu w drinku")) {
-						Toggle(isOn: $filtrMocBezalk) {
-							Text("Bezalkoholowy (0%)")
-						}
-						.onChange(of: filtrMocBezalk) { _, _ in SprawdzCzyJestJeden() }
-
-						Toggle(isOn: $filtrMocDelik) {
-							Text("Delikatny (1% - \(drMocEnum.sredni.start-1)%)")
-						}
-						.onChange(of: filtrMocDelik) { _, _ in SprawdzCzyJestJeden() }
-
-						Toggle(isOn: $filtrMocSredni) {
-							Text("Średni (\(drMocEnum.sredni.start)% - \(drMocEnum.mocny.start-1)%)")
-						}
-						.onChange(of: filtrMocSredni) { _, _ in SprawdzCzyJestJeden() }
-
-						Toggle(isOn: $filtrMocMocny) {
-							Text("Mocny (powyżej \(drMocEnum.mocny.start-1)%")
-						}
-						.onChange(of: filtrMocMocny) { _, _ in SprawdzCzyJestJeden() }
+						.padding(.horizontal, paddingHoriz)
+						.padding(.vertical, paddingVert)
 					}
 					.toggleStyle(iOSCheckboxToggleStyle()) // Moc
-			}
-			.navigationTitle("Filtry")
-#if os(iOS)
-			.navigationBarTitleDisplayMode(.inline)
-#endif
-			.alert(isPresented: $pokazBlad) {
-				switch rodzajBledu {
-					case .alkGlowny:
-						Alert(
-							title: Text("Mały błąd"),
-							message: Text("Co najmniej jeden z alkoholi głównych powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta"),
-							dismissButton: .default(Text("OK")))
-
-					case .slodkosc:
-						Alert(
-							title: Text("Mały błąd"),
-							message: Text("Co najmniej jeden z poziomów słodkości powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta"),
-							dismissButton: .default(Text("OK")))
-					case .moc:
-						Alert(
-							title: Text("Mały błąd"),
-							message: Text("Co najmniej jeden z poziomów mocy drinka powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta"),
-							dismissButton: .default(Text("OK")))
 				}
-			} // MARK: Alert
+					// MARK: - CAŁY VSTACK
+				.padding(30)
+					//			.frame(minWidth: .infinity)
+				.backgroundStyle(.regularMaterial)
+				.navigationTitle("Filtry")
+					// MARK: - ALERT
+				.alert(isPresented: $pokazBlad) {
+					switch rodzajBledu {
+						case .alkGlowny:
+							Alert(
+								title: Text("Mały błąd"),
+								message: Text("Co najmniej jeden z alkoholi głównych powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta"),
+								dismissButton: .default(Text("OK")))
 
-			.toolbar {
-
-#if os(macOS)
-				ToolbarItem(placement: .automatic) {
-					Button("Akcja") {
-						print("Klik!")
+						case .slodkosc:
+							Alert(
+								title: Text("Mały błąd"),
+								message: Text("Co najmniej jeden z poziomów słodkości powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta"),
+								dismissButton: .default(Text("OK")))
+						case .moc:
+							Alert(
+								title: Text("Mały błąd"),
+								message: Text("Co najmniej jeden z poziomów mocy drinka powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta"),
+								dismissButton: .default(Text("OK")))
 					}
 				}
-#endif
-#if os(iOS)
-				ToolbarItem(placement: .navigationBarLeading) {
-					HStack(spacing: 3) {
-							// Przycisk resetu
-						Button("Resetuj Filtry") {
+
+					//			.toolbar {
+					// MARK: - TOOLBAR
+				.toolbar {
+					ToolbarItem(placement: .destructiveAction) {
+						Button {
 							ResetujFiltr()
+						} label: {
+							Image(systemName: "arrow.trianglehead.counterclockwise")
 						}
-							//						.buttonStyle(.borderedProminent)
+					}
+
+					ToolbarItem(placement: .cancellationAction) {
+						Button {
+							dismiss()
+						} label: {
+							Image(systemName: "xmark")
+						}
 					}
 				}
-				ToolbarItem(placement: .navigationBarTrailing) {
-						// Przycisk preferencji
-					Button {
-						dismiss()
-					} label: {
-						Image(systemName: "xmark")
-							//						Text("Zamknij")
-					}
-						//					.buttonStyle(.borderedProminent)
-				}
-#endif
-			} // MARK: Toolbar
+			}
 		}
-	}
+		}
+
+		// MARK: - FUNKCJE
 
 	func SprawdzCzyJestJeden() {
-		if !(filtrAlkGlownyRum || filtrAlkGlownyWhiskey || filtrAlkGlownyTequila || filtrAlkGlownyBrandy || filtrAlkGlownyGin || filtrAlkGlownyVodka || filtrAlkGlownyChampagne || filtrAlkGlownyInny) {
+		if !(filtrAlkGlownyRum || filtrAlkGlownyWhiskey || filtrAlkGlownyTequila || filtrAlkGlownyBrandy || filtrAlkGlownyGin || filtrAlkGlownyVodka || filtrAlkGlownyChampagne || filtrAlkGlownyInny)
+		{
 			rodzajBledu = .alkGlowny
 			pokazBlad = true
-		} else if !(filtrSlodkoscNieSlodki || filtrSlodkoscLekkoSlodki || filtrSlodkoscSlodki || filtrSlodkoscBardzoSlodki) {
+		} else if !(filtrSlodkoscNieSlodki || filtrSlodkoscLekkoSlodki || filtrSlodkoscSlodki || filtrSlodkoscBardzoSlodki)
+		{
 			rodzajBledu = .slodkosc
 			pokazBlad = true
-		} else if !(filtrMocBezalk || filtrMocDelik || filtrMocSredni || filtrMocMocny) {
+		} else if !(filtrMocBezalk || filtrMocDelik || filtrMocSredni || filtrMocMocny)
+		{
 			rodzajBledu = .moc
 			pokazBlad = true
 		} else {
@@ -281,28 +343,56 @@ struct DrinkFiltry_V: View {
 	}
 
 	func setAllAlkGlownyTrue() {
-		filtrAlkGlownyRum = true
-		filtrAlkGlownyWhiskey = true
-		filtrAlkGlownyTequila = true
-		filtrAlkGlownyBrandy = true
-		filtrAlkGlownyGin = true
-		filtrAlkGlownyVodka = true
-		filtrAlkGlownyChampagne = true
-		filtrAlkGlownyInny = true
+		if allAlkGlowny {
+			filtrAlkGlownyRum = false
+			filtrAlkGlownyWhiskey = true
+			filtrAlkGlownyTequila = false
+			filtrAlkGlownyBrandy = false
+			filtrAlkGlownyGin = false
+			filtrAlkGlownyVodka = false
+			filtrAlkGlownyChampagne = false
+			filtrAlkGlownyInny = false
+		} else {
+			filtrAlkGlownyRum = true
+			filtrAlkGlownyWhiskey = true
+			filtrAlkGlownyTequila = true
+			filtrAlkGlownyBrandy = true
+			filtrAlkGlownyGin = true
+			filtrAlkGlownyVodka = true
+			filtrAlkGlownyChampagne = true
+			filtrAlkGlownyInny = true
+		}
+		allAlkGlowny.toggle()
 	}
 
 	func setAllSlodkoscTrue() {
-		filtrSlodkoscNieSlodki = true
-		filtrSlodkoscLekkoSlodki = true
-		filtrSlodkoscSlodki = true
-		filtrSlodkoscBardzoSlodki = true
+		if allSlodkosc {
+			filtrSlodkoscNieSlodki = false
+			filtrSlodkoscLekkoSlodki = false
+			filtrSlodkoscSlodki = true
+			filtrSlodkoscBardzoSlodki = false
+		} else {
+			filtrSlodkoscNieSlodki = true
+			filtrSlodkoscLekkoSlodki = true
+			filtrSlodkoscSlodki = true
+			filtrSlodkoscBardzoSlodki = true
+		}
+		allSlodkosc.toggle()
 	}
 
 	func setAllMocTrue() {
-		filtrMocBezalk = true
-		filtrMocDelik = true
-		filtrMocSredni = true
-		filtrMocMocny = true
+		if allMoc {
+			filtrMocBezalk = false
+			filtrMocDelik = true
+			filtrMocSredni = false
+			filtrMocMocny = false
+		} else {
+			filtrMocBezalk = true
+			filtrMocDelik = true
+			filtrMocSredni = true
+			filtrMocMocny = true
+		}
+		allMoc.toggle()
 	}
 
 	func ResetujFiltr() {
@@ -328,7 +418,6 @@ struct DrinkFiltry_V: View {
 
 #Preview {
 	NavigationStack {
-		Text("Filtry")
-//		DrinkFiltry()
+		DrinkFiltry_V()
 	}
 }

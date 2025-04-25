@@ -25,7 +25,7 @@ enum Tab: String, CaseIterable {
 	}
 }
 
-struct CustomTabView: View {
+struct CustomTab_V: View {
 	/// View Properties
 	@State private var activeTab: Tab = .drinki
 	/// Wcelu ułagodzenia animacji slide, używamy pasującego efektu geometrii.
@@ -39,12 +39,13 @@ struct CustomTabView: View {
 //					 .tag(Tab.home)
 //					 // Ukrycie natywnego tab bar
 //					 .toolbar(.hidden, for: .tabBar)
-				 drinki()
+				 DrinkiLista_V()
 					 .tag(Tab.drinki)
 					 // Ukrycie natywnego tab bar
 #if os(iOS)
 					 .toolbar(.hidden, for: .tabBar)
 #endif
+				 Text("Skladniki")
 				 skladniki()
 					 .tag(Tab.skladniki)
 					 // Ukrycie natywnego tab bar
@@ -210,5 +211,5 @@ struct TabShape: Shape {
 
 
 #Preview {
-	CustomTabView()
+	CustomTab_V()
 }

@@ -53,7 +53,6 @@ struct DrinkSkala_V: View {
 
 #Preview {
 	NavigationStack {
-		Text("Drink Skala V")
-//		DrinkSkalaView(slodycz: drink.drSlodycz)
+		DrinkSkala_V(drink: drMock())
 	}
 }

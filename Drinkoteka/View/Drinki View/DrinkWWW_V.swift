@@ -35,7 +35,6 @@ struct DrinkWWW_V: View {
 
 #Preview {
 	NavigationStack {
-		Text("WWW V")
-			//		DrinkNotatka(drSelID: drink.id)
+		DrinkWWW_V(drink: drMock())
 	}
 }

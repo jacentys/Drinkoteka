@@ -20,5 +20,5 @@ struct DrinkBack_V: View {
 }
 
 #Preview {
-	Background_V(foto: "whiskey", kolor: .red)
+	DrinkBack_V(drink: drMock())
 }

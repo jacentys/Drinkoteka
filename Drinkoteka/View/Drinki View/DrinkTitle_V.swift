@@ -44,6 +44,5 @@ struct DrinkTitle_V: View {
 }
 
 #Preview {
-	Text("DrinkTitle")
-//	TitleView(nazwa: "Amaretto", proc: 20, kal: 130, miara: miaraEnum.galazka, kat: "alkochol")
+	DrinkTitle_V(drink: drMock())
 }

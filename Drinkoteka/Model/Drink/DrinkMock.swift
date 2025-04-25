@@ -1,101 +1,91 @@
 import SwiftData
 
-struct DrinkMock {
-	static func mockContainer() -> (Dr_M, ModelContainer) {
-		let container = try! ModelContainer(
-			for: Dr_M.self, DrSkladnik_M.self, DrPrzepis_M.self,
-			configurations: ModelConfiguration(isStoredInMemoryOnly: true)
-		)
-		let context = container.mainContext
+func sklMock() -> Skl_M {
+	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com", sklZamArray:[])
+	return skladnik1
+}
 
-		let drinio = Dr_M(
-			id: "alexander",
-			drinkID: "alexander",
-			drNazwa: "Alexander",
-			drKat: .koktail,
-			drZrodlo: "IBA Niezapomniane",
-			drKolor: "Fioletowy",
-			drFoto: "",
-			drProc: 22,
-			drSlodycz: .slodki,
-			drSzklo: .koktailowy,
-			drUlubiony: false,
-			drNotatka: "",
-			drUwagi: "",
-			drWWW: "",
-			drKal: 0,
-			drMoc: .sredni,
-			drBrakuje: 0,
-			drAlkGlowny: [.brandy]
-		)
+func sklMockArray() -> [Skl_M] {
+	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com", sklZamArray:[])
+	var skladnik2 = Skl_M(sklID: "tequila", sklNazwa: "Tequila", sklKat: .alkohol, sklProc: 50, sklKolor: "bezbarwny", sklFoto: "", sklStan: .brak, sklOpis: "Meksykańska wóda", sklKal: 0, sklMiara: .ml, sklWWW: "www.tequila.com", sklZamArray:[])
+	var skladnik3 = Skl_M(sklID: "cukier", sklNazwa: "Cukier", sklKat: .inne, sklProc: 0, sklKolor: "bialy", sklFoto: "", sklStan: .jest, sklOpis: "Po prostu cukier", sklKal: 0, sklMiara: .gr, sklWWW: "www.cukier.com", sklZamArray:[])
+	return [skladnik1, skladnik2, skladnik3]
+}
 
-		let skladniki: [DrSkladnik_M] = [
-			DrSkladnik_M(id: UUID().uuidString,
-							 relacjaDrink: drinio,
-							 drinkID: "alexander",
-							 skladnikID: "koniak",
-							 sklNo: 1,
-							 sklIlosc: 30,
-							 sklMiara: .ml,
-							 sklInfo: "",
-							 sklOpcja: false),
-			DrSkladnik_M(id: UUID().uuidString,
-							 relacjaDrink: drinio,
-							 drinkID: "alexander",
-							 skladnikID: "likierkakaowy",
-							 sklNo: 2,
-							 sklIlosc: 30,
-							 sklMiara: .ml,
-							 sklInfo: "",
-							 sklOpcja: false),
-			DrSkladnik_M(id: UUID().uuidString,
-							 relacjaDrink: drinio,
-							 drinkID: "alexander",
-							 skladnikID: "smietana",
-							 sklNo: 3,
-							 sklIlosc: 30,
-							 sklMiara: .ml,
-							 sklInfo: "",
-							 sklOpcja: false)
-		]
+func drMockArray() -> [Dr_M] {
+	var arr = [drMock(), drMock()]
+	return arr
+}
 
-		let przepisy: [DrPrzepis_M] = [
-			DrPrzepis_M(id: UUID().uuidString,
-							relacjaDrink: drinio,
-							drinkID: "alexander",
-							przepNo: 1,
-							przepOpis: "Do shakera wsyp kostki lodu.",
-							przepOpcja: false),
-			DrPrzepis_M(id: UUID().uuidString,
-							relacjaDrink: drinio,
-							drinkID: "alexander",
-							przepNo: 2,
-							przepOpis: "Wlej wszystkie składniki.",
-							przepOpcja: false),
-			DrPrzepis_M(id: UUID().uuidString,
-							relacjaDrink: drinio,
-							drinkID: "alexander",
-							przepNo: 3,
-							przepOpis: "Wstrząśnij.",
-							przepOpcja: false),
-			DrPrzepis_M(id: UUID().uuidString,
-							relacjaDrink: drinio,
-							drinkID: "alexander",
-							przepNo: 4,
-							przepOpis: "Przelej do schłodzonego kieliszka do koktajli.",
-							przepOpcja: false),
-			DrPrzepis_M(id: UUID().uuidString,
-							relacjaDrink: drinio,
-							drinkID: "alexander",
-							przepNo: 5,
-							przepOpis: "Posyp świeżo zmielonym gałką muszkatołową.",
-							przepOpcja: false)
-		]
+func drMock() -> Dr_M {
 
-		context.insert(drinio)
-		skladniki.forEach { context.insert($0) }
-		przepisy.forEach { context.insert($0) }
+	var drink = Dr_M(
+		id: "testowy",
+		drinkID: "testowy",
+		drNazwa: "Testowy",
+		drKat: .koktail,
+		drZrodlo: "IBA Niezapomniane",
+		drKolor: "Fioletowy",
+		drFoto: "",
+		drProc: 22,
+		drSlodycz: .slodki,
+		drSzklo: .koktailowy,
+		drUlubiony: false,
+		drNotatka: "Notatka do drinka",
+		drUwagi: "Uwagi do drinka",
+		drWWW: "www.example.com",
+		drKal: 500,
+		drMoc: .sredni,
+		drBrakuje: 3,
+		drAlkGlowny: [.brandy],
+		drSklad: [],
+		drPrzepis: []
+	)
 
-		return (drinio, container)
-	}
+	var drink2 = Dr_M(
+		id: "testowy2",
+		drinkID: "testowy2",
+		drNazwa: "Testowy2",
+		drKat: .koktail,
+		drZrodlo: "IBA Inne",
+		drKolor: "Turkusowy",
+		drFoto: "",
+		drProc: 30,
+		drSlodycz: .slodki,
+		drSzklo: .koktailowy,
+		drUlubiony: false,
+		drNotatka: "Notatka do drinka 2",
+		drUwagi: "Uwagi do drinka 2",
+		drWWW: "www.example2.com",
+		drKal: 300,
+		drMoc: .sredni,
+		drBrakuje: 3,
+		drAlkGlowny: [.brandy],
+		drSklad: [],
+		drPrzepis: []
+	)
+
+	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com", sklZamArray:[])
+	var skladnik2 = Skl_M(sklID: "tequila", sklNazwa: "Tequila", sklKat: .alkohol, sklProc: 50, sklKolor: "bezbarwny", sklFoto: "", sklStan: .brak, sklOpis: "Meksykańska wóda", sklKal: 0, sklMiara: .ml, sklWWW: "www.tequila.com", sklZamArray:[])
+	var skladnik3 = Skl_M(sklID: "cukier", sklNazwa: "Cukier", sklKat: .inne, sklProc: 0, sklKolor: "bialy", sklFoto: "", sklStan: .jest, sklOpis: "Po prostu cukier", sklKal: 0, sklMiara: .gr, sklWWW: "www.cukier.com", sklZamArray:[])
+
+
+	var przepis1 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 1, przepOpis: "Do shakera wsyp kostki lodu.", przepOpcja: false)
+	var przepis2 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 2, przepOpis: "Wlej wszystkie składniki.",	przepOpcja: false)
+	var przepis3 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 3, przepOpis: "Wstrząśnij.", przepOpcja: false)
+	var przepis4 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 4, przepOpis: "Przelej do schłodzonego kieliszka do koktajli.", przepOpcja: false)
+	var przepis5 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 5, przepOpis: "Posyp świeżo zmielonym gałką muszkatołową.", przepOpcja: false)
+	var drPrzepisyMock: [DrPrzepis_M] = [przepis1, przepis2, przepis3, przepis4, przepis5]
+
+
+
+	var drskl1 = DrSkladnik_M(relacjaDrink: drink, skladnik: skladnik1, sklNo: 1, sklIlosc: 30, sklMiara: .ml, sklInfo: "", sklOpcja: false)
+	var drskl2 = DrSkladnik_M(relacjaDrink: drink, skladnik: skladnik2, sklNo: 2, sklIlosc: 30, sklMiara: .ml, sklInfo: "", sklOpcja: false)
+	var drskl3 = DrSkladnik_M(relacjaDrink: drink, skladnik: skladnik3, sklNo: 3, sklIlosc: 30, sklMiara: .ml, sklInfo: "", sklOpcja: false)
+
+	var drSkladnikiMock = [drskl1, drskl2, drskl3]
+
+	drink.drPrzepis = drPrzepisyMock
+	drink.drSklad = drSkladnikiMock
+	return drink
 }

@@ -32,6 +32,6 @@ struct Drink_V: View {
 #Preview {
 	NavigationStack{
 		Text("Test Drink V")
-//		DrinkView(drSelID: drink.id)
+		Drink_V(drink: drMock())
 	}
 }

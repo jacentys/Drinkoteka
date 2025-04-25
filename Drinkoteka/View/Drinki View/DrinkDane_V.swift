@@ -78,7 +78,6 @@ struct DrinkDane_V: View {
 
 #Preview {
 	NavigationStack {
-		Text("Drink Dane V")
-//		DrinkDaneView(drSelID: drink.id)
+		DrinkDane_V(drink: drMock())
 	}
 }

@@ -7,6 +7,37 @@ import AppKit
 typealias PlatformColor = NSColor
 #endif
 
+//@AppStorage("zalogowany") var zalogowany: Bool = true
+//@AppStorage("uzytkownik") var uzytkownik: String = ""
+//@AppStorage("uzytkownikMail") var uzytkownikMail: String = ""
+//
+//@AppStorage("sortowEnum") var sortowEnum: sortEnum?
+//@AppStorage("sortowRosn") var sortowRosn: Bool = true
+//
+//@AppStorage("filtrAlkGlownyRum") var filtrAlkGlownyRum: Bool = true
+//@AppStorage("filtrAlkGlownyWhiskey") var filtrAlkGlownyWhiskey: Bool = true
+//@AppStorage("filtrAlkGlownyTequila") var filtrAlkGlownyTequila: Bool = true
+//@AppStorage("filtrAlkGlownyBrandy") var filtrAlkGlownyBrandy: Bool = true
+//@AppStorage("filtrAlkGlownyGin") var filtrAlkGlownyGin: Bool = true
+//@AppStorage("filtrAlkGlownyVodka") var filtrAlkGlownyVodka: Bool = true
+//@AppStorage("filtrAlkGlownyChampagne") var filtrAlkGlownyChampagne: Bool = true
+//@AppStorage("filtrAlkGlownyInny") var filtrAlkGlownyInny: Bool = true
+//
+//@AppStorage("filtrSlodkoscNieSlodki") var filtrSlodkoscNieSlodki: Bool = true
+//@AppStorage("filtrSlodkoscLekkoSlodki") var filtrSlodkoscLekkoSlodki: Bool = true
+//@AppStorage("filtrSlodkoscSlodki") var filtrSlodkoscSlodki: Bool = true
+//@AppStorage("filtrSlodkoscBardzoSlodki") var filtrSlodkoscBardzoSlodki: Bool = true
+//
+//@AppStorage("filtrMocBezalk") var filtrMocBezalk: Bool = true
+//@AppStorage("filtrMocDelik") var filtrMocDelik: Bool = true
+//@AppStorage("filtrMocSredni") var filtrMocSredni: Bool = true
+//@AppStorage("filtrMocMocny") var filtrMocMocny: Bool = true
+//
+//@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = true
+//@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = true
+//@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = true
+//@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = true
+
 	// MARK: CLEARSTR
 func clearStr(_ tekst: String) -> String {
 	let trimmed = tekst.trimmingCharacters(in: .punctuationCharacters.union(.whitespacesAndNewlines)).lowercased()
@@ -147,7 +178,7 @@ struct iOSCheckboxToggleStyle: ToggleStyle {
 					.foregroundStyle(Color.secondary)
 				Spacer()
 				Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
-//					.foregroundColor(configuration.isOn ? Color.accent : Color.secondary)
+					.foregroundColor(configuration.isOn ? Color.accent : Color.secondary)
 			}
 		})
 	}
@@ -334,3 +365,46 @@ struct Miara: View {
 		}
 	}
 } // MIARA
+
+/*	// MARK: FILTRUJ DRINKI
+func filtrujDrinki(pref: PrefClass) -> [Drink] {
+
+	return self.drArray.filter { drink in
+
+			// Filtrowanie po słodkości
+		let filtrSlodkosci =
+		(pref.nieSlodki && drink.drSlodycz == drSlodyczEnum.nieSlodki) ||
+		(pref.lekkoSlodki && drink.drSlodycz == drSlodyczEnum.lekkoSlodki) ||
+		(pref.slodki && drink.drSlodycz == drSlodyczEnum.slodki) ||
+		(pref.bardzoSlodki && drink.drSlodycz == drSlodyczEnum.bardzoSlodki) ||
+		(drink.drSlodycz == drSlodyczEnum.brakDanych)
+
+			// Filtrowanie po głównym alkoholu
+		let filtrAlkGlownego =
+		(pref.alkGlownyRum && drink.drAlkGlowny.contains { $0 == .rum }) ||
+		(pref.alkGlownyWhiskey && drink.drAlkGlowny.contains { $0 == .whiskey }) ||
+		(pref.alkGlownyTequila && drink.drAlkGlowny.contains { $0 == .tequila }) ||
+		(pref.alkGlownyBrandy && drink.drAlkGlowny.contains { $0 == .brandy }) ||
+		(pref.alkGlownyGin && drink.drAlkGlowny.contains { $0 == .gin }) ||
+		(pref.alkGlownyVodka && drink.drAlkGlowny.contains { $0 == .vodka }) ||
+		(pref.alkGlownyChampagne && drink.drAlkGlowny.contains { $0 == .champagne }) ||
+		(pref.alkGlownyInny && drink.drAlkGlowny.contains { $0 == .inny })
+
+			// Filtrowanie po mocy alkoholu
+		let filtrMocy =
+		((pref.alkBezalk && drink.drMoc == drMocEnum.bezalk) ||
+		 (pref.alkDelik && drink.drMoc == drMocEnum.delik) ||
+		 (pref.alkSredni && drink.drMoc == drMocEnum.sredni) ||
+		 (pref.alkMocny && drink.drMoc == drMocEnum.mocny)) ||
+		drink.drMoc == drMocEnum.brakDanych
+
+			// Filtrowanie po preferencjach
+		let filtrPreferencji =
+		(!pref.ulubione || drink.drUlubiony) &&
+		(!pref.dostepne || drink.drBrakuje == 0)
+
+			//			return filtrSlodkosci && filtrMocy && filtrAlkGlownego && filtrPreferencji
+		return filtrSlodkosci && filtrMocy
+	}
+	}
+*/

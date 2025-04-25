@@ -18,8 +18,7 @@ struct SkladnikZamiennikLinia_V: View {
 
 #Preview {
 	NavigationStack {
-		Text("test")
-//		SkladnikZamiennikiView(sklSelID: skladnik.id)
+		SkladnikZamiennikLinia_V(skladnik: sklMock())
 	}
 }
 

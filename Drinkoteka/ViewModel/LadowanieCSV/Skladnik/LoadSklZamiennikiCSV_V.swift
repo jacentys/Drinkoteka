@@ -49,4 +49,5 @@ func loadSklZamiennikiCSV_V(modelContext: ModelContext) {
 	} catch {
 		print("Błąd wczytywania pliku \(nazwaPliku): \(error)")
 	}
+	print("Koniec loadSklZamiennikiCSV_V")
 }

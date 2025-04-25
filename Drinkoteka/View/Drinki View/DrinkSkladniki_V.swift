@@ -31,8 +31,7 @@ struct DrinkSkladniki_V: View {
 
 #Preview {
 	NavigationStack {
-		Text("DrinkSkladnik_V")
-//		DrinkSkladnikiView(drSelID: drink.id)
+		DrinkSkladniki_V(drink: drMock())
 	}
 }
 

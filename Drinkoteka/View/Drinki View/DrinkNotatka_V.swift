@@ -55,7 +55,6 @@ struct DrinkNotatka_V: View {
 
 #Preview {
 	NavigationStack {
-		Text("Notatka V")
-//		DrinkNotatka(drSelID: drink.id)
+		DrinkNotatka_V(drink: drMock())
 	}
 }

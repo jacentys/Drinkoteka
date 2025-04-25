@@ -52,8 +52,7 @@ struct SkladnikFoto_V: View {
 }
 
 #Preview {
-	Text("Test")
 	NavigationStack {
-//		SkladnikFotoView(sklSelID: "smietana")
+		SkladnikFoto_V(skladnik: sklMock())
 	}
 }

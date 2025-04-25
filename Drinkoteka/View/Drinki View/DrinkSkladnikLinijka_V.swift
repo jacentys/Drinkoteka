@@ -3,31 +3,32 @@ import SwiftUI
 
 struct DrinkSkladnikLinijka_V: View {
 	@Bindable var drSkladnik: DrSkladnik_M
-	
+	var skladnik: Skl_M { return drSkladnik.skladnik }
+
 	var body: some View {
 		HStack {
-				// MARK: Kółeczko
-//			IkonaJestBrak_V(
-//				skladnik: skladnik,
-//				wielkosc: 17)
-			
+//				 MARK: Kółeczko
+			IkonaJestBrak_V(
+				skladnik: skladnik,
+				wielkosc: 17)
+			Text("\(drSkladnik.sklNo)")
 				// MARK: Prostokąt przed tekstem
 			Rectangle()
 				.frame(width: 5, height: 15)
 				.cornerRadius(2)
-//				.foregroundColor(skladnik.getColor())
+				.foregroundColor(skladnik.getColor())
 			
 				// MARK: Nazwa składnika i informacja
 			if !(drSkladnik.sklIlosc == 0) {
-				Text("\(drSkladnik.skladnikID) \(drSkladnik.sklInfo) \(formatNumber(drSkladnik.sklIlosc)) \(miaraOdm(drSkladnik.sklMiara, ilosc: String(drSkladnik.sklIlosc)))")
+				Text("\(skladnik.sklNazwa) \(drSkladnik.sklInfo) \(formatNumber(drSkladnik.sklIlosc)) \(miaraOdm(drSkladnik.sklMiara, ilosc: String(drSkladnik.sklIlosc)))")
 					.fontWeight(.light)
 					.multilineTextAlignment(.leading)
-//					.foregroundColor(skladnik.sklStan.stan ? Color.primary : Color.secondary)
+					.foregroundColor(skladnik.sklStan.stan ? Color.primary : Color.secondary)
 			} else {
-				Text("\(drSkladnik.skladnikID ) \(drSkladnik.sklInfo)")
+				Text("\(skladnik.sklNazwa ) \(drSkladnik.sklInfo)")
 					.fontWeight(.light)
 					.multilineTextAlignment(.leading)
-//					.foregroundColor(skladnik.sklStan.stan ? Color.primary : Color.secondary)
+					.foregroundColor(skladnik.sklStan.stan ? Color.primary : Color.secondary)
 			}
 			
 			
@@ -44,19 +45,15 @@ struct DrinkSkladnikLinijka_V: View {
 			Rectangle()
 				.frame(width: 5, height: 15)
 				.cornerRadius(2)
-//				.foregroundColor(skladnik.getColor())
+				.foregroundColor(skladnik.getColor())
 		}
 	}
 }
 
 #Preview {
-		//	@Previewable var drink = DrClass(sklClass: SklClass(), pref: PrefClass()).mock()
 	NavigationStack{
-		Text("test")
-			//		DrinkSkladnikView(skladnikDr: drink.drSklad[1])
-			//		DrinkSkladnikView(skladnikDr: drink.drSklad[2])
-			//		DrinkSkladnikView(skladnikDr: drink.drSklad[3])
+		DrinkSkladnikLinijka_V(drSkladnik: drMock().drSklad[0])
+		DrinkSkladnikLinijka_V(drSkladnik: drMock().drSklad[1])
+		DrinkSkladnikLinijka_V(drSkladnik: drMock().drSklad[2])
 	}
-	.modelContainer(for: Dr_M.self, inMemory: true)
-	
 }

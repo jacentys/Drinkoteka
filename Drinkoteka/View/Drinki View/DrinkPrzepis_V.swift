@@ -48,9 +48,6 @@ struct DrinkPrzepis_V: View {
 
 
 #Preview {
-//	NavigationStack {
-	Text("Test")
-//		DrinkPrzepisView(drSelID: "jacuzi")
-//	}
-	.modelContainer(for: Dr_M.self, inMemory: true)
+	DrinkPrzepis_V(drink: drMock())
 }
+

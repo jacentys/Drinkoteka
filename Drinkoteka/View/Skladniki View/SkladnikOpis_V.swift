@@ -34,7 +34,6 @@ struct SkladnikOpis_V: View {
 
 #Preview {
 	NavigationStack{
-		Text("test")
-//		SkladnikOpisView(sklSelID: "amaretto")
+		SkladnikOpis_V(skladnik: sklMock())
 	}
 }

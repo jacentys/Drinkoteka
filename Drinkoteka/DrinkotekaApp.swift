@@ -1,10 +1,3 @@
-//
-//  DrinkotekaApp.swift
-//  Drinkoteka
-//
-//  Created by Jacek Skrobisz on 2025.04.17.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -13,11 +6,11 @@ struct DrinkotekaApp: App {
     var body: some Scene {
 		 
         WindowGroup {
-			  drinki()
+			  CustomTab_V()
         }
 		  .modelContainer(
 			for: [Dr_M.self, Skl_M.self],
-			inMemory: false,
+			inMemory: true,
 			isUndoEnabled: false)
     }
 }

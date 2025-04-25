@@ -6,13 +6,12 @@ struct DrinkiListaRow_V: View {
 	
 	var body: some View {
 		NavigationLink(destination: Drink_V(drink: drink)) {
-			
 			ZStack {
 				Rectangle()
 					.frame(maxWidth: .infinity)
-					.frame(minHeight: 66)
-					.foregroundStyle(.thinMaterial)
-				
+					.frame(minHeight: 66, maxHeight: 100)
+					.foregroundStyle(.clear)
+
 				HStack {
 					ZStack {
 						Circle()
@@ -43,9 +42,9 @@ struct DrinkiListaRow_V: View {
 								Text("\(drink.drNazwa)")
 									.font(.headline)
 									.foregroundStyle(Color.primary)
-//								Text("\(drink.getSilaDrinka())")
-//									.foregroundColor(Color.secondary)
-//									.font(.footnote)
+								Text("\(drink.drMoc)")
+									.foregroundColor(Color.secondary)
+									.font(.footnote)
 							}
 							Spacer()
 						}
@@ -68,13 +67,14 @@ struct DrinkiListaRow_V: View {
 				.padding(.horizontal, 16)
 			}
 		}
+		.background(.accent.opacity(0.2))
 	}
 }
 
 
 #Preview {
 	NavigationStack {
-//		DrinkiListaRowView(drSelID: "jacuzi")
-//			.preferredColorScheme(.light)
+		DrinkiListaRow_V(drink: drMock())
+			.background(.red)
 	}
 }
