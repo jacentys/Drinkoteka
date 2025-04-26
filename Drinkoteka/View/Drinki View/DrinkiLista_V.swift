@@ -164,13 +164,30 @@ struct DrinkiLista_V: View {
 			.toolbarBackground(Material.thinMaterial)
 			.navigationViewStyle(.automatic)
 			.navigationTitle("Drinki")
+			.onAppear() {
+				loadAllDrinks()
+			}
 		}
 	}
 		// MARK: - LOAD ALL DRINKS
 	private func loadAllDrinks() {
+		print("Startuje Load All, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+
+		Task {
+			do {
+				let fetch = FetchDescriptor<Dr_M>()
+				let wynik = try modelContext.fetch(fetch)
+				print("Liczba drinków: \(wynik.count)")
+			} catch {
+				print("Błąd fetchowania: \(error)")
+			}
+		}
+
+		
 			//			debugPobrane(miejsce: "Ładowanie drinków")
 		if !UserDefaults.standard.bool(forKey: "setupDone")
 		{
+			print("W pętli")
 			delAll()
 			loadSklCSV_V(modelContext: modelContext)
 			loadDrCSV_V(modelContext: modelContext)
@@ -178,12 +195,29 @@ struct DrinkiLista_V: View {
 			loadDrAlkGlownyCSV_V(modelContext: modelContext)
 			loadDrPrzepisyCSV_V(modelContext: modelContext)
 			UserDefaults.standard.set(true, forKey: "setupDone")
+			try? modelContext.save()
 		}
+		print("Koniec Load All, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 			//			debugPobrane(miejsce: "Koniec Ładowania")
 	}
 		// MARK: - RESET ALL
 	private func resetAll() {
+		print("Startuje resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+
+
+		Task {
+			do {
+				let fetch = FetchDescriptor<Dr_M>()
+				let wynik = try modelContext.fetch(fetch)
+				print("Liczba drinków: \(wynik.count)")
+			} catch {
+				print("Błąd fetchowania: \(error)")
+			}
+		}
+
+
 		UserDefaults.standard.set(false, forKey: "setupDone")
+		print("Zmiana wartości resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 			//							debugPobrane(miejsce: "Przed")
 		delAll()
 		loadSklCSV_V(modelContext: modelContext)
@@ -191,8 +225,10 @@ struct DrinkiLista_V: View {
 		loadDrSkladnikiCSV_V(modelContext: modelContext)
 		loadDrAlkGlownyCSV_V(modelContext: modelContext)
 		loadDrPrzepisyCSV_V(modelContext: modelContext)
+		try? modelContext.save()
 			//							debugPobrane(miejsce: "Po")
 		UserDefaults.standard.set(true, forKey: "setupDone")
+		print("Koniec resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 	}
 		// MARK: - ADD DRINK
 	private func addDrink() {
