@@ -142,11 +142,11 @@ struct DrinkiLista_V: View {
 				
 				ToolbarItemGroup(placement: .destructiveAction) {
 					HStack(spacing: 0) {
-						Button {
-							resetAll()
-						} label: {
-							Label("Reset", systemImage: "arrow.counterclockwise")
-						}
+//						Button {
+//							resetAll()
+//						} label: {
+//							Label("Reset", systemImage: "arrow.counterclockwise")
+//						}
 
 						Button { /// Przycisk preferencji
 							pokazFiltr.toggle()
@@ -203,19 +203,6 @@ struct DrinkiLista_V: View {
 		// MARK: - RESET ALL
 	private func resetAll() {
 		print("Startuje resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-
-
-		Task {
-			do {
-				let fetch = FetchDescriptor<Dr_M>()
-				let wynik = try modelContext.fetch(fetch)
-				print("Liczba drinków: \(wynik.count)")
-			} catch {
-				print("Błąd fetchowania: \(error)")
-			}
-		}
-
-
 		UserDefaults.standard.set(false, forKey: "setupDone")
 		print("Zmiana wartości resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 			//							debugPobrane(miejsce: "Przed")

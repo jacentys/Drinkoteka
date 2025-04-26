@@ -91,7 +91,6 @@ struct SkladnikiLista_V: View {
 //								drinkiClass.setWszystkieBraki()
 							} label: {
 								Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
-									.font(.title2)
 									.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
 							}
 						}
@@ -99,7 +98,7 @@ struct SkladnikiLista_V: View {
 				}
 				.toolbarBackgroundVisibility(.visible)
 				.toolbarBackground(Material.thinMaterial)
-				.navigationTitle("Drinki")
+				.navigationTitle("Składniki")
 			}
 		}
 	}
