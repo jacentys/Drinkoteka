@@ -66,6 +66,7 @@
 		F3BEA87D2DB81CEC001E6801 /* DrinkNotatka_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA87C2DB81CEC001E6801 /* DrinkNotatka_V.swift */; };
 		F3BEA87F2DB820AB001E6801 /* DrinkWWW_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA87E2DB820AB001E6801 /* DrinkWWW_V.swift */; };
 		F3BEA8812DB82A9B001E6801 /* DrinkBack_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA8802DB82A9B001E6801 /* DrinkBack_V.swift */; };
+		F3C25B902DC17A920038FD84 /* SkladnikWDrinkach_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C25B8F2DC17A920038FD84 /* SkladnikWDrinkach_V.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +132,7 @@
 		F3BEA87C2DB81CEC001E6801 /* DrinkNotatka_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkNotatka_V.swift; sourceTree = "<group>"; };
 		F3BEA87E2DB820AB001E6801 /* DrinkWWW_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWWW_V.swift; sourceTree = "<group>"; };
 		F3BEA8802DB82A9B001E6801 /* DrinkBack_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrinkBack_V.swift; path = "Drinkoteka/View/Drinki View/DrinkBack_V.swift"; sourceTree = SOURCE_ROOT; };
+		F3C25B8F2DC17A920038FD84 /* SkladnikWDrinkach_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkladnikWDrinkach_V.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +329,7 @@
 				F36F1E8F2DB7DF32000775D6 /* SkladnikOpis_V.swift */,
 				F377B09F2DB8BE6000FE8CE3 /* SkladnikWWW_V.swift */,
 				F33256132DC0AE7C00C4055A /* SkladnikiBack_V.swift */,
+				F3C25B8F2DC17A920038FD84 /* SkladnikWDrinkach_V.swift */,
 			);
 			path = "Skladniki View";
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				F3095AA82DB693AA00481E4F /* IkonaJestBrak_V.swift in Sources */,
 				F3BEA87A2DB81435001E6801 /* DrinkFoto_V.swift in Sources */,
 				F3BEA87B2DB81435001E6801 /* DrinkSkala_V.swift in Sources */,
+				F3C25B902DC17A920038FD84 /* SkladnikWDrinkach_V.swift in Sources */,
 				F396F69F2DBA5D860030A329 /* DrinkiLista_V.swift in Sources */,
 				F33256142DC0AE7C00C4055A /* SkladnikiBack_V.swift in Sources */,
 				F3095A6A2DB3C1E000481E4F /* LodaDrSkladnikiCSV_V.swift in Sources */,

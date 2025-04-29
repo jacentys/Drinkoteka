@@ -19,6 +19,7 @@ struct Skladnik_V: View {
 					}
 					SkladnikOpis_V(skladnik: skladnik)
 					SkladnikWWW_V(skladnik: skladnik)
+					SkladnikWDrinkach_V(skladnik: skladnik)
 				}
 				.padding(.vertical, 30)
 			}

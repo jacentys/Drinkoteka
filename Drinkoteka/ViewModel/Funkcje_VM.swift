@@ -238,10 +238,10 @@ func zamiennikiOn(stan: sklStanEnum, pref: Bool, _ wylaczTrybZamiennikow: Bool) 
 	if pref && wylaczTrybZamiennikow {
 		return stan
 	} else {
-		if (stan == .jest) {
-			return .jest
+		if (stan == sklStanEnum.jest) {
+			return sklStanEnum.jest
 		} else {
-			return .brak
+			return sklStanEnum.brak
 		}
 	}
 }
