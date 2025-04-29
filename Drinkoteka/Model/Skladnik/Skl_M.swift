@@ -49,86 +49,36 @@ class Skl_M: Identifiable {
 		self.sklZamArray = sklZamArray
 	}
 	
-		// MARK: GET COLOR
+		// MARK: - GET KOLOR
 	func getKolor() -> Color {
 		return strToColor(self.sklKolor)
 	}
 	
-		// MARK: STAN TOGGLE
-	func stanToggle(_ stan: sklStanEnum) -> Skl_M {
-		return Skl_M(
-			id: id,
-			sklID: sklID,
-			sklNazwa: sklNazwa,
-			sklKat: sklKat,
-			sklProc: sklProc,
-			sklKolor: sklKolor,
-			sklFoto: sklFoto,
-			sklStan: stan,
-			sklOpis: sklOpis,
-			sklKal: sklKal,
-			sklMiara: sklMiara,
-			sklWWW: sklWWW,
-			sklZamArray: sklZamArray
-		)
+		// MARK: - STAN TOGGLE
+	func stanToggle() {
+		@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = true
+		if self.sklZamArray.isEmpty {
+			if self.sklStan == sklStanEnum.jest { self.sklStan = sklStanEnum.brak }
+			else { self.sklStan = sklStanEnum.jest }
+		}
+//		} else {
+//			/// Jeśli są zamienniki i brak zamienników dostępnych,
+//			if self.sklStan == sklStanEnum.brak || self.sklStan == sklStanEnum.zmBrak
+//		}
+	} // FIXME: DO ZROBIENIA PRZEJŚCIA STANÓW.
+
+		// MARK: - SET ALL ZAMIENNIK
+	func setAllZamienniki(_ zamienniki: [Skl_M]) {
+		self.sklZamArray = zamienniki
 	}
 
-		// MARK: SET ALL ZAMIENNIK
-	func setAllZamienniki(_ zamienniki: [Skl_M]) -> Skl_M {
-		return Skl_M(
-			id: id,
-			sklID: sklID,
-			sklNazwa: sklNazwa,
-			sklKat: sklKat,
-			sklProc: sklProc,
-			sklKolor: sklKolor,
-			sklFoto: sklFoto,
-			sklStan: sklStan,
-			sklOpis: sklOpis,
-			sklKal: sklKal,
-			sklMiara: sklMiara,
-			sklWWW: sklWWW,
-			sklZamArray: zamienniki
-		)
+		// MARK: - ADD ZAMIENNIK
+	func addZamiennik(_ zamiennik: Skl_M) {
+		self.sklZamArray.append(zamiennik)
 	}
 
-		// MARK: ADD ZAMIENNIK
-	func addZamiennik(zamID: Skl_M) -> Skl_M {
-		var zamSklArrayTemp = self.sklZamArray
-		zamSklArrayTemp.append(zamID)
-		return Skl_M(
-			id: id,
-			sklID: sklID,
-			sklNazwa: sklNazwa,
-			sklKat: sklKat,
-			sklProc: sklProc,
-			sklKolor: sklKolor,
-			sklFoto: sklFoto,
-			sklStan: sklStan,
-			sklOpis: sklOpis,
-			sklKal: sklKal,
-			sklMiara: sklMiara,
-			sklWWW: sklWWW,
-			sklZamArray: zamSklArrayTemp
-		)
-	}
-
-		// MARK: SET OPIS
-	func setOpis(_ opis: String) -> Skl_M {
-		return Skl_M(
-			id: id,
-			sklID: sklID,
-			sklNazwa: sklNazwa,
-			sklKat: sklKat,
-			sklProc: sklProc,
-			sklKolor: sklKolor,
-			sklFoto: sklFoto,
-			sklStan: sklStan,
-			sklOpis: opis,
-			sklKal: sklKal,
-			sklMiara: sklMiara,
-			sklWWW: sklWWW,
-			sklZamArray: sklZamArray
-		)
+		// MARK: - SET OPIS
+	func setOpis(_ opis: String) {
+		self.sklOpis = opis
 	}
 }

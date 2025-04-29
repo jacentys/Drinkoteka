@@ -139,16 +139,9 @@ struct DrinkiLista_V: View {
 				}
 
 					// MARK: - TOOLBAR PRAWO
-				
 				ToolbarItemGroup(placement: .destructiveAction) {
 					HStack(spacing: 0) {
-//						Button {
-//							resetAll()
-//						} label: {
-//							Label("Reset", systemImage: "arrow.counterclockwise")
-//						}
-
-						Button { /// Przycisk preferencji
+						Button { /// Przycisk filtra
 							pokazFiltr.toggle()
 						} label: {
 							Image(systemName: "line.3.horizontal.decrease.circle")
@@ -200,6 +193,7 @@ struct DrinkiLista_V: View {
 		print("Koniec Load All, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 			//			debugPobrane(miejsce: "Koniec Ładowania")
 	}
+	
 		// MARK: - RESET ALL
 	private func resetAll() {
 		print("Startuje resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
@@ -217,6 +211,7 @@ struct DrinkiLista_V: View {
 		UserDefaults.standard.set(true, forKey: "setupDone")
 		print("Koniec resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 	}
+	
 		// MARK: - ADD DRINK
 	private func addDrink() {
 		print("Funkcja addDrink uruchomiona")
@@ -225,6 +220,7 @@ struct DrinkiLista_V: View {
 			//			modelContext.insert(zam)
 			//		}
 	}
+	
 		// MARK: - DEL DRINK
 	private func delDrink(offsets: IndexSet) {
 		withAnimation {
@@ -234,6 +230,7 @@ struct DrinkiLista_V: View {
 //			}
 		}
 	}
+	
 		// MARK: - DEL ALL
 	private func delAll() {
 		print("Funkcja delAll uruchomiona")
@@ -244,6 +241,7 @@ struct DrinkiLista_V: View {
 			print("Błąd przy usuwaniu drinków: \(error)")
 		}
 	}
+	
 		// MARK: - DEBUG POBRANE
 	private func debugPobrane(miejsce: String) {
 		do {
@@ -258,6 +256,7 @@ struct DrinkiLista_V: View {
 			print("Błąd przy pobieraniu drinków: \(error)")
 		}
 	}
+	
 		// MARK: - FILTR
 	func filtrujDrinki() -> [Dr_M] {
 		
@@ -474,10 +473,6 @@ struct SortSkladView: View {
 }
 */
 
-private func rowek2(drink: Dr_M) -> some View {
-	Text("Test")
-}
-
 private func DrinkListaRow(drink: Dr_M) -> some View {
 	HStack {
 			// MARK: - IKONKA
@@ -523,9 +518,9 @@ private func DrinkListaRow(drink: Dr_M) -> some View {
 		Image(systemName: drink.drUlubiony ? "star.fill" : "star")
 			.font(.system(size: 23))
 			.foregroundStyle(drink.drUlubiony ? Color.accent : Color.gray)
-			//						.onTapGesture {
-			//							drinkiClass.updateDrinkUlubiony(drink: drink)
-			//						}
+									.onTapGesture {
+										drink.ulubionyToggle()
+									}
 	}
 }
 

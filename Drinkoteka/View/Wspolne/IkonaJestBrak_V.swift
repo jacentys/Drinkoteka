@@ -20,7 +20,7 @@ struct IkonaJestBrak_V: View {
 				.font(.system(size: wielkosc))
 				.foregroundStyle(zamiennikiOn(stan: skladnik.sklStan, pref: zamiennikiDozwolone, wyłączTrybZamiennikow).kolor)
 				.onTapGesture {
-						//						skladnik.stanToggle(skl: skladnik)
+					skladnik.stanToggle()
 						//						drClass.setWszystkieBraki()
 				}
 			if txtShow {

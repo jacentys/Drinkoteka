@@ -10,29 +10,29 @@ struct DrinkDane_V: View {
 		HStack(spacing: 0) { // MARK: DELIK-SŁODK
 								
 					Spacer()
-				
-					// Jeśli nie ma danych o słodkości to nie wyświetlaj
+
+					// MARK: - Słodycz
 				if drink.drSlodycz != drSlodyczEnum.brakDanych {
-						// MARK: Słodycz
 					VStack{
+						Spacer()
 						DrinkSkala_V(drink: drink, wielkosc: 25, etykieta: false)
 						Spacer()
 						Text("Słodycz".uppercased())
 							.font(.caption2)
 					}
-
 					.frame(maxWidth: .infinity)
 
-
 					Spacer()
+					
 					Divider()
 						.frame(minWidth: 2)
 						.frame(height: 50)
 						.overlay(Color.accent)
 				}
+
 					Spacer()
 
-					// MARK: Kalorie
+					// MARK: - Kalorie
 					VStack{
 						Spacer()
 						Text("\(drink.drKal)")
@@ -51,15 +51,15 @@ struct DrinkDane_V: View {
 					.overlay(Color.accent)
 					Spacer()
 
-					// MARK: Ulubiony
+					// MARK: - Ulubiony
 					VStack {
 						Spacer()
 						Image(systemName: drink.drUlubiony ? "star.fill" : "star")
 							.font(.system(size: 25))
 							.foregroundStyle(drink.drUlubiony ? Color.accent : Color.gray)
-//							.onTapGesture {
-//								drinkiClass.updateDrinkUlubiony(drink: drink)
-//							}
+							.onTapGesture {
+								drink.ulubionyToggle()
+							}
 						Spacer()
 						Text("Ulubiony".uppercased())
 							.font(.caption2)

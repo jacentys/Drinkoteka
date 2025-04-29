@@ -68,207 +68,43 @@ class Dr_M: Identifiable {
 		self.drPrzepis = drPrzepis
 	}
 	
-		// MARK: GET COLOR
-	func getKolor () -> Color {
+		// MARK: - GET COLOR
+	func getKolor() -> Color {
 		return strToColor(self.drKolor)
 	}
-}
-
-/*
-		// MARK: SET SKLADNIKI
-//	func setSkladnikiAll(_ drSkladniki: [DrinkSkladnik]) -> Drink {
-//		return Drink(
-//			id: id,
-//			drNazwa: drNazwa,
-//			drKat: drKat,
-//			drZrodlo: drZrodlo,
-//			drKolor: drKolor,
-//			drFoto: drFoto,
-//			drProc: drProc,
-//			drSlodycz: drSlodycz,
-//			drSzklo: drSzklo,
-//			drUlubiony: drUlubiony,
-//			drNotatka: drNotatka,
-//			drUwagi: drUwagi,
-//			drWWW: drWWW,
-//			drSklad: drSkladniki,
-//			drPrzepis: drPrzepis,
-//			drKal: drKal,
-//			drMoc: drMoc,
-//			drBrakuje: drBrakuje,
-//			drAlkGlowny: drAlkGlowny
-//		)
-//	}
-
-	// MARK: ULUBIONY TOGGLE
-	func ulubionyToggle() -> Drink_M {
-		return Drink_M(
-			id: id,
-			drinkID: drinkID,
-			drNazwa: drNazwa,
-			drKat: drKat,
-			drZrodlo: drZrodlo,
-			drKolor: drKolor,
-			drFoto: drFoto,
-			drProc: drProc,
-			drSlodycz: drSlodycz,
-			drSzklo: drSzklo,
-			drUlubiony: !drUlubiony,
-			drNotatka: drNotatka,
-			drUwagi: drUwagi,
-			drWWW: drWWW,
-			drSklad: drSklad,
-			drPrzepis: drPrzepis,
-			drKal: drKal,
-			drMoc: drMoc,
-			drBrakuje: drBrakuje,
-			drAlkGlowny: drAlkGlowny
-		)
-	}
-
-	// MARK: SET NOTATKA
-	func setNotatka(tekst: String) -> Drink_M {
-		return Drink_M(
-			id: id,
-			drinkID: drinkID,
-			drNazwa: drNazwa,
-			drKat: drKat,
-			drZrodlo: drZrodlo,
-			drKolor: drKolor,
-			drFoto: drFoto,
-			drProc: drProc,
-			drSlodycz: drSlodycz,
-			drSzklo: drSzklo,
-			drUlubiony: drUlubiony,
-			drNotatka: tekst,
-			drUwagi: drUwagi,
-			drWWW: drWWW,
-			drSklad: drSklad,
-			drPrzepis: drPrzepis,
-			drKal: drKal,
-			drMoc: drMoc,
-			drBrakuje: drBrakuje,
-			drAlkGlowny: drAlkGlowny
-		)
-	}
-
-	// MARK: SET MOC
-	func setMoc() -> Drink_M {
-
-		var moc: drMocEnum = drMocEnum.brakDanych
-
-		if (self.drProc == 0) { moc = drMocEnum.bezalk }
-		if (self.drProc > 0 && self.drProc < 13) { moc = drMocEnum.delik }
-		if (self.drProc > 12 && self.drProc < 21) { moc = drMocEnum.sredni }
-		if (self.drProc > 20) { moc = drMocEnum.mocny }
-
-		return Drink_M(
-			id: id,
-			drinkID: drinkID,
-			drNazwa: drNazwa,
-			drKat: drKat,
-			drZrodlo: drZrodlo,
-			drKolor: drKolor,
-			drFoto: drFoto,
-			drProc: drProc,
-			drSlodycz: drSlodycz,
-			drSzklo: drSzklo,
-			drUlubiony: drUlubiony,
-			drNotatka: drNotatka,
-			drUwagi: drUwagi,
-			drWWW: drWWW,
-			drSklad: drSklad,
-			drPrzepis: drPrzepis,
-			drKal: drKal,
-			drMoc: moc,
-			drBrakuje: drBrakuje,
-			drAlkGlowny: drAlkGlowny
-		)
-	}
-
-	// MARK: SET BRAKUJE
-	func setBrakuje(brak: Int) -> Drink_M {
-		return Drink_M(
-			id: id,
-			drinkID: drinkID,
-			drNazwa: drNazwa,
-			drKat: drKat,
-			drZrodlo: drZrodlo,
-			drKolor: drKolor,
-			drFoto: drFoto,
-			drProc: drProc,
-			drSlodycz: drSlodycz,
-			drSzklo: drSzklo,
-			drUlubiony: drUlubiony,
-			drNotatka: drNotatka,
-			drUwagi: drUwagi,
-			drWWW: drWWW,
-			drSklad: drSklad,
-			drPrzepis: drPrzepis,
-			drKal: drKal,
-			drMoc: drMoc,
-			drBrakuje: brak,
-			drAlkGlowny: drAlkGlowny
-		)
-	}
-
-	// MARK: SET KALORIE
-	func setKalorie(kalorie: Int) -> Drink_M {
-		return Drink_M(
-			id: id,
-			drinkID: drinkID,
-			drNazwa: drNazwa,
-			drKat: drKat,
-			drZrodlo: drZrodlo,
-			drKolor: drKolor,
-			drFoto: drFoto,
-			drProc: drProc,
-			drSlodycz: drSlodycz,
-			drSzklo: drSzklo,
-			drUlubiony: drUlubiony,
-			drNotatka: drNotatka,
-			drUwagi: drUwagi,
-			drWWW: drWWW,
-			drSklad: drSklad,
-			drPrzepis: drPrzepis,
-			drKal: kalorie,
-			drMoc: drMoc,
-			drBrakuje: drBrakuje,
-			drAlkGlowny: drAlkGlowny
-		)
-	}
-
-		// MARK: SET ALK GŁÓWNY
-	func setalkGlowny(alkGlowny: [alkGlownyEnum]) -> Drink_M {
-		return Drink_M(
-			id: id,
-			drinkID: drinkID,
-			drNazwa: drNazwa,
-			drKat: drKat,
-			drZrodlo: drZrodlo,
-			drKolor: drKolor,
-			drFoto: drFoto,
-			drProc: drProc,
-			drSlodycz: drSlodycz,
-			drSzklo: drSzklo,
-			drUlubiony: drUlubiony,
-			drNotatka: drNotatka,
-			drUwagi: drUwagi,
-			drWWW: drWWW,
-			drSklad: drSklad,
-			drPrzepis: drPrzepis,
-			drKal: drKal,
-			drMoc: drMoc,
-			drBrakuje: drBrakuje,
-			drAlkGlowny: alkGlowny
-		)
-	}
-
-
-//	func getSilaDrinka() -> String {
-//		return self.drMoc.opisShort + " (" + String(self.drProc) + "%) "  + String(self.drKal) + " kCal"
-//	}
 	
+		// MARK: - SET SKLADNIKI
+	func setSkladnikiAll(_ drSkladniki: [DrSkladnik_M]) {
+		self.drSklad = drSkladniki
+	}
+	
+		// MARK: - ULUBIONY TOGGLE
+	func ulubionyToggle() {
+		self.drUlubiony.toggle()
+	}
+	
+		// MARK: - SET NOTATKA
+	func setNotatka(tekst: String) {
+		self.drNotatka = tekst
+	}
+	
+		// MARK: - SET BRAKUJE
+	func setBrakuje(brak: Int) {
+		self.drBrakuje = brak
+	}
+	
+		// MARK: - SET KALORIE
+	func setKalorie(kalorie: Int) {
+		self.drKal = kalorie
+	}
+	
+		// MARK: - SET ALK GŁÓWNY
+	func setalkGlowny(alkGlowny: [alkGlownyEnum]) {
+		self.drAlkGlowny = alkGlowny
+	}
+	
+		// MARK: - SET MOC
+	func setMoc(moc: drMocEnum) {
+		self.drMoc = moc
+	}
 }
-
-*/

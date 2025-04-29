@@ -144,9 +144,7 @@ private func SkladnikListaRow(skladnik: Skl_M) -> some View {
 		
 		Divider().frame(height: 50)
 		
-		IkonaJestBrak_V(
-			skladnik: skladnik,
-			wielkosc: 26)
+		IkonaJestBrak_V(skladnik: skladnik, wielkosc: 26)
 	}
 	.frame(maxWidth: .infinity)
 }
