@@ -49,6 +49,11 @@ class Skl_M: Identifiable {
 		self.sklZamArray = sklZamArray
 	}
 	
+		// MARK: GET COLOR
+	func getKolor() -> Color {
+		return strToColor(self.sklKolor)
+	}
+	
 		// MARK: STAN TOGGLE
 	func stanToggle(_ stan: sklStanEnum) -> Skl_M {
 		return Skl_M(
@@ -66,11 +71,6 @@ class Skl_M: Identifiable {
 			sklWWW: sklWWW,
 			sklZamArray: sklZamArray
 		)
-	}
-
-		// MARK: GET COLOR
-	func getColor() -> Color {
-		return strToColor(self.sklKolor)
 	}
 
 		// MARK: SET ALL ZAMIENNIK

@@ -6,11 +6,9 @@ struct Skladnik_V: View {
 	@State var showEdycja: Bool = false
 
 	var body: some View {
-
-			// Wyciągnięcie danych  za pomocą if let i first
 		ZStack {
 				// MARK: Background
-			Background_V(foto: skladnik.sklFoto, kolor: skladnik.getColor())
+			SkladnikiBack_V(skladnik: skladnik)
 				// MARK: Data
 			ScrollView { // Główny
 				VStack(spacing: 12) {

@@ -7,8 +7,8 @@ import AppKit
 typealias OSColor = NSColor
 #endif
 
-let kolor1 = Color.accent
-let kolor2 = Color.gray
+//let kolor1 = Color.accent
+//let kolor2 = Color.gray
 
 struct Back_V: View {
 	@Environment(\.colorScheme) var colorScheme

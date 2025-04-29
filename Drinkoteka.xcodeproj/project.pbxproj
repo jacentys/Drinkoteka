@@ -32,11 +32,11 @@
 		F3095A972DB66DC500481E4F /* JSON_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A962DB66DC500481E4F /* JSON_VM.swift */; };
 		F3095A982DB66DC500481E4F /* AES_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A952DB66DC500481E4F /* AES_VM.swift */; };
 		F3095A9B2DB66E2300481E4F /* Back_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9A2DB66E2300481E4F /* Back_V.swift */; };
-		F3095A9D2DB66F5A00481E4F /* Background_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9C2DB66F5A00481E4F /* Background_V.swift */; };
 		F3095A9F2DB66FF000481E4F /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */; };
 		F3095AA22DB670B700481E4F /* DrinkPrzepis_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA12DB670B700481E4F /* DrinkPrzepis_V.swift */; };
 		F3095AA82DB693AA00481E4F /* IkonaJestBrak_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */; };
 		F3201BDB2DB941CC00BFF5A1 /* tbtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3201BDA2DB941CC00BFF5A1 /* tbtest.swift */; };
+		F33256142DC0AE7C00C4055A /* SkladnikiBack_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33256132DC0AE7C00C4055A /* SkladnikiBack_V.swift */; };
 		F34D9EAC2DBC2BE000D484DC /* SkladnikiLista_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34D9EA82DBC250400D484DC /* SkladnikiLista_V.swift */; };
 		F36F1E822DB783E6000775D6 /* PrefClass_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA92DB6945200481E4F /* PrefClass_VM.swift */; };
 		F36F1E842DB78BC2000775D6 /* Logowanie_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E832DB78BC2000775D6 /* Logowanie_V.swift */; };
@@ -96,7 +96,6 @@
 		F3095A952DB66DC500481E4F /* AES_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AES_VM.swift; sourceTree = "<group>"; };
 		F3095A962DB66DC500481E4F /* JSON_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_VM.swift; sourceTree = "<group>"; };
 		F3095A9A2DB66E2300481E4F /* Back_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Back_V.swift; sourceTree = "<group>"; };
-		F3095A9C2DB66F5A00481E4F /* Background_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Background_V.swift; path = Drinkoteka/View/Wspolne/Backgrounds/Background_V.swift; sourceTree = SOURCE_ROOT; };
 		F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		F3095AA12DB670B700481E4F /* DrinkPrzepis_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPrzepis_V.swift; sourceTree = "<group>"; };
 		F3095AA32DB68EA900481E4F /* DrinkSkladniki_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladniki_V.swift; sourceTree = "<group>"; };
@@ -106,6 +105,7 @@
 		F3095AAA2DB6945200481E4F /* Preferencje_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferencje_V.swift; sourceTree = "<group>"; };
 		F3201BDA2DB941CC00BFF5A1 /* tbtest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tbtest.swift; sourceTree = "<group>"; };
 		F324A3092DB19E0C00B21F83 /* Drinkoteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drinkoteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F33256132DC0AE7C00C4055A /* SkladnikiBack_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkladnikiBack_V.swift; path = "Drinkoteka/View/Skladniki View/SkladnikiBack_V.swift"; sourceTree = SOURCE_ROOT; };
 		F34D9EA82DBC250400D484DC /* SkladnikiLista_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkladnikiLista_V.swift; sourceTree = "<group>"; };
 		F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkiLista_V.swift; sourceTree = "<group>"; };
 		F36F1E812DB77A29000775D6 /* Drink_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink_V.swift; sourceTree = "<group>"; };
@@ -264,9 +264,9 @@
 				F3095AAA2DB6945200481E4F /* Preferencje_V.swift */,
 				F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */,
 				F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */,
-				F34D9EA72DBC1BF800D484DC /* Backgrounds */,
 				F36F1E872DB7A651000775D6 /* Rejestracja */,
 				F37319892DBBFC230028F97C /* SearchBar */,
+				F3095A9A2DB66E2300481E4F /* Back_V.swift */,
 			);
 			path = Wspolne;
 			sourceTree = "<group>";
@@ -307,15 +307,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F34D9EA72DBC1BF800D484DC /* Backgrounds */ = {
-			isa = PBXGroup;
-			children = (
-				F3095A9C2DB66F5A00481E4F /* Background_V.swift */,
-				F3095A9A2DB66E2300481E4F /* Back_V.swift */,
-			);
-			path = Backgrounds;
-			sourceTree = "<group>";
-		};
 		F36F1E872DB7A651000775D6 /* Rejestracja */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +329,7 @@
 				F36F1E912DB7E085000775D6 /* SkladnikZamiennikLinia_V.swift */,
 				F36F1E8F2DB7DF32000775D6 /* SkladnikOpis_V.swift */,
 				F377B09F2DB8BE6000FE8CE3 /* SkladnikWWW_V.swift */,
+				F33256132DC0AE7C00C4055A /* SkladnikiBack_V.swift */,
 			);
 			path = "Skladniki View";
 			sourceTree = "<group>";
@@ -436,7 +428,6 @@
 				F3095A942DB543F300481E4F /* LoadSklZamiennikiCSV_V.swift in Sources */,
 				F36F1E922DB7E085000775D6 /* SkladnikZamiennikLinia_V.swift in Sources */,
 				F3095A612DB3C1E000481E4F /* DrPrzepis_M.swift in Sources */,
-				F3095A9D2DB66F5A00481E4F /* Background_V.swift in Sources */,
 				F3095A622DB3C1E000481E4F /* DrSkladnik_M.swift in Sources */,
 				F377B0A12DB8C17F00FE8CE3 /* SkladnikWWW_V.swift in Sources */,
 				F3095A972DB66DC500481E4F /* JSON_VM.swift in Sources */,
@@ -463,6 +454,7 @@
 				F3BEA87A2DB81435001E6801 /* DrinkFoto_V.swift in Sources */,
 				F3BEA87B2DB81435001E6801 /* DrinkSkala_V.swift in Sources */,
 				F396F69F2DBA5D860030A329 /* DrinkiLista_V.swift in Sources */,
+				F33256142DC0AE7C00C4055A /* SkladnikiBack_V.swift in Sources */,
 				F3095A6A2DB3C1E000481E4F /* LodaDrSkladnikiCSV_V.swift in Sources */,
 				F396F69E2DBA42040030A329 /* DrinkMock.swift in Sources */,
 				F377B0AC2DB8D88D00FE8CE3 /* CustomTab_V.swift in Sources */,

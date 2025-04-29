@@ -9,10 +9,10 @@ struct SkladnikFoto_V: View {
 			ZStack {
 				RoundedRectangle(cornerRadius: 12)
 					.frame(height: wysokosc - 20)
-					.foregroundStyle(skladnik.getColor())
+					.foregroundStyle(skladnik.getKolor())
 					.opacity(0.3)
 				Circle()
-					.stroke(skladnik.getColor(), lineWidth: 5)
+					.stroke(skladnik.getKolor(), lineWidth: 5)
 					.fill(.regularMaterial)
 					.frame(width: wysokosc, height: wysokosc)
 				
@@ -22,7 +22,7 @@ struct SkladnikFoto_V: View {
 					.scaledToFit()
 					.frame(width: wysokosc, height: wysokosc)
 					.mask(Circle())
-					.foregroundColor(skladnik.getColor().opacity(0.3))
+					.foregroundColor(skladnik.getKolor().opacity(0.3))
 				Image(!skladnik.sklFoto.isEmpty ? skladnik.sklFoto : "butelka")
 					.resizable()
 					.scaledToFit()

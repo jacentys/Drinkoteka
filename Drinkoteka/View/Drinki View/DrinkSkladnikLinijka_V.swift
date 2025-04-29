@@ -16,7 +16,7 @@ struct DrinkSkladnikLinijka_V: View {
 			Rectangle()
 				.frame(width: 5, height: 15)
 				.cornerRadius(2)
-				.foregroundColor(skladnik.getColor())
+				.foregroundColor(skladnik.getKolor())
 			
 				// MARK: Nazwa składnika i informacja
 			if !(drSkladnik.sklIlosc == 0) {
@@ -45,7 +45,7 @@ struct DrinkSkladnikLinijka_V: View {
 			Rectangle()
 				.frame(width: 5, height: 15)
 				.cornerRadius(2)
-				.foregroundColor(skladnik.getColor())
+				.foregroundColor(skladnik.getKolor())
 		}
 	}
 }

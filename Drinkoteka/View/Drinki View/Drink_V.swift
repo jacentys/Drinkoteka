@@ -8,7 +8,7 @@ struct Drink_V: View {
 	var body: some View {
 			ZStack {
 				
-				Background_V(foto: drink.drFoto, kolor: drink.getKolor())
+				DrinkBack_V(drink: drink)
 
 				ScrollView { // Główny
 					
