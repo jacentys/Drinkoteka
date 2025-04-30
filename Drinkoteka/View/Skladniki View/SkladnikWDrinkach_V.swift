@@ -15,16 +15,30 @@ struct SkladnikWDrinkach_V: View {
 	
 	var body: some View {
 		if !skladnikiWDrinku.isEmpty {
-			Text("Składnik użyty w drinkach:")
-				.TitleStyle()
-			ForEach(skladnikiWDrinku) { drink in
-				HStack {
-					Text("\(drink.drNazwa)")
-						.font(.headline)
-					Spacer()
+			ZStack {
+				VStack(alignment: .leading) {
+					
+					HStack(alignment: .firstTextBaseline) {
+						Text("Składnik drinków:".uppercased())
+							.TitleStyle()
+						Spacer()
+					}
+					ForEach(skladnikiWDrinku) { drink in
+						HStack {
+							NavigationLink(drink.drNazwa) {
+								Drink_V(drink: drink)
+							}
+							.foregroundStyle(Color.primary)
+							
+							Spacer()
+						}
+					}
 				}
-				.padding(.horizontal, 16)
 			}
+			.padding(20)
+			.background(
+				RoundedRectangle(cornerRadius: 12)
+					.foregroundStyle(.regularMaterial))
 		}
 	}
 }

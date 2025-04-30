@@ -100,6 +100,7 @@ struct Preferencje_V: View {
 			//							debugPobrane(miejsce: "Przed")
 		delAll()
 		loadSklCSV_V(modelContext: modelContext)
+		loadSklZamiennikiCSV_V(modelContext: modelContext)
 		loadDrCSV_V(modelContext: modelContext)
 		loadDrSkladnikiCSV_V(modelContext: modelContext)
 		loadDrAlkGlownyCSV_V(modelContext: modelContext)

@@ -6,7 +6,6 @@ struct DrinkWWW_V: View {
 	var body: some View {
 		if drink.drWWW.trimmingCharacters(in: .newlines) != "" {
 			ZStack {
-				
 				VStack(alignment: .leading) {
 					
 						// MARK: Nagłówek
@@ -16,13 +15,17 @@ struct DrinkWWW_V: View {
 						Spacer()
 					}
 					
-						// MARK: TEKST NOTATKI
-					Text("\(drink.drWWW)")
-						.frame(maxWidth: .infinity)
-						.font(.title2)
-						.fontWeight(.light)
-						.multilineTextAlignment(.leading)
-						.foregroundStyle(.accent)
+						// MARK: LINK
+					if let url = URL(string: drink.drWWW) {
+						Link(drink.drWWW, destination: url)
+							.frame(maxWidth: .infinity)
+							.font(.footnote)
+							.fontWeight(.light)
+							.multilineTextAlignment(.leading)
+							.foregroundStyle(.accent)
+					} else {
+						Text("Problem z linkiem: \(drink.drWWW)")
+					}
 				}
 			}
 			.padding(20)

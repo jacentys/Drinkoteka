@@ -328,8 +328,8 @@
 				F36F1E912DB7E085000775D6 /* SkladnikZamiennikLinia_V.swift */,
 				F36F1E8F2DB7DF32000775D6 /* SkladnikOpis_V.swift */,
 				F377B09F2DB8BE6000FE8CE3 /* SkladnikWWW_V.swift */,
-				F33256132DC0AE7C00C4055A /* SkladnikiBack_V.swift */,
 				F3C25B8F2DC17A920038FD84 /* SkladnikWDrinkach_V.swift */,
+				F33256132DC0AE7C00C4055A /* SkladnikiBack_V.swift */,
 			);
 			path = "Skladniki View";
 			sourceTree = "<group>";

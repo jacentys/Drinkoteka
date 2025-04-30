@@ -16,10 +16,11 @@ struct DrinkSkladniki_V: View {
 				}
 				
 					// Linijki
-				ForEach (drink.drSklad) { skladnikDrinka in
-//					NavigationLink(destination: Skladnik_V(skladnik: skladnikDrinka.skladnik)) {
-					DrinkSkladnikLinijka_V(drSkladnik: skladnikDrinka)
-//					}
+				ForEach (drink.drSklad.sorted(by: { $0.sklNo < $1.sklNo })) { skladnikDrinka in
+					NavigationLink(
+						destination: Skladnik_V(skladnik: skladnikDrinka.skladnik)) {
+							DrinkSkladnikLinijka_V(drSkladnik: skladnikDrinka)
+						}
 				}
 			}
 		}

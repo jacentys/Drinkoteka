@@ -6,7 +6,6 @@ struct SkladnikWWW_V: View {
 	var body: some View {
 		if skladnik.sklWWW.trimmingCharacters(in: .newlines) != "" {
 			ZStack {
-				
 				VStack(alignment: .leading) {
 					
 						// MARK: NAGŁOWEK
@@ -17,10 +16,10 @@ struct SkladnikWWW_V: View {
 					}
 					
 						// MARK: LINK
-					if let url = URL(string: "skladnik.sklWWW") {
+					if let url = URL(string: skladnik.sklWWW) {
 						Link(skladnik.sklWWW, destination: url)
 							.frame(maxWidth: .infinity)
-							.font(.title2)
+							.font(.footnote)
 							.fontWeight(.light)
 							.multilineTextAlignment(.leading)
 							.foregroundStyle(.accent)

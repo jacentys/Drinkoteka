@@ -165,24 +165,12 @@ struct DrinkiLista_V: View {
 		// MARK: - LOAD ALL DRINKS
 	private func loadAllDrinks() {
 		print("Startuje Load All, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-
-		Task {
-			do {
-				let fetch = FetchDescriptor<Dr_M>()
-				let wynik = try modelContext.fetch(fetch)
-				print("Liczba drinków: \(wynik.count)")
-			} catch {
-				print("Błąd fetchowania: \(error)")
-			}
-		}
-
-		
 			//			debugPobrane(miejsce: "Ładowanie drinków")
 		if !UserDefaults.standard.bool(forKey: "setupDone")
 		{
-			print("W pętli")
 			delAll()
 			loadSklCSV_V(modelContext: modelContext)
+			loadSklZamiennikiCSV_V(modelContext: modelContext)
 			loadDrCSV_V(modelContext: modelContext)
 			loadDrSkladnikiCSV_V(modelContext: modelContext)
 			loadDrAlkGlownyCSV_V(modelContext: modelContext)
@@ -202,6 +190,7 @@ struct DrinkiLista_V: View {
 			//							debugPobrane(miejsce: "Przed")
 		delAll()
 		loadSklCSV_V(modelContext: modelContext)
+		loadSklZamiennikiCSV_V(modelContext: modelContext)
 		loadDrCSV_V(modelContext: modelContext)
 		loadDrSkladnikiCSV_V(modelContext: modelContext)
 		loadDrAlkGlownyCSV_V(modelContext: modelContext)

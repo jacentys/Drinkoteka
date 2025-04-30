@@ -11,6 +11,6 @@ struct DrinkotekaApp: App {
 		  .modelContainer(
 			for: [Dr_M.self, Skl_M.self],
 			inMemory: false,
-			isUndoEnabled: true)
+			isUndoEnabled: false)
     }
 }
