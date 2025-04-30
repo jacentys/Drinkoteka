@@ -15,11 +15,10 @@ class Skl_M: Identifiable {
 	var sklKal: Int
 	var sklMiara: miaraEnum
 	var sklWWW: String
-	
-	@Relationship(deleteRule: .nullify, inverse: \Skl_M.sklOriginal)
+//	@Relationship(deleteRule: .nullify, inverse: \Skl_M.sklOriginal)
 	var sklZamArray: [Skl_M] = []
 //	@Relationship(deleteRule: .nullify, inverse: \Skl_M.sklZamArray)
-	var sklOriginal: [Skl_M]?
+//	var sklOriginal: [Skl_M] = []
 	init(
 		id: String = UUID().uuidString,
 		sklID: String,
@@ -77,16 +76,9 @@ class Skl_M: Identifiable {
 	func addZamiennik(_ zamiennik: Skl_M) {
 		if zamiennik != self {
 			self.sklZamArray.append(zamiennik)
-			self.sklOriginal?.append(self)
+//			self.sklOriginal?.append(self)
 		}
-		
-		print("Zam: \(zamiennik.sklNazwa)")
-		if let oryginal = self.sklOriginal {
-			for zam in oryginal {
-				print("Oryginał: \(zam.sklNazwa)")
-			}
-		}
-			
+		print("Oryginał: \(self.sklNazwa), Zam: \(zamiennik.sklNazwa)")
 	}
 //	func addZamiennik(_ zamiennik: Skl_M) {
 //		self.sklZamArray.append(zamiennik)
@@ -95,7 +87,6 @@ class Skl_M: Identifiable {
 	// MARK: - DEL ZAMIENNIK
 	func delZamiennik(_ zamiennik: Skl_M) {
 		self.sklZamArray.removeAll { $0.id == zamiennik.id }
-		self.sklOriginal = nil
 	}
 
 		// MARK: - SET OPIS
