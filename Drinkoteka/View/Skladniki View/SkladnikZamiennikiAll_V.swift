@@ -1,36 +1,45 @@
+import SwiftData
 import SwiftUI
 
 struct SkladnikZamiennikiAll_V: View {
-
 	@Bindable var skladnik: Skl_M
+	@Environment(\.modelContext) private var modelContext
+	@Query private var relacje: [SklZamiennik_M]
 
-    var body: some View {
-		 ZStack {
+	var zamiennikiSkladnika: [Skl_M] {
+		relacje
+			.filter { $0.skladnik.id == skladnik.id }
+			.map { $0.zamiennik }
+	}
 
-			 VStack(alignment: .leading) {
-				 
-				 
-				 // MARK: NAGŁOWEK
-				 HStack(alignment: .firstTextBaseline) {
-					 Text("Zamiennik:".uppercased())
-						 .TitleStyle()
-					 
-					 Spacer()
-				 }
-				 
-					 // MARK: LISTA ZAMIENNIKÓW
-				 ForEach (skladnik.sklZamArray, id: \.self) { zamiennik in
-					 NavigationLink(destination: Skladnik_V(skladnik: zamiennik)) {
-						 SkladnikZamiennikLinia_V(skladnik: zamiennik)
-					 }
-				 }
-			 }
-			 .frame(maxWidth: .infinity, alignment: .leading)
-		 }
-		 .padding(20)
-		 .background(RoundedRectangle(cornerRadius: 12)
+	var body: some View {
+		ZStack {
+			VStack(alignment: .leading) {
+					// MARK: NAGŁOWEK
+				HStack(alignment: .firstTextBaseline) {
+					Text("Zamienniki:".uppercased())
+						.TitleStyle()
+					Spacer()
+				}
+
+					// MARK: LISTA ZAMIENNIKÓW
+				if zamiennikiSkladnika.isEmpty {
+					Text("Brak zamienników")
+						.foregroundStyle(.secondary)
+				} else {
+					ForEach(zamiennikiSkladnika) { zamiennik in
+						NavigationLink(destination: Skladnik_V(skladnik: zamiennik)) {
+							SkladnikZamiennikLinia_V(skladnik: zamiennik)
+						}
+					}
+				}
+			}
+			.frame(maxWidth: .infinity, alignment: .leading)
+		}
+		.padding(20)
+		.background(RoundedRectangle(cornerRadius: 12)
 			.foregroundStyle(.regularMaterial))
-    }
+	}
 }
 
 #Preview {

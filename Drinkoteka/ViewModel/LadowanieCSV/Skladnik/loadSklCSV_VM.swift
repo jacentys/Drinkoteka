@@ -1,7 +1,7 @@
 import SwiftData
 import Foundation
 
-func loadSklCSV_V(modelContext: ModelContext) {
+func loadSklCSV_VM(modelContext: ModelContext) {
 	print("Start loadSklCSV_V")
 	let nazwaPliku = "DTeka - Skladniki"
 	let iloscKolumn = 11
@@ -41,9 +41,7 @@ func loadSklCSV_V(modelContext: ModelContext) {
 					sklOpis: sklOpis,
 					sklKal: sklKal,
 					sklMiara: sklMiara,
-					sklWWW: sklWWW,
-					sklZamArray: []
-				)
+					sklWWW: sklWWW				)
 				modelContext.insert(skladnik)
 			}
 		}

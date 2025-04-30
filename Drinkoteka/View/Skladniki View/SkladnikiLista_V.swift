@@ -15,8 +15,10 @@ struct SkladnikiLista_V: View {
 	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
 	
 	@State var szukaj: String = ""
-	
-	
+
+	private var totalZamienniki: Int {
+		skladniki.reduce(0) { $0 + $1.zamienniki.count }
+	}
 	
 	var skladnikiFiltered: [Skl_M] {
 		if szukaj.isEmpty {
@@ -72,8 +74,8 @@ struct SkladnikiLista_V: View {
 										destination: Skladnik_V(skladnik: skladnik),
 										label: {
 											SkladnikListaRow(skladnik: skladnik)
-												.listRowBackground(Color.white.opacity(0.4))
 										})
+									.listRowBackground(Color.white.opacity(0.4))
 									.buttonStyle(.plain)
 								}
 							}
@@ -147,7 +149,7 @@ private func SkladnikListaRow(skladnik: Skl_M) -> some View {
 			Divider()
 				// MARK: - DANE
 			HStack(spacing: 0) {
-				Text("\(skladnik.sklProc)%")
+				Text("\(skladnik.sklProc)% ")
 				Text("\(skladnik.sklKal) kCal.")
 				Spacer()
 			}
@@ -155,7 +157,7 @@ private func SkladnikListaRow(skladnik: Skl_M) -> some View {
 		}
 		
 		Divider().frame(height: 50)
-		
+
 		IkonaJestBrak_V(skladnik: skladnik, wielkosc: 26)
 	}
 	.frame(maxWidth: .infinity)

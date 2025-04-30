@@ -35,13 +35,13 @@ struct IkonaJestBrak_V: View {
 
 #Preview {
 	NavigationStack {
-		let skl1 = Skl_M(sklID: ".absynt", sklNazwa: "Absynt", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .brak, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com", sklZamArray: []
+		let skl1 = Skl_M(sklID: ".absynt", sklNazwa: "Absynt", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .brak, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
 		)
-		let skl2 = Skl_M(sklID: ".aperol", sklNazwa: "Aperol", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .jest, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com", sklZamArray: []
+		let skl2 = Skl_M(sklID: ".aperol", sklNazwa: "Aperol", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .jest, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
 		)
-		let skl3 = Skl_M(sklID: ".amaretto", sklNazwa: "Amaretto", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .zmBrak, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com", sklZamArray: []
+		let skl3 = Skl_M(sklID: ".amaretto", sklNazwa: "Amaretto", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .zmBrak, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
 		)
-		let skl4 = Skl_M(sklID: ".bourbon", sklNazwa: "Bourbon", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .zmJest, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com", sklZamArray: []
+		let skl4 = Skl_M(sklID: ".bourbon", sklNazwa: "Bourbon", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .zmJest, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
 		)
 
 		Text("Absynt - Brak")

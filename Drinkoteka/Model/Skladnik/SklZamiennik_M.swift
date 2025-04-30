@@ -1,25 +1,13 @@
 import SwiftData
 import Foundation
 
-	// MARK: STRUCT SKLADNIKI ZAMIENNIKI
-//@Model
-class SklZamiennik_M: Identifiable {
-	@Attribute(.unique) var id: String
-	var skladnikID: String
-	var skladnik: Skl_M
-	var zamiennikID: String
-	var zamienniki: [Skl_M]
-	init(
-		id: String = UUID().uuidString,
-		skladnikID: String,
-		skladnik: Skl_M,
-		zamiennikID: String,
-		zamienniki: [Skl_M]
-	) {
-		self.id = id
-		self.skladnikID = skladnikID
+@Model
+class SklZamiennik_M {
+	@Relationship(deleteRule: .cascade) var skladnik: Skl_M
+	@Relationship(deleteRule: .cascade) var zamiennik: Skl_M
+
+	init(skladnik: Skl_M, zamiennik: Skl_M) {
 		self.skladnik = skladnik
-		self.zamiennikID = zamiennikID
-		self.zamienniki = zamienniki
+		self.zamiennik = zamiennik
 	}
 }

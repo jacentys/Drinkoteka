@@ -81,8 +81,8 @@ struct DrinkiLista_V: View {
 								destination: Drink_V(drink: drink),
 								label: {
 									DrinkListaRow(drink: drink)
-										.listRowBackground(Color.white.opacity(0.4))
 								})
+							.listRowBackground(Color.white.opacity(0.4))
 							.buttonStyle(.plain)
 						}
 					}
@@ -169,8 +169,8 @@ struct DrinkiLista_V: View {
 		if !UserDefaults.standard.bool(forKey: "setupDone")
 		{
 			delAll()
-			loadSklCSV_V(modelContext: modelContext)
-			loadSklZamiennikiCSV_V(modelContext: modelContext)
+			loadSklCSV_VM(modelContext: modelContext)
+			loadSklZamiennikiCSV_VM(modelContext: modelContext)
 			loadDrCSV_V(modelContext: modelContext)
 			loadDrSkladnikiCSV_V(modelContext: modelContext)
 			loadDrAlkGlownyCSV_V(modelContext: modelContext)
@@ -189,8 +189,8 @@ struct DrinkiLista_V: View {
 		print("Zmiana wartości resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 			//							debugPobrane(miejsce: "Przed")
 		delAll()
-		loadSklCSV_V(modelContext: modelContext)
-		loadSklZamiennikiCSV_V(modelContext: modelContext)
+		loadSklCSV_VM(modelContext: modelContext)
+		loadSklZamiennikiCSV_VM(modelContext: modelContext)
 		loadDrCSV_V(modelContext: modelContext)
 		loadDrSkladnikiCSV_V(modelContext: modelContext)
 		loadDrAlkGlownyCSV_V(modelContext: modelContext)

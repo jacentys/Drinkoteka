@@ -15,10 +15,9 @@ class Skl_M: Identifiable {
 	var sklKal: Int
 	var sklMiara: miaraEnum
 	var sklWWW: String
-//	@Relationship(deleteRule: .nullify, inverse: \Skl_M.sklOriginal)
-	var sklZamArray: [Skl_M] = []
-//	@Relationship(deleteRule: .nullify, inverse: \Skl_M.sklZamArray)
-//	var sklOriginal: [Skl_M] = []
+	@Relationship(deleteRule: .cascade, inverse: \SklZamiennik_M.skladnik)
+	var relacjeZamiennikow: [SklZamiennik_M] = []
+
 	init(
 		id: String = UUID().uuidString,
 		sklID: String,
@@ -31,8 +30,7 @@ class Skl_M: Identifiable {
 		sklOpis: String,
 		sklKal: Int,
 		sklMiara: miaraEnum,
-		sklWWW: String,
-		sklZamArray: [Skl_M]
+		sklWWW: String
 	) {
 		self.id = id
 		self.sklID = sklID
@@ -46,51 +44,40 @@ class Skl_M: Identifiable {
 		self.sklKal = sklKal
 		self.sklMiara = sklMiara
 		self.sklWWW = sklWWW
-		self.sklZamArray = sklZamArray
 	}
-	
-		// MARK: - GET KOLOR
+
+		// Rest of the methods remain the same...
+	var zamienniki: [Skl_M] {
+		relacjeZamiennikow.map { $0.zamiennik }
+	}
+
+	func addZamiennik(_ zamiennik: Skl_M) {
+		guard !zamienniki.contains(where: { $0.id == zamiennik.id }) else { return }
+		let nowaRelacja = SklZamiennik_M(skladnik: self, zamiennik: zamiennik)
+		relacjeZamiennikow.append(nowaRelacja)
+	}
+
+	func removeZamiennik(_ zamiennik: Skl_M) {
+		relacjeZamiennikow.removeAll { $0.zamiennik.id == zamiennik.id }
+	}
+
+	func clearZamienniki() {
+		relacjeZamiennikow.removeAll()
+	}
+
 	func getKolor() -> Color {
 		return strToColor(self.sklKolor)
 	}
-	
-		// MARK: - STAN TOGGLE
+
 	func stanToggle() {
-		@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = true
-		if self.sklZamArray.isEmpty {
+		if self.zamienniki.isEmpty {
 			if self.sklStan == sklStanEnum.jest { self.sklStan = sklStanEnum.brak }
 			else { self.sklStan = sklStanEnum.jest }
 		}
-//		} else {
-//			/// Jeśli są zamienniki i brak zamienników dostępnych,
-//			if self.sklStan == sklStanEnum.brak || self.sklStan == sklStanEnum.zmBrak
-//		}
-	} // FIXME: DO ZROBIENIA PRZEJŚCIA STANÓW.
-
-		// MARK: - SET ALL ZAMIENNIK
-	func setAllZamienniki(_ zamienniki: [Skl_M]) {
-		self.sklZamArray = zamienniki
 	}
 
-		// MARK: - ADD ZAMIENNIK
-	func addZamiennik(_ zamiennik: Skl_M) {
-		if zamiennik != self {
-			self.sklZamArray.append(zamiennik)
-//			self.sklOriginal?.append(self)
-		}
-		print("Oryginał: \(self.sklNazwa), Zam: \(zamiennik.sklNazwa)")
-	}
-//	func addZamiennik(_ zamiennik: Skl_M) {
-//		self.sklZamArray.append(zamiennik)
-//	}
-	
-	// MARK: - DEL ZAMIENNIK
-	func delZamiennik(_ zamiennik: Skl_M) {
-		self.sklZamArray.removeAll { $0.id == zamiennik.id }
-	}
-
-		// MARK: - SET OPIS
 	func setOpis(_ opis: String) {
 		self.sklOpis = opis
 	}
 }
+

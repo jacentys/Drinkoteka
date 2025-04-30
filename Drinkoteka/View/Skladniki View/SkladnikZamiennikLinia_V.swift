@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct SkladnikZamiennikLinia_V: View {
-
 	@Bindable var skladnik: Skl_M
 
 	var body: some View {

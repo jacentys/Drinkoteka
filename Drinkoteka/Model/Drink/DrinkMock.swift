@@ -1,14 +1,14 @@
 import SwiftData
 
 func sklMock() -> Skl_M {
-	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com", sklZamArray:[])
+	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com")
 	return skladnik1
 }
 
 func sklMockArray() -> [Skl_M] {
-	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com", sklZamArray:[])
-	var skladnik2 = Skl_M(sklID: "tequila", sklNazwa: "Tequila", sklKat: .alkohol, sklProc: 50, sklKolor: "bezbarwny", sklFoto: "", sklStan: .brak, sklOpis: "Meksykańska wóda", sklKal: 0, sklMiara: .ml, sklWWW: "www.tequila.com", sklZamArray:[])
-	var skladnik3 = Skl_M(sklID: "cukier", sklNazwa: "Cukier", sklKat: .inne, sklProc: 0, sklKolor: "bialy", sklFoto: "", sklStan: .jest, sklOpis: "Po prostu cukier", sklKal: 0, sklMiara: .gr, sklWWW: "www.cukier.com", sklZamArray:[])
+	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com")
+	var skladnik2 = Skl_M(sklID: "tequila", sklNazwa: "Tequila", sklKat: .alkohol, sklProc: 50, sklKolor: "bezbarwny", sklFoto: "", sklStan: .brak, sklOpis: "Meksykańska wóda", sklKal: 0, sklMiara: .ml, sklWWW: "www.tequila.com")
+	var skladnik3 = Skl_M(sklID: "cukier", sklNazwa: "Cukier", sklKat: .inne, sklProc: 0, sklKolor: "bialy", sklFoto: "", sklStan: .jest, sklOpis: "Po prostu cukier", sklKal: 0, sklMiara: .gr, sklWWW: "www.cukier.com")
 	return [skladnik1, skladnik2, skladnik3]
 }
 
@@ -65,9 +65,9 @@ func drMock() -> Dr_M {
 		drPrzepis: []
 	)
 
-	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com", sklZamArray:[])
-	var skladnik2 = Skl_M(sklID: "tequila", sklNazwa: "Tequila", sklKat: .alkohol, sklProc: 50, sklKolor: "bezbarwny", sklFoto: "", sklStan: .brak, sklOpis: "Meksykańska wóda", sklKal: 0, sklMiara: .ml, sklWWW: "www.tequila.com", sklZamArray:[])
-	var skladnik3 = Skl_M(sklID: "cukier", sklNazwa: "Cukier", sklKat: .inne, sklProc: 0, sklKolor: "bialy", sklFoto: "", sklStan: .jest, sklOpis: "Po prostu cukier", sklKal: 0, sklMiara: .gr, sklWWW: "www.cukier.com", sklZamArray:[])
+	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com")
+	var skladnik2 = Skl_M(sklID: "tequila", sklNazwa: "Tequila", sklKat: .alkohol, sklProc: 50, sklKolor: "bezbarwny", sklFoto: "", sklStan: .brak, sklOpis: "Meksykańska wóda", sklKal: 0, sklMiara: .ml, sklWWW: "www.tequila.com")
+	var skladnik3 = Skl_M(sklID: "cukier", sklNazwa: "Cukier", sklKat: .inne, sklProc: 0, sklKolor: "bialy", sklFoto: "", sklStan: .jest, sklOpis: "Po prostu cukier", sklKal: 0, sklMiara: .gr, sklWWW: "www.cukier.com")
 
 
 	var przepis1 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 1, przepOpis: "Do shakera wsyp kostki lodu.", przepOpcja: false)
