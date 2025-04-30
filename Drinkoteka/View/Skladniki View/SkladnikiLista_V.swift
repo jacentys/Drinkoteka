@@ -38,6 +38,18 @@ struct SkladnikiLista_V: View {
 				.background(.regularMaterial)
 				
 				List {
+					
+//						// MARK: - Alfabet
+//					ForEach(skladnikiFiltered) { skladnik in
+//						NavigationLink(
+//							destination: Skladnik_V(skladnik: skladnik),
+//							label: {
+//								SkladnikListaRow(skladnik: skladnik)
+//									.listRowBackground(Color.white.opacity(0.4))
+//							})
+//						.buttonStyle(.plain)
+//					}
+//					
 						// MARK: - KATEGORIE
 					ForEach(sklKatEnum.allCases, id: \.self) { kategoria in
 						let macierz = skladnikiFiltered.filter { $0.sklKat == kategoria }

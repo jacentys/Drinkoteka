@@ -11,6 +11,8 @@ func loadSklZamiennikiCSV_V(modelContext: ModelContext) {
 		return
 	}
 	
+	var linijka: [SklZamiennik_M] = []
+	
 	do {
 		let zawartoscPliku = try String(contentsOfFile: filePath, encoding: .utf8)
 		let rows = zawartoscPliku.components(separatedBy: "\n").dropFirst()
@@ -18,28 +20,23 @@ func loadSklZamiennikiCSV_V(modelContext: ModelContext) {
 			// 1. Pobierz wszystkie skladniki z modelContext
 		let fetchDescriptor = FetchDescriptor<Skl_M>()
 		let skladniki = try modelContext.fetch(fetchDescriptor)
-		print(skladniki.count)
+		print("Ilość składników pobranych w zamiennikach: \(skladniki.count)")
 		
 			// 2. Utwórz słownik dla szybkiego dostępu po skladnikID
-		let skladnikMap = Dictionary(uniqueKeysWithValues: skladniki.map { ($0.sklID, $0) })
+		let skladnikiMap = Dictionary(uniqueKeysWithValues: skladniki.map { ($0.sklID, $0) })
 		
 		for row in rows {
 			let kolumny = row.components(separatedBy: "\t")
 			if kolumny.count >= iloscKolumn {
 				let skladnikID = clearStr(kolumny[0])
 				let zamiennikID = clearStr(kolumny[1])
-
-				if let powiazanySkladnik = skladnikMap[skladnikID] {
-					print("ID: \(skladnikID) - skladnik: \(powiazanySkladnik.sklNazwa)")
-
-					if let powiazanyZamiennik = skladnikMap[zamiennikID] {
-						print("ID: \(zamiennikID) - zamiennik: \(powiazanyZamiennik.sklNazwa)")
-
+					
+				if let powiazanySkladnik = skladnikiMap[skladnikID] {
+					if let powiazanyZamiennik = skladnikiMap[zamiennikID] {
+						
 							// Dodaj zamiennik bez tworzenia nowej instancji
-						powiazanySkladnik.sklZamArray.append(powiazanyZamiennik)
-
-							// Zapisz zmiany w modelContext
-						try? modelContext.save()
+						powiazanySkladnik.addZamiennik(powiazanyZamiennik)
+//							print("Zamienniki dla \(powiazanySkladnik.sklNazwa): \(powiazanySkladnik.sklZamArray.map { $0.sklNazwa })")
 					}
 				} else {
 					print("Nie znaleziono składnika o ID: \(skladnikID)")
