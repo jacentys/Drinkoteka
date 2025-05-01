@@ -1,7 +1,7 @@
 import SwiftData
 import Foundation
 
-func loadDrCSV_V(modelContext: ModelContext) {
+func loadDrCSV_VM(modelContext: ModelContext) {
 	print("Start loadDrCSV_V")
 	let nazwaPliku = "DTeka - Drinki"
 	let iloscKolumn = 13

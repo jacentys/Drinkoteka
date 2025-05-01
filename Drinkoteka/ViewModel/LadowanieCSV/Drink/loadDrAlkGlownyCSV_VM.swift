@@ -1,10 +1,11 @@
 import SwiftData
 import Foundation
 
-func loadDrPrzepisyCSV_V(modelContext: ModelContext) {
-	print("Start loadDrPrzepisyCSV_V")
-	let nazwaPliku = "DTeka - DrinkiPrzepisy"
-	let iloscKolumn = 4
+func loadDrAlkGlownyCSV_VM(modelContext: ModelContext) {
+		//	print("Start loadSklZamiennikiCSV_VM")
+	print("Start loadDrAlkGlownyCSV_V")
+	let nazwaPliku = "DTeka - DrinkiAlkGlowny"
+	let iloscKolumn = 2
 	
 	guard let filePath = Bundle.main.path(forResource: nazwaPliku, ofType: "tsv") else {
 		print("Plik \(nazwaPliku) nie znaleziony")
@@ -25,27 +26,14 @@ func loadDrPrzepisyCSV_V(modelContext: ModelContext) {
 		for row in rows {
 			let kolumny = row.components(separatedBy: "\t")
 			if kolumny.count == iloscKolumn {
-				let drinkID = clearStr(kolumny[0])
-				let no = Int(kolumny[1]) ?? 0
-				let opis = kolumny[2].trimmingCharacters(in: .whitespacesAndNewlines)
-				let opcjonalne = strToBool(kolumny[3])
+				let drinkID = kolumny[0]
+				let alkGlowny = kolumny[1].trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
 				
 					// 3. Znajdź drink po drinkID
 				if let powiazanyDrink = drinkMap[drinkID] {
-						// 4. Utwórz nowy przepis z relacją do drinka
-					let drinkPrzepis = DrPrzepis_M(
-						relacjaDrink: powiazanyDrink,
-						drinkID: drinkID,
-						przepNo: no,
-						przepOpis: opis,
-						przepOpcja: opcjonalne
-					)
-					
-						// 5. Dodaj przepis do relacji
-					powiazanyDrink.drPrzepis.append(drinkPrzepis)
-					
-						// 6. Zapisz do modelContext
-					modelContext.insert(drinkPrzepis)
+						
+						// 4. Dodaj przepis do relacji
+					powiazanyDrink.drAlkGlowny.append(alkGlownyEnum(rawValue: alkGlowny) ?? alkGlownyEnum.inny)
 				} else {
 					print("Nie znaleziono drinka o drinkID: \(drinkID)")
 				}
@@ -54,5 +42,5 @@ func loadDrPrzepisyCSV_V(modelContext: ModelContext) {
 	} catch {
 		print("Błąd wczytywania pliku \(nazwaPliku): \(error)")
 	}
-	print("Koniec loadDrPrzepisyCSV_V")
+	print("Koniec loadDrAlkGlownyCSV_V")
 }
