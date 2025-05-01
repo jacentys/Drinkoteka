@@ -2,7 +2,7 @@ import SwiftData
 import Foundation
 
 func loadSklCSV_VM(modelContext: ModelContext) {
-	print("Start loadSklCSV_V")
+//	print("Start loadSklCSV_V")
 	let nazwaPliku = "DTeka - Skladniki"
 	let iloscKolumn = 11
 	
@@ -48,5 +48,5 @@ func loadSklCSV_VM(modelContext: ModelContext) {
 	} catch {
 		print("Błąd wczytywania pliku \(nazwaPliku): \(error)")
 	}
-	print("Koniec loadSklCSV_V")
+//	print("Koniec loadSklCSV_V")
 }

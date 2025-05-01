@@ -15,6 +15,13 @@ struct DrinkPrzepis_V: View {
 						.TitleStyle()
 
 					Spacer()
+					
+					Button {
+						
+					} label: {
+						Text("Edytuj")
+					}
+
 				}
 				ForEach(drink.drPrzepis.sorted {$0.przepNo < $1.przepNo}) { przepisLinia in
 					HStack(spacing: 5) {

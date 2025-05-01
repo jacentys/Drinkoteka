@@ -2,7 +2,7 @@ import SwiftData
 import Foundation
 
 func loadDrAlkGlownyCSV_VM(modelContext: ModelContext) {
-		//	print("Start loadSklZamiennikiCSV_VM")
+		//	print("Start loadDrAlkGlownyCSV_VM")
 	print("Start loadDrAlkGlownyCSV_V")
 	let nazwaPliku = "DTeka - DrinkiAlkGlowny"
 	let iloscKolumn = 2
@@ -43,4 +43,5 @@ func loadDrAlkGlownyCSV_VM(modelContext: ModelContext) {
 		print("Błąd wczytywania pliku \(nazwaPliku): \(error)")
 	}
 	print("Koniec loadDrAlkGlownyCSV_V")
+		//	print("Koniec loadDrAlkGlownyCSV_VM")
 }

@@ -2,6 +2,7 @@ import SwiftData
 import Foundation
 
 func loadSklZamiennikiCSV_VM(modelContext: ModelContext) {
+		//	print("Start loadSklZamiennikiCSV_VM")
 	guard let filePath = Bundle.main.path(forResource: "DTeka - SkladnikiZamienniki", ofType: "tsv") else { return }
 
 	do {
@@ -40,4 +41,5 @@ func loadSklZamiennikiCSV_VM(modelContext: ModelContext) {
 	} catch {
 		print("Błąd wczytywania zamienników: \(error)")
 	}
+		//	print("Koniec loadSklZamiennikiCSV_VM")
 }

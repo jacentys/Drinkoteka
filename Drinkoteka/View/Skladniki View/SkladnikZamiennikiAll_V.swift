@@ -4,10 +4,10 @@ import SwiftUI
 struct SkladnikZamiennikiAll_V: View {
 	@Bindable var skladnik: Skl_M
 	@Environment(\.modelContext) private var modelContext
-	@Query private var relacje: [SklZamiennik_M]
+	@Query private var relacjaZamiennikow: [SklZamiennik_M]
 
 	var zamiennikiSkladnika: [Skl_M] {
-		relacje
+		relacjaZamiennikow
 			.filter { $0.skladnik.id == skladnik.id }
 			.map { $0.zamiennik }
 	}

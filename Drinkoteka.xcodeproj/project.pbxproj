@@ -11,10 +11,10 @@
 		F3095A612DB3C1E000481E4F /* DrPrzepis_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A422DB3C1E000481E4F /* DrPrzepis_M.swift */; };
 		F3095A622DB3C1E000481E4F /* DrSkladnik_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A432DB3C1E000481E4F /* DrSkladnik_M.swift */; };
 		F3095A632DB3C1E000481E4F /* EnumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A452DB3C1E000481E4F /* EnumModel.swift */; };
-		F3095A662DB3C1E000481E4F /* LoadDrAlkGlownyCSV_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A542DB3C1E000481E4F /* LoadDrAlkGlownyCSV_V.swift */; };
-		F3095A672DB3C1E000481E4F /* LoadDrCSV_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A552DB3C1E000481E4F /* LoadDrCSV_V.swift */; };
-		F3095A682DB3C1E000481E4F /* LoadDrPrzepisyCSV_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A562DB3C1E000481E4F /* LoadDrPrzepisyCSV_V.swift */; };
-		F3095A6A2DB3C1E000481E4F /* LodaDrSkladnikiCSV_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A582DB3C1E000481E4F /* LodaDrSkladnikiCSV_V.swift */; };
+		F3095A662DB3C1E000481E4F /* loadDrAlkGlownyCSV_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A542DB3C1E000481E4F /* loadDrAlkGlownyCSV_VM.swift */; };
+		F3095A672DB3C1E000481E4F /* loadDrCSV_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A552DB3C1E000481E4F /* loadDrCSV_VM.swift */; };
+		F3095A682DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A562DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift */; };
+		F3095A6A2DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A582DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift */; };
 		F3095A6B2DB3C1E000481E4F /* Funkcje_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A5A2DB3C1E000481E4F /* Funkcje_VM.swift */; };
 		F3095A6C2DB3C1E000481E4F /* DrinkotekaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A5E2DB3C1E000481E4F /* DrinkotekaApp.swift */; };
 		F3095A762DB3C1E000481E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3095A5C2DB3C1E000481E4F /* Assets.xcassets */; };
@@ -74,10 +74,10 @@
 		F3095A422DB3C1E000481E4F /* DrPrzepis_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrPrzepis_M.swift; sourceTree = "<group>"; };
 		F3095A432DB3C1E000481E4F /* DrSkladnik_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrSkladnik_M.swift; sourceTree = "<group>"; };
 		F3095A452DB3C1E000481E4F /* EnumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumModel.swift; sourceTree = "<group>"; };
-		F3095A542DB3C1E000481E4F /* LoadDrAlkGlownyCSV_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDrAlkGlownyCSV_V.swift; sourceTree = "<group>"; };
-		F3095A552DB3C1E000481E4F /* LoadDrCSV_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDrCSV_V.swift; sourceTree = "<group>"; };
-		F3095A562DB3C1E000481E4F /* LoadDrPrzepisyCSV_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDrPrzepisyCSV_V.swift; sourceTree = "<group>"; };
-		F3095A582DB3C1E000481E4F /* LodaDrSkladnikiCSV_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LodaDrSkladnikiCSV_V.swift; sourceTree = "<group>"; };
+		F3095A542DB3C1E000481E4F /* loadDrAlkGlownyCSV_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadDrAlkGlownyCSV_VM.swift; sourceTree = "<group>"; };
+		F3095A552DB3C1E000481E4F /* loadDrCSV_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadDrCSV_VM.swift; sourceTree = "<group>"; };
+		F3095A562DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadDrPrzepisyCSV_VM.swift; sourceTree = "<group>"; };
+		F3095A582DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadDrSkladnikiCSV_VM.swift; sourceTree = "<group>"; };
 		F3095A5A2DB3C1E000481E4F /* Funkcje_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funkcje_VM.swift; sourceTree = "<group>"; };
 		F3095A5C2DB3C1E000481E4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3095A5D2DB3C1E000481E4F /* Drinkoteka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Drinkoteka.entitlements; sourceTree = "<group>"; };
@@ -123,7 +123,6 @@
 		F377B0A22DB8C40C00FE8CE3 /* DrinkFiltry_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFiltry_V.swift; sourceTree = "<group>"; };
 		F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab_V.swift; sourceTree = "<group>"; };
 		F377B0A72DB8D47500FE8CE3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
-		F3A98E9E2DB55F3700C70D01 /* DeleteSkl_V 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeleteSkl_V 2.swift"; sourceTree = "<group>"; };
 		F3BEA8742DB807F1001E6801 /* DrinkTitle_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTitle_V.swift; sourceTree = "<group>"; };
 		F3BEA8762DB80F91001E6801 /* DrinkDane_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDane_V.swift; sourceTree = "<group>"; };
 		F3BEA8782DB81435001E6801 /* DrinkFoto_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFoto_V.swift; sourceTree = "<group>"; };
@@ -238,10 +237,10 @@
 		F3095A8E2DB52B1200481E4F /* Drink */ = {
 			isa = PBXGroup;
 			children = (
-				F3095A552DB3C1E000481E4F /* LoadDrCSV_V.swift */,
-				F3095A542DB3C1E000481E4F /* LoadDrAlkGlownyCSV_V.swift */,
-				F3095A562DB3C1E000481E4F /* LoadDrPrzepisyCSV_V.swift */,
-				F3095A582DB3C1E000481E4F /* LodaDrSkladnikiCSV_V.swift */,
+				F3095A552DB3C1E000481E4F /* loadDrCSV_VM.swift */,
+				F3095A542DB3C1E000481E4F /* loadDrAlkGlownyCSV_VM.swift */,
+				F3095A562DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift */,
+				F3095A582DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift */,
 			);
 			path = Drink;
 			sourceTree = "<group>";
@@ -251,7 +250,6 @@
 			children = (
 				F3095A8C2DB3F8E900481E4F /* loadSklCSV_VM.swift */,
 				F3095A922DB53DE900481E4F /* loadSklZamiennikiCSV_VM.swift */,
-				F3A98E9E2DB55F3700C70D01 /* DeleteSkl_V 2.swift */,
 			);
 			path = Skladnik;
 			sourceTree = "<group>";
@@ -443,19 +441,19 @@
 				F36F1E902DB7DF32000775D6 /* SkladnikOpis_V.swift in Sources */,
 				F36F1E9A2DB7E4A3000775D6 /* Skladnik_V.swift in Sources */,
 				F3BEA8732DB8067C001E6801 /* Drink_V.swift in Sources */,
-				F3095A662DB3C1E000481E4F /* LoadDrAlkGlownyCSV_V.swift in Sources */,
+				F3095A662DB3C1E000481E4F /* loadDrAlkGlownyCSV_VM.swift in Sources */,
 				F36F1E8B2DB7BAFE000775D6 /* DrinkSkladnikLinijka_V.swift in Sources */,
 				F3BEA87D2DB81CEC001E6801 /* DrinkNotatka_V.swift in Sources */,
-				F3095A672DB3C1E000481E4F /* LoadDrCSV_V.swift in Sources */,
+				F3095A672DB3C1E000481E4F /* loadDrCSV_VM.swift in Sources */,
 				F36F1E942DB7E21E000775D6 /* SkladnikZamiennikiAll_V.swift in Sources */,
-				F3095A682DB3C1E000481E4F /* LoadDrPrzepisyCSV_V.swift in Sources */,
+				F3095A682DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift in Sources */,
 				F3095AA82DB693AA00481E4F /* IkonaJestBrak_V.swift in Sources */,
 				F3BEA87A2DB81435001E6801 /* DrinkFoto_V.swift in Sources */,
 				F3BEA87B2DB81435001E6801 /* DrinkSkala_V.swift in Sources */,
 				F3C25B902DC17A920038FD84 /* SkladnikWDrinkach_V.swift in Sources */,
 				F396F69F2DBA5D860030A329 /* DrinkiLista_V.swift in Sources */,
 				F33256142DC0AE7C00C4055A /* SkladnikiBack_V.swift in Sources */,
-				F3095A6A2DB3C1E000481E4F /* LodaDrSkladnikiCSV_V.swift in Sources */,
+				F3095A6A2DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift in Sources */,
 				F396F69E2DBA42040030A329 /* DrinkMock.swift in Sources */,
 				F377B0AC2DB8D88D00FE8CE3 /* CustomTab_V.swift in Sources */,
 				F36F1E8A2DB7AB8A000775D6 /* Preferencje_V.swift in Sources */,
