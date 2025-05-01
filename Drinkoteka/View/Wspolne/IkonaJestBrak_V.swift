@@ -1,11 +1,8 @@
+import SwiftData
 import SwiftUI
 
-struct preff {
-	let zamienniki: Bool = false
-}
-
 struct IkonaJestBrak_V: View {
-
+	@Environment(\.modelContext) private var modelContext
 	@AppStorage("zamiennikiDozwolone") private var zamiennikiDozwolone: Bool = false
 	
 	@Bindable var skladnik: Skl_M // Parametr skladnika
@@ -21,7 +18,7 @@ struct IkonaJestBrak_V: View {
 				.foregroundStyle(zamiennikiOn(stan: skladnik.sklStan, pref: zamiennikiDozwolone, wyłączTrybZamiennikow).kolor)
 				.onTapGesture {
 					skladnik.stanToggle()
-						//						drClass.setWszystkieBraki()
+					setAllBraki(modelContext: modelContext)
 				}
 			if txtShow {
 				Text(skladnik.sklStan.opis)

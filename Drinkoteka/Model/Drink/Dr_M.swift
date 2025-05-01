@@ -3,6 +3,65 @@ import SwiftUI
 
 @Model
 class Dr_M: Identifiable {
+	private var opcjonalneWymaganeKey = "opcjonalneWymagane"
+	private var zamiennikiDozwoloneKey = "zamiennikiDozwolone"
+	private var tylkoUlubioneKey = "tylkoUlubione"
+	private var tylkoDostepneKey = "tylkoDostepne"
+	
+	private var sklBrakiMinKey = "sklBrakiMin"
+	private var sklBrakiMaxKey = "sklBrakiMax"
+	
+		// Pobieranie wartości z UserDefaults
+	var opcjonalneWymagane: Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: opcjonalneWymaganeKey)
+		}
+		set {
+			UserDefaults.standard.set(newValue, forKey: opcjonalneWymaganeKey)
+		}
+	}
+	var zamiennikiDozwolone: Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: zamiennikiDozwoloneKey)
+		}
+		set {
+			UserDefaults.standard.set(newValue, forKey: zamiennikiDozwoloneKey)
+		}
+	}
+	var tylkoUlubione: Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: tylkoUlubioneKey)
+		}
+		set {
+			UserDefaults.standard.set(newValue, forKey: tylkoUlubioneKey)
+		}
+	}
+	var tylkoDostepne: Bool {
+		get {
+			return UserDefaults.standard.bool(forKey: tylkoDostepneKey)
+		}
+		set {
+			UserDefaults.standard.set(newValue, forKey: tylkoDostepneKey)
+		}
+	}
+	
+	var sklBrakiMin: Int {
+		get {
+			return UserDefaults.standard.integer(forKey: sklBrakiMinKey)
+		}
+		set {
+			UserDefaults.standard.set(newValue, forKey: sklBrakiMinKey)
+		}
+	}
+	var sklBrakiMax: Int {
+		get {
+			return UserDefaults.standard.integer(forKey: sklBrakiMaxKey)
+		}
+		set {
+			UserDefaults.standard.set(newValue, forKey: sklBrakiMaxKey)
+		}
+	}
+		
 	@Attribute(.unique) var id: String
 	@Attribute(.unique) var drinkID: String
 	@Attribute(.unique) var drNazwa: String
@@ -89,9 +148,9 @@ class Dr_M: Identifiable {
 	}
 	
 		// MARK: - SET BRAKUJE
-	func setBrakuje(brak: Int) {
-		self.drBrakuje = brak
-	}
+//	func setBrakuje(brak: Int) {
+//		self.drBrakuje = brak
+//	}
 	
 		// MARK: - SET KALORIE
 	func setKalorie(kalorie: Int) {
@@ -106,5 +165,38 @@ class Dr_M: Identifiable {
 		// MARK: - SET MOC
 	func setMoc(moc: drMocEnum) {
 		self.drMoc = moc
+	}
+	
+		// MARK: - GET SKL DIFFERENCE
+	func setBraki() {
+		var ileSkladnikow: Int = 0
+		var ileNaStanie: Int = 0
+		var skladnikiDrinka: [DrSkladnik_M] = []
+		
+			// Przypisz skladnikiDrinka w oparciu o opcjonalne
+		if opcjonalneWymagane {
+			skladnikiDrinka = self.drSklad
+		} else {
+			skladnikiDrinka = self.drSklad.filter { !$0.sklOpcja }
+		}
+			// Policz ilość składników
+		ileSkladnikow = skladnikiDrinka.count
+		
+			// Jeśli pref.zamienniki aktywne
+		if zamiennikiDozwolone {
+			for skladnik in skladnikiDrinka {
+				if (skladnik.skladnik.sklStan == .jest ||
+						skladnik.skladnik.sklStan == .zmJest) {
+					ileNaStanie += 1
+				}
+			}
+		} else {
+			for skladnik in skladnikiDrinka {
+				if skladnik.skladnik.sklStan == .jest {
+					ileNaStanie += 1
+				}
+			}
+		}
+		self.drBrakuje = ileSkladnikow - ileNaStanie
 	}
 }

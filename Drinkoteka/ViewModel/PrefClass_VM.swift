@@ -32,6 +32,9 @@ class PrefClass_VM: ObservableObject {
 	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
 	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
 
+	@AppStorage("sklBrakiMin") var sklBrakiMin: Int = 0
+	@AppStorage("sklBrakiMax") var sklBrakiMax: Int = 0
+	
 	init(
 		zalogowany: Bool = false,
 		uzytkownik: String = "",

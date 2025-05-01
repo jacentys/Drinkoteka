@@ -1,3 +1,4 @@
+import SwiftData
 import SwiftUI
 #if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit
@@ -7,7 +8,66 @@ import AppKit
 typealias PlatformColor = NSColor
 #endif
 
-	// MARK: CLEARSTR
+private var opcjonalneWymaganeKey = "opcjonalneWymagane"
+private var zamiennikiDozwoloneKey = "zamiennikiDozwolone"
+private var tylkoUlubioneKey = "tylkoUlubione"
+private var tylkoDostepneKey = "tylkoDostepne"
+
+private var sklBrakiMinKey = "sklBrakiMin"
+private var sklBrakiMaxKey = "sklBrakiMax"
+
+	// Pobieranie wartości z UserDefaults
+var opcjonalneWymagane: Bool {
+	get {
+		return UserDefaults.standard.bool(forKey: opcjonalneWymaganeKey)
+	}
+	set {
+		UserDefaults.standard.set(newValue, forKey: opcjonalneWymaganeKey)
+	}
+}
+var zamiennikiDozwolone: Bool {
+	get {
+		return UserDefaults.standard.bool(forKey: zamiennikiDozwoloneKey)
+	}
+	set {
+		UserDefaults.standard.set(newValue, forKey: zamiennikiDozwoloneKey)
+	}
+}
+var tylkoUlubione: Bool {
+	get {
+		return UserDefaults.standard.bool(forKey: tylkoUlubioneKey)
+	}
+	set {
+		UserDefaults.standard.set(newValue, forKey: tylkoUlubioneKey)
+	}
+}
+var tylkoDostepne: Bool {
+	get {
+		return UserDefaults.standard.bool(forKey: tylkoDostepneKey)
+	}
+	set {
+		UserDefaults.standard.set(newValue, forKey: tylkoDostepneKey)
+	}
+}
+
+var sklBrakiMin: Int {
+	get {
+		return UserDefaults.standard.integer(forKey: sklBrakiMinKey)
+	}
+	set {
+		UserDefaults.standard.set(newValue, forKey: sklBrakiMinKey)
+	}
+}
+var sklBrakiMax: Int {
+	get {
+		return UserDefaults.standard.integer(forKey: sklBrakiMaxKey)
+	}
+	set {
+		UserDefaults.standard.set(newValue, forKey: sklBrakiMaxKey)
+	}
+}
+
+	// MARK: - CLEARSTR
 func clearStr(_ tekst: String) -> String {
 	let trimmed = tekst.trimmingCharacters(in: .punctuationCharacters.union(.whitespacesAndNewlines)).lowercased()
 		// Usuwanie znaków diakrytycznych (np. ą -> a, ó -> o)
@@ -17,16 +77,17 @@ func clearStr(_ tekst: String) -> String {
 	return clear.replacingOccurrences(of: "ł", with: "l")
 }
 
-	// MARK: STRING -> ENUM DRINKA
+	// MARK: - STRING -> ENUM KAT DRINKA
 func strToDrKatEnum(_ tekst: String) -> drKatEnum {
 	let clear = clearStr(tekst)
-	
 	switch clear {
 		case "koktail": return .koktail
 		case "shot": return .shot
 		default: return .brakDanych
 	}
 }
+
+	// MARK: - STRING -> ENUM SLODYCZ
 func strToDrSlodycz(_ tekst: String) -> drSlodyczEnum {
 	let clear = clearStr(tekst)
 	switch clear {
@@ -37,6 +98,8 @@ func strToDrSlodycz(_ tekst: String) -> drSlodyczEnum {
 		default: return .brakDanych
 	}
 }
+
+	// MARK: - STRING -> ENUM SZKLO
 func strToDrSzklo(_ tekst: String) -> szkloEnum {
 	let clear = clearStr(tekst)
 	switch clear {
@@ -51,6 +114,8 @@ func strToDrSzklo(_ tekst: String) -> szkloEnum {
 		default: return .inne
 	}
 }
+
+	// MARK: - INT -> MOC
 func strToDrMoc(_ procenty: Int) -> drMocEnum {
 	if (procenty == 0) {return .bezalk}
 	if (procenty > 0 && procenty < drMocEnum.sredni.start) { return .delik}
@@ -58,7 +123,9 @@ func strToDrMoc(_ procenty: Int) -> drMocEnum {
 	if (procenty >= drMocEnum.mocny.start) { return .mocny }
 	return .brakDanych
 }
-func strToDrMoc(_ tekst: String) -> drMocEnum {
+
+	// MARK: - STRING -> MOC
+func valToDrMoc(_ tekst: String) -> drMocEnum {
 	let clear = clearStr(tekst)
 	guard let procenty = Int(clear) else {
 		print("Błąd: strToDrMoc string wejściowy \(tekst) to nie liczba")
@@ -71,7 +138,7 @@ func strToDrMoc(_ tekst: String) -> drMocEnum {
 	return .brakDanych
 }
 
-	// MARK: STRING -> ENUM SKŁADNIKA
+	// MARK: - STRING -> ENUM SKŁADNIKA
 func strToSklKatEnum(_ tekst: String) -> sklKatEnum {
 	let clear = clearStr(tekst)
 	guard let kategoria = sklKatEnum(rawValue: clear) else {
@@ -80,6 +147,8 @@ func strToSklKatEnum(_ tekst: String) -> sklKatEnum {
 	}
 	return kategoria
 }
+
+	// MARK: - STRING -> ENUM STAN
 func strToSklStanEnum(_ tekst: String) -> sklStanEnum {
 	let clear = clearStr(tekst)
 	guard let liczba = Int(clear) else {
@@ -89,7 +158,9 @@ func strToSklStanEnum(_ tekst: String) -> sklStanEnum {
 	if liczba == 1 { return sklStanEnum.jest }
 	return sklStanEnum.brak
 }
-/// To jest chyba najlepiej zrobiona funkcja do konwersji.
+
+	/// To jest chyba najlepiej zrobiona funkcja do konwersji.
+	// MARK: - STRING -> ENUM MIARA
 func strToSklMiaraEnum(_ tekst: String) -> miaraEnum {
 	let clear = clearStr(tekst)
 	for jednostka in miaraEnum.allCases {
@@ -100,7 +171,7 @@ func strToSklMiaraEnum(_ tekst: String) -> miaraEnum {
 	return .brak
 }
 
-	// MARK: STRING -> BOOL
+	// MARK: - STRING -> BOOL
 func strToBool(_ tekst: String) -> Bool {
 	let clear = clearStr(tekst)
 	guard let liczba = Int(clear) else {
@@ -111,7 +182,8 @@ func strToBool(_ tekst: String) -> Bool {
 	if liczba == 1 { return true }
 	return false
 }
-	// MARK: STRING -> COLOR
+
+	// MARK: - STRING -> COLOR
 func strToColor(_ tekst: String) -> Color {
 	let clear = clearStr(tekst)
 	if let color = OSColor(named: clear) {
@@ -119,15 +191,16 @@ func strToColor(_ tekst: String) -> Color {
 	}
 	return Color.white
 }
-	// MARK: STRING -> DOUBLE
+
+	// MARK: - STRING -> DOUBLE
 func stringToDouble(_ tekst: String) -> Double {
-	
 	if let numer = Double(tekst.trimmingCharacters(in: .whitespacesAndNewlines)) {
 		return numer
 	}
 	return 0.0
 }
-	// MARK: STRING -> INT
+
+	// MARK: - STRING -> INT
 func stringToInt(_ tekst: String) -> Int {
 	if let numer = Int(tekst.trimmingCharacters(in: .whitespacesAndNewlines)) {
 		return numer
@@ -135,8 +208,7 @@ func stringToInt(_ tekst: String) -> Int {
 	return 0
 }
 
-
-	// MARK: CHECKBOX
+	// MARK: - IOS CHECKBOX
 struct iOSCheckboxToggleStyle: ToggleStyle {
 	func makeBody(configuration: Configuration) -> some View {
 		Button(action: {
@@ -153,7 +225,7 @@ struct iOSCheckboxToggleStyle: ToggleStyle {
 	}
 }
 
-	// MARK: ODMIANA DRINKÓW
+	// MARK: - ODMIANA DRINKÓW
 func drOdm(_ ilosc: Int) -> String {
 	if ilosc < 1 { return "brak drinków" }
 	if ilosc == 1 { return "jeden drink" }
@@ -161,13 +233,13 @@ func drOdm(_ ilosc: Int) -> String {
 	else { return "\(ilosc) drinków" }
 }
 
-	// MARK: ODMIANA SKŁADNIKÓW
+	// MARK: - ODMIANA SKŁADNIKÓW
 func sklOdmiana(_ ilosc: Int) -> String {
 	if ilosc == 0 { return "Masz wszystkie skł." }
 	else { return "Brak \(ilosc) skł." }
 }
 
-	// MARK: ODMIANA MIAR
+	// MARK: - ODMIANA MIAR
 func miaraOdm(_ miara: miaraEnum, ilosc: String) -> String {
 	switch miara {
 		case .gr: return "gr."
@@ -221,7 +293,7 @@ func miaraOdm(_ miara: miaraEnum, ilosc: String) -> String {
 	}
 }
 
-	// MARK: FORMATOWANIE CYFR
+	// MARK: - FORMATOWANIE CYFR
 func formatNumber(_ liczba: Double) -> String {
 	if liczba == 0 {
 		return "Pusty"
@@ -232,7 +304,7 @@ func formatNumber(_ liczba: Double) -> String {
 	}
 }
 
-	// Opcja zamienników włączona
+	// MARK: - ZAMIENNIKI WLACZONE
 func zamiennikiOn(stan: sklStanEnum, pref: Bool, _ wylaczTrybZamiennikow: Bool) -> sklStanEnum {
 	/// Jeśli
 	if pref && wylaczTrybZamiennikow {
@@ -245,7 +317,6 @@ func zamiennikiOn(stan: sklStanEnum, pref: Bool, _ wylaczTrybZamiennikow: Bool) 
 		}
 	}
 }
-
 
 	// MARK: KATEGORIA
 struct Kategoria: View {
@@ -335,45 +406,108 @@ struct Miara: View {
 	}
 } // MIARA
 
-/*	// MARK: FILTRUJ DRINKI
-func filtrujDrinki(pref: PrefClass) -> [Drink] {
-
-	return self.drArray.filter { drink in
-
-			// Filtrowanie po słodkości
-		let filtrSlodkosci =
-		(pref.nieSlodki && drink.drSlodycz == drSlodyczEnum.nieSlodki) ||
-		(pref.lekkoSlodki && drink.drSlodycz == drSlodyczEnum.lekkoSlodki) ||
-		(pref.slodki && drink.drSlodycz == drSlodyczEnum.slodki) ||
-		(pref.bardzoSlodki && drink.drSlodycz == drSlodyczEnum.bardzoSlodki) ||
-		(drink.drSlodycz == drSlodyczEnum.brakDanych)
-
-			// Filtrowanie po głównym alkoholu
-		let filtrAlkGlownego =
-		(pref.alkGlownyRum && drink.drAlkGlowny.contains { $0 == .rum }) ||
-		(pref.alkGlownyWhiskey && drink.drAlkGlowny.contains { $0 == .whiskey }) ||
-		(pref.alkGlownyTequila && drink.drAlkGlowny.contains { $0 == .tequila }) ||
-		(pref.alkGlownyBrandy && drink.drAlkGlowny.contains { $0 == .brandy }) ||
-		(pref.alkGlownyGin && drink.drAlkGlowny.contains { $0 == .gin }) ||
-		(pref.alkGlownyVodka && drink.drAlkGlowny.contains { $0 == .vodka }) ||
-		(pref.alkGlownyChampagne && drink.drAlkGlowny.contains { $0 == .champagne }) ||
-		(pref.alkGlownyInny && drink.drAlkGlowny.contains { $0 == .inny })
-
-			// Filtrowanie po mocy alkoholu
-		let filtrMocy =
-		((pref.alkBezalk && drink.drMoc == drMocEnum.bezalk) ||
-		 (pref.alkDelik && drink.drMoc == drMocEnum.delik) ||
-		 (pref.alkSredni && drink.drMoc == drMocEnum.sredni) ||
-		 (pref.alkMocny && drink.drMoc == drMocEnum.mocny)) ||
-		drink.drMoc == drMocEnum.brakDanych
-
-			// Filtrowanie po preferencjach
-		let filtrPreferencji =
-		(!pref.ulubione || drink.drUlubiony) &&
-		(!pref.dostepne || drink.drBrakuje == 0)
-
-			//			return filtrSlodkosci && filtrMocy && filtrAlkGlownego && filtrPreferencji
-		return filtrSlodkosci && filtrMocy
+	// MARK: - SET WSZYSTKIE BRAKI
+func setAllBraki(modelContext: ModelContext) {
+	print("Start setWszystkieBraki")
+		// Tworzymy FetchDescriptor dla typu Dr_M
+	let fetchDescriptor = FetchDescriptor<Dr_M>()
+	
+	do {
+			// Pobieramy wszystkie obiekty Dr_M za pomocą FetchDescriptor
+		let drinks: [Dr_M] = try modelContext.fetch(fetchDescriptor)
+		
+			// Iterujemy przez drinki i ustawiamy brak
+		for drink in drinks {
+			drink.setBraki() // Załóżmy, że ta metoda modyfikuje drinka
+		}
+		
+			// Obliczamy brakMin i brakMax
+		if let minValue = drinks.map({ $0.drBrakuje }).min() {
+			sklBrakiMin = minValue
+		}
+		if let maxValue = drinks.map({ $0.drBrakuje }).max() {
+			sklBrakiMax = maxValue
+		}
+		
+			// Zapisujemy zmiany do modelContext
+		try modelContext.save()
+		
+		print("Koniec setWszystkieBraki")
+	} catch {
+		print("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
 	}
+}
+
+	// MARK: - SET ALL KALORIE
+func setAllDrinkKalorie(modelContext: ModelContext) {
+	print("Start setWszystkieBraki")
+	var kalorie: Double = 0
+	var kalInt: Int = 0
+		// Tworzymy FetchDescriptor dla typu Dr_M
+	let fetchDescriptor = FetchDescriptor<Dr_M>()
+	
+	do {
+			// Pobieramy wszystkie obiekty Dr_M za pomocą FetchDescriptor
+		let drinks: [Dr_M] = try modelContext.fetch(fetchDescriptor)
+		
+			// Iterujemy przez drinki i ustawiamy brak
+		for drink in drinks {
+			if !drink.drSklad.isEmpty {
+				for drSkladnik in drink.drSklad {
+					if (drSkladnik.skladnik.sklMiara == miaraEnum.ml ||
+						drSkladnik.skladnik.sklMiara == miaraEnum.gr ||
+						drSkladnik.skladnik.sklMiara == miaraEnum.kostka) {
+						let kal = Double(drSkladnik.skladnik.sklKal) * drSkladnik.sklIlosc * 0.01
+						kalorie += kal
+					}
+				}
+				kalInt = Int((kalorie / 5).rounded() * 5)
+				drink.setKalorie(kalorie: kalInt)
+			}
+		}
+			// Zapisujemy zmiany do modelContext
+		try modelContext.save()
+		
+		print("Koniec setWszystkieBraki")
+	} catch {
+		print("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
 	}
-*/
+}
+
+	// MARK: - SET ALL PROCENTY
+func setAllDrinkProcenty(modelContext: ModelContext) {
+	print("Start setAllDrinkProcenty")
+	var procenty: Double = 0
+	var objetosc: Double = 0
+	
+		// Tworzymy FetchDescriptor dla typu Dr_M
+	let fetchDescriptor = FetchDescriptor<Dr_M>()
+	
+	do {
+			// Pobieramy wszystkie obiekty Dr_M za pomocą FetchDescriptor
+		let drinks: [Dr_M] = try modelContext.fetch(fetchDescriptor)
+		
+			// Iterujemy przez drinki i ustawiamy brak
+		for drink in drinks {
+			if !drink.drSklad.isEmpty {
+				for drSkladnik in drink.drSklad {
+					if drSkladnik.sklMiara == miaraEnum.ml {
+						objetosc += drSkladnik.sklIlosc
+						procenty += Double(drSkladnik.skladnik.sklProc) * drSkladnik.sklIlosc
+					}
+				}
+			}
+			let objCalkowita = ((Double(drink.drSzklo.obj) - objetosc) * 0.25) + objetosc
+			let procentyCalkowite = (procenty / objCalkowita)
+			let objInt = Int(objCalkowita)
+			let procInt = Int(procentyCalkowite)
+			print("\(drink.drNazwa), old: \(drink.drProc), new: \(procInt), obj. \(objInt)")
+			drink.drProc = procInt
+				// Zapisujemy zmiany do modelContext
+			try modelContext.save()
+		}
+		print("Koniec setAllDrinkProcenty")
+	} catch {
+		print("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
+	}
+}

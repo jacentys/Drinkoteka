@@ -4,16 +4,16 @@ import SwiftUI
 
 struct DrinkPrzepis_V: View {
 	@Bindable var drink: Dr_M
-
+	
 	var body: some View {
 		ZStack {
 			VStack(alignment: .leading) {
-
+				
 					// MARK: Nagłówek
 				HStack(alignment: .firstTextBaseline) {
 					Text("Przepis:".uppercased())
 						.TitleStyle()
-
+					
 					Spacer()
 					
 					Button {
@@ -21,7 +21,7 @@ struct DrinkPrzepis_V: View {
 					} label: {
 						Text("Edytuj")
 					}
-
+					
 				}
 				ForEach(drink.drPrzepis.sorted {$0.przepNo < $1.przepNo}) { przepisLinia in
 					HStack(spacing: 5) {

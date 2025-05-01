@@ -31,7 +31,7 @@ func loadDrCSV_VM(modelContext: ModelContext) {
 				let notatka = kolumny[10]
 				let uwagi = kolumny[11]
 				let drWWW = kolumny[12]
-				let mocDrinka = strToDrMoc(kolumny[6])
+				let mocDrinka = valToDrMoc(kolumny[6])
 				let brakuje = 0
 				let alkGlowny: [alkGlownyEnum] = []
 				let skladniki: [DrSkladnik_M] = []

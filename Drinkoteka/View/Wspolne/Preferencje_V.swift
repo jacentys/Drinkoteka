@@ -54,9 +54,9 @@ struct Preferencje_V: View {
 						Toggle(isOn: $zamiennikiDozwolone) {
 							Text("Dopuszczaj zamienniki")
 						}
-							//					.onChange(of: zamiennikiDozwolone) { _, _ in
-							//						drinkiClass.setWszystkieBraki()
-							//					}
+						.onChange(of: zamiennikiDozwolone) { _, _ in
+							setAllBraki(modelContext: modelContext)
+						}
 					}
 
 				Section( // MARK: Opcjonalne
@@ -67,9 +67,9 @@ struct Preferencje_V: View {
 						Toggle(isOn: $opcjonalneWymagane) {
 							Text("Składniki opcjonalne wymagane")
 						}
-							//					.onChange(of: zamiennikiDozwolone) { _, _ in
-							//						drinkiClass.setWszystkieBraki()
-							//					}
+						.onChange(of: opcjonalneWymagane) { _, _ in
+							setAllBraki(modelContext: modelContext)
+						}
 					}
 
 				Section( // MARK: Reset składników
@@ -105,6 +105,9 @@ struct Preferencje_V: View {
 		loadDrSkladnikiCSV_VM(modelContext: modelContext)
 		loadDrAlkGlownyCSV_VM(modelContext: modelContext)
 		loadDrPrzepisyCSV_VM(modelContext: modelContext)
+		setAllBraki(modelContext: modelContext)
+		setAllDrinkKalorie(modelContext: modelContext)
+		setAllDrinkProcenty(modelContext: modelContext)
 		try? modelContext.save()
 			//							debugPobrane(miejsce: "Po")
 		UserDefaults.standard.set(true, forKey: "setupDone")

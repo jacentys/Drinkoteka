@@ -122,6 +122,7 @@ struct DrinkiLista_V: View {
 							// Przycisk opcjonalne
 						Button {
 							opcjonalneWymagane.toggle()
+							setAllBraki(modelContext: modelContext)
 						} label: {
 							Image(systemName: opcjonalneWymagane ? "list.bullet.circle.fill" : "list.bullet.circle")
 								.foregroundStyle(opcjonalneWymagane ? Color.accent : Color.secondary)
@@ -130,6 +131,7 @@ struct DrinkiLista_V: View {
 							// Przycisk zamienników
 						Button {
 							zamiennikiDozwolone.toggle()
+							setAllBraki(modelContext: modelContext)
 						} label: {
 							Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
 								.font(.headline)
@@ -164,7 +166,7 @@ struct DrinkiLista_V: View {
 	}
 		// MARK: - LOAD ALL DRINKS
 	private func loadAllDrinks() {
-		print("Startuje Load All, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+//		print("Startuje Load All, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 			//			debugPobrane(miejsce: "Ładowanie drinków")
 		if !UserDefaults.standard.bool(forKey: "setupDone")
 		{
@@ -175,30 +177,12 @@ struct DrinkiLista_V: View {
 			loadDrSkladnikiCSV_VM(modelContext: modelContext)
 			loadDrAlkGlownyCSV_VM(modelContext: modelContext)
 			loadDrPrzepisyCSV_VM(modelContext: modelContext)
+			setAllBraki(modelContext: modelContext)
 			UserDefaults.standard.set(true, forKey: "setupDone")
 			try? modelContext.save()
 		}
-		print("Koniec Load All, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+//		print("Koniec Load All, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 			//			debugPobrane(miejsce: "Koniec Ładowania")
-	}
-	
-		// MARK: - RESET ALL
-	private func resetAll() {
-		print("Startuje resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-		UserDefaults.standard.set(false, forKey: "setupDone")
-		print("Zmiana wartości resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-			//							debugPobrane(miejsce: "Przed")
-		delAll()
-		loadSklCSV_VM(modelContext: modelContext)
-		loadSklZamiennikiCSV_VM(modelContext: modelContext)
-		loadDrCSV_VM(modelContext: modelContext)
-		loadDrSkladnikiCSV_VM(modelContext: modelContext)
-		loadDrAlkGlownyCSV_VM(modelContext: modelContext)
-		loadDrPrzepisyCSV_VM(modelContext: modelContext)
-		try? modelContext.save()
-			//							debugPobrane(miejsce: "Po")
-		UserDefaults.standard.set(true, forKey: "setupDone")
-		print("Koniec resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 	}
 	
 		// MARK: - ADD DRINK
@@ -497,6 +481,8 @@ private func DrinkListaRow(drink: Dr_M) -> some View {
 			}
 		}
 		.frame(maxWidth: .infinity)
+		Text("\(drink.drBrakuje)")
+			.font(.caption)
 		Divider().frame(height: 50)
 			// MARK: - SKALA
 		DrinkSkala_V(drink: drink, wielkosc: 20, etykieta: false)
