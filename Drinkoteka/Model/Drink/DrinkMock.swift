@@ -1,25 +1,25 @@
 import SwiftData
 
 func sklMock() -> Skl_M {
-	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com")
+	let skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com")
 	return skladnik1
 }
 
 func sklMockArray() -> [Skl_M] {
-	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com")
-	var skladnik2 = Skl_M(sklID: "tequila", sklNazwa: "Tequila", sklKat: .alkohol, sklProc: 50, sklKolor: "bezbarwny", sklFoto: "", sklStan: .brak, sklOpis: "Meksykańska wóda", sklKal: 0, sklMiara: .ml, sklWWW: "www.tequila.com")
-	var skladnik3 = Skl_M(sklID: "cukier", sklNazwa: "Cukier", sklKat: .inne, sklProc: 0, sklKolor: "bialy", sklFoto: "", sklStan: .jest, sklOpis: "Po prostu cukier", sklKal: 0, sklMiara: .gr, sklWWW: "www.cukier.com")
+	let skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com")
+	let skladnik2 = Skl_M(sklID: "tequila", sklNazwa: "Tequila", sklKat: .alkohol, sklProc: 50, sklKolor: "bezbarwny", sklFoto: "", sklStan: .brak, sklOpis: "Meksykańska wóda", sklKal: 0, sklMiara: .ml, sklWWW: "www.tequila.com")
+	let skladnik3 = Skl_M(sklID: "cukier", sklNazwa: "Cukier", sklKat: .inne, sklProc: 0, sklKolor: "bialy", sklFoto: "", sklStan: .jest, sklOpis: "Po prostu cukier", sklKal: 0, sklMiara: .gr, sklWWW: "www.cukier.com")
 	return [skladnik1, skladnik2, skladnik3]
 }
 
 func drMockArray() -> [Dr_M] {
-	var arr = [drMock(), drMock()]
+	let arr = [drMock(), drMock()]
 	return arr
 }
 
 func drMock() -> Dr_M {
 
-	var drink = Dr_M(
+	let drink = Dr_M(
 		id: "testowy",
 		drinkID: "testowy",
 		drNazwa: "Testowy",
@@ -42,7 +42,7 @@ func drMock() -> Dr_M {
 		drPrzepis: []
 	)
 
-	var drink2 = Dr_M(
+	let drink2 = Dr_M(
 		id: "testowy2",
 		drinkID: "testowy2",
 		drNazwa: "Testowy2",
@@ -65,25 +65,25 @@ func drMock() -> Dr_M {
 		drPrzepis: []
 	)
 
-	var skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com")
-	var skladnik2 = Skl_M(sklID: "tequila", sklNazwa: "Tequila", sklKat: .alkohol, sklProc: 50, sklKolor: "bezbarwny", sklFoto: "", sklStan: .brak, sklOpis: "Meksykańska wóda", sklKal: 0, sklMiara: .ml, sklWWW: "www.tequila.com")
-	var skladnik3 = Skl_M(sklID: "cukier", sklNazwa: "Cukier", sklKat: .inne, sklProc: 0, sklKolor: "bialy", sklFoto: "", sklStan: .jest, sklOpis: "Po prostu cukier", sklKal: 0, sklMiara: .gr, sklWWW: "www.cukier.com")
+	let skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com")
+	let skladnik2 = Skl_M(sklID: "tequila", sklNazwa: "Tequila", sklKat: .alkohol, sklProc: 50, sklKolor: "bezbarwny", sklFoto: "", sklStan: .brak, sklOpis: "Meksykańska wóda", sklKal: 0, sklMiara: .ml, sklWWW: "www.tequila.com")
+	let skladnik3 = Skl_M(sklID: "cukier", sklNazwa: "Cukier", sklKat: .inne, sklProc: 0, sklKolor: "bialy", sklFoto: "", sklStan: .jest, sklOpis: "Po prostu cukier", sklKal: 0, sklMiara: .gr, sklWWW: "www.cukier.com")
 
 
-	var przepis1 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 1, przepOpis: "Do shakera wsyp kostki lodu.", przepOpcja: false)
-	var przepis2 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 2, przepOpis: "Wlej wszystkie składniki.",	przepOpcja: false)
-	var przepis3 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 3, przepOpis: "Wstrząśnij.", przepOpcja: false)
-	var przepis4 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 4, przepOpis: "Przelej do schłodzonego kieliszka do koktajli.", przepOpcja: false)
-	var przepis5 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 5, przepOpis: "Posyp świeżo zmielonym gałką muszkatołową.", przepOpcja: false)
-	var drPrzepisyMock: [DrPrzepis_M] = [przepis1, przepis2, przepis3, przepis4, przepis5]
+	let przepis1 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 1, przepOpis: "Do shakera wsyp kostki lodu.", przepOpcja: false)
+	let przepis2 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 2, przepOpis: "Wlej wszystkie składniki.",	przepOpcja: false)
+	let przepis3 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 3, przepOpis: "Wstrząśnij.", przepOpcja: false)
+	let przepis4 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 4, przepOpis: "Przelej do schłodzonego kieliszka do koktajli.", przepOpcja: false)
+	let przepis5 = DrPrzepis_M(relacjaDrink: drink, drinkID: "testowy", przepNo: 5, przepOpis: "Posyp świeżo zmielonym gałką muszkatołową.", przepOpcja: false)
+	let drPrzepisyMock: [DrPrzepis_M] = [przepis1, przepis2, przepis3, przepis4, przepis5]
 
 
 
-	var drskl1 = DrSkladnik_M(relacjaDrink: drink, skladnik: skladnik1, sklNo: 1, sklIlosc: 30, sklMiara: .ml, sklInfo: "", sklOpcja: false)
-	var drskl2 = DrSkladnik_M(relacjaDrink: drink, skladnik: skladnik2, sklNo: 2, sklIlosc: 30, sklMiara: .ml, sklInfo: "", sklOpcja: false)
-	var drskl3 = DrSkladnik_M(relacjaDrink: drink, skladnik: skladnik3, sklNo: 3, sklIlosc: 30, sklMiara: .ml, sklInfo: "", sklOpcja: false)
+	let drskl1 = DrSkladnik_M(relacjaDrink: drink, skladnik: skladnik1, sklNo: 1, sklIlosc: 30, sklMiara: .ml, sklInfo: "", sklOpcja: false)
+	let drskl2 = DrSkladnik_M(relacjaDrink: drink, skladnik: skladnik2, sklNo: 2, sklIlosc: 30, sklMiara: .ml, sklInfo: "", sklOpcja: false)
+	let drskl3 = DrSkladnik_M(relacjaDrink: drink, skladnik: skladnik3, sklNo: 3, sklIlosc: 30, sklMiara: .ml, sklInfo: "", sklOpcja: false)
 
-	var drSkladnikiMock = [drskl1, drskl2, drskl3]
+	let drSkladnikiMock = [drskl1, drskl2, drskl3]
 
 	drink.drPrzepis = drPrzepisyMock
 	drink.drSklad = drSkladnikiMock
