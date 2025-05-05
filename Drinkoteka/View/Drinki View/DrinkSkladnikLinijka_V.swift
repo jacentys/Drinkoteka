@@ -10,7 +10,8 @@ struct DrinkSkladnikLinijka_V: View {
 //				 MARK: Kółeczko
 			IkonaJestBrak_V(
 				skladnik: skladnik,
-				wielkosc: 17)
+				wielkosc: 17,
+				wlaczTrybZamiennikow: true)
 			Text("\(drSkladnik.sklNo)")
 				// MARK: Prostokąt przed tekstem
 			Rectangle()

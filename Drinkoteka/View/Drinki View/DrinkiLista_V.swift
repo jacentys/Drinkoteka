@@ -55,14 +55,14 @@ struct DrinkiLista_V: View {
 	
 	var body: some View {
 		NavigationStack {
-			VStack(spacing: 0) {
-				VStack {
-						// MARK: - POLE WYSZUKIWANIA
-					SearchBar_V(searchText: $szukaj)
-				}
-				.background(.regularMaterial)
+			ZStack {
 					// MARK: - LISTA
 				List {
+
+						// MARK: - POLE WYSZUKIWANIA
+					SearchBar_V(searchText: $szukaj)
+						.listRowBackground(Color.white.opacity(0.3))
+
 					HStack(alignment: .firstTextBaseline, spacing: 0) {
 						Text("\(filtrujDrinki().count) ")
 							.font(.title2)
@@ -74,6 +74,7 @@ struct DrinkiLista_V: View {
 					.foregroundColor(Color.primary)
 					.listRowBackground(Color.white.opacity(0.7))
 					.padding(.horizontal, 12)
+
 						// MARK: - DRINKI
 					if !drinki.isEmpty {
 						ForEach(filtrujDrinki()) { drink in
@@ -206,7 +207,7 @@ struct DrinkiLista_V: View {
 	
 		// MARK: - DEL ALL
 	private func delAll() {
-		print("Funkcja delAll uruchomiona")
+//		print("Funkcja delAll uruchomiona")
 		do {
 			try modelContext.delete(model: Skl_M.self)
 			try modelContext.delete(model: Dr_M.self)
@@ -471,19 +472,20 @@ private func DrinkListaRow(drink: Dr_M) -> some View {
 			// MARK: - OPIS
 		VStack(spacing: 0) {
 			VStack(alignment: .leading) {
+				Spacer()
 				Text("\(drink.drNazwa)")
 					.font(.headline)
-					.foregroundStyle(Color.primary)
-				Divider()
-				Text("\(drink.drMoc)")
-					.foregroundColor(Color.secondary)
-					.font(.footnote)
+				Divider().padding(0)
+				Text("\(drink.drMoc)".capitalized + " (\(drink.drProc)%) | \(drink.drKal) kCal")
+					.font(.caption)
+				Spacer()
 			}
+			.foregroundStyle(Color.primary)
 		}
 		.frame(maxWidth: .infinity)
-		Text("\(drink.drBrakuje)")
-			.font(.caption)
+
 		Divider().frame(height: 50)
+
 			// MARK: - SKALA
 		DrinkSkala_V(drink: drink, wielkosc: 20, etykieta: false)
 			.shadow(color: .white, radius: 20)

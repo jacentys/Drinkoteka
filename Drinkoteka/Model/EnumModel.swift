@@ -33,17 +33,10 @@ enum sklStanEnum: String, CaseIterable, Codable {
 	case zmBrak = "zmBrak"
 
 	var stan: Bool {
-		switch self {
-			case .jest:
-				return true
-			case .brak:
-				return false
-			case .zmJest:
-				return false
-			case .zmBrak:
-				return false
-		}
+		if self == .jest { return true }
+		else { return false }
 	}
+
 	var ikonka: String {
 		switch self {
 			case .jest:
@@ -56,6 +49,7 @@ enum sklStanEnum: String, CaseIterable, Codable {
 				return "repeat.circle"
 		}
 	}
+
 	var opis: String {
 		switch self {
 			case .jest:
@@ -71,11 +65,11 @@ enum sklStanEnum: String, CaseIterable, Codable {
 	var kolor: Color {
 		switch self {
 			case .jest:
-				return Color.orange
+				return Color.accent
 			case .brak:
 				return Color.secondary
 			case .zmJest:
-				return Color.orange
+				return Color.accent
 			case .zmBrak:
 				return Color.secondary
 		}

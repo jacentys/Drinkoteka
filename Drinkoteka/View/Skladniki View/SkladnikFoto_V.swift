@@ -41,8 +41,9 @@ struct SkladnikFoto_V: View {
 						Spacer()
 						IkonaJestBrak_V(
 							skladnik: skladnik,
-							txtShow: true,
-							wielkosc: 40)
+							txtShow: true, wielkosc: 40,
+							wlaczTrybZamiennikow: true
+						)
 							.frame(width: 100, height: 100)
 					}
 				}

@@ -7,7 +7,7 @@ struct SkladnikZamiennikLinia_V: View {
 		HStack {
 			IkonaJestBrak_V(
 				skladnik: skladnik,
-				wyłączTrybZamiennikow: false
+				wlaczTrybZamiennikow: false
 			)
 			Text("\(skladnik.sklNazwa)")
 				.foregroundStyle(skladnik.sklStan.stan ? Color.primary : Color.secondary)

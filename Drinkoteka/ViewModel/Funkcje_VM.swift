@@ -1,5 +1,9 @@
+import CryptoKit
 import SwiftData
 import SwiftUI
+
+let key = SymmetricKey(size: .bits256)
+
 #if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit
 typealias PlatformColor = UIColor
@@ -304,20 +308,6 @@ func formatNumber(_ liczba: Double) -> String {
 	}
 }
 
-	// MARK: - ZAMIENNIKI WLACZONE
-func zamiennikiOn(stan: sklStanEnum, pref: Bool, _ wylaczTrybZamiennikow: Bool) -> sklStanEnum {
-	/// Jeśli
-	if pref && wylaczTrybZamiennikow {
-		return stan
-	} else {
-		if (stan == sklStanEnum.jest) {
-			return sklStanEnum.jest
-		} else {
-			return sklStanEnum.brak
-		}
-	}
-}
-
 	// MARK: KATEGORIA
 struct Kategoria: View {
 	var kat: String
@@ -406,7 +396,7 @@ struct Miara: View {
 
 	// MARK: - SET WSZYSTKIE BRAKI
 func setAllBraki(modelContext: ModelContext) {
-	print("Start setWszystkieBraki")
+//	print("Start setWszystkieBraki")
 		// Tworzymy FetchDescriptor dla typu Dr_M
 	let fetchDescriptor = FetchDescriptor<Dr_M>()
 	
@@ -416,7 +406,7 @@ func setAllBraki(modelContext: ModelContext) {
 		
 			// Iterujemy przez drinki i ustawiamy brak
 		for drink in drinks {
-			drink.setBraki() // Załóżmy, że ta metoda modyfikuje drinka
+			drink.setBrakiDrinka() // Ta metoda modyfikuje drinka
 		}
 		
 			// Obliczamy brakMin i brakMax
@@ -430,17 +420,31 @@ func setAllBraki(modelContext: ModelContext) {
 			// Zapisujemy zmiany do modelContext
 		try modelContext.save()
 		
-		print("Koniec setWszystkieBraki")
+//		print("Koniec setWszystkieBraki")
 	} catch {
 		print("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
 	}
 }
 
+	// MARK: - OBLICZ KALORIE
+func obliczKalorie(_ drink: Dr_M) -> Int {
+	let zaokraglenie = 5.0
+	var kalorie: Double = 0
+
+	for drSkladnik in drink.drSklad {
+		if ( drSkladnik.skladnik.sklMiara == miaraEnum.ml ||
+			  drSkladnik.skladnik.sklMiara == miaraEnum.gr ) {
+			let kal = Double(drSkladnik.skladnik.sklKal) * drSkladnik.sklIlosc * 0.01
+			kalorie += kal
+		}
+	}
+	return Int((kalorie / zaokraglenie).rounded() * zaokraglenie)
+}
+
 	// MARK: - SET ALL KALORIE
 func setAllDrinkKalorie(modelContext: ModelContext) {
-	print("Start setWszystkieBraki")
-	var kalorie: Double = 0
-	var kalInt: Int = 0
+//	print("Start setWszystkieKalorie")
+
 		// Tworzymy FetchDescriptor dla typu Dr_M
 	let fetchDescriptor = FetchDescriptor<Dr_M>()
 	
@@ -451,22 +455,13 @@ func setAllDrinkKalorie(modelContext: ModelContext) {
 			// Iterujemy przez drinki i ustawiamy brak
 		for drink in drinks {
 			if !drink.drSklad.isEmpty {
-				for drSkladnik in drink.drSklad {
-					if (drSkladnik.skladnik.sklMiara == miaraEnum.ml ||
-						drSkladnik.skladnik.sklMiara == miaraEnum.gr ||
-						drSkladnik.skladnik.sklMiara == miaraEnum.kostka) {
-						let kal = Double(drSkladnik.skladnik.sklKal) * drSkladnik.sklIlosc * 0.01
-						kalorie += kal
-					}
-				}
-				kalInt = Int((kalorie / 5).rounded() * 5)
-				drink.setKalorie(kalorie: kalInt)
+				drink.setKalorie(kalorie: obliczKalorie(drink))
 			}
 		}
 			// Zapisujemy zmiany do modelContext
 		try modelContext.save()
 		
-		print("Koniec setWszystkieBraki")
+//		print("Koniec setWszystkieKalorie")
 	} catch {
 		print("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
 	}
@@ -474,7 +469,7 @@ func setAllDrinkKalorie(modelContext: ModelContext) {
 
 	// MARK: - SET ALL PROCENTY
 func setAllDrinkProcenty(modelContext: ModelContext) {
-	print("Start setAllDrinkProcenty")
+//	print("Start setAllDrinkProcenty")
 	var procenty: Double = 0
 	var objetosc: Double = 0
 	
@@ -499,18 +494,19 @@ func setAllDrinkProcenty(modelContext: ModelContext) {
 			let procentyCalkowite = (procenty / objCalkowita)
 			let objInt = Int(objCalkowita)
 			let procInt = Int(procentyCalkowite)
-			print("\(drink.drNazwa), old: \(drink.drProc), new: \(procInt), obj. \(objInt)")
+//			print("\(drink.drNazwa), old: \(drink.drProc), new: \(procInt), obj. \(objInt)")
 			drink.drProc = procInt
 				// Zapisujemy zmiany do modelContext
 			try modelContext.save()
 		}
-		print("Koniec setAllDrinkProcenty")
+//		print("Koniec setAllDrinkProcenty")
 	} catch {
 		print("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
 	}
 }
 
-	// MARK: - GET SKL -> ZAMIENNIKI
+
+//	// MARK: - GET SKL -> ZAMIENNIKI
 //func getSklZamienniki(skladnik: Skl_M, modelContext: ModelContext) -> [Skl_M] {
 //	do {
 //		let fetchDescriptor = FetchDescriptor<SklZamiennik_M>(
@@ -523,3 +519,66 @@ func setAllDrinkProcenty(modelContext: ModelContext) {
 //		return []
 //	}
 //}
+
+	// MARK: - ENCODE JSON
+func encodeJSON<T: Codable>(object: T) -> String? {
+	let encoder = JSONEncoder()
+	encoder.outputFormatting = .prettyPrinted // Dodanie formatowania z wcięciami
+
+	do {
+		let jsonData = try encoder.encode(object)
+
+			// Zamiana danych na czytelny String
+		if let jsonString = String(data: jsonData, encoding: .utf8) {
+			return jsonString
+		} else {
+			print("Błąd konwersji danych na tekst")
+			return nil
+		}
+	} catch {
+		print("Błąd kodowania: \(error)")
+		return nil
+	}
+}
+
+	// MARK: - DECODE JSON
+func decodeJSON<T: Codable>(jsonData: Data, type: T.Type) -> T? {
+	let decoder = JSONDecoder()
+
+	do {
+		let object = try decoder.decode(T.self, from: jsonData)
+		return object
+	} catch {
+		print("Błąd dekodowania: \(error)")
+		return nil
+	}
+}
+
+
+	// MARK: - ENCRYPT AES DATA
+func encryptData(data: Data, key: SymmetricKey) -> Data? {
+	do {
+			// AES-GCM zapewnia zarówno szyfrowanie, jak i uwierzytelnianie danych
+		let sealedBox = try AES.GCM.seal(data, using: key)
+
+			// Zwracamy zaszyfrowane dane (w tym IV i tag autentykacji)
+		return sealedBox.combined
+	} catch {
+		print("Błąd szyfrowania: \(error)")
+		return nil
+	}
+}
+
+	// MARK: - DECRYPT AES DATA
+func decryptData(encryptedData: Data, key: SymmetricKey) -> Data? {
+	do {
+			// Zdeszyfrowanie danych przy użyciu AES-GCM
+		let sealedBox = try AES.GCM.SealedBox(combined: encryptedData)
+		let decryptedData = try AES.GCM.open(sealedBox, using: key)
+
+		return decryptedData
+	} catch {
+		print("Błąd deszyfrowania: \(error)")
+		return nil
+	}
+}

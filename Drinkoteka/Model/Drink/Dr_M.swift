@@ -168,21 +168,21 @@ class Dr_M: Identifiable {
 	}
 	
 		// MARK: - GET SKL DIFFERENCE
-	func setBraki() {
+	func setBrakiDrinka() {
 		var ileSkladnikow: Int = 0
 		var ileNaStanie: Int = 0
 		var skladnikiDrinka: [DrSkladnik_M] = []
 		
-			// Przypisz skladnikiDrinka w oparciu o opcjonalne
+			/// Jeśli opcjonalne są wymagane wtedy wszystkie składniki.
 		if opcjonalneWymagane {
 			skladnikiDrinka = self.drSklad
-		} else {
+		} else { /// W przeciwnym wypadku bez opcjonalnych
 			skladnikiDrinka = self.drSklad.filter { !$0.sklOpcja }
 		}
 			// Policz ilość składników
 		ileSkladnikow = skladnikiDrinka.count
 		
-			// Jeśli pref.zamienniki aktywne
+			/// Jeśli zamienniki są dozwolone
 		if zamiennikiDozwolone {
 			for skladnik in skladnikiDrinka {
 				if (skladnik.skladnik.sklStan == .jest ||

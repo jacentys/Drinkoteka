@@ -8,22 +8,40 @@ struct IkonaJestBrak_V: View {
 	@Bindable var skladnik: Skl_M // Parametr skladnika
 	@State var txtShow: Bool = false // Czy pokazywać opis?
 	@State var wielkosc: CGFloat = 18 // Wielkość ikonki
-	@State var wyłączTrybZamiennikow: Bool = false // Jeśli true, uwzględniona jest preferencja zamiennikiDozwolone. Jeśli false, pokazuje tylko dwa stany.
+
+		/// Jeśli true, uwzględniona jest preferencja zamiennikiDozwolone.
+		/// Jeśli false, pokazuje tylko dwa stany.
+	@State var wlaczTrybZamiennikow: Bool = false
 
 	var body: some View {
-
 		VStack {
-			Image(systemName: zamiennikiOn(stan: skladnik.sklStan, pref: zamiennikiDozwolone, wyłączTrybZamiennikow).ikonka)
+			Image(systemName: pokazZamienniki(stan: skladnik.sklStan, wlaczTrybZamiennikow).ikonka)
 				.font(.system(size: wielkosc))
-				.foregroundStyle(zamiennikiOn(stan: skladnik.sklStan, pref: zamiennikiDozwolone, wyłączTrybZamiennikow).kolor)
+				.foregroundStyle(pokazZamienniki(stan: skladnik.sklStan, wlaczTrybZamiennikow).kolor)
 				.onTapGesture {
+					print(skladnik.sklStan)
 					skladnik.stanToggle()
+					print(skladnik.sklStan)
 					setAllBraki(modelContext: modelContext)
 				}
 			if txtShow {
 				Text(skladnik.sklStan.opis)
 					.font(.caption)
-					.foregroundStyle(zamiennikiOn(stan: skladnik.sklStan, pref: zamiennikiDozwolone, wyłączTrybZamiennikow).kolor)
+					.foregroundStyle(pokazZamienniki(stan: skladnik.sklStan, wlaczTrybZamiennikow).kolor)
+			}
+		}
+	}
+		// MARK: - ZAMIENNIKI WLACZONE
+	func pokazZamienniki(stan: sklStanEnum, _ pokazStanZamiennika: Bool = true) -> sklStanEnum {
+			/// Jeśli zamiennikiDozwolone i pokazStanZamiennika są na true
+//		zamiennikiDozwolone = true
+		if zamiennikiDozwolone && pokazStanZamiennika {
+			return stan
+		} else {
+			if (stan == sklStanEnum.jest) {
+				return sklStanEnum.jest
+			} else {
+				return sklStanEnum.brak
 			}
 		}
 	}

@@ -33,14 +33,12 @@ struct SkladnikiLista_V: View {
 	var body: some View {
 		NavigationStack {
 			VStack(spacing: 0) {
-				VStack {
+				List {
+
 						// MARK: - POLE WYSZUKIWANIA
 					SearchBar_V(searchText: $szukaj)
-				}
-				.background(.regularMaterial)
-				
-				List {
-					
+						.listRowBackground(Color.white.opacity(0.3))
+
 //						// MARK: - Alfabet
 //					ForEach(skladnikiFiltered) { skladnik in
 //						NavigationLink(
@@ -157,7 +155,7 @@ private func SkladnikListaRow(skladnik: Skl_M) -> some View {
 		
 		Divider().frame(height: 50)
 
-		IkonaJestBrak_V(skladnik: skladnik, wielkosc: 26)
+		IkonaJestBrak_V(skladnik: skladnik, wielkosc: 26, wlaczTrybZamiennikow: true)
 	}
 	.frame(maxWidth: .infinity)
 }

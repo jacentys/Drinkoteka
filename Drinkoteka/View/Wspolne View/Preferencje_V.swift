@@ -94,9 +94,9 @@ struct Preferencje_V: View {
 
 		// MARK: - RESET ALL
 	private func resetAll() {
-		print("Startuje resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+//		print("Startuje resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 		UserDefaults.standard.set(false, forKey: "setupDone")
-		print("Zmiana wartości resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+//		print("Zmiana wartości resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 			//							debugPobrane(miejsce: "Przed")
 		delAll()
 		loadSklCSV_VM(modelContext: modelContext)
@@ -111,12 +111,12 @@ struct Preferencje_V: View {
 		try? modelContext.save()
 			//							debugPobrane(miejsce: "Po")
 		UserDefaults.standard.set(true, forKey: "setupDone")
-		print("Koniec resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+//		print("Koniec resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 	}
 
 		// MARK: - DEL ALL
 	private func delAll() {
-		print("Funkcja delAll uruchomiona")
+//		print("Funkcja delAll uruchomiona")
 		do {
 			try modelContext.delete(model: Skl_M.self)
 			try modelContext.delete(model: Dr_M.self)

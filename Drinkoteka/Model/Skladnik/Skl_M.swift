@@ -70,9 +70,19 @@ class Skl_M: Identifiable {
 	}
 
 	func stanToggle() {
-		if self.zamienniki.isEmpty {
-			if self.sklStan == sklStanEnum.jest { self.sklStan = sklStanEnum.brak }
-			else { self.sklStan = sklStanEnum.jest }
+		if self.sklStan != .jest {
+			self.sklStan = .jest
+			return
+		} else {
+			if self.zamienniki.isEmpty {
+				self.sklStan = .brak
+			} else {
+				if ( self.zamienniki.contains { $0.sklStan == .jest } ) {
+					self.sklStan = .zmJest
+				} else {
+					self.sklStan = .zmBrak
+				}
+			}
 		}
 	}
 
