@@ -339,7 +339,7 @@ struct Kategoria: View {
 		}
 		.foregroundStyle(Color.secondary)
 	}
-} // KATEGORIA
+}
 
 	// MARK: PROC
 struct Proc: View {
@@ -360,13 +360,11 @@ struct Proc: View {
 		}
 		.foregroundColor(Color.secondary)
 	}
-} // PROC
+}
 
 	// MARK: KAL
 struct Kal: View {
-
 	let kal: Int
-
 	var body: some View {
 
 		HStack(alignment: .lastTextBaseline, spacing: 0) {
@@ -383,7 +381,7 @@ struct Kal: View {
 		}
 		.foregroundColor(Color.secondary)
 	}
-} // KAL
+}
 
 	// MARK: MIARA
 struct Miara: View {
@@ -404,7 +402,7 @@ struct Miara: View {
 			.foregroundStyle(Color.secondary)
 		}
 	}
-} // MIARA
+}
 
 	// MARK: - SET WSZYSTKIE BRAKI
 func setAllBraki(modelContext: ModelContext) {
@@ -511,3 +509,17 @@ func setAllDrinkProcenty(modelContext: ModelContext) {
 		print("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
 	}
 }
+
+	// MARK: - GET SKL -> ZAMIENNIKI
+//func getSklZamienniki(skladnik: Skl_M, modelContext: ModelContext) -> [Skl_M] {
+//	do {
+//		let fetchDescriptor = FetchDescriptor<SklZamiennik_M>(
+//			predicate: #Predicate { $0.skladnik == skladnik }
+//		)
+//		let relacje = try modelContext.fetch(fetchDescriptor)
+//		return relacje.map { $0.zamiennik }
+//	} catch {
+//		print("Błąd pobierania zamienników: \(error)")
+//		return []
+//	}
+//}

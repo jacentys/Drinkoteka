@@ -101,8 +101,7 @@ struct SkladnikiLista_V: View {
 //								 Przycisk zamienników
 							Button {
 								zamiennikiDozwolone.toggle()
-//								drinkiClass.filtrujDrinki(pref: pref)
-//								drinkiClass.setWszystkieBraki()
+								setAllBraki(modelContext: modelContext)
 							} label: {
 								Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
 									.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)

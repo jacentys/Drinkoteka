@@ -3,7 +3,7 @@ alexander	1	Do shakera wsyp kostki lodu.	0
 alexander	2	Wlej wszystkie składniki.	0
 alexander	3	Wstrząśnij.	0
 alexander	4	Przelej do schłodzonego kieliszka do koktajli.	0
-alexander	5	Posyp świeżo zmielonym gałką muszkatołową na wierzchu.	0
+alexander	5	Posyp na wierzchu świeżo zmieloną gałką muszkatołową.	0
 americano	1	Do szklanki dowhiskey wsyp kostki lodu.	0
 americano	2	Dolej składniki i wymieszaj bezpośrednio w szklance.	0
 americano	3	Dodaj odrobinę wody sodowej.	0
@@ -943,3 +943,41 @@ whiskeysour	7	Ozdób skórką pomarańczy.	1
 windofchange	5	Udekoruj pomarańczą i miechunką.	1
 zabojczynumer	1	Udekoruj brzeg kieliszka crustą z cukru i soku z cytryny.	1
 zartropikow	7	Udekoruj plasterkiem ananasa i pomarańczy.	1
+lemoniadacytrynowa	1	W szklanicy barmańskiej rozgnieć plasterki z połówki cytryny z syropem cukrowym.	0
+lemoniadacytrynowa	2	Dolej wody gazowanej, delikatnie wymieszaj.	0
+lemoniadacytrynowa	3	Do karafki lub dzbanka wsyp trochę lodu.	0
+lemoniadacytrynowa	4	Wlej zawartość szkllanicy..	0
+lemoniadacytrynowa	5	Dopełnij wodą gazowaną.	0
+lemoniadacytrynowa	6	Delikatnie zamieszaj.	0
+lemoniadacytrynowa	7	Rozlej do szklanek z lodem.	0
+lemoniadazmieta	1	W szklanicy barmańskiej rozgnieć kilka plasterków cytryny i kilka liści mięty z syropem cukrowym.	0
+lemoniadazmieta	2	Dolej wody gazowanej, delikatnie wymieszaj.	0
+lemoniadazmieta	3	Do karafki lub dzbanka wsyp trochę lodu.	0
+lemoniadazmieta	4	Wlej zawartość szkllanicy..	0
+lemoniadazmieta	5	Dopełnij wodą gazowaną.	0
+lemoniadazmieta	6	Delikatnie zamieszaj.	0
+lemoniadazmieta	7	Rozlej do szklanek z lodem.	0
+lemoniadatruskawkowa	1	Umyte truskawki zmiksuj w blenderze na jednolitą masę.	0
+lemoniadatruskawkowa	2	W szklanicy barmańskiej rozgnieć plasterki cytryny i kilka liści mięty z syropem cukrowym.	0
+lemoniadatruskawkowa	3	Dolej wody gazowanej, delikatnie wymieszaj.	0
+lemoniadatruskawkowa	4	Do karafki lub dzbanka wsyp trochę lodu.	0
+lemoniadatruskawkowa	5	Wlej zawartość szkllanicy. oraz zmiksowane truskawki.	0
+lemoniadatruskawkowa	6	Dopełnij wodą gazowaną.	0
+lemoniadatruskawkowa	7	Delikatnie zamieszaj.	0
+lemoniadatruskawkowa	8	Rozlej do szklanek z lodem.	0
+lemoniadaarbuzowa	1	Zblenduj pokrojony środek arbuza na jednolitą masę.	0
+lemoniadaarbuzowa	2	W szklanicy barmańskiej rozgnieć plasterki cytryny i kilka liści mięty z syropem cukrowym.	0
+lemoniadaarbuzowa	3	Dolej wody gazowanej, delikatnie wymieszaj.	0
+lemoniadaarbuzowa	4	Do karafki lub dzbanka wsyp trochę lodu.	0
+lemoniadaarbuzowa	5	Wlej zawartość szkllanicy do karafki.	0
+lemoniadaarbuzowa	6	Wlej zmiksowanego arbuza przez sitko by pozbyc się pestek.	0
+lemoniadaarbuzowa	7	Dopełnij wodą gazowaną.	0
+lemoniadaarbuzowa	8	Delikatnie zamieszaj.	0
+lemoniadaarbuzowa	9	Rozlej do szklanek z lodem.	0
+lemoniadamalinowa	1	Zgnieć w szklanicy barmańskiej połowę malin, plasterki cytryny i kilka liści mięty z syropem cukrowym.	0
+lemoniadamalinowa	2	Dolej wody gazowanej, delikatnie wymieszaj.	0
+lemoniadamalinowa	3	Do karafki lub dzbanka wsyp trochę lodu.	0
+lemoniadamalinowa	4	Wlej zawartość szkllanicy. oraz dosyp resztę malin.	0
+lemoniadamalinowa	5	Dopełnij wodą gazowaną.	0
+lemoniadamalinowa	6	Delikatnie zamieszaj.	0
+lemoniadamalinowa	7	Rozlej do szklanek z lodem.	0

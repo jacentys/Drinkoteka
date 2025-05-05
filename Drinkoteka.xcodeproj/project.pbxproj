@@ -187,7 +187,7 @@
 			children = (
 				F3095AA02DB670B000481E4F /* Drinki View */,
 				F36F1E8E2DB7DF24000775D6 /* Skladniki View */,
-				F3095A992DB66E1C00481E4F /* Wspolne */,
+				F3095A992DB66E1C00481E4F /* Wspolne View */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 			path = Skladnik;
 			sourceTree = "<group>";
 		};
-		F3095A992DB66E1C00481E4F /* Wspolne */ = {
+		F3095A992DB66E1C00481E4F /* Wspolne View */ = {
 			isa = PBXGroup;
 			children = (
 				F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */,
@@ -266,7 +266,7 @@
 				F37319892DBBFC230028F97C /* SearchBar */,
 				F3095A9A2DB66E2300481E4F /* Back_V.swift */,
 			);
-			path = Wspolne;
+			path = "Wspolne View";
 			sourceTree = "<group>";
 		};
 		F3095AA02DB670B000481E4F /* Drinki View */ = {

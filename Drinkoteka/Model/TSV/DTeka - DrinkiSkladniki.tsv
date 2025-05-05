@@ -40,7 +40,7 @@ barracuda	ananas				1
 barracuda	mieta				1
 barracuda	wisnia				1
 beesknees	syropzmiodu	10	ml		0
-beesknees	gin	52,5	ml		0
+beesknees	gin	52.5	ml		0
 beesknees	sokpomaranczowy	22.5	ml		0
 beesknees	sokzcytryny	22.5	ml		0
 beesknees	lodwkostkach				0
@@ -94,7 +94,7 @@ boulevardier	vermouthslodkiczerwony	30	ml		0
 boulevardier	bourbon	45	ml		0
 boulevardier	cytryna				1
 boulevardier	pomarancza				1
-bramble	syropcukrowy	12,5	ml		0
+bramble	syropcukrowy	12.5	ml		0
 bramble	likierjezynowy	15	ml		0
 bramble	sokzcytryny	25	ml		0
 bramble	gin	50	ml		0
@@ -102,11 +102,11 @@ bramble	cytryna				1
 bramble	jezyny				1
 brandycrusta	angosturabitters	2	kropla		0
 brandycrusta	syropcukrowy	5	ml		1
-brandycrusta	likiermaraschino	7,5	ml		0
+brandycrusta	likiermaraschino	7.5	ml		0
 brandycrusta	likiercuracao	15	ml		0
 brandycrusta	sokzcytryny	15	ml		0
 brandycrusta	syropcukrowy	15	ml		0
-brandycrusta	brandy	52,5	ml		0
+brandycrusta	brandy	52.5	ml		0
 brandycrusta	cytryna				1
 brandycrusta	pomarancza				1
 caipirinha	limonka	1	kawalek	mały	0
@@ -302,7 +302,7 @@ groundzero	rumbialy	50	ml		0
 groundzero	sokzmango	100	ml		0
 groundzero	sokzwisni	100	ml		0
 groundzero	lodwkostkach				0
-hankypanky	fernet	7,5	ml		0
+hankypanky	fernet	7.5	ml		0
 hankypanky	gin	45	ml		0
 hankypanky	vermouthslodkiczerwony	45	ml		0
 hankypanky	pomarancza				1
@@ -414,7 +414,7 @@ lowcaandroidow	tonic		dopelnienie	do dopełnienia	0
 lowcaandroidow	cytryna	10	ml		0
 lowcaandroidow	wodkasliwkowa	70	ml		0
 lowcaandroidow	lodwkostkach				0
-maitai	syropcukrowy	7,5	ml		0
+maitai	syropcukrowy	7.5	ml		0
 maitai	syropmigdalowy	15	ml		0
 maitai	syroppomaranczowy	15	ml		0
 maitai	rumbialy	30	ml		0
@@ -450,7 +450,7 @@ martinez	gin	45	ml		0
 martinez	vermouthslodkiczerwony	45	ml		0
 martinez	cytryna				1
 marypickford	grenadyna	5	ml		0
-marypickford	likiermaraschino	7,5	ml		0
+marypickford	likiermaraschino	7.5	ml		0
 marypickford	rumbialy	45	ml		0
 marypickford	sokzananasa	45	ml		0
 miamivice	tonic		dopelnienie	do dopełnienia	0
@@ -592,7 +592,7 @@ parttimelover	wodka	50	ml		0
 parttimelover	sokzgrejpfruta	150	ml		0
 parttimelover	lodwkostkach				0
 penicillin	imbir	2-3	kawalek		0
-penicillin	whiskey	7,5	ml		0
+penicillin	whiskey	7.5	ml		0
 penicillin	scotchwhiskey	60	ml		0
 penicillin	sokzcytryny	22.5	ml		0
 penicillin	syropzmiodu	22.5	ml		0
@@ -711,8 +711,8 @@ sincity	likiercuracao	50	ml		0
 sincity	malibou	50	ml		0
 sincity	lodwkostkach				0
 singaporesling	angosturabitters	1	kropla		0
-singaporesling	cointreau	7,5	ml		0
-singaporesling	likierdombenedictine	7,5	ml		0
+singaporesling	cointreau	7.5	ml		0
+singaporesling	likierdombenedictine	7.5	ml		0
 singaporesling	grenadyna	10	ml		0
 singaporesling	likierwisniowy	15	ml		0
 singaporesling	sokzlimonki	15	ml		0
@@ -738,7 +738,7 @@ smoothcriminal	mieta		listek	5-6 listków	0
 smoothcriminal	sprite		dopelnienie	do dopełnienia	0
 smoothcriminal	wodka	50	ml		0
 smoothcriminal	lodkruszony		ml		0
-smoothcriminal	brzoskwiniazpuszki	0,5	sztuka		0
+smoothcriminal	brzoskwiniazpuszki	0.5	sztuka		0
 southpark	grenadyna	20	ml		0
 southpark	malibou	20	ml		0
 southpark	sokpomaranczowy	50	ml		0
@@ -837,7 +837,7 @@ trinidadsour	angosturabitters	45	ml		0
 trinidadsour	sokzcytryny	22.5	ml		0
 tuxedo	orangebitters	3	kropla		0
 tuxedo	absynt	5	ml		0
-tuxedo	likiermaraschino	12,5	ml		0
+tuxedo	likiermaraschino	12.5	ml		0
 tuxedo	gin	30	ml		0
 tuxedo	vermouthwytrawny	30	ml		0
 tuxedo	cytryna				1
@@ -872,7 +872,7 @@ vento	whitesmoothgrappa	45	ml		0
 vento	sokzcytryny	22.5	ml		0
 vento	bialewinogrona				1
 vento	cytryna				1
-vesper	lilletblanc	7,5	ml		0
+vesper	lilletblanc	7.5	ml		0
 vesper	wodka	15	ml		0
 vesper	gin	45	ml		0
 vesper	cytryna				1
@@ -951,3 +951,37 @@ zombie	rumbialy	30	ml		0
 zombie	rumciemny	45	ml		0
 zombie	rumciemny	45	ml		0
 zombie	mieta				1
+lemoniadacytrynowa	sokzcytryny	30	ml		0
+lemoniadacytrynowa	syropcukrowy	50	ml		0
+lemoniadacytrynowa	wodasodowa	750	ml		0
+lemoniadacytrynowa	cytryna		owoc	cały owoc	0
+lemoniadacytrynowa	limonka		owoc	cały owoc	0
+lemoniadacytrynowa	lodwkostkach				0
+lemoniadazmieta	sokzcytryny	30	ml		0
+lemoniadazmieta	syropcukrowy	50	ml		0
+lemoniadazmieta	wodasodowa	750	ml		0
+lemoniadazmieta	cytryna		owoc	pół owocu	0
+lemoniadazmieta	limonka		owoc	pół owocu	0
+lemoniadazmieta	mieta		listek	kilka listków	0
+lemoniadazmieta	lodwkostkach				0
+lemoniadatruskawkowa	sokzcytryny	30	ml		0
+lemoniadatruskawkowa	syropcukrowy	50	ml		0
+lemoniadatruskawkowa	wodasodowa	750	ml		0
+lemoniadatruskawkowa	cytryna		owoc	pół owocu	0
+lemoniadatruskawkowa	mieta		listek	kilka listków do ozdoby	0
+lemoniadatruskawkowa	truskawka	200	gr		0
+lemoniadatruskawkowa	lodwkostkach				0
+lemoniadaarbuzowa	sokzcytryny	30	ml		0
+lemoniadaarbuzowa	syropcukrowy	50	ml		0
+lemoniadaarbuzowa	wodasodowa	750	ml		0
+lemoniadaarbuzowa	cytryna		owoc	pół owocu	0
+lemoniadaarbuzowa	mieta		listek	kilka listków do ozdoby	0
+lemoniadaarbuzowa	arbuz	500	gr	ćwiartka owocu	0
+lemoniadaarbuzowa	lodwkostkach				0
+lemoniadaarbuzowa	sokzcytryny	30	ml		0
+lemoniadaarbuzowa	syropcukrowy	50	ml		0
+lemoniadaarbuzowa	wodasodowa	750	ml		0
+lemoniadaarbuzowa	cytryna		owoc	pół owocu	0
+lemoniadaarbuzowa	mieta		listek	kilka listków	0
+lemoniadaarbuzowa	maliny	50	gr		0
+lemoniadaarbuzowa	lodwkostkach				0
