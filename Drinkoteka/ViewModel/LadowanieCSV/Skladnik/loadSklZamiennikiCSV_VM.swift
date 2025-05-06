@@ -32,13 +32,14 @@ func loadSklZamiennikiCSV_VM(modelContext: ModelContext) {
 				if !dodaneRelacje.contains(relacjaID),
 					let skladnik = skladnikiMap[skladnikID],
 					let zamiennik = skladnikiMap[zamiennikID] {
-//					if skladnik.sklNazwa == "Aperol" {
+
 						print("Przed: Skladnik: \(skladnik.sklNazwa), \(skladnik.sklStan)")
 						print("Przed: Zamiennik: \(zamiennik.sklNazwa), \(zamiennik.sklStan)")
-//					}
+
 					modelContext.insert(SklZamiennik_M(skladnik: skladnik, zamiennik: zamiennik))
 					dodaneRelacje.insert(relacjaID)
 
+					
 					/// Ustawianie skladnik.sklStan w zależności od zamiennika.
 					if skladnik.sklStan == .brak {
 						if zamiennik.sklStan == .jest {
@@ -52,6 +53,7 @@ func loadSklZamiennikiCSV_VM(modelContext: ModelContext) {
 						skladnik.sklStan = .zmJest
 					}
 
+					
 					print("Po: Skladnik: \(skladnik.sklNazwa), \(skladnik.sklStan)")
 					print("Po: Zamiennik: \(zamiennik.sklNazwa), \(zamiennik.sklStan)")
 

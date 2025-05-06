@@ -256,9 +256,9 @@
 				F3095AAA2DB6945200481E4F /* Preferencje_V.swift */,
 				F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */,
 				F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */,
+				F3095A9A2DB66E2300481E4F /* Back_V.swift */,
 				F36F1E872DB7A651000775D6 /* Rejestracja */,
 				F37319892DBBFC230028F97C /* SearchBar */,
-				F3095A9A2DB66E2300481E4F /* Back_V.swift */,
 			);
 			path = "Wspolne View";
 			sourceTree = "<group>";

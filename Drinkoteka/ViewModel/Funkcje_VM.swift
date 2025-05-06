@@ -346,7 +346,6 @@ struct Proc: View {
 				.font(.headline)
 				.fontWeight(.black)
 				.fontWidth(.condensed)
-
 		}
 		.foregroundColor(Color.secondary)
 	}
@@ -505,20 +504,13 @@ func setAllDrinkProcenty(modelContext: ModelContext) {
 	}
 }
 
-
-//	// MARK: - GET SKL -> ZAMIENNIKI
-//func getSklZamienniki(skladnik: Skl_M, modelContext: ModelContext) -> [Skl_M] {
-//	do {
-//		let fetchDescriptor = FetchDescriptor<SklZamiennik_M>(
-//			predicate: #Predicate { $0.skladnik == skladnik }
-//		)
-//		let relacje = try modelContext.fetch(fetchDescriptor)
-//		return relacje.map { $0.zamiennik }
-//	} catch {
-//		print("Błąd pobierania zamienników: \(error)")
-//		return []
-//	}
-//}
+	// MARK: - GET SKL -> ZAMIENNIKI
+func getZamienniki(skladnik: Skl_M) -> [Skl_M] {
+	for zam in skladnik.zamienniki {
+		print(zam.sklNazwa)
+	}
+	return skladnik.zamienniki
+}
 
 	// MARK: - ENCODE JSON
 func encodeJSON<T: Codable>(object: T) -> String? {
@@ -554,7 +546,6 @@ func decodeJSON<T: Codable>(jsonData: Data, type: T.Type) -> T? {
 	}
 }
 
-
 	// MARK: - ENCRYPT AES DATA
 func encryptData(data: Data, key: SymmetricKey) -> Data? {
 	do {
@@ -582,3 +573,45 @@ func decryptData(encryptedData: Data, key: SymmetricKey) -> Data? {
 		return nil
 	}
 }
+
+	// MARK: - SET STAN
+func setStan(_ skladnik: Skl_M) -> sklStanEnum {
+	let stan = skladnik.sklStan
+	let zam = skladnik.zamienniki
+	
+	if zam.isEmpty {
+		if stan == .jest { return .brak
+		} else { return .jest }
+	} else {
+		let jestZamiennik = zam.contains { $0.sklStan == .jest }
+		if stan == .jest {
+			if zamiennikiDozwolone && jestZamiennik { return .zmJest }
+			if zamiennikiDozwolone && !jestZamiennik { return .zmBrak }
+			if !zamiennikiDozwolone { return .brak }
+		}
+	}
+	return .jest
+}
+
+/*	// MARK: - SET STAN WYBRANE
+func setStanWybrane(modelContext: ModelContext, _ skladnik: Skl_M) {
+		// Tworzymy FetchDescriptor dla typu Dr_M
+	let fetchDescriptor = FetchDescriptor<SklZamiennik_M>()
+	
+	do {
+			// Pobieramy wszystkie obiekty Dr_M za pomocą FetchDescriptor
+		let zamienniki: [SklZamiennik_M] = try modelContext.fetch(fetchDescriptor)
+		let zamiennikiWybrane = zamienniki.filter{ $0.zamiennik == skladnik }
+			// Iterujemy przez drinki i ustawiamy brak
+		
+		print("Wybranych zamienników: \(zamiennikiWybrane)")
+		
+		for zamiennik in zamiennikiWybrane {
+			if zamiennik.skladnik
+			zamiennik.skladnik.sklStan
+		}
+	} catch {
+		print("Błąd")
+	}
+}
+*/

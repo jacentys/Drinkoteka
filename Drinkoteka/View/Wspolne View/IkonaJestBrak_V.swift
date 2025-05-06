@@ -20,7 +20,7 @@ struct IkonaJestBrak_V: View {
 				.foregroundStyle(pokazZamienniki(stan: skladnik.sklStan, wlaczTrybZamiennikow).kolor)
 				.onTapGesture {
 					print(skladnik.sklStan)
-					skladnik.stanToggle()
+					skladnik.sklStan = setStan(skladnik)
 					print(skladnik.sklStan)
 					setAllBraki(modelContext: modelContext)
 				}
