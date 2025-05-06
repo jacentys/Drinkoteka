@@ -36,9 +36,8 @@ func loadSklZamiennikiCSV_VM(modelContext: ModelContext) {
 						print("Przed: Skladnik: \(skladnik.sklNazwa), \(skladnik.sklStan)")
 						print("Przed: Zamiennik: \(zamiennik.sklNazwa), \(zamiennik.sklStan)")
 
-					modelContext.insert(SklZamiennik_M(skladnik: skladnik, zamiennik: zamiennik))
+					modelContext.insert(SklZamiennik_M(skladnikZ: skladnik, zamiennikZ: zamiennik))
 					dodaneRelacje.insert(relacjaID)
-
 					
 					/// Ustawianie skladnik.sklStan w zależności od zamiennika.
 					if skladnik.sklStan == .brak {

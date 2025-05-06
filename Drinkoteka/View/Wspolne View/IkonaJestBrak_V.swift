@@ -5,45 +5,46 @@ struct IkonaJestBrak_V: View {
 	@Environment(\.modelContext) private var modelContext
 	@AppStorage("zamiennikiDozwolone") private var zamiennikiDozwolone: Bool = false
 	
-	@Bindable var skladnik: Skl_M // Parametr skladnika
-	@State var txtShow: Bool = false // Czy pokazywać opis?
-	@State var wielkosc: CGFloat = 18 // Wielkość ikonki
-
-		/// Jeśli true, uwzględniona jest preferencja zamiennikiDozwolone.
-		/// Jeśli false, pokazuje tylko dwa stany.
-	@State var wlaczTrybZamiennikow: Bool = false
+	@Bindable var skladnik: Skl_M /// Parametr skladnika
+	@State var txtShow: Bool = false /// Czy pokazywać opis?
+	@State var wielkosc: CGFloat = 18 /// Wielkość ikonki
+	@State var wlaczTrybZamiennikow: Bool = false /// Czy pokazywać z zamiennikami?.
 
 	var body: some View {
 		VStack {
-			Image(systemName: pokazZamienniki(stan: skladnik.sklStan, wlaczTrybZamiennikow).ikonka)
+			Image(systemName: pokazZamienniki().ikonka)
 				.font(.system(size: wielkosc))
-				.foregroundStyle(pokazZamienniki(stan: skladnik.sklStan, wlaczTrybZamiennikow).kolor)
+				.foregroundStyle(pokazZamienniki().kolor)
 				.onTapGesture {
-					print(skladnik.sklStan)
-					skladnik.sklStan = setStan(skladnik)
-					print(skladnik.sklStan)
-					setAllBraki(modelContext: modelContext)
+					skladnik.updateSklStan(setStan(skladnik))
+					try? modelContext.save()
+//					setAllBraki(modelContext: modelContext)
 				}
 			if txtShow {
 				Text(skladnik.sklStan.opis)
 					.font(.caption)
-					.foregroundStyle(pokazZamienniki(stan: skladnik.sklStan, wlaczTrybZamiennikow).kolor)
+					.foregroundStyle(pokazZamienniki().kolor)
 			}
 		}
 	}
 		// MARK: - ZAMIENNIKI WLACZONE
-	func pokazZamienniki(stan: sklStanEnum, _ pokazStanZamiennika: Bool = true) -> sklStanEnum {
+	func pokazZamienniki() -> sklStanEnum {
+		print(skladnik.sklNazwa, "stan1 = ", skladnik.sklStan)
 			/// Jeśli zamiennikiDozwolone i pokazStanZamiennika są na true
-//		zamiennikiDozwolone = true
-		if zamiennikiDozwolone && pokazStanZamiennika {
-			return stan
-		} else {
-			if (stan == sklStanEnum.jest) {
+			/// zamiennikiDozwolone = true
+		if !(zamiennikiDozwolone && wlaczTrybZamiennikow) {
+			if (skladnik.sklStan == sklStanEnum.jest) {
+				print(skladnik.sklNazwa, "stan2 = ", sklStanEnum.jest)
 				return sklStanEnum.jest
 			} else {
+				print(skladnik.sklNazwa, "stan3 = ", sklStanEnum.brak)
 				return sklStanEnum.brak
 			}
+		} else {
+
 		}
+		print(skladnik.sklNazwa, "stan4 = ", skladnik.sklStan)
+		return skladnik.sklStan
 	}
 }
 

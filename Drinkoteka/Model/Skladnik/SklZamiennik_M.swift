@@ -3,11 +3,18 @@ import Foundation
 
 @Model
 class SklZamiennik_M {
-	@Relationship(deleteRule: .cascade) var skladnik: Skl_M
-	@Relationship(deleteRule: .cascade) var zamiennik: Skl_M
+	@Relationship(deleteRule: .cascade) var skladnikZ: Skl_M
+	@Relationship(deleteRule: .cascade) var zamiennikZ: Skl_M
 
-	init(skladnik: Skl_M, zamiennik: Skl_M) {
-		self.skladnik = skladnik
-		self.zamiennik = zamiennik
+	init(skladnikZ: Skl_M, zamiennikZ: Skl_M) {
+		self.skladnikZ = skladnikZ
+		self.zamiennikZ = zamiennikZ
+	}
+
+	var customMirror: Mirror {
+		Mirror(self, children: [
+			"skladnikZ": zamiennikZ,
+			"zamiennikZ": zamiennikZ
+		])
 	}
 }

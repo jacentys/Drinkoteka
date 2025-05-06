@@ -252,9 +252,9 @@
 		F3095A992DB66E1C00481E4F /* Wspolne View */ = {
 			isa = PBXGroup;
 			children = (
+				F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */,
 				F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */,
 				F3095AAA2DB6945200481E4F /* Preferencje_V.swift */,
-				F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */,
 				F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */,
 				F3095A9A2DB66E2300481E4F /* Back_V.swift */,
 				F36F1E872DB7A651000775D6 /* Rejestracja */,

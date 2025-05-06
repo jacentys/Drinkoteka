@@ -578,19 +578,40 @@ func decryptData(encryptedData: Data, key: SymmetricKey) -> Data? {
 func setStan(_ skladnik: Skl_M) -> sklStanEnum {
 	let stan = skladnik.sklStan
 	let zam = skladnik.zamienniki
-	
+	var stanPoZmianie: sklStanEnum = skladnik.sklStan
+
+	print("Na starcie: stan", stanPoZmianie, "zam: ", zam.count)
+
 	if zam.isEmpty {
-		if stan == .jest { return .brak
-		} else { return .jest }
+		if stan == .jest { stanPoZmianie = .brak
+		} else { stanPoZmianie = .jest }
 	} else {
 		let jestZamiennik = zam.contains { $0.sklStan == .jest }
 		if stan == .jest {
-			if zamiennikiDozwolone && jestZamiennik { return .zmJest }
-			if zamiennikiDozwolone && !jestZamiennik { return .zmBrak }
-			if !zamiennikiDozwolone { return .brak }
+			if zamiennikiDozwolone && jestZamiennik { stanPoZmianie = .zmJest }
+			if zamiennikiDozwolone && !jestZamiennik { stanPoZmianie = .zmBrak }
+			if !zamiennikiDozwolone { stanPoZmianie = .brak }
+		} else {
+			stanPoZmianie = .jest
 		}
 	}
-	return .jest
+
+		/// Update all related skladniki safely
+	for relacja in skladnik.relacjeZamiennikow {
+		let powiazanySkladnik = relacja.skladnikZ
+		let powiazanyZamiennik = relacja.zamiennikZ
+
+		print("Skł: ", powiazanyZamiennik.sklNazwa, " stan: ", powiazanySkladnik.sklStan)
+
+		if powiazanySkladnik.id != skladnik.id { // Prevent self-referencing
+			powiazanySkladnik.sklStan = setStan(powiazanySkladnik)
+		}
+	}
+
+	skladnik.updateSklStan(stanPoZmianie)
+
+	print("  Na końcu: stan", stanPoZmianie, "zam: ", zam.count)
+	return stanPoZmianie
 }
 
 /*	// MARK: - SET STAN WYBRANE

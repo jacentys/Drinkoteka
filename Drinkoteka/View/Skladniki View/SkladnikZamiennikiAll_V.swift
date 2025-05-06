@@ -8,8 +8,8 @@ struct SkladnikZamiennikiAll_V: View {
 
 	var zamiennikiSkladnika: [Skl_M] {
 		relacjaZamiennikow
-			.filter { $0.skladnik.id == skladnik.id }
-			.map { $0.zamiennik }
+			.filter { $0.skladnikZ.id == skladnik.id }
+			.map { $0.zamiennikZ }
 	}
 
 	var body: some View {

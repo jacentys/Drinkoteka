@@ -16,9 +16,9 @@ struct SkladnikiLista_V: View {
 	
 	@State var szukaj: String = ""
 
-	private var totalZamienniki: Int {
-		skladniki.reduce(0) { $0 + $1.zamienniki.count }
-	}
+//	private var totalZamienniki: Int {
+//		skladniki.reduce(0) { $0 + $1.zamienniki.count }
+//	}
 	
 	var skladnikiFiltered: [Skl_M] {
 		if szukaj.isEmpty {
