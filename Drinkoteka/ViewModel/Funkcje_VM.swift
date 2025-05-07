@@ -308,89 +308,70 @@ func formatNumber(_ liczba: Double) -> String {
 	}
 }
 
-	// MARK: KATEGORIA
-struct Kategoria: View {
-	var kat: String
-	var body: some View {
-		HStack {
-			if kat != "" {
-				HStack(alignment: .lastTextBaseline, spacing: 0) {
-					Text("kat.: ")
-						.font(.caption)
-						.fontWeight(.light)
-						.fontWidth(.condensed)
-
-					Text("\(kat) ")
-						.font(.headline)
-						.fontWeight(.black)
-						.fontWidth(.condensed)
-				}
-			}
-		}
-		.foregroundStyle(Color.secondary)
-	}
-}
-
-	// MARK: PROC
-struct Proc: View {
-	var proc: Int
-	var body: some View {
+	// MARK: VIEW KATEGORIA
+func viewKategoria(kat: String) -> some View {
+	HStack {
 		HStack(alignment: .lastTextBaseline, spacing: 0) {
-
-			Text("alk.:")
+			Text("kat.: ")
 				.font(.caption)
 				.fontWeight(.light)
 				.fontWidth(.condensed)
-
-			Text("\(proc)%")
+			
+			Text("\(kat) ")
 				.font(.headline)
 				.fontWeight(.black)
 				.fontWidth(.condensed)
 		}
-		.foregroundColor(Color.secondary)
 	}
+	.foregroundStyle(Color.secondary)
 }
 
-	// MARK: KAL
-struct Kal: View {
-	let kal: Int
-	var body: some View {
-
-		HStack(alignment: .lastTextBaseline, spacing: 0) {
-
-			Text("kCal.:")
-				.font(.caption)
-				.fontWeight(.light)
-				.fontWidth(.condensed)
-
-			Text("\(kal)")
-				.font(.headline)
-				.fontWeight(.black)
-				.fontWidth(.condensed)
-		}
-		.foregroundColor(Color.secondary)
+	// MARK: VIEW PROCENTY
+func viewProcenty(proc: Int) -> some View {
+	HStack(alignment: .lastTextBaseline, spacing: 0) {
+		
+		Text("alk.:")
+			.font(.caption)
+			.fontWeight(.light)
+			.fontWidth(.condensed)
+		
+		Text("\(proc)%")
+			.font(.headline)
+			.fontWeight(.black)
+			.fontWidth(.condensed)
 	}
+	.foregroundColor(Color.secondary)
 }
 
-	// MARK: MIARA
-struct Miara: View {
-	var miara: miaraEnum
-	var body: some View {
-		if miara != miaraEnum.brak {
-			HStack(alignment: .lastTextBaseline, spacing: 0) {
-				Text("miara: ")
-					.font(.caption)
-					.fontWeight(.light)
-					.fontWidth(.condensed)
-
-				Text("\(miara.rawValue)".lowercased())
-					.font(.headline)
-					.fontWeight(.black)
-					.fontWidth(.condensed)
-			}
-			.foregroundStyle(Color.secondary)
-		}
+	// MARK: VIEW KALORIE
+func viewKalorie(kal: Int) -> some View {
+	HStack(alignment: .lastTextBaseline, spacing: 0) {
+		Text("kCal.:")
+			.font(.caption)
+			.fontWeight(.light)
+			.fontWidth(.condensed)
+		Text("\(kal)")
+			.font(.headline)
+			.fontWeight(.black)
+			.fontWidth(.condensed)
 	}
+	.foregroundColor(Color.secondary)
+}
+
+	// MARK: VIEW MIARA
+func viewMiara(miara: miaraEnum) -> some View {
+	HStack(alignment: .lastTextBaseline, spacing: 0) {
+		Text("miara: ")
+			.font(.caption)
+			.fontWeight(.light)
+			.fontWidth(.condensed)
+		
+		Text("\(miara.rawValue)".lowercased())
+			.font(.headline)
+			.fontWeight(.black)
+			.fontWidth(.condensed)
+	}
+	.foregroundStyle(Color.secondary)
 }
 
 	// MARK: - SET WSZYSTKIE BRAKI
@@ -574,11 +555,30 @@ func decryptData(encryptedData: Data, key: SymmetricKey) -> Data? {
 	}
 }
 
-	// MARK: - SET STAN
-func setStan(_ skladnik: Skl_M) -> sklStanEnum {
-	let stan = skladnik.sklIkonaZ
+	// MARK: - UPDATE STAN POWIĄZANEGO SKŁADNIKA
+func updateStanPowiazanegoSkladnika(_ skladnik: Skl_M) -> Skl_M {
+		//	print("Na starcie: stan", stanPoZmianie, "zam: ", zam.count)
+	let zamiennikDost = skladnik.zamienniki.contains { $0.sklStan == .jest }
+	let nieMaZamiennikow = skladnik.zamienniki.isEmpty
+	
+	
+	if skladnik.sklStan == .zmBrak && zamiennikDost && !nieMaZamiennikow {
+		skladnik.sklStan = .zmJest
+	} else if skladnik.sklStan == .zmJest && !zamiennikDost && !nieMaZamiennikow {
+		skladnik.sklStan = .zmBrak
+	} else if skladnik.sklStan == .brak && zamiennikDost && !nieMaZamiennikow {
+		skladnik.sklStan = .zmJest
+	} else if skladnik.sklStan == .brak && !zamiennikDost && !nieMaZamiennikow {
+		skladnik.sklStan = .zmBrak
+	}
+	return skladnik
+}
+
+	// MARK: - UPDATE STAN SKŁADNIKA
+func updateStanSkladnika(_ skladnik: Skl_M) {
+	let stan = skladnik.sklStan
 	let zam = skladnik.zamienniki
-	var stanPoZmianie: sklStanEnum = skladnik.sklIkonaZ
+	var stanPoZmianie: sklStanEnum = skladnik.sklStan
 
 //	print("Na starcie: stan", stanPoZmianie, "zam: ", zam.count)
 
@@ -586,7 +586,7 @@ func setStan(_ skladnik: Skl_M) -> sklStanEnum {
 		if stan == .jest { stanPoZmianie = .brak
 		} else { stanPoZmianie = .jest }
 	} else {
-		let jestZamiennik = zam.contains { $0.sklIkonaZ == .jest }
+		let jestZamiennik = zam.contains { $0.sklStan == .jest }
 		if stan == .jest {
 			if zamiennikiDozwolone && jestZamiennik { stanPoZmianie = .zmJest }
 			if zamiennikiDozwolone && !jestZamiennik { stanPoZmianie = .zmBrak }
@@ -595,11 +595,12 @@ func setStan(_ skladnik: Skl_M) -> sklStanEnum {
 			stanPoZmianie = .jest
 		}
 	}
-	return stanPoZmianie
+	skladnik.sklStan = stanPoZmianie
 }
 
-	// MARK: - SET STAN WYBRANE
+	// MARK: - ZMIANA POWIĄZANYCH
 func zmianaStanuSkladnika(context: ModelContext, zamiennik: Skl_M) {
+	updateStanSkladnika(zamiennik)
 	do {
 			// Fetch all Skl_M and filter in memory
 		let wszystkieSkladniki = try context.fetch(FetchDescriptor<Skl_M>())
@@ -616,9 +617,8 @@ func zmianaStanuSkladnika(context: ModelContext, zamiennik: Skl_M) {
 		print("=========== Powiązane składniki: ")
 		for skl in skladniki {
 			if skl != zamiennik {
-				skl.sklIkonaZ = setStan(skl)
-				skl.sklIkonaB = setStan(skl)
-				print(skl.sklNazwa)
+				skl.sklStan = updateStanPowiazanegoSkladnika(skl).sklStan
+				print(skl.sklNazwa, "stan: ", skl.sklStan)
 			}
 		}
 		
@@ -626,6 +626,28 @@ func zmianaStanuSkladnika(context: ModelContext, zamiennik: Skl_M) {
 		for dr in drinki {
 			print(dr.drNazwa)
 		}
+	} catch {
+		print("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
+	}
+}
+
+	// MARK: - ZMIANA STANU SKLADNIKI ALL
+func zmianaStanuSkladnikiAll(context: ModelContext) {
+	do {
+			// Fetch all Skl_M and filter in memory
+		let wszystkieSkladniki = try context.fetch(FetchDescriptor<Skl_M>())
+		
+		for skladnik in wszystkieSkladniki {
+			skladnik.sklStan = updateStanPowiazanegoSkladnika(skladnik).sklStan
+		}
+
+			// Fetch all Dr_M and filter in memory
+//		let wszystkieDrinki = try context.fetch(FetchDescriptor<Dr_M>())
+//		
+//		print("=========== Powiązane drinki: ")
+//		for dr in drinki {
+//			print(dr.drNazwa)
+//		}
 	} catch {
 		print("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
 	}

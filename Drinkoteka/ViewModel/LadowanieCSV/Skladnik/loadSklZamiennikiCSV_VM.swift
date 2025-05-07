@@ -33,28 +33,21 @@ func loadSklZamiennikiCSV_VM(modelContext: ModelContext) {
 					let skladnik = skladnikiMap[skladnikID],
 					let zamiennik = skladnikiMap[zamiennikID] {
 
-//						print("Przed skladnik: \(skladnik.sklNazwa), \(skladnik.sklIkonaZ)")
-//						print("Przed zamiennik: \(zamiennik.sklNazwa), \(zamiennik.sklIkonaZ)")
-
 					modelContext.insert(SklZamiennik_M(skladnikZ: skladnik, zamiennikZ: zamiennik))
 					dodaneRelacje.insert(relacjaID)
 					
-					/// Ustawianie skladnik.sklIkonaZ w zależności od zamiennika.
-					if skladnik.sklIkonaZ == .brak {
-						if zamiennik.sklIkonaZ == .jest {
-							skladnik.sklIkonaZ = .zmJest
-						}
-						if zamiennik.sklIkonaZ == .brak {
-							skladnik.sklIkonaZ = .zmBrak
-						}
-					}
-					if skladnik.sklIkonaZ == .zmBrak && zamiennik.sklIkonaZ == .jest {
-						skladnik.sklIkonaZ = .zmJest
-					}
-
-					
-//					print("Po skladnik: \(skladnik.sklNazwa), \(skladnik.sklIkonaZ)")
-//					print("Po zamiennik: \(zamiennik.sklNazwa), \(zamiennik.sklIkonaZ)")
+					/// Ustawianie skladnik.sklStan w zależności od zamiennika.
+//					if skladnik.sklStan == .brak {
+//						if zamiennik.sklStan == .jest {
+//							skladnik.sklStan = .zmJest
+//						}
+//						if zamiennik.sklStan == .brak {
+//							skladnik.sklStan = .zmBrak
+//						}
+//					}
+//					if skladnik.sklStan == .zmBrak && zamiennik.sklStan == .jest {
+//						skladnik.sklStan = .zmJest
+//					}
 
 				}
 			}

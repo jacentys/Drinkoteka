@@ -24,12 +24,12 @@ struct DrinkSkladnikLinijka_V: View {
 				Text("\(skladnik.sklNazwa) \(drSkladnik.sklInfo) \(formatNumber(drSkladnik.sklIlosc)) \(miaraOdm(drSkladnik.sklMiara, ilosc: String(drSkladnik.sklIlosc)))")
 					.fontWeight(.light)
 					.multilineTextAlignment(.leading)
-					.foregroundColor(skladnik.sklIkonaZ.stan ? Color.primary : Color.secondary)
+					.foregroundColor(skladnik.sklStan.stan ? Color.primary : Color.secondary)
 			} else {
 				Text("\(skladnik.sklNazwa ) \(drSkladnik.sklInfo)")
 					.fontWeight(.light)
 					.multilineTextAlignment(.leading)
-					.foregroundColor(skladnik.sklIkonaZ.stan ? Color.primary : Color.secondary)
+					.foregroundColor(skladnik.sklStan.stan ? Color.primary : Color.secondary)
 			}
 			
 			

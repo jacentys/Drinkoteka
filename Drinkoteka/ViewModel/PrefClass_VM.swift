@@ -28,7 +28,7 @@ class PrefClass_VM: ObservableObject {
 	@AppStorage("filtrMocMocny") var filtrMocMocny: Bool = true
 
 	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
-	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = true
+	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
 	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
 	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
 

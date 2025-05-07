@@ -28,9 +28,9 @@ struct DrinkTitle_V: View {
 				Divider().padding(4)
 				
 				HStack {
-					Kategoria(kat: drink.drKat.rawValue)
-					Proc(proc: drink.drProc)
-//					Miara(miara: drink.drMiara)
+					viewKategoria(kat: drink.drKat.rawValue)
+					viewProcenty(proc: drink.drProc)
+//					viewMiara(miara: drink.drMiara)
 				}
 			}
 			.shadow(color: .white, radius: 20)

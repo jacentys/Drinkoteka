@@ -25,7 +25,6 @@ func loadSklCSV_VM(modelContext: ModelContext) {
 				let sklKolor = kolumny[4]
 				let sklFoto = kolumny[5] == "" ? "butelka" : kolumny[5]
 				let sklStan = strToSklStanEnum(kolumny[6])
-				let sklWBarku = false
 				let sklOpis = kolumny[7]
 				let sklKal = Int(kolumny[8]) ?? 0
 				let sklMiara = strToSklMiaraEnum(kolumny[9])
@@ -38,9 +37,7 @@ func loadSklCSV_VM(modelContext: ModelContext) {
 					sklProc: sklProc,
 					sklKolor: sklKolor,
 					sklFoto: sklFoto,
-					sklIkonaZ: sklStan,
-					sklIkonaB: sklStan,
-					sklWBarku: sklWBarku,
+					sklStan: sklStan,
 					sklOpis: sklOpis,
 					sklKal: sklKal,
 					sklMiara: sklMiara,

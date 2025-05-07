@@ -10,7 +10,7 @@ struct SkladnikiLista_V: View {
 //	var skladniki = sklMockArray()
 	
 	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
-	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = true
+	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
 	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
 	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
 	
@@ -33,12 +33,10 @@ struct SkladnikiLista_V: View {
 	var body: some View {
 		NavigationStack {
 			VStack(spacing: 0) {
+					// MARK: - POLE WYSZUKIWANIA
+				SearchBar_V(searchText: $szukaj)
+					.listRowBackground(Color.white.opacity(0.3))
 				List {
-
-						// MARK: - POLE WYSZUKIWANIA
-					SearchBar_V(searchText: $szukaj)
-						.listRowBackground(Color.white.opacity(0.3))
-
 //						// MARK: - Alfabet
 //					ForEach(skladnikiFiltered) { skladnik in
 //						NavigationLink(
@@ -121,7 +119,7 @@ private func SkladnikListaRow(skladnik: Skl_M) -> some View {
 		ZStack {
 			Circle()
 				.fill(.regularMaterial)
-				.stroke(skladnik.getKolor(), lineWidth: skladnik.sklIkonaZ.stan ? 2 : 1)
+				.stroke(skladnik.getKolor(), lineWidth: skladnik.sklStan.stan ? 2 : 1)
 			
 			Image(!skladnik.sklFoto.isEmpty ? skladnik.sklFoto : "butelka")
 				.resizable()

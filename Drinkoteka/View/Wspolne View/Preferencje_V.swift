@@ -108,6 +108,7 @@ struct Preferencje_V: View {
 		setAllBraki(modelContext: modelContext)
 		setAllDrinkKalorie(modelContext: modelContext)
 		setAllDrinkProcenty(modelContext: modelContext)
+		zmianaStanuSkladnikiAll(context: modelContext)
 		try? modelContext.save()
 			//							debugPobrane(miejsce: "Po")
 		UserDefaults.standard.set(true, forKey: "setupDone")

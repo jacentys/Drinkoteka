@@ -10,9 +10,7 @@ class Skl_M: Identifiable, ObservableObject {
 	var sklProc: Int
 	var sklKolor: String
 	var sklFoto: String
-	var sklIkonaZ: sklStanEnum
-	var sklIkonaB: sklStanEnum
-	var sklWBarku: Bool
+	var sklStan: sklStanEnum
 	var sklOpis: String
 	var sklKal: Int
 	var sklMiara: miaraEnum
@@ -30,9 +28,7 @@ class Skl_M: Identifiable, ObservableObject {
 		sklProc: Int,
 		sklKolor: String,
 		sklFoto: String,
-		sklIkonaZ: sklStanEnum,
-		sklIkonaB: sklStanEnum,
-		sklWBarku: Bool,
+		sklStan: sklStanEnum,
 		sklOpis: String,
 		sklKal: Int,
 		sklMiara: miaraEnum,
@@ -45,9 +41,7 @@ class Skl_M: Identifiable, ObservableObject {
 		self.sklProc = sklProc
 		self.sklKolor = sklKolor
 		self.sklFoto = sklFoto
-		self.sklIkonaZ = sklIkonaZ
-		self.sklIkonaB = sklIkonaB
-		self.sklWBarku = sklWBarku
+		self.sklStan = sklStan
 		self.sklOpis = sklOpis
 		self.sklKal = sklKal
 		self.sklMiara = sklMiara
@@ -77,17 +71,17 @@ class Skl_M: Identifiable, ObservableObject {
 	}
 
 	func stanToggle() {
-		if self.sklIkonaZ != .jest {
-			self.sklIkonaZ = .jest
+		if self.sklStan != .jest {
+			self.sklStan = .jest
 			return
 		} else {
 			if self.zamienniki.isEmpty {
-				self.sklIkonaZ = .brak
+				self.sklStan = .brak
 			} else {
-				if ( self.zamienniki.contains { $0.sklIkonaZ == .jest } ) {
-					self.sklIkonaZ = .zmJest
+				if ( self.zamienniki.contains { $0.sklStan == .jest } ) {
+					self.sklStan = .zmJest
 				} else {
-					self.sklIkonaZ = .zmBrak
+					self.sklStan = .zmBrak
 				}
 			}
 		}
@@ -95,7 +89,7 @@ class Skl_M: Identifiable, ObservableObject {
 
 	func updateSklStan(_ newStan: sklStanEnum) {
 		objectWillChange.send() // Notify SwiftUI of changes
-		sklIkonaZ = newStan
+		sklStan = newStan
 	}
 
 	func setOpis(_ opis: String) {

@@ -178,6 +178,7 @@ struct DrinkiLista_V: View {
 			loadDrSkladnikiCSV_VM(modelContext: modelContext)
 			loadDrAlkGlownyCSV_VM(modelContext: modelContext)
 			loadDrPrzepisyCSV_VM(modelContext: modelContext)
+			zmianaStanuSkladnikiAll(context: modelContext)
 			setAllBraki(modelContext: modelContext)
 			UserDefaults.standard.set(true, forKey: "setupDone")
 			try? modelContext.save()

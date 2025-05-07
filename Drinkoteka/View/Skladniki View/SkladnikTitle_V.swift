@@ -25,10 +25,10 @@ struct SkladnikTitle_V: View {
 				Divider().padding(4)
 				
 				HStack {
-					Kategoria(kat: skladnik.sklKat.rawValue)
-					Proc(proc: skladnik.sklProc)
-					Kal(kal: skladnik.sklKal)
-//					Miara(miara: skladnik.sklMiara)
+					viewKategoria(kat: skladnik.sklKat.rawValue)
+					viewProcenty(proc: skladnik.sklProc)
+					viewKalorie(kal: skladnik.sklKal)
+//					viewMiara(miara: skladnik.sklMiara)
 				}
 			}
 			.shadow(color: .white, radius: 20)
