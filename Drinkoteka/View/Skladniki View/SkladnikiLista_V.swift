@@ -121,7 +121,7 @@ private func SkladnikListaRow(skladnik: Skl_M) -> some View {
 		ZStack {
 			Circle()
 				.fill(.regularMaterial)
-				.stroke(skladnik.getKolor(), lineWidth: skladnik.sklStan.stan ? 2 : 1)
+				.stroke(skladnik.getKolor(), lineWidth: skladnik.sklIkonaZ.stan ? 2 : 1)
 			
 			Image(!skladnik.sklFoto.isEmpty ? skladnik.sklFoto : "butelka")
 				.resizable()

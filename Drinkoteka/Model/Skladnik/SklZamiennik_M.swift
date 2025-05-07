@@ -10,11 +10,4 @@ class SklZamiennik_M {
 		self.skladnikZ = skladnikZ
 		self.zamiennikZ = zamiennikZ
 	}
-
-	var customMirror: Mirror {
-		Mirror(self, children: [
-			"skladnikZ": zamiennikZ,
-			"zamiennikZ": zamiennikZ
-		])
-	}
 }

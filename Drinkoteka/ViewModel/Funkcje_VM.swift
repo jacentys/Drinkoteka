@@ -576,17 +576,17 @@ func decryptData(encryptedData: Data, key: SymmetricKey) -> Data? {
 
 	// MARK: - SET STAN
 func setStan(_ skladnik: Skl_M) -> sklStanEnum {
-	let stan = skladnik.sklStan
+	let stan = skladnik.sklIkonaZ
 	let zam = skladnik.zamienniki
-	var stanPoZmianie: sklStanEnum = skladnik.sklStan
+	var stanPoZmianie: sklStanEnum = skladnik.sklIkonaZ
 
-	print("Na starcie: stan", stanPoZmianie, "zam: ", zam.count)
+//	print("Na starcie: stan", stanPoZmianie, "zam: ", zam.count)
 
 	if zam.isEmpty {
 		if stan == .jest { stanPoZmianie = .brak
 		} else { stanPoZmianie = .jest }
 	} else {
-		let jestZamiennik = zam.contains { $0.sklStan == .jest }
+		let jestZamiennik = zam.contains { $0.sklIkonaZ == .jest }
 		if stan == .jest {
 			if zamiennikiDozwolone && jestZamiennik { stanPoZmianie = .zmJest }
 			if zamiennikiDozwolone && !jestZamiennik { stanPoZmianie = .zmBrak }
@@ -595,44 +595,38 @@ func setStan(_ skladnik: Skl_M) -> sklStanEnum {
 			stanPoZmianie = .jest
 		}
 	}
-
-		/// Update all related skladniki safely
-	for relacja in skladnik.relacjeZamiennikow {
-		let powiazanySkladnik = relacja.skladnikZ
-		let powiazanyZamiennik = relacja.zamiennikZ
-
-		print("Skł: ", powiazanyZamiennik.sklNazwa, " stan: ", powiazanySkladnik.sklStan)
-
-		if powiazanySkladnik.id != skladnik.id { // Prevent self-referencing
-			powiazanySkladnik.sklStan = setStan(powiazanySkladnik)
-		}
-	}
-
-	skladnik.updateSklStan(stanPoZmianie)
-
-	print("  Na końcu: stan", stanPoZmianie, "zam: ", zam.count)
 	return stanPoZmianie
 }
 
-/*	// MARK: - SET STAN WYBRANE
-func setStanWybrane(modelContext: ModelContext, _ skladnik: Skl_M) {
-		// Tworzymy FetchDescriptor dla typu Dr_M
-	let fetchDescriptor = FetchDescriptor<SklZamiennik_M>()
-	
+	// MARK: - SET STAN WYBRANE
+func zmianaStanuSkladnika(context: ModelContext, zamiennik: Skl_M) {
 	do {
-			// Pobieramy wszystkie obiekty Dr_M za pomocą FetchDescriptor
-		let zamienniki: [SklZamiennik_M] = try modelContext.fetch(fetchDescriptor)
-		let zamiennikiWybrane = zamienniki.filter{ $0.zamiennik == skladnik }
-			// Iterujemy przez drinki i ustawiamy brak
+			// Fetch all Skl_M and filter in memory
+		let wszystkieSkladniki = try context.fetch(FetchDescriptor<Skl_M>())
+		let skladniki = wszystkieSkladniki.filter { skladnik in
+			skladnik.relacjeZamiennikow.contains { $0.zamiennikZ == zamiennik }
+		}
 		
-		print("Wybranych zamienników: \(zamiennikiWybrane)")
+			// Fetch all Dr_M and filter in memory
+		let wszystkieDrinki = try context.fetch(FetchDescriptor<Dr_M>())
+		let drinki = wszystkieDrinki.filter { drink in
+			drink.drSklad.contains { $0.skladnik == zamiennik }
+		}
 		
-		for zamiennik in zamiennikiWybrane {
-			if zamiennik.skladnik
-			zamiennik.skladnik.sklStan
+		print("=========== Powiązane składniki: ")
+		for skl in skladniki {
+			if skl != zamiennik {
+				skl.sklIkonaZ = setStan(skl)
+				skl.sklIkonaB = setStan(skl)
+				print(skl.sklNazwa)
+			}
+		}
+		
+		print("=========== Powiązane drinki: ")
+		for dr in drinki {
+			print(dr.drNazwa)
 		}
 	} catch {
-		print("Błąd")
+		print("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
 	}
 }
-*/

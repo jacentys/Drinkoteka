@@ -185,14 +185,14 @@ class Dr_M: Identifiable {
 			/// Jeśli zamienniki są dozwolone
 		if zamiennikiDozwolone {
 			for skladnik in skladnikiDrinka {
-				if (skladnik.skladnik.sklStan == .jest ||
-						skladnik.skladnik.sklStan == .zmJest) {
+				if (skladnik.skladnik.sklIkonaZ == .jest ||
+						skladnik.skladnik.sklIkonaZ == .zmJest) {
 					ileNaStanie += 1
 				}
 			}
 		} else {
 			for skladnik in skladnikiDrinka {
-				if skladnik.skladnik.sklStan == .jest {
+				if skladnik.skladnik.sklIkonaZ == .jest {
 					ileNaStanie += 1
 				}
 			}

@@ -16,12 +16,12 @@ struct IkonaJestBrak_V: View {
 				.font(.system(size: wielkosc))
 				.foregroundStyle(pokazZamienniki().kolor)
 				.onTapGesture {
-					skladnik.updateSklStan(setStan(skladnik))
-					try? modelContext.save()
+					zmianaStanuSkladnika(context: modelContext, zamiennik: skladnik)
+
 //					setAllBraki(modelContext: modelContext)
 				}
 			if txtShow {
-				Text(skladnik.sklStan.opis)
+				Text(skladnik.sklIkonaZ.opis)
 					.font(.caption)
 					.foregroundStyle(pokazZamienniki().kolor)
 			}
@@ -29,35 +29,35 @@ struct IkonaJestBrak_V: View {
 	}
 		// MARK: - ZAMIENNIKI WLACZONE
 	func pokazZamienniki() -> sklStanEnum {
-		print(skladnik.sklNazwa, "stan1 = ", skladnik.sklStan)
+//		print(skladnik.sklNazwa, "stan1 = ", skladnik.sklIkonaZ)
 			/// Jeśli zamiennikiDozwolone i pokazStanZamiennika są na true
 			/// zamiennikiDozwolone = true
 		if !(zamiennikiDozwolone && wlaczTrybZamiennikow) {
-			if (skladnik.sklStan == sklStanEnum.jest) {
-				print(skladnik.sklNazwa, "stan2 = ", sklStanEnum.jest)
+			if (skladnik.sklIkonaZ == sklStanEnum.jest) {
+//				print(skladnik.sklNazwa, "stan2 = ", sklStanEnum.jest)
 				return sklStanEnum.jest
 			} else {
-				print(skladnik.sklNazwa, "stan3 = ", sklStanEnum.brak)
+//				print(skladnik.sklNazwa, "stan3 = ", sklStanEnum.brak)
 				return sklStanEnum.brak
 			}
 		} else {
 
 		}
-		print(skladnik.sklNazwa, "stan4 = ", skladnik.sklStan)
-		return skladnik.sklStan
+//		print(skladnik.sklNazwa, "stan4 = ", skladnik.sklIkonaZ)
+		return skladnik.sklIkonaZ
 	}
 }
 
 
 #Preview {
 	NavigationStack {
-		let skl1 = Skl_M(sklID: ".absynt", sklNazwa: "Absynt", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .brak, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
+		let skl1 = Skl_M(sklID: ".absynt", sklNazwa: "Absynt", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklIkonaZ: .brak, sklIkonaB: .brak, sklWBarku: false, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
 		)
-		let skl2 = Skl_M(sklID: ".aperol", sklNazwa: "Aperol", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .jest, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
+		let skl2 = Skl_M(sklID: ".aperol", sklNazwa: "Aperol", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklIkonaZ: .jest, sklIkonaB: .jest, sklWBarku: false, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
 		)
-		let skl3 = Skl_M(sklID: ".amaretto", sklNazwa: "Amaretto", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .zmBrak, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
+		let skl3 = Skl_M(sklID: ".amaretto", sklNazwa: "Amaretto", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklIkonaZ: .zmBrak, sklIkonaB: .brak, sklWBarku: false, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
 		)
-		let skl4 = Skl_M(sklID: ".bourbon", sklNazwa: "Bourbon", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklStan: .zmJest, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
+		let skl4 = Skl_M(sklID: ".bourbon", sklNazwa: "Bourbon", sklKat: .alkohol, sklProc: 70, sklKolor: "zielony", sklFoto: "absynt", sklIkonaZ: .zmJest, sklIkonaB: .brak, sklWBarku: false, sklOpis: "Ziołowy likier z anyżkiem.", sklKal: 300, sklMiara: .ml, sklWWW: "https://absynt.example.com"
 		)
 
 		Text("Absynt - Brak")

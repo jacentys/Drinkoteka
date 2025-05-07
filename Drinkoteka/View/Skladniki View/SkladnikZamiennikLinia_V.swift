@@ -10,7 +10,7 @@ struct SkladnikZamiennikLinia_V: View {
 				wlaczTrybZamiennikow: false
 			)
 			Text("\(skladnik.sklNazwa)")
-				.foregroundStyle(skladnik.sklStan.stan ? Color.primary : Color.secondary)
+				.foregroundStyle(skladnik.sklIkonaZ.stan ? Color.primary : Color.secondary)
 		}
 	}
 }

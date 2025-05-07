@@ -10,7 +10,9 @@ class Skl_M: Identifiable, ObservableObject {
 	var sklProc: Int
 	var sklKolor: String
 	var sklFoto: String
-	var sklStan: sklStanEnum
+	var sklIkonaZ: sklStanEnum
+	var sklIkonaB: sklStanEnum
+	var sklWBarku: Bool
 	var sklOpis: String
 	var sklKal: Int
 	var sklMiara: miaraEnum
@@ -28,7 +30,9 @@ class Skl_M: Identifiable, ObservableObject {
 		sklProc: Int,
 		sklKolor: String,
 		sklFoto: String,
-		sklStan: sklStanEnum,
+		sklIkonaZ: sklStanEnum,
+		sklIkonaB: sklStanEnum,
+		sklWBarku: Bool,
 		sklOpis: String,
 		sklKal: Int,
 		sklMiara: miaraEnum,
@@ -41,28 +45,13 @@ class Skl_M: Identifiable, ObservableObject {
 		self.sklProc = sklProc
 		self.sklKolor = sklKolor
 		self.sklFoto = sklFoto
-		self.sklStan = sklStan
+		self.sklIkonaZ = sklIkonaZ
+		self.sklIkonaB = sklIkonaB
+		self.sklWBarku = sklWBarku
 		self.sklOpis = sklOpis
 		self.sklKal = sklKal
 		self.sklMiara = sklMiara
 		self.sklWWW = sklWWW
-	}
-
-	var customMirror: Mirror {
-		Mirror(self, children: [
-			"id": id,
-			"sklID": sklID,
-			"sklNazwa": sklNazwa,
-			"sklKat": sklKat,
-			"sklProc": sklProc,
-			"sklKolor": sklKolor,
-			"sklFoto": sklFoto,
-			"sklStan": sklStan,
-			"sklOpis": sklOpis,
-			"sklKal": sklKal,
-			"sklMiara": sklMiara,
-			"sklWWW": sklWWW
-		])
 	}
 
 	var zamienniki: [Skl_M] {
@@ -88,17 +77,17 @@ class Skl_M: Identifiable, ObservableObject {
 	}
 
 	func stanToggle() {
-		if self.sklStan != .jest {
-			self.sklStan = .jest
+		if self.sklIkonaZ != .jest {
+			self.sklIkonaZ = .jest
 			return
 		} else {
 			if self.zamienniki.isEmpty {
-				self.sklStan = .brak
+				self.sklIkonaZ = .brak
 			} else {
-				if ( self.zamienniki.contains { $0.sklStan == .jest } ) {
-					self.sklStan = .zmJest
+				if ( self.zamienniki.contains { $0.sklIkonaZ == .jest } ) {
+					self.sklIkonaZ = .zmJest
 				} else {
-					self.sklStan = .zmBrak
+					self.sklIkonaZ = .zmBrak
 				}
 			}
 		}
@@ -106,7 +95,7 @@ class Skl_M: Identifiable, ObservableObject {
 
 	func updateSklStan(_ newStan: sklStanEnum) {
 		objectWillChange.send() // Notify SwiftUI of changes
-		sklStan = newStan
+		sklIkonaZ = newStan
 	}
 
 	func setOpis(_ opis: String) {
