@@ -48,11 +48,22 @@ struct SkladnikiLista_V: View {
 //						.buttonStyle(.plain)
 //					}
 //					
-						// MARK: - KATEGORIE
+// MARK: - KATEGORIE
 					ForEach(sklKatEnum.allCases, id: \.self) { kategoria in
 						let macierz = skladnikiFiltered.filter { $0.sklKat == kategoria }
 						if !macierz.isEmpty {
 							Section {
+									// MARK: - SKLADNIKI
+								ForEach(macierz) { skladnik in
+									NavigationLink(
+										destination: Skladnik_V(skladnik: skladnik),
+										label: {
+											SkladnikListaRow(skladnik: skladnik)
+										})
+									.listRowBackground(Color.white.opacity(0.4))
+									.buttonStyle(.plain)
+								}
+							} header: {
 								HStack(alignment: .firstTextBaseline, spacing: 0) {
 									Text("\(kategoria.rawValue) ".uppercased())
 										.font(.title2)
@@ -64,16 +75,6 @@ struct SkladnikiLista_V: View {
 								.foregroundColor(Color.primary)
 								.listRowBackground(Color.white.opacity(0.7))
 								.padding(.horizontal, 12)
-								// MARK: - SKLADNIKI
-								ForEach(macierz) { skladnik in
-									NavigationLink(
-										destination: Skladnik_V(skladnik: skladnik),
-										label: {
-											SkladnikListaRow(skladnik: skladnik)
-										})
-									.listRowBackground(Color.white.opacity(0.4))
-									.buttonStyle(.plain)
-								}
 							}
 						}
 					}
@@ -94,7 +95,7 @@ struct SkladnikiLista_V: View {
 						// MARK: - TOOLBAR
 					ToolbarItem(placement: .navigationBarLeading) {
 						HStack{
-//								 Przycisk zamienników
+								// Przycisk zamienników
 							Button {
 								zamiennikiDozwolone.toggle()
 								setAllBraki(modelContext: modelContext)
@@ -102,6 +103,15 @@ struct SkladnikiLista_V: View {
 								Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
 									.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
 							}
+							
+								// Przycisk resetu
+							Button {
+								wylaczWszystkieSkladniki(context: modelContext)
+							} label: {
+								Image(systemName: "checkmark.circle")
+									.foregroundStyle(Color.secondary)
+							}
+							
 						}
 					}
 				}

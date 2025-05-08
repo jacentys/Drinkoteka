@@ -4,6 +4,7 @@ import SwiftUI
 
 struct DrinkPrzepis_V: View {
 	@Bindable var drink: Dr_M
+	@State var edycjaOn: Bool = false
 	
 	var body: some View {
 		ZStack {
@@ -17,24 +18,32 @@ struct DrinkPrzepis_V: View {
 					Spacer()
 					
 					Button {
-						
+						edycjaOn.toggle()
 					} label: {
-						Text("Edytuj")
+						Text(edycjaOn ? "Edytuj" : "Zakończ")
 					}
-					
 				}
 				ForEach(drink.drPrzepis.sorted {$0.przepNo < $1.przepNo}) { przepisLinia in
+					
+					@Bindable var skladniczek = przepisLinia
+					
 					HStack(spacing: 5) {
 							// MARK: NUMERACJA
 						Image(systemName: przepisLinia.przepOpcja ? "\(przepisLinia.przepNo).circle" : "\(przepisLinia.przepNo).circle.fill")
 							.foregroundColor(przepisLinia.przepOpcja ? Color.secondary: Color.accent)
 							.font(.headline)
+						
 							// MARK: OPIS
 						HStack(spacing: 0) {
-							Text(" \(przepisLinia.przepOpis)")
+							TextEditor(text: $skladniczek.przepOpis)
 								.fontWeight(.light)
-								//								.multilineTextAlignment(.leading)
-								.foregroundStyle(!przepisLinia.przepOpcja ? Color.primary : Color.secondary)
+								.scrollContentBackground(.hidden)
+								.multilineTextAlignment(.leading)
+								.foregroundStyle(Color.primary)
+								.disabled(edycjaOn)
+								.padding(.trailing, !edycjaOn ? 0 : -6)
+								.padding(.vertical, !edycjaOn ? 0 : -6)
+								.background(Color.primary.opacity(!edycjaOn ? 0.2 : 0))
 						}
 						Spacer()
 					}

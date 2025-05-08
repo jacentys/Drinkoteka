@@ -652,3 +652,69 @@ func zmianaStanuSkladnikiAll(context: ModelContext) {
 		print("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
 	}
 }
+
+	// MARK: - WYŁĄCZ WSZYSTKIE SKŁADNIKI
+func wylaczWszystkieSkladniki(context: ModelContext) {
+	do {
+			// Fetch all Skl_M and filter in memory
+		let wszystkieSkladniki = try context.fetch(FetchDescriptor<Skl_M>())
+		
+		for skladnik in wszystkieSkladniki {
+			skladnik.sklStan = .brak
+		}
+		
+		for skladnik in wszystkieSkladniki {
+			skladnik.sklStan = updateStanPowiazanegoSkladnika(skladnik).sklStan
+		}
+		
+			// Fetch all Dr_M and filter in memory
+			//		let wszystkieDrinki = try context.fetch(FetchDescriptor<Dr_M>())
+			//
+			//		print("=========== Powiązane drinki: ")
+			//		for dr in drinki {
+			//			print(dr.drNazwa)
+			//		}
+	} catch {
+		print("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
+	}
+}
+
+/// ================== Usuwanie marginesów z TextEditor
+
+import SwiftUI
+
+struct CustomTextEditor: UIViewRepresentable {
+	@Binding var text: String
+	
+	func makeUIView(context: Context) -> UITextView {
+		let textView = UITextView()
+		textView.delegate = context.coordinator
+		textView.text = text
+		textView.backgroundColor = .clear
+		textView.textContainerInset = .zero // usunięcie marginesów wewnętrznych
+		textView.textContainer.lineFragmentPadding = 0 // usunięcie paddingu tekstu od lewej
+		return textView
+	}
+	
+	func updateUIView(_ uiView: UITextView, context: Context) {
+		if uiView.text != text {
+			uiView.text = text
+		}
+	}
+	
+	func makeCoordinator() -> Coordinator {
+		Coordinator(self)
+	}
+	
+	class Coordinator: NSObject, UITextViewDelegate {
+		var parent: CustomTextEditor
+		
+		init(_ parent: CustomTextEditor) {
+			self.parent = parent
+		}
+		
+		func textViewDidChange(_ textView: UITextView) {
+			parent.text = textView.text
+		}
+	}
+}

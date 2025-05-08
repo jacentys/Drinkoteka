@@ -35,10 +35,10 @@ struct CustomTab_V: View {
     var body: some View {
 		 VStack(spacing: 0) {
 			 TabView(selection: $activeTab) {
-//				 HomeView()
-//					 .tag(Tab.home)
-//					 // Ukrycie natywnego tab bar
-//					 .toolbar(.hidden, for: .tabBar)
+					 //				 HomeView()
+					 //					 .tag(Tab.home)
+					 //					 // Ukrycie natywnego tab bar
+					 //					 .toolbar(.hidden, for: .tabBar)
 				 DrinkiLista_V()
 					 .tag(Tab.drinki)
 					 // Ukrycie natywnego tab bar
@@ -61,7 +61,7 @@ struct CustomTab_V: View {
 			 }
 			 CustomTabBar()
 		 }
-    }
+	 }
 
 		///Custom TabBar - z większą ilością customizacji
 	@ViewBuilder
