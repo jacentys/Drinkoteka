@@ -20,7 +20,7 @@ struct DrinkPrzepis_V: View {
 					Button {
 						edycjaOn.toggle()
 					} label: {
-						Text(edycjaOn ? "Edytuj" : "Zakończ")
+						Text(!edycjaOn ? "Edytuj" : "Zakończ")
 					}
 				}
 				ForEach(drink.drPrzepis.sorted {$0.przepNo < $1.przepNo}) { przepisLinia in
@@ -40,10 +40,10 @@ struct DrinkPrzepis_V: View {
 								.scrollContentBackground(.hidden)
 								.multilineTextAlignment(.leading)
 								.foregroundStyle(Color.primary)
-								.disabled(edycjaOn)
-								.padding(.trailing, !edycjaOn ? 0 : -6)
-								.padding(.vertical, !edycjaOn ? 0 : -6)
-								.background(Color.primary.opacity(!edycjaOn ? 0.2 : 0))
+								.disabled(!edycjaOn)
+								.padding(.trailing, edycjaOn ? 0 : -6)
+								.padding(.vertical, edycjaOn ? 0 : -6)
+								.background(Color.primary.opacity(edycjaOn ? 0.2 : 0))
 						}
 						Spacer()
 					}

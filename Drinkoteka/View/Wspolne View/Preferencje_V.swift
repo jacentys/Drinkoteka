@@ -86,6 +86,20 @@ struct Preferencje_V: View {
 								.font(.headline)
 						}
 					}
+				
+				Section( // MARK: Konto
+					header: Label("Konto", systemImage: opcjonalneWymagane ? "person.crop.circle.fill" : "person.crop.circle")
+						.font(.headline)
+						.foregroundStyle(Color.green),
+					footer: Text("Zaloguj się by mieć dostęp do większej ilości przepisów.").padding(.bottom, 30)) {
+						Button {
+							Logowanie_V()
+						} label: {
+							Text("Zarejestruj się")
+								.foregroundStyle(Color.green)
+								.font(.headline)
+						}
+					}
 			}
 			.toggleStyle(iOSCheckboxToggleStyle())
 			.navigationTitle("Preferencje")

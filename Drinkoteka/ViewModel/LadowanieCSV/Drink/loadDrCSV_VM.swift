@@ -16,7 +16,7 @@ func loadDrCSV_VM(modelContext: ModelContext) {
 		
 		for row in rows {
 			let kolumny = row.components(separatedBy: "\t") // Tab separat.
-			if kolumny.count == iloscKolumn { // Ilość kolumn się zgadza?
+			if kolumny.count >= iloscKolumn { // Ilość kolumn się zgadza?
 				
 				let drinkID = clearStr(kolumny[0])
 				let nazwa = kolumny[1]
@@ -36,6 +36,7 @@ func loadDrCSV_VM(modelContext: ModelContext) {
 				let alkGlowny: [alkGlownyEnum] = []
 				let skladniki: [DrSkladnik_M] = []
 				let przepisy: [DrPrzepis_M] = []
+				let polecany = strToBool(kolumny[13])
 
 				let drineczek = Dr_M(
 					drinkID: drinkID,
@@ -56,7 +57,8 @@ func loadDrCSV_VM(modelContext: ModelContext) {
 					drBrakuje: brakuje,
 					drAlkGlowny: alkGlowny,
 					drSklad: skladniki,
-					drPrzepis: przepisy
+					drPrzepis: przepisy,
+					drPolecany: polecany
 				)
 				modelContext.insert(drineczek)
 			}

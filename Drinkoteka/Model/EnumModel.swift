@@ -284,8 +284,8 @@ enum miaraEnum: String, CaseIterable, Codable, Identifiable {
 // MARK: ALK GŁÓWNY
 enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 	var id: Self { self }
-	case rum = "rum"
 	case whiskey = "whiskey"
+	case rum = "rum"
 	case gin = "gin"
 	case tequila = "tequilamez"
 	case brandy = "brandy"
@@ -295,8 +295,8 @@ enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 
 	var opis: String {
 		switch self {
-			case .rum: return "Rum"
 			case .whiskey: return "Whiskey"
+			case .rum: return "Rum"
 			case .gin: return "Gin"
 			case .tequila: return "Tequila / Mezcal"
 			case .brandy: return "Brandy"
@@ -305,5 +305,30 @@ enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 			case .inny: return "Inne"
 		}
 	}
-
+	
+	var opisPL: String {
+		switch self {
+			case .whiskey: return "Whiskey"
+			case .rum: return "Rum"
+			case .gin: return "Gin"
+			case .tequila: return "Tequila Meskal"
+			case .brandy: return "Brandy"
+			case .vodka: return "Wódka"
+			case .champagne: return "Szampan"
+			case .inny: return "Inne"
+		}
+	}
+	
+	var foto: String {
+		switch self {
+			case .whiskey: return "whiskey"
+			case .rum: return "rum"
+			case .gin: return "gin"
+			case .tequila: return "tequila"
+			case .brandy: return "brandy"
+			case .vodka: return "wodka"
+			case .champagne: return "szampan"
+			case .inny: return "inne"
+		}
+	}
 }

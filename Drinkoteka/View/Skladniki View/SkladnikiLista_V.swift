@@ -15,6 +15,7 @@ struct SkladnikiLista_V: View {
 	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
 	
 	@State var szukaj: String = ""
+	@State var sortowanieAlfabetyczne = true
 
 //	private var totalZamienniki: Int {
 //		skladniki.reduce(0) { $0 + $1.zamienniki.count }
@@ -36,91 +37,107 @@ struct SkladnikiLista_V: View {
 					// MARK: - POLE WYSZUKIWANIA
 				SearchBar_V(searchText: $szukaj)
 					.listRowBackground(Color.white.opacity(0.3))
+				
 				List {
-//						// MARK: - Alfabet
-//					ForEach(skladnikiFiltered) { skladnik in
-//						NavigationLink(
-//							destination: Skladnik_V(skladnik: skladnik),
-//							label: {
-//								SkladnikListaRow(skladnik: skladnik)
-//									.listRowBackground(Color.white.opacity(0.4))
-//							})
-//						.buttonStyle(.plain)
-//					}
-//					
-// MARK: - KATEGORIE
-					ForEach(sklKatEnum.allCases, id: \.self) { kategoria in
-						let macierz = skladnikiFiltered.filter { $0.sklKat == kategoria }
-						if !macierz.isEmpty {
-							Section {
-									// MARK: - SKLADNIKI
-								ForEach(macierz) { skladnik in
-									NavigationLink(
-										destination: Skladnik_V(skladnik: skladnik),
-										label: {
-											SkladnikListaRow(skladnik: skladnik)
-										})
-									.listRowBackground(Color.white.opacity(0.4))
-									.buttonStyle(.plain)
+					if sortowanieAlfabetyczne {
+							// MARK: - Alfabet
+						ForEach(skladnikiFiltered) { skladnik in
+							NavigationLink(
+								destination: Skladnik_V(skladnik: skladnik),
+								label: {
+									SkladnikListaRow(skladnik: skladnik)
+								})
+							.listRowBackground(Color.white.opacity(0.4))
+							.buttonStyle(.plain)
+						}
+					} else {
+							// MARK: - KATEGORIE
+						ForEach(sklKatEnum.allCases, id: \.self) { kategoria in
+							let macierz = skladnikiFiltered.filter { $0.sklKat == kategoria }
+							if !macierz.isEmpty {
+								Section {
+										// MARK: - SKLADNIKI
+									ForEach(macierz) { skladnik in
+										NavigationLink(
+											destination: Skladnik_V(skladnik: skladnik),
+											label: {
+												SkladnikListaRow(skladnik: skladnik)
+											})
+										.listRowBackground(Color.white.opacity(0.4))
+										.buttonStyle(.plain)
+									}
+								} header: {
+									HStack(alignment: .firstTextBaseline, spacing: 0) {
+										Text("\(kategoria.rawValue) ".uppercased())
+											.font(.title2)
+										Text("\(macierz.count) skł.")
+											.font(.footnote)
+										Spacer()
+									}
+									.fontWeight(.light)
+									.foregroundColor(Color.primary)
+									.listRowBackground(Color.white.opacity(0.7))
+									.padding(.horizontal, 12)
 								}
-							} header: {
-								HStack(alignment: .firstTextBaseline, spacing: 0) {
-									Text("\(kategoria.rawValue) ".uppercased())
-										.font(.title2)
-									Text("\(macierz.count) skł.")
-										.font(.footnote)
-									Spacer()
-								}
-								.fontWeight(.light)
-								.foregroundColor(Color.primary)
-								.listRowBackground(Color.white.opacity(0.7))
-								.padding(.horizontal, 12)
 							}
 						}
 					}
 				}
 #if os(iOS)
-					.listRowSpacing(2)
-					.listStyle(.grouped)
+				.listRowSpacing(2)
+				.listStyle(.plain)
 #endif
-					.listRowSeparator(.hidden)
+				.listRowSeparator(.hidden)
 #if os(macOS)
-					.listStyle(.automatic)
+				.listStyle(.automatic)
 #endif
-					.scrollContentBackground(.hidden)
+				.scrollContentBackground(.hidden)
 			}
-		.background(Back_V().ignoresSafeArea())
-
-				.toolbar {
-						// MARK: - TOOLBAR
-					ToolbarItem(placement: .navigationBarLeading) {
-						HStack{
-								// Przycisk zamienników
-							Button {
-								zamiennikiDozwolone.toggle()
-								setAllBraki(modelContext: modelContext)
+			.background(Back_V().ignoresSafeArea())
+			
+			.toolbar {
+					// MARK: - TOOLBAR
+				ToolbarItem(placement: .navigationBarLeading) {
+					HStack{
+							// Przycisk zamienników
+						Button {
+							zamiennikiDozwolone.toggle()
+							setAllBraki(modelContext: modelContext)
+						} label: {
+							Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
+								.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
+						}
+						
+							// Przycisk resetu
+						Button {
+							wylaczWszystkieSkladniki(context: modelContext)
+						} label: {
+							Image(systemName: "checkmark.circle")
+								.foregroundStyle(Color.secondary)
+						}
+						
+					}
+				}
+				ToolbarItem(placement: .navigationBarTrailing) {
+					HStack{
+							// Przycisk sortowania
+						HStack(spacing: 0) {
+							Button { /// Przycisk filtra
+								sortowanieAlfabetyczne.toggle()
 							} label: {
-								Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
-									.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
+								Image(systemName: sortowanieAlfabetyczne ? "characters.uppercase" : "square.3.layers.3d")
+									.font(.headline)
 							}
-							
-								// Przycisk resetu
-							Button {
-								wylaczWszystkieSkladniki(context: modelContext)
-							} label: {
-								Image(systemName: "checkmark.circle")
-									.foregroundStyle(Color.secondary)
-							}
-							
 						}
 					}
 				}
-				.toolbarBackgroundVisibility(.visible)
-				.toolbarBackground(Material.thinMaterial)
-				.navigationTitle("Składniki")
 			}
+			.toolbarBackgroundVisibility(.visible)
+			.toolbarBackground(Material.thinMaterial)
+			.navigationTitle("Składniki")
 		}
 	}
+}
 
 // MARK: - SKLADNIK ROW
 private func SkladnikListaRow(skladnik: Skl_M) -> some View {

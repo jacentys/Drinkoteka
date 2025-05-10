@@ -64,7 +64,7 @@ struct DrinkPrzepis_V: View {
 					}
 				}
 				.listStyle(.plain)
-				.environment(\.editMode, .constant(isEditing ? .active : .inactive))
+//				.environment(\.editMode, .constant(isEditing ? .active : .inactive))
 				
 				if !drink.drUwagi.isEmpty {
 					Divider()

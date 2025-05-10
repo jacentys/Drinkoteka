@@ -2,15 +2,15 @@ import SwiftUI
 
 	/// Taby aplikacji
 enum Tab: String, CaseIterable {
-//	case home = "Home"
+	case home = "Home"
 	case drinki = "Drinki"
 	case skladniki = "Składn."
 	case opcje = "Opcje"
 
 	var systemImage: String {
 		switch self {
-//			case .home:
-//				return "house"
+			case .home:
+				return "house"
 			case .drinki:
 				return "wineglass"
 			case .skladniki:
@@ -27,7 +27,7 @@ enum Tab: String, CaseIterable {
 
 struct CustomTab_V: View {
 	/// View Properties
-	@State private var activeTab: Tab = .drinki
+	@State private var activeTab: Tab = .home
 	/// Wcelu ułagodzenia animacji slide, używamy pasującego efektu geometrii.
 	@Namespace private var animation
 	@State var tabShapePosition: CGPoint = .zero
@@ -35,10 +35,10 @@ struct CustomTab_V: View {
     var body: some View {
 		 VStack(spacing: 0) {
 			 TabView(selection: $activeTab) {
-					 //				 HomeView()
-					 //					 .tag(Tab.home)
-					 //					 // Ukrycie natywnego tab bar
-					 //					 .toolbar(.hidden, for: .tabBar)
+				 Home_V()
+					 .tag(Tab.home)
+					 // Ukrycie natywnego tab bar
+					 .toolbar(.hidden, for: .tabBar)
 				 DrinkiLista_V()
 					 .tag(Tab.drinki)
 					 // Ukrycie natywnego tab bar
