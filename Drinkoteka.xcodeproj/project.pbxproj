@@ -33,6 +33,7 @@
 		F327D6D52DC368980080F897 /* DrinkPrzepis_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F327D6D42DC368980080F897 /* DrinkPrzepis_V.swift */; };
 		F32ACBF72DCE6CCD00056186 /* Home_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32ACBF62DCE6CCD00056186 /* Home_V.swift */; };
 		F33256142DC0AE7C00C4055A /* SkladnikiBack_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33256132DC0AE7C00C4055A /* SkladnikiBack_V.swift */; };
+		F34889CE2DD3F95800CE649D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34889CD2DD3F95800CE649D /* Launch Screen.storyboard */; };
 		F34D9EAC2DBC2BE000D484DC /* SkladnikiLista_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34D9EA82DBC250400D484DC /* SkladnikiLista_V.swift */; };
 		F36F1E822DB783E6000775D6 /* PrefClass_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA92DB6945200481E4F /* PrefClass_VM.swift */; };
 		F36F1E842DB78BC2000775D6 /* Logowanie_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E832DB78BC2000775D6 /* Logowanie_V.swift */; };
@@ -102,6 +103,7 @@
 		F327D6D42DC368980080F897 /* DrinkPrzepis_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPrzepis_V.swift; sourceTree = "<group>"; };
 		F32ACBF62DCE6CCD00056186 /* Home_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_V.swift; sourceTree = "<group>"; };
 		F33256132DC0AE7C00C4055A /* SkladnikiBack_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkladnikiBack_V.swift; path = "Drinkoteka/View/Skladniki View/SkladnikiBack_V.swift"; sourceTree = SOURCE_ROOT; };
+		F34889CD2DD3F95800CE649D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F34D9EA82DBC250400D484DC /* SkladnikiLista_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkladnikiLista_V.swift; sourceTree = "<group>"; };
 		F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkiLista_V.swift; sourceTree = "<group>"; };
 		F36F1E812DB77A29000775D6 /* Drink_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink_V.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				F3095A9A2DB66E2300481E4F /* Back_V.swift */,
 				F36F1E872DB7A651000775D6 /* Rejestracja */,
 				F37319892DBBFC230028F97C /* SearchBar */,
+				F34889CD2DD3F95800CE649D /* Launch Screen.storyboard */,
 			);
 			path = "Wspolne View";
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 			files = (
 				F3095A762DB3C1E000481E4F /* Assets.xcassets in Resources */,
 				F3095A7F2DB3EBEF00481E4F /* DTeka - SkladnikiZamienniki.tsv in Resources */,
+				F34889CE2DD3F95800CE649D /* Launch Screen.storyboard in Resources */,
 				F3095A802DB3EBEF00481E4F /* DTeka - Drinki.tsv in Resources */,
 				F3095A812DB3EBEF00481E4F /* DTeka - Skladniki.tsv in Resources */,
 				F3095A822DB3EBEF00481E4F /* DTeka - DrinkiAlkGlowny.tsv in Resources */,
@@ -620,6 +624,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -662,6 +667,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
