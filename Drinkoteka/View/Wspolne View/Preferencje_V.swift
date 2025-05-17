@@ -17,6 +17,8 @@ struct Preferencje_V: View {
 	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
 	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
 	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
+	
+	@AppStorage("blokujEkran") var blokujEkran: Bool = false
 
 	let spacje: CGFloat = 10
 	
@@ -72,6 +74,21 @@ struct Preferencje_V: View {
 						}
 					}
 
+				Section( // MARK: Blokada ekranu
+					header: Label("Wyłączenie wygaszacza ekranu", systemImage: blokujEkran ? "lightswitch.on" : "lightswitch.off")
+						.font(.headline)
+						.foregroundStyle(Color.secondary),
+					footer: Text("Jeśli włączone, blokada ekranu jest nieaktywna.").padding(.bottom, 30)) {
+						Button {
+							blokujEkran.toggle()
+							UIApplication.shared.isIdleTimerDisabled = blokujEkran
+						} label: {
+							Text(blokujEkran ? "Blokada wygaszacza aktywna" : "Blokada wygaszacza nieaktywna")
+								.foregroundStyle(blokujEkran ? Color.red : Color.secondary)
+								.font(.headline)
+						}
+					}
+				
 				Section( // MARK: Reset składników
 					header: Label("Reset!!!", systemImage: opcjonalneWymagane ? "exclamationmark.square.fill" : "exclamationmark.square.fill")
 						.font(.headline)

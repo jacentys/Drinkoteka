@@ -35,6 +35,8 @@ class PrefClass_VM: ObservableObject {
 	@AppStorage("sklBrakiMin") var sklBrakiMin: Int = 0
 	@AppStorage("sklBrakiMax") var sklBrakiMax: Int = 0
 	
+	@AppStorage("blokujEkran") var blokujEkran: Bool = false
+	
 	init(
 		zalogowany: Bool = false,
 		uzytkownik: String = "",
@@ -65,7 +67,9 @@ class PrefClass_VM: ObservableObject {
 		opcjonalneWymagane: Bool = false,
 		zamiennikiDozwolone: Bool = true,
 		tylkoUlubione: Bool = false,
-		tylkoDostepne: Bool = true )
+		tylkoDostepne: Bool = true,
+	
+		blokujEkran: Bool = false )
 	{
 		self.zalogowany = zalogowany
 		self.uzytkownik = uzytkownik
@@ -97,6 +101,9 @@ class PrefClass_VM: ObservableObject {
 		self.zamiennikiDozwolone = zamiennikiDozwolone
 		self.tylkoUlubione = tylkoUlubione
 		self.tylkoDostepne = tylkoDostepne
+		
+		// FIXME: BLOKADA EKRANU
+		self.blokujEkran = blokujEkran //UIApplication.shared.isIdleTimerDisabled = blokujEkran
 	}
 
 	func loadDefault() {
@@ -130,5 +137,7 @@ class PrefClass_VM: ObservableObject {
 		zamiennikiDozwolone = true
 		tylkoUlubione = false
 		tylkoDostepne = true
+		
+		blokujEkran = false
 	}
 }
