@@ -75,7 +75,7 @@ struct Preferencje_V: View {
 					}
 
 				Section( // MARK: Blokada ekranu
-					header: Label("Wyłączenie wygaszacza ekranu", systemImage: blokujEkran ? "lightswitch.on" : "lightswitch.off")
+					header: Label("Wygaszacz ekranu", systemImage: blokujEkran ? "lightswitch.on" : "lightswitch.off")
 						.font(.headline)
 						.foregroundStyle(Color.secondary),
 					footer: Text("Jeśli włączone, blokada ekranu jest nieaktywna.").padding(.bottom, 30)) {
