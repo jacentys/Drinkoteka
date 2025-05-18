@@ -70,7 +70,7 @@ struct Home_V: View {
 									}
 									
 									NavigationLink(destination: {
-										DrinkiLista_V()
+										DrinkiListaAlkGl_V(alkGlowny: kategoria)
 											.onAppear {
 												wyborAlko(wybor: kategoria )
 											}

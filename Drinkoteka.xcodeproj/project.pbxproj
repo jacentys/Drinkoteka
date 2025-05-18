@@ -67,6 +67,7 @@
 		F3C25B902DC17A920038FD84 /* SkladnikWDrinkach_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C25B8F2DC17A920038FD84 /* SkladnikWDrinkach_V.swift */; };
 		F3DE992D2DC8884C00957537 /* Funkcje_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE992C2DC8884C00957537 /* Funkcje_VM.swift */; };
 		F3EC6DB02DC2CD8B008C03A5 /* SklZamiennik_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EC6DAF2DC2CD8B008C03A5 /* SklZamiennik_M.swift */; };
+		F3EFBC9A2DDA7A640084514C /* DrinkiListaAlkGl_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D8BBC2DD9353A007BB704 /* DrinkiListaAlkGl_V.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkonaJestBrak_V.swift; sourceTree = "<group>"; };
 		F3095AA92DB6945200481E4F /* PrefClass_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefClass_VM.swift; sourceTree = "<group>"; };
 		F3095AAA2DB6945200481E4F /* Preferencje_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferencje_V.swift; sourceTree = "<group>"; };
+		F31D8BBC2DD9353A007BB704 /* DrinkiListaAlkGl_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkiListaAlkGl_V.swift; sourceTree = "<group>"; };
 		F324A3092DB19E0C00B21F83 /* Drinkoteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drinkoteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F327D6D42DC368980080F897 /* DrinkPrzepis_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPrzepis_V.swift; sourceTree = "<group>"; };
 		F32ACBF62DCE6CCD00056186 /* Home_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_V.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */,
+				F31D8BBC2DD9353A007BB704 /* DrinkiListaAlkGl_V.swift */,
 				F377B0A22DB8C40C00FE8CE3 /* DrinkFiltry_V.swift */,
 				F36F1E812DB77A29000775D6 /* Drink_V.swift */,
 				F3BEA8742DB807F1001E6801 /* DrinkTitle_V.swift */,
@@ -446,6 +449,7 @@
 				F3BEA8812DB82A9B001E6801 /* DrinkBack_V.swift in Sources */,
 				F3095A632DB3C1E000481E4F /* EnumModel.swift in Sources */,
 				F3095A8D2DB3F8E900481E4F /* loadSklCSV_VM.swift in Sources */,
+				F3EFBC9A2DDA7A640084514C /* DrinkiListaAlkGl_V.swift in Sources */,
 				F3095A9F2DB66FF000481E4F /* ViewModifiers.swift in Sources */,
 				F32ACBF72DCE6CCD00056186 /* Home_V.swift in Sources */,
 				F36F1E892DB7A66A000775D6 /* Profil_V.swift in Sources */,

@@ -102,8 +102,7 @@ class PrefClass_VM: ObservableObject {
 		self.tylkoUlubione = tylkoUlubione
 		self.tylkoDostepne = tylkoDostepne
 		
-		// FIXME: BLOKADA EKRANU
-		self.blokujEkran = blokujEkran //UIApplication.shared.isIdleTimerDisabled = blokujEkran
+		self.blokujEkran = blokujEkran
 	}
 
 	func loadDefault() {
