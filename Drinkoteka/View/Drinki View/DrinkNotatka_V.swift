@@ -1,3 +1,4 @@
+// Notatka do drinka (funkcja Premium). Edytor + ekran informacji o Premium (odblokowanie kodem).
 import SwiftUI
 
 struct DrinkNotatka_V: View {
@@ -140,21 +141,19 @@ struct PremiumInfo_V: View {
 						.foregroundStyle(.secondary)
 						.multilineTextAlignment(.center)
 						.padding(.horizontal)
+				} else {
+					HStack(alignment: .top, spacing: 10) {
+						Image(systemName: "ticket")
+							.foregroundStyle(Color.accent)
+						Text("Premium odblokujesz kodem aktywacyjnym otrzymanym od twórcy aplikacji. Wpisz go w Preferencje → Kod aktywacyjny.")
+							.font(.footnote)
+							.foregroundStyle(.secondary)
+					}
+					.padding()
+					.background(.regularMaterial)
+					.cornerRadius(8)
+					.padding(.horizontal)
 				}
-
-				Button {
-					// Miejsce na StoreKit / zakup premium
-					dismiss()
-				} label: {
-					Text("Kup Premium")
-						.font(.headline)
-						.frame(maxWidth: .infinity)
-						.frame(height: 54)
-						.foregroundColor(.white)
-						.background(Color.yellow)
-						.cornerRadius(8)
-				}
-				.padding(.horizontal)
 
 				Spacer()
 			}

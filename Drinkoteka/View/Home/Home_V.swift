@@ -1,3 +1,5 @@
+// Ekran startowy: kafelki wg głównego alkoholu (przełączają zakładkę na Drinki z filtrem)
+// oraz sekcja polecanych drinków.
 import SwiftData
 import SwiftUI
 
@@ -182,8 +184,8 @@ struct Home_V: View {
 			.background(Back_V().ignoresSafeArea())
 			.navigationViewStyle(.automatic)
 			.navigationTitle("Drinkoteka")
-			.toolbarBackgroundVisibility(.visible)
-			.toolbarBackground(Material.thinMaterial)
+			.toolbarBackground(.visible, for: .navigationBar)
+			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
 		}
 	}
 		// Funkcja wyboru alko.

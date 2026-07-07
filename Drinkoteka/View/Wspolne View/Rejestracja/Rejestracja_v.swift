@@ -143,10 +143,6 @@ extension Rejestracja_v {
 					pokazAlert("Wpisz imię lub nick")
 					return
 				}
-//				guard isEmail(uzytkownikMail) else {
-//					pokazAlert("Wpisz e-mail w poprawnym formacie.")
-//					return
-//				}
 			case 2:
 				guard pelnoletni else {
 					pokazAlert("Aby używać tej aplikacji musisz być pełnoletni!")

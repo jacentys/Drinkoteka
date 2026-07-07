@@ -2,6 +2,14 @@ import CryptoKit
 import SwiftData
 import SwiftUI
 
+// Wspólna warstwa funkcji pomocniczych:
+// - konwersje string→enum (strToXxx) używane przy ładowaniu danych,
+// - odmiana rzeczowników przez liczebniki (drOdm, sklOdmiana, miaraOdm) — gramatyka PL,
+// - buildery małych widoków (viewKategoria, viewProcenty...),
+// - wsadowe przeliczenia na całej bazie (setAllBraki, setAllDrinkKalorie, setAllDrinkProcenty),
+// - logika stanu składników z uwzględnieniem zamienników,
+// - pomocnicze JSON/crypto oraz `dprint` (log tylko w Debug).
+
 let key = SymmetricKey(size: .bits256)
 
 #if os(iOS) || os(tvOS) || os(watchOS)
@@ -132,7 +140,7 @@ func strToDrMoc(_ procenty: Int) -> drMocEnum {
 func valToDrMoc(_ tekst: String) -> drMocEnum {
 	let clear = clearStr(tekst)
 	guard let procenty = Int(clear) else {
-		print("Błąd: strToDrMoc string wejściowy \(tekst) to nie liczba")
+		dprint("Błąd: strToDrMoc string wejściowy \(tekst) to nie liczba")
 		return drMocEnum.brakDanych
 	}
 	if (procenty == 0) {return .bezalk}
@@ -146,7 +154,7 @@ func valToDrMoc(_ tekst: String) -> drMocEnum {
 func strToSklKatEnum(_ tekst: String) -> sklKatEnum {
 	let clear = clearStr(tekst)
 	guard let kategoria = sklKatEnum(rawValue: clear) else {
-		print("strToSklKatEnum niepoprawne dane: \(tekst)")
+		dprint("strToSklKatEnum niepoprawne dane: \(tekst)")
 		return sklKatEnum.inne
 	}
 	return kategoria
@@ -156,7 +164,7 @@ func strToSklKatEnum(_ tekst: String) -> sklKatEnum {
 func strToSklStanEnum(_ tekst: String) -> sklStanEnum {
 	let clear = clearStr(tekst)
 	guard let liczba = Int(clear) else {
-		print("strToStanEnum tekst \(tekst) nie jest Int")
+		dprint("strToStanEnum tekst \(tekst) nie jest Int")
 		return sklStanEnum.brak
 	}
 	if liczba == 1 { return sklStanEnum.jest }
@@ -179,7 +187,7 @@ func strToSklMiaraEnum(_ tekst: String) -> miaraEnum {
 func strToBool(_ tekst: String) -> Bool {
 	let clear = clearStr(tekst)
 	guard let liczba = Int(clear) else {
-		print("strToBool tekst \(tekst) nie jest int")
+		dprint("strToBool tekst \(tekst) nie jest int")
 		if clear == "true" { return true }
 		return false
 	}
@@ -376,7 +384,6 @@ func viewMiara(miara: miaraEnum) -> some View {
 
 	// MARK: - SET WSZYSTKIE BRAKI
 func setAllBraki(modelContext: ModelContext) {
-//	print("Start setWszystkieBraki")
 		// Tworzymy FetchDescriptor dla typu Dr_M
 	let fetchDescriptor = FetchDescriptor<Dr_M>()
 	
@@ -400,13 +407,14 @@ func setAllBraki(modelContext: ModelContext) {
 			// Zapisujemy zmiany do modelContext
 		try modelContext.save()
 		
-//		print("Koniec setWszystkieBraki")
 	} catch {
-		print("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
+		dprint("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
 	}
 }
 
 	// MARK: - OBLICZ KALORIE
+// Sumuje kalorie drinka: dla składników mierzonych w ml/gr bierze kalorie na 100
+// jednostek (`sklKal`) przeskalowane przez ilość. Wynik zaokrągla do 5 kcal.
 func obliczKalorie(_ drink: Dr_M) -> Int {
 	let zaokraglenie = 5.0
 	var kalorie: Double = 0
@@ -423,7 +431,6 @@ func obliczKalorie(_ drink: Dr_M) -> Int {
 
 	// MARK: - SET ALL KALORIE
 func setAllDrinkKalorie(modelContext: ModelContext) {
-//	print("Start setWszystkieKalorie")
 
 		// Tworzymy FetchDescriptor dla typu Dr_M
 	let fetchDescriptor = FetchDescriptor<Dr_M>()
@@ -441,15 +448,16 @@ func setAllDrinkKalorie(modelContext: ModelContext) {
 			// Zapisujemy zmiany do modelContext
 		try modelContext.save()
 		
-//		print("Koniec setWszystkieKalorie")
 	} catch {
-		print("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
+		dprint("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
 	}
 }
 
 	// MARK: - SET ALL PROCENTY
+// Szacuje moc (% alkoholu) drinka: waży procenty składników ich objętością (ml),
+// a następnie uwzględnia rozcieńczenie/dolewkę do pojemności szkła (współczynnik 0.25
+// niewykorzystanej objętości szkła). Nadpisuje `drProc` każdego drinka.
 func setAllDrinkProcenty(modelContext: ModelContext) {
-//	print("Start setAllDrinkProcenty")
 	var procenty: Double = 0
 	var objetosc: Double = 0
 	
@@ -474,21 +482,19 @@ func setAllDrinkProcenty(modelContext: ModelContext) {
 			let procentyCalkowite = (procenty / objCalkowita)
 			let objInt = Int(objCalkowita)
 			let procInt = Int(procentyCalkowite)
-//			print("\(drink.drNazwa), old: \(drink.drProc), new: \(procInt), obj. \(objInt)")
 			drink.drProc = procInt
 				// Zapisujemy zmiany do modelContext
 			try modelContext.save()
 		}
-//		print("Koniec setAllDrinkProcenty")
 	} catch {
-		print("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
+		dprint("Błąd podczas pobierania danych lub zapisu do bazy: \(error)")
 	}
 }
 
 	// MARK: - GET SKL -> ZAMIENNIKI
 func getZamienniki(skladnik: Skl_M) -> [Skl_M] {
 	for zam in skladnik.zamienniki {
-		print(zam.sklNazwa)
+		dprint(zam.sklNazwa)
 	}
 	return skladnik.zamienniki
 }
@@ -505,11 +511,11 @@ func encodeJSON<T: Codable>(object: T) -> String? {
 		if let jsonString = String(data: jsonData, encoding: .utf8) {
 			return jsonString
 		} else {
-			print("Błąd konwersji danych na tekst")
+			dprint("Błąd konwersji danych na tekst")
 			return nil
 		}
 	} catch {
-		print("Błąd kodowania: \(error)")
+		dprint("Błąd kodowania: \(error)")
 		return nil
 	}
 }
@@ -522,7 +528,7 @@ func decodeJSON<T: Codable>(jsonData: Data, type: T.Type) -> T? {
 		let object = try decoder.decode(T.self, from: jsonData)
 		return object
 	} catch {
-		print("Błąd dekodowania: \(error)")
+		dprint("Błąd dekodowania: \(error)")
 		return nil
 	}
 }
@@ -536,7 +542,7 @@ func encryptData(data: Data, key: SymmetricKey) -> Data? {
 			// Zwracamy zaszyfrowane dane (w tym IV i tag autentykacji)
 		return sealedBox.combined
 	} catch {
-		print("Błąd szyfrowania: \(error)")
+		dprint("Błąd szyfrowania: \(error)")
 		return nil
 	}
 }
@@ -550,14 +556,16 @@ func decryptData(encryptedData: Data, key: SymmetricKey) -> Data? {
 
 		return decryptedData
 	} catch {
-		print("Błąd deszyfrowania: \(error)")
+		dprint("Błąd deszyfrowania: \(error)")
 		return nil
 	}
 }
 
 	// MARK: - UPDATE STAN POWIĄZANEGO SKŁADNIKA
+// Przelicza stan składnika, który MA zamienniki: jeśli któryś zamiennik jest w barku,
+// składnik staje się "dostępny przez zamiennik" (zmJest), inaczej zmBrak.
+// Wywoływane dla składników zależnych po zmianie stanu innego składnika.
 func updateStanPowiazanegoSkladnika(_ skladnik: Skl_M) -> Skl_M {
-		//	print("Na starcie: stan", stanPoZmianie, "zam: ", zam.count)
 	let zamiennikDost = skladnik.zamienniki.contains { $0.sklStan == .jest }
 	let nieMaZamiennikow = skladnik.zamienniki.isEmpty
 	
@@ -575,12 +583,14 @@ func updateStanPowiazanegoSkladnika(_ skladnik: Skl_M) -> Skl_M {
 }
 
 	// MARK: - UPDATE STAN SKŁADNIKA
+// Przełącza WŁASNY stan składnika po tapnięciu przez użytkownika.
+// Bez zamienników: jest ↔ brak. Z zamiennikami i włączoną opcją zamienników:
+// z "jest" przechodzi w zmJest/zmBrak wg dostępności zamiennika.
 func updateStanSkladnika(_ skladnik: Skl_M) {
 	let stan = skladnik.sklStan
 	let zam = skladnik.zamienniki
 	var stanPoZmianie: sklStanEnum = skladnik.sklStan
 
-//	print("Na starcie: stan", stanPoZmianie, "zam: ", zam.count)
 
 	if zam.isEmpty {
 		if stan == .jest { stanPoZmianie = .brak
@@ -599,6 +609,9 @@ func updateStanSkladnika(_ skladnik: Skl_M) {
 }
 
 	// MARK: - ZMIANA POWIĄZANYCH
+// Po zmianie stanu jednego składnika (który bywa zamiennikiem dla innych):
+// 1) aktualizuje jego własny stan, 2) przelicza stan składników, dla których jest
+// zamiennikiem, 3) przelicza `drBrakuje` wszystkich drinków i zapisuje kontekst.
 func zmianaStanuSkladnika(context: ModelContext, zamiennik: Skl_M) {
 	updateStanSkladnika(zamiennik)
 	do {
@@ -614,17 +627,17 @@ func zmianaStanuSkladnika(context: ModelContext, zamiennik: Skl_M) {
 			drink.drSklad.contains { $0.skladnik == zamiennik }
 		}
 		
-		print("=========== Powiązane składniki: ")
+		dprint("=========== Powiązane składniki: ")
 		for skl in skladniki {
 			if skl != zamiennik {
 				skl.sklStan = updateStanPowiazanegoSkladnika(skl).sklStan
-				print(skl.sklNazwa, "stan: ", skl.sklStan)
+				dprint(skl.sklNazwa, "stan: ", skl.sklStan)
 			}
 		}
 		
-		print("=========== Powiązane drinki: ")
+		dprint("=========== Powiązane drinki: ")
 		for dr in drinki {
-			print(dr.drNazwa)
+			dprint(dr.drNazwa)
 		}
 
 		// Przelicz drBrakuje dla wszystkich drinków
@@ -634,7 +647,7 @@ func zmianaStanuSkladnika(context: ModelContext, zamiennik: Skl_M) {
 		}
 		try? context.save()
 	} catch {
-		print("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
+		dprint("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
 	}
 }
 
@@ -649,14 +662,9 @@ func zmianaStanuSkladnikiAll(context: ModelContext) {
 		}
 
 			// Fetch all Dr_M and filter in memory
-//		let wszystkieDrinki = try context.fetch(FetchDescriptor<Dr_M>())
 //		
-//		print("=========== Powiązane drinki: ")
-//		for dr in drinki {
-//			print(dr.drNazwa)
-//		}
 	} catch {
-		print("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
+		dprint("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
 	}
 }
 
@@ -675,14 +683,9 @@ func wylaczWszystkieSkladniki(context: ModelContext) {
 		}
 		
 			// Fetch all Dr_M and filter in memory
-			//		let wszystkieDrinki = try context.fetch(FetchDescriptor<Dr_M>())
 			//
-			//		print("=========== Powiązane drinki: ")
-			//		for dr in drinki {
-			//			print(dr.drNazwa)
-			//		}
 	} catch {
-		print("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
+		dprint("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
 	}
 }
 
@@ -724,4 +727,13 @@ struct CustomTextEditor: UIViewRepresentable {
 			parent.text = textView.text
 		}
 	}
+}
+
+
+// MARK: - Logowanie tylko w Debug
+// Zamiennik print() aktywny wyłącznie w buildzie Debug; w Release znika.
+func dprint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+#if DEBUG
+    print(items.map { "\($0)" }.joined(separator: separator), terminator: terminator)
+#endif
 }

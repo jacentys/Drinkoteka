@@ -1,6 +1,10 @@
 import SwiftUI
 
-// MARK: SKL KATEGORIE
+// Centralne enumy domenowe używane przez modele i widoki.
+// `rawValue` (string) odpowiada wartości z bazy/CSV, a `opis` to etykieta do
+// wyświetlenia (lokalizowana przez String Catalog przez `LocalizedStringKey`).
+
+// MARK: SKL KATEGORIE — kategoria składnika (alkohol, syrop, sok, owoc...)
 enum sklKatEnum: String, CaseIterable, Codable, Identifiable {
 	var id: Self { self }
 	case alkohol = "alkohol"
@@ -24,7 +28,7 @@ enum sklKatEnum: String, CaseIterable, Codable, Identifiable {
 	}
 }
 
-// MARK: SKL STAN
+// MARK: SKL STAN — posiadanie składnika w barku (jest/brak + warianty z zamiennikiem)
 enum sklStanEnum: String, CaseIterable, Codable {
 	case jest = "jest"
 	case brak = "brak"
@@ -75,7 +79,7 @@ enum sklStanEnum: String, CaseIterable, Codable {
 	}
 }
 
-// MARK: DR MOC
+// MARK: DR MOC — moc drinka (bezalkoholowy/delikatny/średni/mocny), wyliczana z procentów
 enum drMocEnum: String, CaseIterable, Codable {
 	case bezalk = "bezalk"
 	case delik = "delik"
@@ -141,7 +145,7 @@ enum drMocEnum: String, CaseIterable, Codable {
 	}
 }
 
-// MARK: DR KAT
+// MARK: DR KAT — typ drinka (koktajl/shot)
 enum drKatEnum: String, CaseIterable, Codable {
 	case koktail
 	case shot
@@ -156,7 +160,7 @@ enum drKatEnum: String, CaseIterable, Codable {
 	}
 }
 
-// MARK: DR SLODYCZ
+// MARK: DR SLODYCZ — poziom słodkości drinka
 enum drSlodyczEnum: String, CaseIterable, Codable  {
 	case nieSlodki
 	case lekkoSlodki
@@ -191,7 +195,7 @@ enum drSlodyczEnum: String, CaseIterable, Codable  {
 	}
 }
 
-// MARK: SZKLO
+// MARK: SZKLO — typ szkła; `foto` mapuje na asset obrazka szklanki
 enum szkloEnum: String, CaseIterable, Codable {
 	case collins = "collins"
 	case whiskey = "whiskey"
@@ -246,7 +250,7 @@ enum szkloEnum: String, CaseIterable, Codable {
 	}
 }
 
-// MARK: SORTOWANIE
+// MARK: SORTOWANIE — kryterium sortowania listy drinków
 enum sortEnum: String {
 	case nazwa = "nazwa"
 	case slodycz = "slodycz"
@@ -255,7 +259,7 @@ enum sortEnum: String {
 	case sklad = "sklad"
 }
 
-// MARK: MIARA
+// MARK: MIARA — jednostka ilości składnika (ml, sztuki, łyżeczka...)
 enum miaraEnum: String, CaseIterable, Codable, Identifiable {
 	var id: Self { self }
 	case ml = "ml"
@@ -298,7 +302,7 @@ enum miaraEnum: String, CaseIterable, Codable, Identifiable {
 
 }
 
-// MARK: ALK GŁÓWNY
+// MARK: ALK GŁÓWNY — główny alkohol drinka; steruje filtrem i kafelkami na Home
 enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 	var id: Self { self }
 	case whiskey = "whiskey"

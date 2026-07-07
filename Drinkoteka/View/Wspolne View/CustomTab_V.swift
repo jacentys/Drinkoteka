@@ -1,3 +1,5 @@
+// Główny kontener z własnym paskiem zakładek. Tu też następuje przeładowanie
+// treści przy zmianie języka (zsynchronizujJezyk), niezależnie od aktywnej zakładki.
 import SwiftUI
 import SwiftData
 

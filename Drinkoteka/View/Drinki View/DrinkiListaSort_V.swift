@@ -1,3 +1,4 @@
+// Warianty listy drinków posortowane wg różnych kryteriów (słodycz, moc, kalorie, skład).
 import SwiftUI
 import SwiftData
 

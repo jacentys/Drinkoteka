@@ -1,3 +1,5 @@
+// ObservableObject opakowujący @AppStorage dla ustawień/filtrów całej aplikacji.
+// loadDefault() przywraca wartości domyślne. Jedno miejsce definiowania preferencji.
 import SwiftUI
 
 class PrefClass_VM: ObservableObject {

@@ -1,3 +1,4 @@
+// Wysyłka informacji zwrotnej: per-drink (drink_feedback) i ogólnej o aplikacji (app_feedback).
 import Foundation
 
 func sendDrinkFeedback(drinkId: String, feedback: String) async throws {

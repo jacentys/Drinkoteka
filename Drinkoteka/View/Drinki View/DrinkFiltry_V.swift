@@ -1,3 +1,4 @@
+// Arkusz filtrów drinków (alkohol główny, słodycz, moc, dostępność, ulubione, zamienniki).
 import SwiftData
 import SwiftUI
 
@@ -348,7 +349,6 @@ struct DrinkFiltry_V: View {
 				}
 					// MARK: - CAŁY VSTACK
 				.padding(30)
-					//			.frame(minWidth: .infinity)
 				.backgroundStyle(.regularMaterial)
 				.navigationTitle("Filtry")
 					// MARK: - ALERT
@@ -373,7 +373,6 @@ struct DrinkFiltry_V: View {
 					}
 				}
 
-					//			.toolbar {
 					// MARK: - TOOLBAR
 				.toolbar {
 					ToolbarItem(placement: .destructiveAction) {

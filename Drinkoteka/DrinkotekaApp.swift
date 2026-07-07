@@ -1,3 +1,5 @@
+// Punkt wejścia aplikacji. Rejestruje kontener SwiftData (Dr_M, Skl_M),
+// ustawia URLCache dla obrazów i język/locale UI.
 import SwiftUI
 import SwiftData
 

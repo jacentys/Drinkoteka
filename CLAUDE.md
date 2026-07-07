@@ -32,10 +32,10 @@ Dwa główne modele SwiftData zarejestrowane w `modelContainer` w `Drinkoteka/Dr
 
 ## ŹRÓDŁO DANYCH: Supabase (NIE TSV)
 
-**Ważne:** dane pochodzą z Supabase, nie z plików TSV. Pliki `Model/TSV/*.tsv` oraz loadery `ViewModel/LadowanieCSV/**` to **martwy kod / materiał do zasilenia bazy** — nie są używane w runtime.
+**Ważne:** dane pochodzą z Supabase, nie z plików TSV. Pliki `Model/TSV/*.tsv` pozostają jako **materiał do zasilenia bazy i źródło do tłumaczeń** (loadery TSV zostały usunięte — nie były używane w runtime).
 
 - Klient: `ViewModel/Supabase/SupabaseClient_VM.swift` — globalny `supabase`, **klucz anon** (publiczny/bezpieczny w kodzie). **NIGDY nie umieszczaj klucza service_role w kodzie aplikacji.**
-  - Uwaga: w repo są DWA `SupabaseDTO_VM.swift` — kompilowany jest `ViewModel/Supabase/SupabaseDTO_VM.swift`; `ViewModel/SupabaseDTO_VM.swift` to nieużywany duplikat (do usunięcia).
+- DTO: `ViewModel/Supabase/SupabaseDTO_VM.swift`.
 - Loader: `ViewModel/Supabase/loadFromSupabase_VM.swift` — `loadFromSupabase(modelContext:)` pobiera drinki/składniki/przepisy z Supabase i wstawia do SwiftData. Wołany raz przy 1. uruchomieniu (flaga `setupDone` w `UserDefaults`) z `DrinkiLista_V.loadAllDrinks()`. **Loader jest idempotentny** — pomija rekordy już obecne lokalnie, więc ponowne wywołanie tylko dodaje nowe drinki i nie kasuje stanu barku (`sklStan`) ani ulubionych.
 - DTO: `ViewModel/Supabase/SupabaseDTO_VM.swift` (mapowanie snake_case → pola).
 - Konwersje string→enum: `ViewModel/Funkcje_VM.swift`.
@@ -108,6 +108,7 @@ Kluczowe braki/blokery przed wysyłką:
 - **`IPHONEOS_DEPLOYMENT_TARGET = 18.4`** — prawdopodobnie za wysoko; rozważyć obniżenie.
 - **Ikona**: `AppIcon.appiconset` ma tylko `ikonka.png` — potrzebne 1024×1024 bez alpha.
 - **Ocena 17+** (alkohol), **Privacy Policy URL** + App Privacy labels (email, notatki, feedback).
-- **Sprzątanie**: ~78× `print(...)` (owinąć w `#if DEBUG`), usunąć duplikat `SupabaseDTO_VM.swift` i martwe loadery TSV.
 - Obsługa offline przy 1. uruchomieniu (recenzent na słabym wifi).
 - Sign in with Apple NIE jest wymagane (tylko email/hasło).
+
+Zrobione w ramach przygotowania v1: ukryty placeholder „Kup Premium", `IPHONEOS_DEPLOYMENT_TARGET` obniżony do 17.0 (z fallbackami dla API iOS 18: `MeshGradient`, `toolbarBackgroundVisibility`), logi `print` zamienione na `dprint` (aktywne tylko w Debug — definicja w `Funkcje_VM.swift`), usunięty duplikat DTO i martwe loadery TSV.

@@ -25,7 +25,6 @@ struct Skladnik_V: View {
 			.toolbar {
 				ToolbarItem(placement: .confirmationAction) {
 					NavigationLink("Edytuj") {
-//						SklEdit(sklSelID: skladnik.id)
 					}
 				}
 			} // MARK: TOOLBAR

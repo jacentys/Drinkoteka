@@ -1,3 +1,5 @@
+// Centralny serwis auth i uprawnień (singleton, @MainActor).
+// Sesja, Premium, uprawnienia do kategorii, blokowane źródła, realizacja kodów aktywacyjnych.
 import Supabase
 import SwiftUI
 
@@ -61,9 +63,9 @@ class AuthService_VM: ObservableObject {
                 .execute()
                 .value
             isPremium = profile.isPremium
-            print("[Premium] isPremium = \(isPremium)")
+            dprint("[Premium] isPremium = \(isPremium)")
         } catch {
-            print("[Premium] błąd: \(error)")
+            dprint("[Premium] błąd: \(error)")
             isPremium = false
         }
     }
@@ -140,7 +142,7 @@ class AuthService_VM: ObservableObject {
             }
             return result
         } catch {
-            print("[Kod] błąd: \(error)")
+            dprint("[Kod] błąd: \(error)")
             return "error"
         }
     }
@@ -152,16 +154,16 @@ class AuthService_VM: ObservableObject {
         errorMessage = nil
         oczekujeNaPotwierdzenieMaila = false
         do {
-            print("[Auth] signUp start: \(email)")
+            dprint("[Auth] signUp start: \(email)")
             let result = try await supabase.auth.signUp(email: email, password: password)
-            print("[Auth] signUp result — session: \(result.session != nil ? "TAK" : "NIL"), user: \(result.user.email ?? "?")")
+            dprint("[Auth] signUp result — session: \(result.session != nil ? "TAK" : "NIL"), user: \(result.user.email ?? "?")")
             if let s = result.session {
                 session = s
             } else {
                 oczekujeNaPotwierdzenieMaila = true
             }
         } catch {
-            print("[Auth] signUp error: \(error)")
+            dprint("[Auth] signUp error: \(error)")
             errorMessage = error.localizedDescription
         }
         isLoading = false

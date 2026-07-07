@@ -1,3 +1,4 @@
+// Ekran szczegółów drinka + wysyłka uwagi o drinku do dewelopera.
 import SwiftData
 import SwiftUI
 

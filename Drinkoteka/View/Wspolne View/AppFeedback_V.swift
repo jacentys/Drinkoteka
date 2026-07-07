@@ -1,3 +1,4 @@
+// Arkusz ogólnej opinii o aplikacji (wysyłka do app_feedback).
 import SwiftUI
 
 struct AppFeedback_V: View {

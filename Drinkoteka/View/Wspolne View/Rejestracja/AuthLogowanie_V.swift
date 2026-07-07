@@ -1,3 +1,4 @@
+// Ekran logowania/rejestracji przez Supabase Auth.
 import SwiftUI
 
 struct AuthLogowanie_V: View {

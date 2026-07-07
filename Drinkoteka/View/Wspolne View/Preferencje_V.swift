@@ -1,3 +1,4 @@
+// Ustawienia: język, konto, kod aktywacyjny, opinia o aplikacji, reset składników.
 import SwiftData
 import SwiftUI
 
@@ -191,12 +192,11 @@ struct Preferencje_V: View {
 
 		// MARK: - DEL ALL
 	private func delAll() {
-//		print("Funkcja delAll uruchomiona")
 		do {
 			try modelContext.delete(model: Skl_M.self)
 			try modelContext.delete(model: Dr_M.self)
 		} catch {
-			print("Błąd przy usuwaniu drinków: \(error)")
+			dprint("Błąd przy usuwaniu drinków: \(error)")
 		}
 	}
 }

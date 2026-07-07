@@ -1,6 +1,9 @@
 import SwiftData
 import SwiftUI
 
+/// Model SwiftData składnika (np. Gin, Sok z cytryny).
+/// `sklStan` opisuje posiadanie w barku (jest / brak / dostępny przez zamiennik).
+/// Zamienniki modelowane relacją przez `SklZamiennik_M` (patrz `zamienniki`).
 @Model
 class Skl_M: Identifiable, ObservableObject {
 	@Attribute(.unique) var id: String
@@ -17,8 +20,6 @@ class Skl_M: Identifiable, ObservableObject {
 	var sklWWW: String
 	@Relationship(deleteRule: .cascade, inverse: \SklZamiennik_M.skladnikZ)
 	var relacjeZamiennikow: [SklZamiennik_M] = []
-//	@Relationship(deleteRule: .nullify, inverse: \SklZamiennik_M.zamiennikZ)
-//	var relacjeSkladnikow: [SklZamiennik_M] = []
 
 	init(
 		id: String = UUID().uuidString,
@@ -48,10 +49,12 @@ class Skl_M: Identifiable, ObservableObject {
 		self.sklWWW = sklWWW
 	}
 
+	// Lista składników-zamienników (rozpakowana z relacji pośredniej).
 	var zamienniki: [Skl_M] {
 		relacjeZamiennikow.map { $0.zamiennikZ }
 	}
 
+	// Dodaje zamiennik; pomija duplikaty (bezpieczne przy wielokrotnym ładowaniu z bazy).
 	func addZamiennik(_ zamiennik: Skl_M) {
 		guard !zamienniki.contains(where: { $0.id == zamiennik.id }) else { return }
 		let nowaRelacja = SklZamiennik_M(skladnikZ: self, zamiennikZ: zamiennik)
@@ -70,6 +73,7 @@ class Skl_M: Identifiable, ObservableObject {
 		return strToColor(self.sklKolor)
 	}
 
+	// Cykl stanu po tapnięciu: brak → jest → (jeśli ma zamienniki) zmJest/zmBrak wg dostępności zamiennika.
 	func stanToggle() {
 		if self.sklStan != .jest {
 			self.sklStan = .jest

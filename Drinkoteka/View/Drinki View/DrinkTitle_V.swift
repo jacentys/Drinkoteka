@@ -30,7 +30,6 @@ struct DrinkTitle_V: View {
 				HStack {
 					viewKategoria(kat: drink.drKat.opis)
 					viewProcenty(proc: drink.drProc)
-//					viewMiara(miara: drink.drMiara)
 				}
 			}
 			.shadow(color: .white, radius: 20)

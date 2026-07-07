@@ -1,6 +1,8 @@
 import SwiftData
 import Foundation
 
+/// Relacja pośrednia: łączy składnik (`skladnikZ`) z jego zamiennikiem (`zamiennikZ`).
+/// Pozwala modelować zamienniki jako graf między obiektami `Skl_M`.
 @Model
 class SklZamiennik_M {
 	@Relationship(deleteRule: .cascade) var skladnikZ: Skl_M

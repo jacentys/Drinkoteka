@@ -1,3 +1,4 @@
+// Szczegóły konta: email, dostęp do kategorii, zmiana hasła, wylogowanie, usunięcie konta.
 import SwiftUI
 
 struct AuthProfil_V: View {

@@ -1,3 +1,5 @@
+// Lista drinków: wyszukiwanie, sortowanie, filtry, pierwsze ładowanie danych,
+// sprawdzanie aktualizacji i alert o nowych drinkach.
 import SwiftData
 import SwiftUI
 
@@ -7,7 +9,6 @@ struct DrinkiLista_V: View {
 	@Query private var skladniki: [Skl_M]
 	@StateObject private var auth = AuthService_VM.shared
 
-//	var drinki2 = drMockArray()
 
 	// MARK: - PREFERENCJE
 	@AppStorage("zalogowany") var zalogowany: Bool = false
@@ -163,8 +164,8 @@ struct DrinkiLista_V: View {
 					}
 				}
 			}
-			.toolbarBackgroundVisibility(.visible)
-			.toolbarBackground(Material.thinMaterial)
+			.toolbarBackground(.visible, for: .navigationBar)
+			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
 			.navigationViewStyle(.automatic)
 			.navigationTitle("Drinki")
 			.onAppear() {
@@ -212,33 +213,13 @@ struct DrinkiLista_V: View {
 		}
 	}
 	
-		// MARK: - ADD DRINK
-	private func addDrink() {
-		print("Funkcja addDrink uruchomiona")
-			//		withAnimation {
-			//			let zam = SklZamiennik(skladnikID: "SkładnikID", zamiennikID: "ID zamiennika")
-			//			modelContext.insert(zam)
-			//		}
-	}
-	
-		// MARK: - DEL DRINK
-	private func delDrink(offsets: IndexSet) {
-		withAnimation {
-//			for index in offsets {
-//				print("Funkcja delDrink \(przefiltrowaneDrinki[index].drNazwa) uruchomiona")
-//				modelContext.delete(przefiltrowaneDrinki[index])
-//			}
-		}
-	}
-	
 		// MARK: - DEL ALL
 	private func delAll() {
-//		print("Funkcja delAll uruchomiona")
 		do {
 			try modelContext.delete(model: Skl_M.self)
 			try modelContext.delete(model: Dr_M.self)
 		} catch {
-			print("Błąd przy usuwaniu drinków: \(error)")
+			dprint("Błąd przy usuwaniu drinków: \(error)")
 		}
 	}
 	
@@ -251,9 +232,9 @@ struct DrinkiLista_V: View {
 			let allDrinks = try modelContext.fetch(fetchRequestDR)
 			let allSkladniki = try modelContext.fetch(fetchRequestSKL
 			)
-			print("W miejscu \(miejsce) \(allDrinks.count) drinków i \(allSkladniki.count) składników")
+			dprint("W miejscu \(miejsce) \(allDrinks.count) drinków i \(allSkladniki.count) składników")
 		} catch {
-			print("Błąd przy pobieraniu drinków: \(error)")
+			dprint("Błąd przy pobieraniu drinków: \(error)")
 		}
 	}
 	
@@ -300,188 +281,6 @@ struct DrinkiLista_V: View {
 		}
 	}
 }
-// MARK: - STARE WIDOKI SORTOWANIA (przeniesione do DrinkiListaSort_V.swift)
-/*
-struct SortNazwaView: View {
-	var body: some View {
-
-		if drinki.count == 0 {
-				// Jeśli macierz jest pusta, wyświetlamy EmptyView lub inny widok
-			return AnyView( EmptyView() )
-		}
-
-		return AnyView( // Jeśli macierz nie jest pusta, wyświetlamy dane w ScrollView
-			ScrollView {
-				Section {
-					HStack(alignment: .firstTextBaseline, spacing: 0) {
-						Text("\(drinki.count) ")
-							.font(.title2)
-						Text("przep..")
-							.font(.footnote)
-						Spacer()
-					}
-					.fontWeight(.light)
-					.foregroundColor(Color.white)
-					.offset(y: 14)
-					.padding(.horizontal, 28)
-
-					VStack(spacing: 2) {
-						ForEach(drinki) { drink in
-							DrinkiListaRow_V(drink: drink)
-						}
-					}
-				}
-				.padding(.bottom, 30)
-			}
-		)
-	}
-}
-
-	// MARK: - SORT SŁODYCZ
-struct SortSlodyczView: View {
-	var body: some View {
-		ScrollView {
-
-				// Posortowanie enumów
-			let enumSorted = drSlodyczEnum.allCases.sorted {
-				sortowRosn ? $0.sort < $1.sort : $0.sort > $1.sort
-			}
-
-			ForEach(enumSorted, id: \.sort) { slodycz in
-
-				let opis = slodycz.opis
-				let przefiltrowane = drClass.filtrujDrinki(pref: pref)
-					.filter { $0.drSlodycz == slodycz }
-					.sorted { $0.id < $1.id }
-
-				if !przefiltrowane.isEmpty {
-					Section {
-						HStack(alignment: .firstTextBaseline, spacing: 0) {
-							Text(LocalizedStringKey(opis))
-								.textCase(.uppercase)
-								.font(.title2)
-							Text(" \(przefiltrowane.count) ")
-								.font(.title2)
-							Text("przep.")
-								.font(.footnote)
-							Spacer()
-						}
-						.fontWeight(.light)
-						.foregroundColor(Color.white)
-						.offset(y: 14)
-						.padding(.horizontal, 28)
-						VStack(spacing: 2) {
-							ForEach(przefiltrowane, id: \.id) { drink in
-								DrinkiListaRow_V(drink: drink)
-							}
-						}
-					}
-				}
-			}
-			.padding(.top, 12)
-			.padding(.bottom, 30)
-		}
-	}
-}
-
-	// MARK: - SORT MOC
-struct SortMocView: View {
-	var body: some View {
-		ScrollView {
-
-				// Posortowanie enumów
-			let enumSorted = drMocEnum.allCases.sorted {
-				sortowRosn ? $0.sort < $1.sort : $0.sort > $1.sort
-			}
-			ForEach(enumSorted, id: \.rawValue) { moc in
-					let opis = moc.opisLong
-					let przefiltrowane = drClass.filtrujDrinki(pref: pref)
-					.filter { $0.drMoc == moc }
-					.sorted {
-						if sortowRosn {
-							return $0.drProc < $1.drProc  // Sortowanie według nazwy (rosnąco)
-						} else {
-							return $0.drProc > $1.drProc  // Sortowanie według nazwy (malejąco)
-						}
-					}
-
-					if !przefiltrowane.isEmpty {
-						Section {
-							HStack(alignment: .firstTextBaseline, spacing: 0) {
-								Text(LocalizedStringKey(opis))
-									.textCase(.uppercase)
-									.font(.title2)
-								Text(" \(przefiltrowane.count) ")
-									.font(.title2)
-								Text("przep.")
-									.font(.footnote)
-								Spacer()
-							}
-							.fontWeight(.light)
-							.foregroundColor(Color.white)
-							.offset(y: 14)
-							.padding(.horizontal, 28)
-
-							VStack(spacing: 2) {
-								ForEach(przefiltrowane, id: \.id) { drink in
-									DrinkiListaRow_V(drink: drink)
-								}
-							}
-						}
-					}
-			}
-			.padding(.top, 12)
-			.padding(.bottom, 30)
-		}
-	}
-}
-
-	// MARK: - SORT SKLAD
-struct SortSkladView: View {
-	var body: some View {
-		ScrollView {
-
-			let zakres = drClass.brakMin...drClass.brakMax
-
-			ForEach((zakres), id: \.self) { idx in
-				let indeks = sortowRosn ? idx : drClass.brakMax - idx
-
-					// Filtruj drinki wg ilości brakujących składników
-				let drinkiFiltrowane = drClass.filtrujDrinki(pref: pref)
-					.filter { $0.drBrakuje == indeks }
-					.sorted { $0.drNazwa < $1.drNazwa }
-
-				if !drinkiFiltrowane.isEmpty {
-					Section {
-						HStack(alignment: .firstTextBaseline, spacing: 0) {
-							Text(indeks == 0 ? "Masz wszystkie skł." : "Brak \(indeks) skł.")
-								.textCase(.uppercase)
-								.font(.title2)
-							Text(" \(drinkiFiltrowane.count) ")
-								.font(.title2)
-							Text("przep.")
-								.font(.footnote)
-							Spacer()
-						}
-						.fontWeight(.light)
-						.foregroundColor(Color.white)
-						.offset(y: 14)
-						.padding(.horizontal, 28)
-
-						VStack(spacing: 2) {
-							ForEach(drinkiFiltrowane) { drink in
-								DrinkiListaRow_V(drink: drink)
-							}
-						}
-					}
-				}
-			}
-			.padding(.top, 12)
-			.padding(.bottom, 30)
-		}
-	}
-}
-*/
 
 
 

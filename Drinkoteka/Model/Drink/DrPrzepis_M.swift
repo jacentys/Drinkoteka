@@ -1,6 +1,8 @@
 import SwiftData
 import Foundation
 
+/// Pojedynczy krok przepisu drinka (kolejność `przepNo`, treść `przepOpis`).
+/// `przepOpcja` oznacza krok opcjonalny. Powiązany z drinkiem relacją `relacjaDrink`.
 @Model
 class DrPrzepis_M: Identifiable {
 	@Attribute(.unique) var id: String

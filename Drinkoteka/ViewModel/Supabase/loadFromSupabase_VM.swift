@@ -43,7 +43,7 @@ func loadFromSupabase(modelContext: ModelContext) async {
             try? modelContext.save()
         }
     } catch {
-        print("Błąd ładowania z Supabase: \(error)")
+        dprint("Błąd ładowania z Supabase: \(error)")
     }
 }
 

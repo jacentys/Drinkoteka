@@ -1,3 +1,4 @@
+// Lista składników (barek): alfabetycznie lub wg kategorii, przełącznik zamienników.
 import SwiftData
 import SwiftUI
 
@@ -7,7 +8,6 @@ struct SkladnikiLista_V: View {
 	@Query(sort: \Dr_M.drNazwa) private var drinki: [Dr_M]
 	@Query(sort: \Skl_M.sklNazwa) private var skladniki: [Skl_M]
 	
-//	var skladniki = sklMockArray()
 	
 	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
 	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
@@ -17,9 +17,6 @@ struct SkladnikiLista_V: View {
 	@State var szukaj: String = ""
 	@State var sortowanieAlfabetyczne = true
 
-//	private var totalZamienniki: Int {
-//		skladniki.reduce(0) { $0 + $1.zamienniki.count }
-//	}
 	
 	var skladnikiFiltered: [Skl_M] {
 		if szukaj.isEmpty {
@@ -122,8 +119,8 @@ struct SkladnikiLista_V: View {
 					.frame(width: 90)
 				}
 			}
-			.toolbarBackgroundVisibility(.visible)
-			.toolbarBackground(Material.thinMaterial)
+			.toolbarBackground(.visible, for: .navigationBar)
+			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
 			.navigationTitle("Składniki")
 		}
 	}

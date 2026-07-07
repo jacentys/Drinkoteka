@@ -1,3 +1,5 @@
+// DTO (Codable) mapujące wiersze tabel Supabase (snake_case) na typy Swift.
+// Używane przez loadFromSupabase i warstwę tłumaczeń.
 import Foundation
 
 // MARK: - Ingredient

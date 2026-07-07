@@ -28,7 +28,6 @@ struct SkladnikTitle_V: View {
 					viewKategoria(kat: skladnik.sklKat.opis)
 					viewProcenty(proc: skladnik.sklProc)
 					viewKalorie(kal: skladnik.sklKal)
-//					viewMiara(miara: skladnik.sklMiara)
 				}
 			}
 			.shadow(color: .white, radius: 20)

@@ -1,3 +1,5 @@
+// Globalny klient Supabase. Używa klucza ANON (publiczny, bezpieczny w kodzie).
+// Klucz service_role NIGDY nie może się tu znaleźć.
 import Supabase
 import Foundation
 

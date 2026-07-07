@@ -11,10 +11,6 @@
 		F3095A612DB3C1E000481E4F /* DrPrzepis_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A422DB3C1E000481E4F /* DrPrzepis_M.swift */; };
 		F3095A622DB3C1E000481E4F /* DrSkladnik_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A432DB3C1E000481E4F /* DrSkladnik_M.swift */; };
 		F3095A632DB3C1E000481E4F /* EnumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A452DB3C1E000481E4F /* EnumModel.swift */; };
-		F3095A662DB3C1E000481E4F /* loadDrAlkGlownyCSV_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A542DB3C1E000481E4F /* loadDrAlkGlownyCSV_VM.swift */; };
-		F3095A672DB3C1E000481E4F /* loadDrCSV_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A552DB3C1E000481E4F /* loadDrCSV_VM.swift */; };
-		F3095A682DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A562DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift */; };
-		F3095A6A2DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A582DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift */; };
 		F3095A6C2DB3C1E000481E4F /* DrinkotekaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A5E2DB3C1E000481E4F /* DrinkotekaApp.swift */; };
 		F3095A762DB3C1E000481E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3095A5C2DB3C1E000481E4F /* Assets.xcassets */; };
 		F3095A7F2DB3EBEF00481E4F /* DTeka - SkladnikiZamienniki.tsv in Resources */ = {isa = PBXBuildFile; fileRef = F3095A7E2DB3EBEF00481E4F /* DTeka - SkladnikiZamienniki.tsv */; };
@@ -25,8 +21,6 @@
 		F3095A842DB3EBEF00481E4F /* DTeka - DrinkiPrzepisy.tsv in Resources */ = {isa = PBXBuildFile; fileRef = F3095A7B2DB3EBEF00481E4F /* DTeka - DrinkiPrzepisy.tsv */; };
 		F3095A872DB3EC5900481E4F /* Skl_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A862DB3EC5900481E4F /* Skl_M.swift */; };
 		F3095A8B2DB3ECB500481E4F /* SklStanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A8A2DB3ECB500481E4F /* SklStanModel.swift */; };
-		F3095A8D2DB3F8E900481E4F /* loadSklCSV_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A8C2DB3F8E900481E4F /* loadSklCSV_VM.swift */; };
-		F3095A942DB543F300481E4F /* loadSklZamiennikiCSV_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A922DB53DE900481E4F /* loadSklZamiennikiCSV_VM.swift */; };
 		F3095A9B2DB66E2300481E4F /* Back_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9A2DB66E2300481E4F /* Back_V.swift */; };
 		F3095A9F2DB66FF000481E4F /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */; };
 		F3095AA82DB693AA00481E4F /* IkonaJestBrak_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */; };
@@ -97,10 +91,6 @@
 		F3095A422DB3C1E000481E4F /* DrPrzepis_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrPrzepis_M.swift; sourceTree = "<group>"; };
 		F3095A432DB3C1E000481E4F /* DrSkladnik_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrSkladnik_M.swift; sourceTree = "<group>"; };
 		F3095A452DB3C1E000481E4F /* EnumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumModel.swift; sourceTree = "<group>"; };
-		F3095A542DB3C1E000481E4F /* loadDrAlkGlownyCSV_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadDrAlkGlownyCSV_VM.swift; sourceTree = "<group>"; };
-		F3095A552DB3C1E000481E4F /* loadDrCSV_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadDrCSV_VM.swift; sourceTree = "<group>"; };
-		F3095A562DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadDrPrzepisyCSV_VM.swift; sourceTree = "<group>"; };
-		F3095A582DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadDrSkladnikiCSV_VM.swift; sourceTree = "<group>"; };
 		F3095A5C2DB3C1E000481E4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3095A5D2DB3C1E000481E4F /* Drinkoteka.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Drinkoteka.entitlements; sourceTree = "<group>"; };
 		F3095A5E2DB3C1E000481E4F /* DrinkotekaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkotekaApp.swift; sourceTree = "<group>"; };
@@ -112,8 +102,6 @@
 		F3095A7E2DB3EBEF00481E4F /* DTeka - SkladnikiZamienniki.tsv */ = {isa = PBXFileReference; lastKnownFileType = text; path = "DTeka - SkladnikiZamienniki.tsv"; sourceTree = "<group>"; };
 		F3095A862DB3EC5900481E4F /* Skl_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skl_M.swift; sourceTree = "<group>"; };
 		F3095A8A2DB3ECB500481E4F /* SklStanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SklStanModel.swift; sourceTree = "<group>"; };
-		F3095A8C2DB3F8E900481E4F /* loadSklCSV_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadSklCSV_VM.swift; sourceTree = "<group>"; };
-		F3095A922DB53DE900481E4F /* loadSklZamiennikiCSV_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadSklZamiennikiCSV_VM.swift; sourceTree = "<group>"; };
 		F3095A9A2DB66E2300481E4F /* Back_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Back_V.swift; sourceTree = "<group>"; };
 		F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		F3095AA12DB670B700481E4F /* DrinkPrzepisE_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPrzepisE_V.swift; sourceTree = "<group>"; };
@@ -287,10 +275,6 @@
 		F3095A8E2DB52B1200481E4F /* Drink */ = {
 			isa = PBXGroup;
 			children = (
-				F3095A552DB3C1E000481E4F /* loadDrCSV_VM.swift */,
-				F3095A542DB3C1E000481E4F /* loadDrAlkGlownyCSV_VM.swift */,
-				F3095A562DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift */,
-				F3095A582DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift */,
 			);
 			path = Drink;
 			sourceTree = "<group>";
@@ -298,8 +282,6 @@
 		F3095A8F2DB52B2500481E4F /* Skladnik */ = {
 			isa = PBXGroup;
 			children = (
-				F3095A8C2DB3F8E900481E4F /* loadSklCSV_VM.swift */,
-				F3095A922DB53DE900481E4F /* loadSklZamiennikiCSV_VM.swift */,
 			);
 			path = Skladnik;
 			sourceTree = "<group>";
@@ -531,7 +513,6 @@
 				F37319882DBBF9270028F97C /* UIApplication.swift in Sources */,
 				F3BEA8712DB7FF91001E6801 /* DrinkSkladniki_V.swift in Sources */,
 				F3095A602DB3C1E000481E4F /* Dr_M.swift in Sources */,
-				F3095A942DB543F300481E4F /* loadSklZamiennikiCSV_VM.swift in Sources */,
 				F36F1E922DB7E085000775D6 /* SkladnikZamiennikLinia_V.swift in Sources */,
 				F3DE992D2DC8884C00957537 /* Funkcje_VM.swift in Sources */,
 				F3CF4A4D2FFC176300916E47 /* AuthLogowanie_V.swift in Sources */,
@@ -545,7 +526,6 @@
 				F3BEA87F2DB820AB001E6801 /* DrinkWWW_V.swift in Sources */,
 				F3BEA8812DB82A9B001E6801 /* DrinkBack_V.swift in Sources */,
 				F3095A632DB3C1E000481E4F /* EnumModel.swift in Sources */,
-				F3095A8D2DB3F8E900481E4F /* loadSklCSV_VM.swift in Sources */,
 				F3095A9F2DB66FF000481E4F /* ViewModifiers.swift in Sources */,
 				F32ACBF72DCE6CCD00056186 /* Home_V.swift in Sources */,
 				F36F1E892DB7A66A000775D6 /* Profil_V.swift in Sources */,
@@ -553,12 +533,9 @@
 				F36F1E902DB7DF32000775D6 /* SkladnikOpis_V.swift in Sources */,
 				F36F1E9A2DB7E4A3000775D6 /* Skladnik_V.swift in Sources */,
 				F3BEA8732DB8067C001E6801 /* Drink_V.swift in Sources */,
-				F3095A662DB3C1E000481E4F /* loadDrAlkGlownyCSV_VM.swift in Sources */,
 				F36F1E8B2DB7BAFE000775D6 /* DrinkSkladnikLinijka_V.swift in Sources */,
 				F3BEA87D2DB81CEC001E6801 /* DrinkNotatka_V.swift in Sources */,
-				F3095A672DB3C1E000481E4F /* loadDrCSV_VM.swift in Sources */,
 				F36F1E942DB7E21E000775D6 /* SkladnikZamiennikiAll_V.swift in Sources */,
-				F3095A682DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift in Sources */,
 				F3095AA82DB693AA00481E4F /* IkonaJestBrak_V.swift in Sources */,
 				F3BEA87A2DB81435001E6801 /* DrinkFoto_V.swift in Sources */,
 				F3172D472FFC5B0100EEE52A /* DrinkDodaj_V.swift in Sources */,
@@ -568,7 +545,6 @@
 				F33256142DC0AE7C00C4055A /* SkladnikiBack_V.swift in Sources */,
 				F310D9232FFCF1EC00EC6A18 /* ImageCache_VM.swift in Sources */,
 				F310D9252FFCF21900EC6A18 /* DrinkotekaImage_V.swift in Sources */,
-				F3095A6A2DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift in Sources */,
 				F396F69E2DBA42040030A329 /* DrinkMock.swift in Sources */,
 				F377B0AC2DB8D88D00FE8CE3 /* CustomTab_V.swift in Sources */,
 				F36F1E8A2DB7AB8A000775D6 /* Preferencje_V.swift in Sources */,
@@ -743,7 +719,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
@@ -786,7 +762,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;

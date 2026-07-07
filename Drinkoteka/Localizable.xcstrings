@@ -2629,6 +2629,16 @@
           }
         }
       }
+    },
+    "Premium odblokujesz kodem aktywacyjnym otrzymanym od twórcy aplikacji. Wpisz go w Preferencje → Kod aktywacyjny.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can unlock Premium with an activation code from the app's creator. Enter it in Preferences → Activation code."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

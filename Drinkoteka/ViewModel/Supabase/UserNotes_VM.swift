@@ -1,3 +1,4 @@
+// Notatki użytkownika do drinków synchronizowane z tabelą user_notes (per konto).
 import SwiftData
 import Foundation
 
@@ -30,7 +31,7 @@ func saveNoteToSupabase(drinkId: String, note: String) async {
             ])
             .execute()
     } catch {
-        print("Błąd zapisu notatki: \(error)")
+        dprint("Błąd zapisu notatki: \(error)")
     }
 }
 
@@ -46,7 +47,7 @@ func deleteNoteFromSupabase(drinkId: String) async {
             .eq("drink_id", value: drinkId)
             .execute()
     } catch {
-        print("Błąd usuwania notatki: \(error)")
+        dprint("Błąd usuwania notatki: \(error)")
     }
 }
 
@@ -70,6 +71,6 @@ func loadNotesFromSupabase(modelContext: ModelContext) async {
             try? modelContext.save()
         }
     } catch {
-        print("Błąd ładowania notatek: \(error)")
+        dprint("Błąd ładowania notatek: \(error)")
     }
 }

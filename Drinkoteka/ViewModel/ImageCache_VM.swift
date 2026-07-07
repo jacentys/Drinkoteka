@@ -1,3 +1,4 @@
+// Prosty cache obrazów (pamięć + dysk) dla grafik pobieranych zdalnie.
 import UIKit
 
 actor ImageCache {
