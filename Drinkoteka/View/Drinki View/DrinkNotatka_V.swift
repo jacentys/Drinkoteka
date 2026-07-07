@@ -120,6 +120,9 @@ struct PremiumInfo_V: View {
 	@Environment(\.dismiss) private var dismiss
 	@StateObject private var auth = AuthService_VM.shared
 
+	// Opis funkcji Premium — domyślnie o notatkach; można nadpisać dla innych funkcji.
+	var opis: String = "Notatki do drinków są dostępne w planie Premium. Twoje notatki są synchronizowane między urządzeniami i przypisane do Twojego konta."
+
 	var body: some View {
 		NavigationStack {
 			VStack(spacing: 24) {
@@ -130,7 +133,7 @@ struct PremiumInfo_V: View {
 				Text("Funkcja Premium")
 					.font(.title2).bold()
 
-				Text("Notatki do drinków są dostępne w planie Premium. Twoje notatki są synchronizowane między urządzeniami i przypisane do Twojego konta.")
+				Text(LocalizedStringKey(opis))
 					.multilineTextAlignment(.center)
 					.foregroundStyle(.secondary)
 					.padding(.horizontal)

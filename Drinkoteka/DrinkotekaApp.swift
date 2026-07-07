@@ -32,6 +32,10 @@ struct DrinkotekaApp: App {
 				  .onDisappear {
 					  UIApplication.shared.isIdleTimerDisabled = blokujEkran
 				  }
+				  // Deep link po potwierdzeniu maila (drinkoteka://login-callback)
+				  .onOpenURL { url in
+					  Task { await AuthService_VM.shared.handleDeepLink(url) }
+				  }
         }
 		  .modelContainer(
 			for: [Dr_M.self, Skl_M.self],

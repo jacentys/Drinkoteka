@@ -4,12 +4,17 @@ import SwiftUI
 struct AuthProfil_V: View {
     @StateObject private var auth = AuthService_VM.shared
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
 
     @State private var noweHaslo: String = ""
     @State private var potwierdzHaslo: String = ""
     @State private var pokazZmianeHasla: Bool = false
     @State private var pokazPotwierdzenieDelekcji: Bool = false
     @State private var komunikat: String? = nil
+
+    @State private var kodAktywacyjny: String = ""
+    @State private var komunikatKodu: String? = nil
+    @State private var aktywujeKod: Bool = false
 
     var body: some View {
         List {
@@ -19,31 +24,56 @@ struct AuthProfil_V: View {
                         .foregroundStyle(.secondary)
                     Text(auth.userEmail)
                 }
-                HStack {
-                    Image(systemName: "crown.fill")
-                        .foregroundStyle(.yellow)
-                    Text("Konto Premium")
-                        .foregroundStyle(.secondary)
+                if auth.isPremium {
+                    HStack {
+                        Image(systemName: "crown.fill")
+                            .foregroundStyle(.yellow)
+                        Text("Konto Premium")
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
 
-            if !auth.zablokowaneZrodla.isEmpty {
+            // Pokazujemy tylko kategorie, do których użytkownik MA dostęp.
+            // Jeśli nie ma żadnej — sekcja się nie pojawia (nie ujawniamy istnienia
+            // kategorii, do których dostępu nie ma).
+            if !auth.dostepneKategorie.isEmpty {
                 Section(
-                    header: Text("Dostęp do kategorii"),
-                    footer: Text("Dostęp do kategorii specjalnych przyznaje administrator.")
+                    header: Text("Twoje kategorie"),
+                    footer: Text("Masz dostęp do dodatkowych kategorii przyznany przez administratora.")
                 ) {
-                    ForEach(auth.zablokowaneZrodla, id: \.source) { item in
+                    ForEach(auth.dostepneKategorie, id: \.self) { source in
                         HStack {
-                            Image(systemName: item.dostep ? "checkmark.circle.fill" : "lock.fill")
-                                .foregroundStyle(item.dostep ? .green : .secondary)
-                            Text(LocalizedStringKey(item.source))
-                            Spacer()
-                            Text(item.dostep ? "Dostęp" : "Brak dostępu")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundStyle(.green)
+                            Text(LocalizedStringKey(source))
                         }
                     }
                 }
+            }
+
+            Section(
+                header: Text("Kod aktywacyjny"),
+                footer: Text("Wpisz kod otrzymany od twórcy aplikacji, aby odblokować Premium lub dodatkowe kategorie.")
+            ) {
+                TextField("Wpisz kod", text: $kodAktywacyjny)
+                    .textInputAutocapitalization(.characters)
+                    .autocorrectionDisabled()
+                if let k = komunikatKodu {
+                    Text(k)
+                        .font(.caption)
+                        .foregroundStyle(k.hasPrefix("✓") ? .green : .red)
+                }
+                Button {
+                    Task { await aktywujKod() }
+                } label: {
+                    if aktywujeKod {
+                        ProgressView()
+                    } else {
+                        Text("Aktywuj").foregroundStyle(Color.accent)
+                    }
+                }
+                .disabled(kodAktywacyjny.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || aktywujeKod)
             }
 
             Section(header: Text("Zmiana hasła")) {
@@ -117,6 +147,29 @@ struct AuthProfil_V: View {
         } message: {
             Text("Ta operacja jest nieodwracalna.")
         }
+    }
+
+    // MARK: - AKTYWACJA KODU
+    private func aktywujKod() async {
+        aktywujeKod = true
+        komunikatKodu = nil
+        let wynik = await auth.redeemCode(kodAktywacyjny)
+        switch wynik {
+            case "ok":
+                komunikatKodu = "✓ Kod aktywowany."
+                kodAktywacyjny = ""
+                // Dociągnij drinki odblokowanej kategorii (idempotentne)
+                await loadFromSupabase(modelContext: modelContext)
+                await loadNotesFromSupabase(modelContext: modelContext)
+            case "invalid":       komunikatKodu = "Nieprawidłowy kod."
+            case "expired":       komunikatKodu = "Kod wygasł."
+            case "wrong_account": komunikatKodu = "Kod przypisany do innego konta."
+            case "already_used":  komunikatKodu = "Ten kod został już przez Ciebie użyty."
+            case "exhausted":     komunikatKodu = "Kod osiągnął limit użyć."
+            case "not_logged_in": komunikatKodu = "Musisz być zalogowany."
+            default:              komunikatKodu = "Błąd aktywacji. Spróbuj ponownie."
+        }
+        aktywujeKod = false
     }
 
     func zmienHaslo() async {

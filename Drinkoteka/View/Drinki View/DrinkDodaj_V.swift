@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import PhotosUI
 
 // MARK: - Tymczasowe struktury do budowania listy przed zapisem
 
@@ -33,6 +34,10 @@ struct DrinkDodaj_V: View {
     @State private var procAlk: String = "0"
     @State private var notatka: String = ""
     @State private var uwagi: String = ""
+
+    // Zdjęcie
+    @State private var wybranePhotoItem: PhotosPickerItem? = nil
+    @State private var wybraneZdjecie: UIImage? = nil
 
     // Składniki
     @State private var skladniki: [NowySkladnik] = []
@@ -73,6 +78,38 @@ struct DrinkDodaj_V: View {
                             .keyboardType(.numberPad)
                             .multilineTextAlignment(.trailing)
                             .frame(width: 60)
+                    }
+                }
+
+                // MARK: Zdjęcie
+                Section(header: Text("Zdjęcie")) {
+                    HStack {
+                        Group {
+                            if let img = wybraneZdjecie {
+                                Image(uiImage: img)
+                                    .resizable()
+                                    .scaledToFill()
+                            } else {
+                                Image(systemName: "photo")
+                                    .font(.title)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .frame(width: 60, height: 60)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+
+                        PhotosPicker(selection: $wybranePhotoItem, matching: .images) {
+                            Label(wybraneZdjecie == nil ? "Dodaj zdjęcie" : "Zmień zdjęcie", systemImage: "photo.on.rectangle")
+                        }
+                        Spacer()
+                        if wybraneZdjecie != nil {
+                            Button(role: .destructive) {
+                                wybraneZdjecie = nil
+                                wybranePhotoItem = nil
+                            } label: {
+                                Image(systemName: "trash")
+                            }
+                        }
                     }
                 }
 
@@ -174,19 +211,29 @@ struct DrinkDodaj_V: View {
                     skladniki.append(NowySkladnik(skladnik: wybrany))
                 }
             }
+            .onChange(of: wybranePhotoItem) { _, nowy in
+                Task {
+                    if let data = try? await nowy?.loadTransferable(type: Data.self),
+                       let img = UIImage(data: data) {
+                        wybraneZdjecie = img
+                    }
+                }
+            }
         }
     }
 
     private func dodajDrink() {
         let proc = Int(procAlk) ?? 0
         let drinkID = UUID().uuidString
+        // Własne zdjęcie (zapisane do Documents) albo domyślna grafika szkła
+        let foto = wybraneZdjecie.flatMap { DrinkPhotoStore.save($0) } ?? szklo.foto
         let drink = Dr_M(
             drinkID:    drinkID,
             drNazwa:    nazwa.trimmingCharacters(in: .whitespaces),
             drKat:      kategoria,
             drZrodlo:   "Własny",
             drKolor:    "",
-            drFoto:     szklo.foto,
+            drFoto:     foto,
             drProc:     proc,
             drSlodycz:  slodycz,
             drSzklo:    szklo,
@@ -240,7 +287,9 @@ struct WyborSkladnika_V: View {
     let onWybor: (Skl_M) -> Void
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
     @State private var szukaj: String = ""
+    @State private var pokazNowy: Bool = false
 
     var przefiltrowane: [Skl_M] {
         szukaj.isEmpty ? wszystkie : wszystkie.filter {
@@ -272,7 +321,123 @@ struct WyborSkladnika_V: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Anuluj") { dismiss() }
                 }
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        pokazNowy = true
+                    } label: {
+                        Label("Nowy składnik", systemImage: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $pokazNowy) {
+                NowySkladnik_V(istniejace: wszystkie) { nowy in
+                    // Zapisz nowy składnik do bazy lokalnej i wybierz go do drinka
+                    modelContext.insert(nowy)
+                    try? modelContext.save()
+                    onWybor(nowy)
+                    dismiss()
+                }
             }
         }
+    }
+}
+
+// MARK: - Tworzenie nowego składnika
+
+struct NowySkladnik_V: View {
+    let istniejace: [Skl_M]
+    let onUtworz: (Skl_M) -> Void
+
+    @Environment(\.dismiss) private var dismiss
+    @State private var nazwa: String = ""
+    @State private var kategoria: sklKatEnum = .alkohol
+    @State private var proc: String = "0"
+    @State private var kal: String = "0"
+    @State private var miara: miaraEnum = .ml
+    @State private var opis: String = ""
+    @State private var blad: String? = nil
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section(header: Text("Nowy składnik")) {
+                    TextField("Nazwa", text: $nazwa)
+
+                    Picker("Kategoria", selection: $kategoria) {
+                        ForEach(sklKatEnum.allCases, id: \.self) {
+                            Text($0.opis).tag($0)
+                        }
+                    }
+
+                    HStack {
+                        Text("Alkohol %")
+                        Spacer()
+                        TextField("0", text: $proc)
+                            .keyboardType(.numberPad)
+                            .multilineTextAlignment(.trailing)
+                            .frame(width: 60)
+                    }
+
+                    HStack {
+                        Text("Kalorie / 100")
+                        Spacer()
+                        TextField("0", text: $kal)
+                            .keyboardType(.numberPad)
+                            .multilineTextAlignment(.trailing)
+                            .frame(width: 60)
+                    }
+
+                    Picker("Domyślna miara", selection: $miara) {
+                        ForEach(miaraEnum.allCases, id: \.self) {
+                            Text($0.opis).tag($0)
+                        }
+                    }
+                }
+
+                Section(header: Text("Opis (opcjonalnie)")) {
+                    TextField("Opis składnika", text: $opis, axis: .vertical)
+                        .lineLimit(2...5)
+                }
+
+                if let b = blad {
+                    Text(b).foregroundStyle(.red).font(.caption)
+                }
+            }
+            .navigationTitle("Nowy składnik")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Anuluj") { dismiss() }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Dodaj") { utworz() }
+                        .disabled(nazwa.trimmingCharacters(in: .whitespaces).isEmpty)
+                }
+            }
+        }
+    }
+
+    private func utworz() {
+        let n = nazwa.trimmingCharacters(in: .whitespaces)
+        // Nazwa składnika jest unikalna (@Attribute(.unique)) — blokujemy duplikaty
+        if istniejace.contains(where: { $0.sklNazwa.localizedCaseInsensitiveCompare(n) == .orderedSame }) {
+            blad = "Składnik o tej nazwie już istnieje."
+            return
+        }
+        let skl = Skl_M(
+            sklID:    UUID().uuidString,
+            sklNazwa: n,
+            sklKat:   kategoria,
+            sklProc:  Int(proc) ?? 0,
+            sklKolor: "",
+            sklFoto:  "",
+            sklStan:  .brak,
+            sklOpis:  opis.trimmingCharacters(in: .whitespaces),
+            sklKal:   Int(kal) ?? 0,
+            sklMiara: miara,
+            sklWWW:   ""
+        )
+        onUtworz(skl)
+        dismiss()
     }
 }

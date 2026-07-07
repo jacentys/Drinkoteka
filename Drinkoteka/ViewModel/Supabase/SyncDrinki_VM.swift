@@ -33,8 +33,10 @@ func sprawdzAktualizacjeDrinkow(modelContext: ModelContext) async -> Int? {
         let lokalne = (try? modelContext.fetch(FetchDescriptor<Dr_M>())) ?? []
         let lokalneIDs = Set(lokalne.map { $0.drinkID })
 
-        // Usuń drinki bez dostępu (kaskada usuwa składniki i przepisy)
-        let doUsuniecia = lokalne.filter { !remoteIDs.contains($0.drinkID) }
+        // Usuń drinki bez dostępu (kaskada usuwa składniki i przepisy).
+        // Wyjątek: własne drinki użytkownika (drZrodlo == "Własny") — ich nie ma
+        // na serwerze, więc nie wolno ich kasować przy synchronizacji.
+        let doUsuniecia = lokalne.filter { !remoteIDs.contains($0.drinkID) && $0.drZrodlo != "Własny" }
         for drink in doUsuniecia {
             modelContext.delete(drink)
         }

@@ -32,11 +32,15 @@ struct AuthLogowanie_V: View {
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .foregroundStyle(.black)   // tło jest białe → tekst ciemny także w dark mode
+                        .tint(.accent)
                         .padding()
                         .background(.white)
                         .cornerRadius(10)
 
                     SecureField("hasło...", text: $password)
+                        .foregroundStyle(.black)
+                        .tint(.accent)
                         .padding()
                         .background(.white)
                         .cornerRadius(10)

@@ -45,6 +45,7 @@ struct DrinkiLista_V: View {
 	@State var szukaj: String = ""
 	@State var pokazFiltr: Bool = false
 	@State var pokazDodajDrink: Bool = false
+	@State private var pokazPremiumDodaj: Bool = false
 	@State private var noweDrinkiCount: Int = 0
 	@State private var pokazAktualizacje: Bool = false
 
@@ -124,12 +125,20 @@ struct DrinkiLista_V: View {
 				if auth.isLoggedIn {
 					ToolbarItem(placement: .navigationBarTrailing) {
 						Button {
-							pokazDodajDrink.toggle()
+							// Dodawanie własnych drinków to funkcja Premium
+							if auth.isPremium {
+								pokazDodajDrink = true
+							} else {
+								pokazPremiumDodaj = true
+							}
 						} label: {
 							Image(systemName: "plus.circle")
 						}
 						.sheet(isPresented: $pokazDodajDrink) {
 							DrinkDodaj_V()
+						}
+						.sheet(isPresented: $pokazPremiumDodaj) {
+							PremiumInfo_V(opis: "Dodawanie własnych drinków — ze zdjęciem, składnikami i przepisem — jest dostępne w planie Premium.")
 						}
 					}
 				}

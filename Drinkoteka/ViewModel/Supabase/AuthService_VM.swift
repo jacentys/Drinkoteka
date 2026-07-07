@@ -117,11 +117,14 @@ class AuthService_VM: ObservableObject {
         maDostepDoZrodla(drink.drZrodlo)
     }
 
-    // Wszystkie blokowane źródła z oznaczeniem, czy użytkownik ma dostęp.
-    var zablokowaneZrodla: [(source: String, dostep: Bool)] {
+    // Blokowane kategorie, do których użytkownik MA dostęp.
+    // Tylko te pokazujemy w profilu — użytkownik nie powinien wiedzieć o istnieniu
+    // kategorii, do których nie ma dostępu.
+    var dostepneKategorie: [String] {
         restrictedSources
-            .map { ($0.source, permissions.contains($0.permission)) }
-            .sorted { $0.0 < $1.0 }
+            .filter { permissions.contains($0.permission) }
+            .map { $0.source }
+            .sorted()
     }
 
     // MARK: - Kod aktywacyjny
@@ -147,6 +150,19 @@ class AuthService_VM: ObservableObject {
         }
     }
 
+    // MARK: - Deep link (potwierdzenie maila / callback auth)
+
+    // Wywoływane z .onOpenURL, gdy system otworzy aplikację linkiem drinkoteka://...
+    // Ustanawia sesję z tokenów przekazanych w URL po potwierdzeniu maila.
+    func handleDeepLink(_ url: URL) async {
+        do {
+            try await supabase.auth.session(from: url)
+            await refreshSession()
+        } catch {
+            dprint("[Auth] deep link error: \(error)")
+        }
+    }
+
     // MARK: - Rejestracja
 
     func signUp(email: String, password: String) async {
@@ -155,7 +171,13 @@ class AuthService_VM: ObservableObject {
         oczekujeNaPotwierdzenieMaila = false
         do {
             dprint("[Auth] signUp start: \(email)")
-            let result = try await supabase.auth.signUp(email: email, password: password)
+            // redirectTo: po kliknięciu linku potwierdzającego Supabase przekieruje
+            // do deep linku aplikacji (schemat drinkoteka://), a nie na localhost.
+            let result = try await supabase.auth.signUp(
+                email: email,
+                password: password,
+                redirectTo: URL(string: "drinkoteka://login-callback")
+            )
             dprint("[Auth] signUp result — session: \(result.session != nil ? "TAK" : "NIL"), user: \(result.user.email ?? "?")")
             if let s = result.session {
                 session = s

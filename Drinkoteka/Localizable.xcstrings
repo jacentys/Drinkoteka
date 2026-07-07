@@ -42,6 +42,16 @@
     "%lld.": {},
     "%lld%%": {},
     "%lld%% ": {},
+    "✓ Kod aktywowany.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "✓ Code activated."
+          }
+        }
+      }
+    },
     "0": {},
     "Absynt - Brak": {
       "comment": "Mock/preview data",
@@ -71,6 +81,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "You must be of legal age to use this app!"
+          }
+        }
+      }
+    },
+    "Aktywuj": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activate"
           }
         }
       }
@@ -175,6 +195,16 @@
         }
       }
     },
+    "Błąd aktywacji. Spróbuj ponownie.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activation failed. Please try again."
+          }
+        }
+      }
+    },
     "Błąd wysyłki. Spróbuj ponownie.": {
       "localizations": {
         "en": {
@@ -251,6 +281,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "No data"
+          }
+        }
+      }
+    },
+    "Brak dostępu": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No access"
           }
         }
       }
@@ -476,12 +517,55 @@
         }
       }
     },
+    "Dostęp": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Access"
+          }
+        }
+      }
+    },
+    "Dostęp do kategorii": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Category access"
+          }
+        }
+      }
+    },
+    "Dostęp do kategorii specjalnych przyznaje administrator.": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Access to special categories is granted by the administrator."
+          }
+        }
+      }
+    },
     "Dostępne": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Available"
+          }
+        }
+      }
+    },
+    "Dostępnych jest %lld nowych drinków. Pobrać teraz?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld new drinks are available. Download now?"
           }
         }
       }
@@ -828,6 +912,46 @@
         }
       }
     },
+    "Kod aktywacyjny": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activation code"
+          }
+        }
+      }
+    },
+    "Kod osiągnął limit użyć.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code has reached its usage limit."
+          }
+        }
+      }
+    },
+    "Kod przypisany do innego konta.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code assigned to a different account."
+          }
+        }
+      }
+    },
+    "Kod wygasł.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code expired."
+          }
+        }
+      }
+    },
     "Koktail": {
       "localizations": {
         "en": {
@@ -889,6 +1013,7 @@
       }
     },
     "Kup Premium": {
+      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -954,6 +1079,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "I am 18 years old"
+          }
+        }
+      }
+    },
+    "Masz dostęp do dodatkowych kategorii przyznany przez administratora.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You have access to additional categories granted by the administrator."
           }
         }
       }
@@ -1059,6 +1194,16 @@
         }
       }
     },
+    "Musisz być zalogowany.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You must be logged in."
+          }
+        }
+      }
+    },
     "Następny": {
       "localizations": {
         "en": {
@@ -1109,6 +1254,16 @@
         }
       }
     },
+    "Nieprawidłowy kod.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid code."
+          }
+        }
+      }
+    },
     "Notatka": {
       "localizations": {
         "en": {
@@ -1145,6 +1300,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Drink notes are available in the Premium plan. Your notes are synced across devices and tied to your account."
+          }
+        }
+      }
+    },
+    "Nowe drinki": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New drinks"
           }
         }
       }
@@ -1240,6 +1405,26 @@
         }
       }
     },
+    "Opinia": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feedback"
+          }
+        }
+      }
+    },
+    "Opinia wysłana. Dziękujemy!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feedback sent. Thank you!"
+          }
+        }
+      }
+    },
     "Opis kroku": {
       "localizations": {
         "en": {
@@ -1301,6 +1486,16 @@
         }
       }
     },
+    "Pobierz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download"
+          }
+        }
+      }
+    },
     "Podaj swoje dane": {
       "localizations": {
         "en": {
@@ -1317,6 +1512,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Basic"
+          }
+        }
+      }
+    },
+    "Podziel się opinią, zgłoś błąd lub zaproponuj nową funkcję.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share your feedback, report a bug or suggest a new feature."
           }
         }
       }
@@ -1435,12 +1640,32 @@
         }
       }
     },
+    "Później": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Later"
+          }
+        }
+      }
+    },
     "Preferencje": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Preferences"
+          }
+        }
+      }
+    },
+    "Premium odblokujesz kodem aktywacyjnym otrzymanym od twórcy aplikacji. Wpisz go w Preferencje → Kod aktywacyjny.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can unlock Premium with an activation code from the app's creator. Enter it in Preferences → Activation code."
           }
         }
       }
@@ -1491,6 +1716,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Recipe:"
+          }
+        }
+      }
+    },
+    "Prześlij opinię": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send feedback"
+          }
+        }
+      }
+    },
+    "Prześlij opinię o aplikacji": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send app feedback"
           }
         }
       }
@@ -1925,6 +2170,16 @@
         }
       }
     },
+    "Ten kod został już przez Ciebie użyty.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You have already used this code."
+          }
+        }
+      }
+    },
     "Tequila / Mezcal": {
       "localizations": {
         "en": {
@@ -1935,12 +2190,32 @@
         }
       }
     },
+    "Twoja opinia trafi bezpośrednio do dewelopera. Możesz zgłosić błąd, sugestię lub pomysł na nową funkcję Drinkoteki.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your feedback goes directly to the developer. You can report a bug, a suggestion or an idea for a new Drinkoteka feature."
+          }
+        }
+      }
+    },
     "Twoja uwaga trafi bezpośrednio do dewelopera. Możesz zgłosić błąd, sugestię lub brakujące dane dotyczące tego drinka.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Your feedback goes directly to the developer. You can report a bug, suggestion, or missing data about this drink."
+          }
+        }
+      }
+    },
+    "Twoje kategorie": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your categories"
           }
         }
       }
@@ -2065,6 +2340,16 @@
         }
       }
     },
+    "Wczytuję przepisy…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading recipes…"
+          }
+        }
+      }
+    },
     "Według alkoholu": {
       "localizations": {
         "en": {
@@ -2102,6 +2387,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Enter a name or nickname"
+          }
+        }
+      }
+    },
+    "Wpisz kod": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter code"
+          }
+        }
+      }
+    },
+    "Wpisz kod otrzymany od twórcy aplikacji, aby odblokować Premium lub dodatkowe kategorie.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a code from the app's creator to unlock Premium or extra categories."
           }
         }
       }
@@ -2360,282 +2665,102 @@
         }
       }
     },
-    "Nowe drinki": {
+    "Zdjęcie": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "New drinks"
+            "value": "Photo"
           }
         }
       }
     },
-    "Pobierz": {
+    "Dodaj zdjęcie": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Download"
+            "value": "Add photo"
           }
         }
       }
     },
-    "Później": {
+    "Zmień zdjęcie": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Later"
+            "value": "Change photo"
           }
         }
       }
     },
-    "Dostępnych jest %lld nowych drinków. Pobrać teraz?": {
+    "Dodawanie własnych drinków — ze zdjęciem, składnikami i przepisem — jest dostępne w planie Premium.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld new drinks are available. Download now?"
+            "value": "Adding your own drinks — with a photo, ingredients and recipe — is available in the Premium plan."
           }
         }
       }
     },
-    "Dostęp do kategorii": {
+    "Nowy składnik": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Category access"
+            "value": "New ingredient"
           }
         }
       }
     },
-    "Dostęp do kategorii specjalnych przyznaje administrator.": {
+    "Kalorie / 100": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Access to special categories is granted by the administrator."
+            "value": "Calories / 100"
           }
         }
       }
     },
-    "Dostęp": {
+    "Domyślna miara": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Access"
+            "value": "Default unit"
           }
         }
       }
     },
-    "Brak dostępu": {
+    "Opis (opcjonalnie)": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No access"
+            "value": "Description (optional)"
           }
         }
       }
     },
-    "Opinia": {
+    "Opis składnika": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Feedback"
+            "value": "Ingredient description"
           }
         }
       }
     },
-    "Podziel się opinią, zgłoś błąd lub zaproponuj nową funkcję.": {
+    "Składnik o tej nazwie już istnieje.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Share your feedback, report a bug or suggest a new feature."
-          }
-        }
-      }
-    },
-    "Prześlij opinię o aplikacji": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send app feedback"
-          }
-        }
-      }
-    },
-    "Prześlij opinię": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send feedback"
-          }
-        }
-      }
-    },
-    "Twoja opinia trafi bezpośrednio do dewelopera. Możesz zgłosić błąd, sugestię lub pomysł na nową funkcję Drinkoteki.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your feedback goes directly to the developer. You can report a bug, a suggestion or an idea for a new Drinkoteka feature."
-          }
-        }
-      }
-    },
-    "Opinia wysłana. Dziękujemy!": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feedback sent. Thank you!"
-          }
-        }
-      }
-    },
-    "Wczytuję przepisy…": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loading recipes…"
-          }
-        }
-      }
-    },
-    "Kod aktywacyjny": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Activation code"
-          }
-        }
-      }
-    },
-    "Wpisz kod otrzymany od twórcy aplikacji, aby odblokować Premium lub dodatkowe kategorie.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter a code from the app's creator to unlock Premium or extra categories."
-          }
-        }
-      }
-    },
-    "Wpisz kod": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter code"
-          }
-        }
-      }
-    },
-    "Aktywuj": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Activate"
-          }
-        }
-      }
-    },
-    "✓ Kod aktywowany.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "✓ Code activated."
-          }
-        }
-      }
-    },
-    "Nieprawidłowy kod.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Invalid code."
-          }
-        }
-      }
-    },
-    "Kod wygasł.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Code expired."
-          }
-        }
-      }
-    },
-    "Kod przypisany do innego konta.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Code assigned to a different account."
-          }
-        }
-      }
-    },
-    "Ten kod został już przez Ciebie użyty.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You have already used this code."
-          }
-        }
-      }
-    },
-    "Kod osiągnął limit użyć.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Code has reached its usage limit."
-          }
-        }
-      }
-    },
-    "Musisz być zalogowany.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You must be logged in."
-          }
-        }
-      }
-    },
-    "Błąd aktywacji. Spróbuj ponownie.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Activation failed. Please try again."
-          }
-        }
-      }
-    },
-    "Premium odblokujesz kodem aktywacyjnym otrzymanym od twórcy aplikacji. Wpisz go w Preferencje → Kod aktywacyjny.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You can unlock Premium with an activation code from the app's creator. Enter it in Preferences → Activation code."
+            "value": "An ingredient with this name already exists."
           }
         }
       }

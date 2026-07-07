@@ -301,3 +301,30 @@ end $$;
 -- NAPRAWA LUKI: klient nie może sam ustawić is_premium.
 -- Premium przyznaje wyłącznie redeem_code. Aplikacja tylko czyta profil.
 drop policy if exists "Users update own profile" on profiles;
+
+
+-- ============================================================
+-- USUWANIE KONTA (wymóg Apple: usuwanie konta z poziomu aplikacji)
+-- ============================================================
+-- Funkcja usuwa WYŁĄCZNIE konto wywołującego (auth.uid()). Powiązane dane
+-- (profiles, user_notes, user_permissions, code_redemptions) znikają kaskadowo
+-- dzięki "on delete cascade"; feedback ma "on delete set null".
+-- Działa jako właściciel funkcji (SECURITY DEFINER) — klient z kluczem anon
+-- nie ma bezpośredniego dostępu do auth.users.
+
+create or replace function delete_user()
+returns void
+language plpgsql
+security definer
+set search_path = public, auth
+as $$
+begin
+  if auth.uid() is null then
+    raise exception 'Not authenticated';
+  end if;
+  delete from auth.users where id = auth.uid();
+end $$;
+
+-- Tylko zalogowani mogą wywołać (usuwają samych siebie); odbierz anonimom.
+revoke execute on function delete_user() from anon, public;
+grant execute on function delete_user() to authenticated;

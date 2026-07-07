@@ -23,9 +23,6 @@ struct Preferencje_V: View {
 
 	@State private var pokazPotwierdzenie: Bool = false
 	@State private var pokazFeedback: Bool = false
-	@State private var kodAktywacyjny: String = ""
-	@State private var komunikatKodu: String? = nil
-	@State private var aktywujeKod: Bool = false
 	let spacje: CGFloat = 10
 	
 	var body: some View {
@@ -81,35 +78,6 @@ struct Preferencje_V: View {
 						}
 					}
 
-				if auth.isLoggedIn {
-					Section( // MARK: Kod aktywacyjny
-						header: Label("Kod aktywacyjny", systemImage: "ticket")
-							.font(.headline)
-							.foregroundStyle(Color.secondary),
-						footer: Text("Wpisz kod otrzymany od twórcy aplikacji, aby odblokować Premium lub dodatkowe kategorie.").padding(.bottom, 30)) {
-							TextField("Wpisz kod", text: $kodAktywacyjny)
-								.textInputAutocapitalization(.characters)
-								.autocorrectionDisabled()
-							if let k = komunikatKodu {
-								Text(k)
-									.font(.caption)
-									.foregroundStyle(k.hasPrefix("✓") ? .green : .red)
-							}
-							Button {
-								Task { await aktywujKod() }
-							} label: {
-								if aktywujeKod {
-									ProgressView()
-								} else {
-									Text("Aktywuj")
-										.foregroundStyle(Color.accent)
-										.font(.headline)
-								}
-							}
-							.disabled(kodAktywacyjny.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || aktywujeKod)
-						}
-				}
-
 				Section( // MARK: Informacja zwrotna
 					header: Label("Opinia", systemImage: "bubble.left.and.text.bubble.right")
 						.font(.headline)
@@ -154,29 +122,6 @@ struct Preferencje_V: View {
 				AppFeedback_V()
 			}
 		}
-	}
-
-		// MARK: - AKTYWACJA KODU
-	private func aktywujKod() async {
-		aktywujeKod = true
-		komunikatKodu = nil
-		let wynik = await auth.redeemCode(kodAktywacyjny)
-		switch wynik {
-			case "ok":
-				komunikatKodu = "✓ Kod aktywowany."
-				kodAktywacyjny = ""
-				// Dociągnij drinki odblokowanej kategorii (idempotentne)
-				await loadFromSupabase(modelContext: modelContext)
-				await loadNotesFromSupabase(modelContext: modelContext)
-			case "invalid":       komunikatKodu = "Nieprawidłowy kod."
-			case "expired":       komunikatKodu = "Kod wygasł."
-			case "wrong_account": komunikatKodu = "Kod przypisany do innego konta."
-			case "already_used":  komunikatKodu = "Ten kod został już przez Ciebie użyty."
-			case "exhausted":     komunikatKodu = "Kod osiągnął limit użyć."
-			case "not_logged_in": komunikatKodu = "Musisz być zalogowany."
-			default:              komunikatKodu = "Błąd aktywacji. Spróbuj ponownie."
-		}
-		aktywujeKod = false
 	}
 
 		// MARK: - RESET ALL

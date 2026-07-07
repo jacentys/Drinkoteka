@@ -1,8 +1,9 @@
 import SwiftUI
 
-/// Wyświetla obrazek z dwóch źródeł:
-/// - jeśli `nazwa` zaczyna się od "http" → pobiera z sieci (cache dysk + URLCache)
-/// - w przeciwnym razie → ładuje lokalny asset z xcassets
+/// Wyświetla obrazek z trzech źródeł:
+/// - "file:..." → własne zdjęcie drinka z katalogu Documents (DrinkPhotoStore)
+/// - "http..."  → pobiera z sieci (cache dysk + URLCache)
+/// - w przeciwnym razie → lokalny asset z xcassets
 struct DrinkotekaImage_V: View {
     let nazwa: String
     let fallback: String
@@ -17,7 +18,10 @@ struct DrinkotekaImage_V: View {
 
     var body: some View {
         Group {
-            if nazwa.hasPrefix("http") {
+            if DrinkPhotoStore.isLocalPhoto(nazwa) {
+                Image(uiImage: DrinkPhotoStore.load(nazwa) ?? UIImage())
+                    .resizable()
+            } else if nazwa.hasPrefix("http") {
                 if let img = uiImage {
                     Image(uiImage: img)
                         .resizable()
