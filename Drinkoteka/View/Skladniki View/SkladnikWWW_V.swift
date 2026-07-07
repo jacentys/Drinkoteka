@@ -10,8 +10,9 @@ struct SkladnikWWW_V: View {
 					
 						// MARK: NAGŁOWEK
 					HStack(alignment: .firstTextBaseline) {
-						Text("Strona WWW:".uppercased())
+						Text("Strona WWW:")
 							.TitleStyle()
+							.textCase(.uppercase)
 						Spacer()
 					}
 					

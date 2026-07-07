@@ -4,7 +4,7 @@ alexander	2	Wlej wszystkie składniki.	0
 alexander	3	Wstrząśnij.	0
 alexander	4	Przelej do schłodzonego kieliszka do koktajli.	0
 alexander	5	Posyp na wierzchu świeżo zmieloną gałką muszkatołową.	0
-americano	1	Do szklanki dowhiskey wsyp kostki lodu.	0
+americano	1	Do szklanki do whiskey wsyp kostki lodu.	0
 americano	2	Dolej składniki i wymieszaj bezpośrednio w szklance.	0
 americano	3	Dodaj odrobinę wody sodowej.	0
 americano	4	Delikatnie wymieszaj.	0
@@ -297,7 +297,7 @@ hemingwayspecial	1	Wsyp lód do shakera.	0
 hemingwayspecial	2	Wlej wszystkie składniki.	0
 hemingwayspecial	3	Dobrze wstrząśnij.	0
 hemingwayspecial	4	Odcedź do dużej szklanki koktajlowej.	0
-horsesneck	1	Wsyp lód do szklanki highball..	0
+horsesneck	1	Wsyp lód do szklanki highball.	0
 horsesneck	2	Wlej koniak i ginger ale.	0
 horsesneck	3	Delikatnie wymieszaj.	0
 horsesneck	4	Jeśli wolisz, dodaj kilka kropli bittersa Angostura.	0
@@ -640,7 +640,7 @@ satisfaction	3	Wstrząśnij.	0
 satisfaction	4	Przecedź do szklanki wypełnionej lodem.	0
 sazerac	1	Opłucz schłodzoną szklankę typu old-fashioned absyntem.	0
 sazerac	2	Dodaj kruszony lód i odstaw na bok.	0
-sazerac	3	Wymieszaj pozostałe składniki z lodem w bramańskiej.	0
+sazerac	3	Wymieszaj pozostałe składniki z lodem w szklanicy barmańskiej.	0
 sazerac	4	Wylej lód i nadmiar absyntu z przygotowanej szklanki.	0
 sazerac	5	Przecedź wymieszany napój do szklanki.	0
 sazerac	6	Ozdób skórką cytryny.	0
@@ -795,15 +795,15 @@ upiorwoperze	4	Przecedź do szklanki wypełnionej lodem.	0
 vento	1	Wsyp lód do shakera.	0
 vento	2	Wlej wszystkie składniki.	0
 vento	3	Energicznie wstrząśnij.	0
-vento	4	Napenij szklankę tumbler lodem	0
-vento	5	Przecedź do szklalnki.	0
+vento	4	Napełnij szklankę tumbler lodem	0
+vento	5	Przecedź do szklanki.	0
 vento	6	Udekoruj skórką cytryny i białymi winogronami.	0
 vesper	1	Wsyp lód do shakera.	0
 vesper	2	Wlej wszystkie składniki.	0
 vesper	3	Wstrząśnij.	0
 vesper	4	Odcedź do schłodzonej szklanki koktajlowej.	0
 vesper	5	Udekoruj skórką cytryny.	0
-vieuxcarre	1	Wsyp lód do szklanicy bramańskiej.	0
+vieuxcarre	1	Wsyp lód do szklanicy barmańskiej.	0
 vieuxcarre	2	Wlej wszystkie składniki.	0
 vieuxcarre	3	Mieszaj dokładnie.	0
 vieuxcarre	4	Przecedź do schłodzonego kieliszka koktajlowego.	0
@@ -825,7 +825,7 @@ whiskeysour	1	Wsyp lód do shakera.	0
 whiskeysour	2	Wlej wszystkie składniki.	0
 whiskeysour	3	Dobrze wstrząśnij.	0
 whiskeysour	4	Przecedź do kieliszka typu cobbler.	0
-whiskeysour	5	Jeśli podawane "On the rocks", przecedź składniki do kieliszka typu old fashioned wypełnionego lodem.	0
+whiskeysour	5	"Jeśli podawane ""On the rocks"", przecedź składniki do kieliszka typu old fashioned wypełnionego lodem."	0
 whiskeysour	6	Udekoruj połową plasterka pomarańczy i wisienką maraschino.	0
 whitelady	1	Wsyp lód do shakera.	0
 whitelady	2	Wlej wszystkie składniki.	0
@@ -834,7 +834,7 @@ whitelady	4	Odcedź do schłodzonej szklanki koktajlowej.	0
 whiterussian	1	Wsyp lód do szklanki typu old fashioned	0
 whiterussian	2	Wlej składniki do szklanki.	0
 whiterussian	3	Delikatnie wymieszaj.	0
-whiterussian	4	Na wierzcchu dodaj świeżej śmietany i delikatnie zamieszaj.	0
+whiterussian	4	Na wierzchu dodaj świeżej śmietany i delikatnie zamieszaj.	0
 windofchange	1	Wsyp lód do shakera.	0
 windofchange	2	Wlej wszystkie składniki do shakera.	0
 windofchange	3	Wstrząśnij.	0
@@ -884,7 +884,7 @@ bramble	7	Ozdób plasterkiem cytryny i jeżynami.	1
 caipirinha	4	Seler, kawałek cytryny.	1
 caipiroska	4	Seler, kawałek cytryny.	1
 casinoroyale	5	Udekoruj pomarańczą.	1
-castaway	5	Uderkoruj plasterkiem pomarańczy i wisienką koktailową.	1
+castaway	5	Udekoruj plasterkiem pomarańczy i wisienką koktailową.	1
 cocoextasy	7	Udekoruj ananasem.	1
 cruelsummer	5	Udekoruj plastrem ananasa.	1
 devilinside	5	Udekoruj kawałkiem cytryny.	1
@@ -917,7 +917,7 @@ oceanside	5	Udekoruj pomarańczą i wisienką koktailową.	1
 palmbay	5	Udekoruj ananasem.	1
 parttimelover	4	Udekoruj połową plasterka pomarańczy.	1
 redfruitmojito	9	Udekoruj miętą.	1
-renegat	5	Uderkoruj połówką plastra pomarańczy.	1
+renegat	5	Udekoruj połówką plastra pomarańczy.	1
 riverside	5	Udekoruj pomarańczą i wisienką koktailową.	1
 runawaytrain	6	Udekoruj pomarańczą.	1
 russianspringpunch	8	Ozdób plasterkiem cytryny.	1
@@ -946,14 +946,14 @@ zartropikow	7	Udekoruj plasterkiem ananasa i pomarańczy.	1
 lemoniadacytrynowa	1	W szklanicy barmańskiej rozgnieć plasterki z połówki cytryny z syropem cukrowym.	0
 lemoniadacytrynowa	2	Dolej wody gazowanej, delikatnie wymieszaj.	0
 lemoniadacytrynowa	3	Do karafki lub dzbanka wsyp trochę lodu.	0
-lemoniadacytrynowa	4	Wlej zawartość szkllanicy..	0
+lemoniadacytrynowa	4	Wlej zawartość szklanicy.	0
 lemoniadacytrynowa	5	Dopełnij wodą gazowaną.	0
 lemoniadacytrynowa	6	Delikatnie zamieszaj.	0
 lemoniadacytrynowa	7	Rozlej do szklanek z lodem.	0
 lemoniadazmieta	1	W szklanicy barmańskiej rozgnieć kilka plasterków cytryny i kilka liści mięty z syropem cukrowym.	0
 lemoniadazmieta	2	Dolej wody gazowanej, delikatnie wymieszaj.	0
 lemoniadazmieta	3	Do karafki lub dzbanka wsyp trochę lodu.	0
-lemoniadazmieta	4	Wlej zawartość szkllanicy..	0
+lemoniadazmieta	4	Wlej zawartość szklanicy.	0
 lemoniadazmieta	5	Dopełnij wodą gazowaną.	0
 lemoniadazmieta	6	Delikatnie zamieszaj.	0
 lemoniadazmieta	7	Rozlej do szklanek z lodem.	0
@@ -961,7 +961,7 @@ lemoniadatruskawkowa	1	Umyte truskawki zmiksuj w blenderze na jednolitą masę.	
 lemoniadatruskawkowa	2	W szklanicy barmańskiej rozgnieć plasterki cytryny i kilka liści mięty z syropem cukrowym.	0
 lemoniadatruskawkowa	3	Dolej wody gazowanej, delikatnie wymieszaj.	0
 lemoniadatruskawkowa	4	Do karafki lub dzbanka wsyp trochę lodu.	0
-lemoniadatruskawkowa	5	Wlej zawartość szkllanicy. oraz zmiksowane truskawki.	0
+lemoniadatruskawkowa	5	Wlej zawartość szklanicy. oraz zmiksowane truskawki.	0
 lemoniadatruskawkowa	6	Dopełnij wodą gazowaną.	0
 lemoniadatruskawkowa	7	Delikatnie zamieszaj.	0
 lemoniadatruskawkowa	8	Rozlej do szklanek z lodem.	0
@@ -969,7 +969,7 @@ lemoniadaarbuzowa	1	Zblenduj pokrojony środek arbuza na jednolitą masę.	0
 lemoniadaarbuzowa	2	W szklanicy barmańskiej rozgnieć plasterki cytryny i kilka liści mięty z syropem cukrowym.	0
 lemoniadaarbuzowa	3	Dolej wody gazowanej, delikatnie wymieszaj.	0
 lemoniadaarbuzowa	4	Do karafki lub dzbanka wsyp trochę lodu.	0
-lemoniadaarbuzowa	5	Wlej zawartość szkllanicy do karafki.	0
+lemoniadaarbuzowa	5	Wlej zawartość szklanicy do karafki.	0
 lemoniadaarbuzowa	6	Wlej zmiksowanego arbuza przez sitko by pozbyc się pestek.	0
 lemoniadaarbuzowa	7	Dopełnij wodą gazowaną.	0
 lemoniadaarbuzowa	8	Delikatnie zamieszaj.	0
@@ -977,7 +977,7 @@ lemoniadaarbuzowa	9	Rozlej do szklanek z lodem.	0
 lemoniadamalinowa	1	Zgnieć w szklanicy barmańskiej połowę malin, plasterki cytryny i kilka liści mięty z syropem cukrowym.	0
 lemoniadamalinowa	2	Dolej wody gazowanej, delikatnie wymieszaj.	0
 lemoniadamalinowa	3	Do karafki lub dzbanka wsyp trochę lodu.	0
-lemoniadamalinowa	4	Wlej zawartość szkllanicy. oraz dosyp resztę malin.	0
+lemoniadamalinowa	4	Wlej zawartość szklanicy. oraz dosyp resztę malin.	0
 lemoniadamalinowa	5	Dopełnij wodą gazowaną.	0
 lemoniadamalinowa	6	Delikatnie zamieszaj.	0
 lemoniadamalinowa	7	Rozlej do szklanek z lodem.	0

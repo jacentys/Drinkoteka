@@ -1,0 +1,228 @@
+import Supabase
+import SwiftUI
+
+@MainActor
+class AuthService_VM: ObservableObject {
+    static let shared = AuthService_VM()
+
+    @Published var session: Session? = nil
+    @Published var isLoading: Bool = false
+    @Published var isRefreshing: Bool = true
+    @Published var errorMessage: String? = nil
+    @Published var oczekujeNaPotwierdzenieMaila: Bool = false
+    @Published var isPremium: Bool = false
+    @Published var permissions: Set<String> = []
+    @Published var restrictedSources: [RestrictedSource] = []
+
+    struct RestrictedSource: Decodable, Identifiable {
+        let source: String
+        let permission: String
+        var id: String { source }
+    }
+
+    var isLoggedIn: Bool { session != nil }
+    var userEmail: String { session?.user.email ?? "" }
+
+    private init() {
+        Task { await refreshSession() }
+    }
+
+    // MARK: - Odświeżenie sesji przy starcie
+
+    func refreshSession() async {
+        isRefreshing = true
+        do {
+            session = try await supabase.auth.session
+            await refreshPremiumStatus()
+            await refreshPermissions()
+            await refreshRestrictedSources()
+        } catch {
+            session = nil
+            isPremium = false
+            permissions = []
+            await refreshRestrictedSources()
+        }
+        isRefreshing = false
+    }
+
+    // MARK: - Status premium
+
+    func refreshPremiumStatus() async {
+        guard session != nil else { isPremium = false; return }
+        do {
+            struct ProfileDTO: Decodable {
+                let isPremium: Bool
+                enum CodingKeys: String, CodingKey { case isPremium = "is_premium" }
+            }
+            let profile: ProfileDTO = try await supabase
+                .from("profiles")
+                .select("is_premium")
+                .single()
+                .execute()
+                .value
+            isPremium = profile.isPremium
+            print("[Premium] isPremium = \(isPremium)")
+        } catch {
+            print("[Premium] błąd: \(error)")
+            isPremium = false
+        }
+    }
+
+    // MARK: - Pozwolenia na kategorie
+
+    func refreshPermissions() async {
+        guard session != nil else { permissions = []; return }
+        do {
+            struct PermissionDTO: Decodable {
+                let permission: String
+            }
+            let rows: [PermissionDTO] = try await supabase
+                .from("user_permissions")
+                .select("permission")
+                .execute()
+                .value
+            permissions = Set(rows.map { $0.permission })
+        } catch {
+            permissions = []
+        }
+    }
+
+    func hasPermission(_ permission: String) -> Bool {
+        permissions.contains(permission)
+    }
+
+    // Pobiera mapowanie źródło→pozwolenie z tabeli restricted_sources (publiczny odczyt).
+    func refreshRestrictedSources() async {
+        do {
+            let rows: [RestrictedSource] = try await supabase
+                .from("restricted_sources")
+                .select("source, permission")
+                .execute()
+                .value
+            restrictedSources = rows
+        } catch {
+            restrictedSources = []
+        }
+    }
+
+    // Czy użytkownik ma dostęp do drinków z danego źródła (drZrodlo).
+    func maDostepDoZrodla(_ zrodlo: String) -> Bool {
+        guard let rs = restrictedSources.first(where: { $0.source == zrodlo }) else { return true }
+        return permissions.contains(rs.permission)
+    }
+
+    func canAccessDrink(_ drink: Dr_M) -> Bool {
+        maDostepDoZrodla(drink.drZrodlo)
+    }
+
+    // Wszystkie blokowane źródła z oznaczeniem, czy użytkownik ma dostęp.
+    var zablokowaneZrodla: [(source: String, dostep: Bool)] {
+        restrictedSources
+            .map { ($0.source, permissions.contains($0.permission)) }
+            .sorted { $0.0 < $1.0 }
+    }
+
+    // MARK: - Kod aktywacyjny
+
+    // Realizuje kod przez funkcję redeem_code na serwerze.
+    // Zwraca: ok / invalid / expired / wrong_account / already_used / exhausted / not_logged_in / error
+    func redeemCode(_ code: String) async -> String {
+        let trimmed = code.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return "invalid" }
+        do {
+            let result: String = try await supabase
+                .rpc("redeem_code", params: ["p_code": trimmed])
+                .execute()
+                .value
+            if result == "ok" {
+                await refreshPremiumStatus()
+                await refreshPermissions()
+            }
+            return result
+        } catch {
+            print("[Kod] błąd: \(error)")
+            return "error"
+        }
+    }
+
+    // MARK: - Rejestracja
+
+    func signUp(email: String, password: String) async {
+        isLoading = true
+        errorMessage = nil
+        oczekujeNaPotwierdzenieMaila = false
+        do {
+            print("[Auth] signUp start: \(email)")
+            let result = try await supabase.auth.signUp(email: email, password: password)
+            print("[Auth] signUp result — session: \(result.session != nil ? "TAK" : "NIL"), user: \(result.user.email ?? "?")")
+            if let s = result.session {
+                session = s
+            } else {
+                oczekujeNaPotwierdzenieMaila = true
+            }
+        } catch {
+            print("[Auth] signUp error: \(error)")
+            errorMessage = error.localizedDescription
+        }
+        isLoading = false
+    }
+
+    // MARK: - Logowanie
+
+    func signIn(email: String, password: String) async {
+        isLoading = true
+        errorMessage = nil
+        do {
+            let result = try await supabase.auth.signIn(email: email, password: password)
+            session = result
+            await refreshPremiumStatus()
+            await refreshPermissions()
+            await refreshRestrictedSources()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+        isLoading = false
+    }
+
+    // MARK: - Zmiana hasła
+
+    func changePassword(noweHaslo: String) async {
+        isLoading = true
+        errorMessage = nil
+        do {
+            try await supabase.auth.update(user: UserAttributes(password: noweHaslo))
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+        isLoading = false
+    }
+
+    // MARK: - Usunięcie konta
+
+    func deleteAccount() async {
+        isLoading = true
+        errorMessage = nil
+        do {
+            // Wywołuje Edge Function lub RPC do usunięcia konta (wymaga service_role po stronie serwera)
+            try await supabase.rpc("delete_user").execute()
+            try await supabase.auth.signOut()
+            session = nil
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+        isLoading = false
+    }
+
+    // MARK: - Wylogowanie
+
+    func signOut() async {
+        isLoading = true
+        do {
+            try await supabase.auth.signOut()
+            session = nil
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+        isLoading = false
+    }
+}

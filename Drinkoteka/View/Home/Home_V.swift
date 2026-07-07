@@ -2,6 +2,7 @@ import SwiftData
 import SwiftUI
 
 struct Home_V: View {
+	@Binding var activeTab: Tab
 	@Environment(\.modelContext) private var modelContext
 	@Query(
 		filter: #Predicate<Dr_M> { $0.drPolecany == true },
@@ -28,8 +29,9 @@ struct Home_V: View {
 	@AppStorage("filtrMocSredni") var filtrMocSredni: Bool = true
 	@AppStorage("filtrMocMocny") var filtrMocMocny: Bool = true
 	
-	let columns: [GridItem] = [GridItem(.adaptive(minimum: 150, maximum: 300), spacing: 12, alignment: nil)]
-	
+	@StateObject private var auth = AuthService_VM.shared
+	let columns: [GridItem] = [GridItem(.adaptive(minimum: 100, maximum: 200), spacing: 12, alignment: nil)]
+
 	var body: some View {
 		NavigationView {
 			VStack {
@@ -69,13 +71,10 @@ struct Home_V: View {
 											.padding(.bottom, 6)
 									}
 									
-									NavigationLink(destination: {
-										DrinkiListaAlkGl_V(alkGlowny: kategoria)
-											.onAppear {
-												wyborAlko(wybor: kategoria )
-											}
-									}
-									) {
+									Button {
+										wyborAlko(wybor: kategoria)
+										activeTab = .drinki
+									} label: {
 										Rectangle()
 											.fill(Color.clear)
 									}
@@ -87,10 +86,10 @@ struct Home_V: View {
 						} /// KONIEC LAZYVSTACK
 					} /// KONIEC VSCROLL
 					.scrollContentBackground(.hidden)
-					.frame(height: 200)
+					.frame(height: 150)
 				} header: {
 					HStack {
-						Text("Według alkoholu".uppercased())
+						Text("Według alkoholu").textCase(.uppercase)
 							.font(.headline)
 							.foregroundStyle(Color.secondary)
 						Spacer()
@@ -101,7 +100,7 @@ struct Home_V: View {
 				Section {
 					ScrollView {
 						LazyVGrid(columns: columns, spacing: 10) {
-							ForEach(drinki) { drink in
+							ForEach(drinki.filter { auth.canAccessDrink($0) }) { drink in
 									// MARK: - ELEMENT
 								ZStack {
 									Rectangle()
@@ -115,26 +114,51 @@ struct Home_V: View {
 										}
 									}
 									
-									Image(drink.drFoto)
-										.resizable()
+									let zablokowany = !auth.isLoggedIn && !drink.czyIBA
+
+									DrinkotekaImage_V(nazwa: drink.drFoto, fallback: drink.drSzklo.foto)
 										.aspectRatio(contentMode: .fit)
 										.padding(32)
 										.offset(x: 0, y: -12)
-									
+										.saturation(zablokowany ? 0 : 1)
+										.opacity(zablokowany ? 0.3 : 1)
+
+									if zablokowany {
+										VStack {
+											HStack {
+												Spacer()
+												Image(systemName: "lock.fill")
+													.resizable()
+													.scaledToFit()
+													.frame(width: 24, height: 24)
+													.foregroundStyle(.secondary.opacity(0.5))
+													.padding(10)
+											}
+											Spacer()
+										}
+									}
+
 									VStack {
 										Spacer()
 										Text(drink.drNazwa.uppercased())
 											.font(.caption2)
 											.fontWeight(.medium)
-											.foregroundStyle(.primary)
+											.foregroundStyle(zablokowany ? .secondary : .primary)
 											.shadow(color: .gray, radius: 10)
 											.shadow(color: .gray, radius: 5)
 									}
 									.padding(.bottom, 6)
 									
-									NavigationLink(destination: Drink_V(drink: drink)) {
-										Rectangle()
-											.fill(Color.clear)
+									if auth.isLoggedIn || drink.czyIBA {
+										NavigationLink(destination: Drink_V(drink: drink)) {
+											Rectangle()
+												.fill(Color.clear)
+										}
+									} else {
+										NavigationLink(destination: AuthLogowanie_V()) {
+											Rectangle()
+												.fill(Color.clear)
+										}
 									}
 									
 								} /// KONIEC ELEMENTU
@@ -147,7 +171,7 @@ struct Home_V: View {
 					.scrollContentBackground(.hidden)
 				} header: {
 					HStack {
-						Text("Polecane:".uppercased())
+						Text("Polecane:").textCase(.uppercase)
 							.font(.headline)
 							.foregroundStyle(Color.secondary)
 						Spacer()
@@ -197,5 +221,5 @@ struct Home_V: View {
 }
 
 #Preview {
-	Home_V()
+	Home_V(activeTab: .constant(.home))
 }

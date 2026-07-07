@@ -23,7 +23,7 @@ cocacola	Coca Cola	Inne	0	Czerwony		1	Popularny napój gazowany, słodzony, o wy
 cointreau	Cointreau	Likiery	40	Pomarańczowy		1	Wysokiej jakości likier pomarańczowy, o słodko-gorzkim smaku, wykorzystywany w wielu klasycznych koktajlach, takich jak Margarita.	290	ml	
 cukierbialy	Cukier Biały	Przyprawy	0	Biały		1	Najczęściej używany cukier, stosowany w koktajlach do słodzenia napojów.	400	gr	
 cukierbialywkostkach	Cukier Biały w Kostkach	Przyprawy	0	Biały		0	Cukier biały sprasowany w małe kostki, używany do słodzenia napojów.	400	gr	
-cukiertrzcinowy	Cukier Trzcinowy	Przyprawy	0	Brązowy		1	Brązowy cukieru uzyskany z trzciny cukrowej.	380	gr	
+cukiertrzcinowy	Cukier Trzcinowy	Przyprawy	0	Brązowy		1	Brązowy cukier uzyskany z trzciny cukrowej.	380	gr	
 cukiertrzcinowywkostkach	Cukier Trzcinowy w Kostkach	Przyprawy	0	Brązowy		0	Brązowy cukier z trzciny cukrowej sprasowany w kostki.	380	gr	
 cytryna	Cytryna	Owoce	0	Żółty		1	Owoc cytrusowy o kwaskowatym smaku, wykorzystywany w koktajlach do nadania świeżości i kwasowości.	30	gr	
 czekolada	Czekolada	Inne	0	Brązowy		0		545	gr	
@@ -74,7 +74,7 @@ lodwkostkach	Lód w Kostkach	Inne	0	Bezbarwny		1	Lód w formie kostek, używany 
 lodywaniliowe	Lody Waniliowe	Inne	0	Biały		0		207	gr	
 malibou	Malibou	Alkohol	40	Biały		0		175	ml	
 maliny	Maliny	Owoce	0	Czerwony		0	Owoc leśny o słodko-kwaśnym smaku, wykorzystywany w koktajlach i deserach.	50	gr	
-meskal	Meskal	Alkohol	40	Biały		0	Mekskański alkohol produkowany z agawy, o dymnym smaku.	230	ml	
+meskal	Meskal	Alkohol	40	Biały		0	Meksykański alkohol produkowany z agawy, o dymnym smaku.	230	ml	
 miechunka	Miechunka	Owoce	0	Pomarańczowy		0		300	gr	
 mieta	Mięta	Przyprawy	0	Zielony		0	Świeża roślina o charakterystycznym, chłodnym smaku, wykorzystywana w koktajlach takich jak Mojito czy Mint Julep.	40	gr	
 miod	Miód	Inne	0	Żółty		1	Naturalny słodzik produkowany przez pszczoły, wykorzystywany w koktajlach do dodania słodyczy i głębi smaku.	300	ml	
@@ -137,7 +137,7 @@ syropztruskawek	Syrop z Truskawek	Syropy	0	Czerwony		0	Syrop o smaku truskawkowy
 syropzurawinowy	Syrop Żurawinowy	Syropy	0	Czerwony		1	Syrop o smaku żurawinowym, wykorzystywany w koktajlach owocowych.	250	ml	
 szampan	Szampan	Alkohol	12	Bezbarwny		1	Wino musujące z regionu Szampanii, wykorzystywane w koktajlach takich jak Mimosa czy Champagne Cocktail.	80	ml	
 tabasco	Tabasco	Przyprawy	0	Czerwony		0	Ostre, pikantne sosy na bazie papryki chili, używane w koktajlach takich jak Bloody Mary do nadania ostrości.	0	gr	
-tequila	Tequila	Alkohol	40	Zielony		1	Mekskański alkohol wytwarzany z agawy, o charakterystycznym, ziemistym smaku, używany w koktajlach takich jak Margarita.	210	ml	
+tequila	Tequila	Alkohol	40	Zielony		1	Meksykański alkohol wytwarzany z agawy, o charakterystycznym, ziemistym smaku, używany w koktajlach takich jak Margarita.	210	ml	
 tonic	Tonic	Inne	0	Bezbarwny		0		35	ml	
 triplesec	Triple Sec	Likiery	40	Żółty		0	Przejrzysty, słodko-gorzki likier pomarańczowy, wykorzystywany w koktajlach takich jak Margarita i Cosmopolitan.	250	ml	
 truskawka	Truskawka	Owoce	0	Czerwony		0		33	gr	

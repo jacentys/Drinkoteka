@@ -5,6 +5,7 @@ struct DrinkiLista_V: View {
 	@Environment(\.modelContext) private var modelContext
 	@Query(sort: \Dr_M.drNazwa) private var drinki: [Dr_M]
 	@Query private var skladniki: [Skl_M]
+	@StateObject private var auth = AuthService_VM.shared
 
 //	var drinki2 = drMockArray()
 
@@ -42,6 +43,9 @@ struct DrinkiLista_V: View {
 
 	@State var szukaj: String = ""
 	@State var pokazFiltr: Bool = false
+	@State var pokazDodajDrink: Bool = false
+	@State private var noweDrinkiCount: Int = 0
+	@State private var pokazAktualizacje: Bool = false
 
 	var drinkiFiltered: [Dr_M] {
 		if szukaj.isEmpty {
@@ -55,14 +59,14 @@ struct DrinkiLista_V: View {
 	
 	var body: some View {
 		NavigationStack {
-			ZStack {
-					// MARK: - LISTA
+			VStack(spacing: 0) {
+				// MARK: - POLE WYSZUKIWANIA
+				SearchBar_V(searchText: $szukaj)
+					.listRowBackground(Color.white.opacity(0.3))
+
+				// MARK: - LISTA
 				List {
-
-						// MARK: - POLE WYSZUKIWANIA
-					SearchBar_V(searchText: $szukaj)
-						.listRowBackground(Color.white.opacity(0.3))
-
+					// MARK: - LICZNIK
 					HStack(alignment: .firstTextBaseline, spacing: 0) {
 						Text("\(filtrujDrinki().count) ")
 							.font(.title2)
@@ -75,22 +79,36 @@ struct DrinkiLista_V: View {
 					.listRowBackground(Color.white.opacity(0.7))
 					.padding(.horizontal, 12)
 
-						// MARK: - DRINKI
+					// MARK: - DRINKI
 					if !drinki.isEmpty {
-						ForEach(filtrujDrinki()) { drink in
-							NavigationLink(
-								destination: Drink_V(drink: drink),
-								label: {
-									DrinkListaRow(drink: drink)
-								})
-							.listRowBackground(Color.white.opacity(0.4))
-							.buttonStyle(.plain)
+						if auth.isRefreshing {
+							ProgressView()
+								.frame(maxWidth: .infinity)
+								.listRowBackground(Color.clear)
+						} else {
+							switch sortowEnum {
+							case .slodycz:
+								SortSlodyczView()
+							case .procenty:
+								SortMocView()
+							case .kcal:
+								SortKcalView()
+							case .sklad:
+								SortSkladView()
+							default:
+								ForEach(filtrujDrinki().sorted {
+									sortowRosn ? $0.drNazwa < $1.drNazwa : $0.drNazwa > $1.drNazwa
+								}) { drink in
+									DrinkListaWiersz_V(drink: drink, isLoggedIn: auth.isLoggedIn)
+										.listRowBackground(Color.white.opacity(drink.czyIBA || auth.isLoggedIn ? 0.4 : 0.2))
+								}
+							}
 						}
 					}
 				}
 #if os(iOS)
 				.listRowSpacing(2)
-				.listStyle(.grouped)
+				.listStyle(.plain)
 #endif
 				.listRowSeparator(.hidden)
 #if os(macOS)
@@ -101,58 +119,47 @@ struct DrinkiLista_V: View {
 			.background(Back_V().ignoresSafeArea())
 			
 			.toolbar {
-					// MARK: - TOOLBAR LEWO
-				ToolbarItemGroup(placement: .navigation) {
-					HStack(spacing: 0) {
-							// Przycisk dostępnych
+					// MARK: - TOOLBAR PRAWO
+				if auth.isLoggedIn {
+					ToolbarItem(placement: .navigationBarTrailing) {
 						Button {
-							tylkoDostepne.toggle()
+							pokazDodajDrink.toggle()
 						} label: {
-							Image(systemName: tylkoDostepne ? "checkmark.circle.fill" : "checkmark.circle")
-								.foregroundStyle(tylkoDostepne ? Color.accent : Color.secondary)
+							Image(systemName: "plus.circle")
 						}
-
-							// Przycisk ulubionych
-						Button {
-							tylkoUlubione.toggle()
-						} label: {
-							Image(systemName: tylkoUlubione ? "star.circle.fill" : "star.circle")
-								.foregroundStyle(tylkoUlubione ? Color.accent : Color.secondary)
-						}
-
-							// Przycisk opcjonalne
-						Button {
-							opcjonalneWymagane.toggle()
-							setAllBraki(modelContext: modelContext)
-						} label: {
-							Image(systemName: opcjonalneWymagane ? "list.bullet.circle.fill" : "list.bullet.circle")
-								.foregroundStyle(opcjonalneWymagane ? Color.accent : Color.secondary)
-						}
-
-							// Przycisk zamienników
-						Button {
-							zamiennikiDozwolone.toggle()
-							setAllBraki(modelContext: modelContext)
-						} label: {
-							Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
-								.font(.headline)
-								.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
+						.sheet(isPresented: $pokazDodajDrink) {
+							DrinkDodaj_V()
 						}
 					}
 				}
-
-					// MARK: - TOOLBAR PRAWO
-				ToolbarItemGroup(placement: .destructiveAction) {
-					HStack(spacing: 0) {
-						Button { /// Przycisk filtra
-							pokazFiltr.toggle()
+				ToolbarItem(placement: .navigationBarTrailing) {
+					Menu {
+						Picker("Sortuj wg.", selection: $sortowEnum) {
+							Label("Nazwa", systemImage: "textformat.abc").tag(sortEnum.nazwa)
+							Label("Słodkość", systemImage: "drop.degreesign.fill").tag(sortEnum.slodycz)
+							Label("Moc", systemImage: "bolt.fill").tag(sortEnum.procenty)
+							Label("Kalorie", systemImage: "flame").tag(sortEnum.kcal)
+							Label("Składniki", systemImage: "waterbottle").tag(sortEnum.sklad)
+						}
+						Divider()
+						Button {
+							sortowRosn.toggle()
 						} label: {
-							Image(systemName: "line.3.horizontal.decrease.circle")
-								.font(.headline)
+							Label(sortowRosn ? "Malejąco" : "Rosnąco",
+								  systemImage: sortowRosn ? "chevron.down" : "chevron.up")
 						}
-						.sheet(isPresented: $pokazFiltr) {
-							DrinkFiltry_V()
-						}
+					} label: {
+						Image(systemName: "arrow.up.arrow.down.circle")
+					}
+				}
+				ToolbarItem(placement: .navigationBarTrailing) {
+					Button {
+						pokazFiltr.toggle()
+					} label: {
+						Image(systemName: "line.3.horizontal.decrease.circle")
+					}
+					.sheet(isPresented: $pokazFiltr) {
+						DrinkFiltry_V()
 					}
 				}
 			}
@@ -163,28 +170,46 @@ struct DrinkiLista_V: View {
 			.onAppear() {
 				loadAllDrinks()
 			}
+			.task(id: auth.session?.user.id) {
+				await loadNotesFromSupabase(modelContext: modelContext)
+				await sprawdzAktualizacje()
+			}
+			.alert("Nowe drinki", isPresented: $pokazAktualizacje) {
+				Button("Pobierz") { pobierzNoweDrinki() }
+				Button("Później", role: .cancel) {}
+			} message: {
+				Text("Dostępnych jest \(noweDrinkiCount) nowych drinków. Pobrać teraz?")
+			}
+		}
+	}
+
+		// MARK: - SPRAWDŹ AKTUALIZACJE
+	private func sprawdzAktualizacje() async {
+		// Pomijamy przy pierwszym uruchomieniu — wtedy loadAllDrinks robi pełne ładowanie
+		guard UserDefaults.standard.bool(forKey: "setupDone") else { return }
+		if let count = await sprawdzAktualizacjeDrinkow(modelContext: modelContext), count > 0 {
+			noweDrinkiCount = count
+			pokazAktualizacje = true
+		}
+	}
+
+		// MARK: - POBIERZ NOWE DRINKI
+	private func pobierzNoweDrinki() {
+		// Loader jest idempotentny — dodaje tylko nowe drinki,
+		// nie kasuje stanu barku ani ulubionych
+		Task {
+			await loadFromSupabase(modelContext: modelContext)
+			await loadNotesFromSupabase(modelContext: modelContext)
 		}
 	}
 		// MARK: - LOAD ALL DRINKS
 	private func loadAllDrinks() {
-//		print("Startuje Load All, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-			//			debugPobrane(miejsce: "Ładowanie drinków")
-		if !UserDefaults.standard.bool(forKey: "setupDone")
-		{
-			delAll()
-			loadSklCSV_VM(modelContext: modelContext)
-			loadSklZamiennikiCSV_VM(modelContext: modelContext)
-			loadDrCSV_VM(modelContext: modelContext)
-			loadDrSkladnikiCSV_VM(modelContext: modelContext)
-			loadDrAlkGlownyCSV_VM(modelContext: modelContext)
-			loadDrPrzepisyCSV_VM(modelContext: modelContext)
-			zmianaStanuSkladnikiAll(context: modelContext)
-			setAllBraki(modelContext: modelContext)
+		guard !UserDefaults.standard.bool(forKey: "setupDone") else { return }
+		delAll()
+		Task {
+			await loadFromSupabase(modelContext: modelContext)
 			UserDefaults.standard.set(true, forKey: "setupDone")
-			try? modelContext.save()
 		}
-//		print("Koniec Load All, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-			//			debugPobrane(miejsce: "Koniec Ładowania")
 	}
 	
 		// MARK: - ADD DRINK
@@ -269,12 +294,13 @@ struct DrinkiLista_V: View {
 			(!tylkoUlubione || drink.drUlubiony) &&
 			(!tylkoDostepne || drink.drBrakuje == 0)
 			
-				//			return filtrSlodkosci && filtrMocy && filtrAlkGlownego && filtrPreferencji
-			return filtrSlodkosci && filtrMocy && filtrAlkGlownego && filtrPreferencji
+			let filtrPermisji = auth.canAccessDrink(drink)
+
+			return filtrSlodkosci && filtrMocy && filtrAlkGlownego && filtrPreferencji && filtrPermisji
 		}
 	}
 }
- 	// MARK: - NAZWA LUB KALORIE
+// MARK: - STARE WIDOKI SORTOWANIA (przeniesione do DrinkiListaSort_V.swift)
 /*
 struct SortNazwaView: View {
 	var body: some View {
@@ -323,7 +349,7 @@ struct SortSlodyczView: View {
 
 			ForEach(enumSorted, id: \.sort) { slodycz in
 
-				let opis = slodycz.rawValue
+				let opis = slodycz.opis
 				let przefiltrowane = drClass.filtrujDrinki(pref: pref)
 					.filter { $0.drSlodycz == slodycz }
 					.sorted { $0.id < $1.id }
@@ -331,7 +357,10 @@ struct SortSlodyczView: View {
 				if !przefiltrowane.isEmpty {
 					Section {
 						HStack(alignment: .firstTextBaseline, spacing: 0) {
-							Text("\(opis) \(przefiltrowane.count) ".uppercased())
+							Text(LocalizedStringKey(opis))
+								.textCase(.uppercase)
+								.font(.title2)
+							Text(" \(przefiltrowane.count) ")
 								.font(.title2)
 							Text("przep.")
 								.font(.footnote)
@@ -379,7 +408,10 @@ struct SortMocView: View {
 					if !przefiltrowane.isEmpty {
 						Section {
 							HStack(alignment: .firstTextBaseline, spacing: 0) {
-								Text("\(opis) \(przefiltrowane.count) ".uppercased())
+								Text(LocalizedStringKey(opis))
+									.textCase(.uppercase)
+									.font(.title2)
+								Text(" \(przefiltrowane.count) ")
 									.font(.title2)
 								Text("przep.")
 									.font(.footnote)
@@ -422,7 +454,10 @@ struct SortSkladView: View {
 				if !drinkiFiltrowane.isEmpty {
 					Section {
 						HStack(alignment: .firstTextBaseline, spacing: 0) {
-							Text(indeks == 0 ? "Masz wszystkie skł. \(drinkiFiltrowane.count) ".uppercased() : "Brak \(indeks) skł. \(drinkiFiltrowane.count) ".uppercased())
+							Text(indeks == 0 ? "Masz wszystkie skł." : "Brak \(indeks) skł.")
+								.textCase(.uppercase)
+								.font(.title2)
+							Text(" \(drinkiFiltrowane.count) ")
 								.font(.title2)
 							Text("przep.")
 								.font(.footnote)
@@ -448,59 +483,6 @@ struct SortSkladView: View {
 }
 */
 
-private func DrinkListaRow(drink: Dr_M) -> some View {
-	HStack {
-			// MARK: - IKONKA
-		ZStack {
-			Circle()
-				.fill(.regularMaterial)
-				.stroke(drink.getKolor(), lineWidth: drink.drBrakuje == 0 ? 2 : 1)
-			
-			Image(!drink.drFoto.isEmpty ? drink.drFoto :  drink.drSzklo.foto)
-				.resizable()
-				.aspectRatio(contentMode: .fit)
-				.frame(width: 35, height: 35)
-				.foregroundStyle(Color.primary)
-			
-			Image(systemName: "checkmark")
-				.font(.system(size: 12))
-				.fontWeight(.black)
-				.frame(width: 60, height: 50, alignment: .bottomTrailing)
-				.foregroundStyle(Color.primary.opacity(drink.drBrakuje == 0 ? 1 : 0))
-		}
-		.frame(width: 50, height: 50)
-		Divider().frame(height: 50)
-			// MARK: - OPIS
-		VStack(spacing: 0) {
-			VStack(alignment: .leading) {
-				Spacer()
-				Text("\(drink.drNazwa)")
-					.font(.headline)
-				Divider().padding(0)
-				Text("\(drink.drMoc)".capitalized + " (\(drink.drProc)%) | \(drink.drKal) kCal")
-					.font(.caption)
-				Spacer()
-			}
-			.foregroundStyle(Color.primary)
-		}
-		.frame(maxWidth: .infinity)
-
-		Divider().frame(height: 50)
-
-			// MARK: - SKALA
-		DrinkSkala_V(drink: drink, wielkosc: 20, etykieta: false)
-			.shadow(color: .white, radius: 20)
-			.shadow(color: .white, radius: 20)
-			.padding(.leading, 8)
-			// MARK: - GWIAZDKA
-		Image(systemName: drink.drUlubiony ? "star.fill" : "star")
-			.font(.system(size: 23))
-			.foregroundStyle(drink.drUlubiony ? Color.accent : Color.gray)
-									.onTapGesture {
-										drink.ulubionyToggle()
-									}
-	}
-}
 
 
 #Preview {

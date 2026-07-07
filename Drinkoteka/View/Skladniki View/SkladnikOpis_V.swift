@@ -14,8 +14,9 @@ struct SkladnikOpis_V: View {
 
 
 							// MARK: Nagłówek
-						Text("Opis:".uppercased())
+						Text("Opis:")
 							.TitleStyle()
+							.textCase(.uppercase)
 						
 						Spacer ()
 					}

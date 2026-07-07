@@ -30,6 +30,11 @@
 		F3095A9B2DB66E2300481E4F /* Back_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9A2DB66E2300481E4F /* Back_V.swift */; };
 		F3095A9F2DB66FF000481E4F /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */; };
 		F3095AA82DB693AA00481E4F /* IkonaJestBrak_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */; };
+		F310D9202FFCEE4700EC6A18 /* DrinkiListaSort_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310D91E2FFCEE4700EC6A18 /* DrinkiListaSort_V.swift */; };
+		F310D9212FFCEE4700EC6A18 /* DrinkListaRow_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310D91F2FFCEE4700EC6A18 /* DrinkListaRow_V.swift */; };
+		F310D9232FFCF1EC00EC6A18 /* ImageCache_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310D9222FFCF1EC00EC6A18 /* ImageCache_VM.swift */; };
+		F310D9252FFCF21900EC6A18 /* DrinkotekaImage_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310D9242FFCF21900EC6A18 /* DrinkotekaImage_V.swift */; };
+		F3172D472FFC5B0100EEE52A /* DrinkDodaj_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3172D462FFC5B0100EEE52A /* DrinkDodaj_V.swift */; };
 		F327D6D52DC368980080F897 /* DrinkPrzepis_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F327D6D42DC368980080F897 /* DrinkPrzepis_V.swift */; };
 		F32ACBF72DCE6CCD00056186 /* Home_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32ACBF62DCE6CCD00056186 /* Home_V.swift */; };
 		F33256142DC0AE7C00C4055A /* SkladnikiBack_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33256132DC0AE7C00C4055A /* SkladnikiBack_V.swift */; };
@@ -55,6 +60,7 @@
 		F377B0AC2DB8D88D00FE8CE3 /* CustomTab_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */; };
 		F396F69E2DBA42040030A329 /* DrinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E8C2DB7D7A0000775D6 /* DrinkMock.swift */; };
 		F396F69F2DBA5D860030A329 /* DrinkiLista_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */; };
+		F3AA10012E0AB1230000A002 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F3AA10002E0AB1230000A001 /* Localizable.xcstrings */; };
 		F3BEA8712DB7FF91001E6801 /* DrinkSkladniki_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA32DB68EA900481E4F /* DrinkSkladniki_V.swift */; };
 		F3BEA8732DB8067C001E6801 /* Drink_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E812DB77A29000775D6 /* Drink_V.swift */; };
 		F3BEA8752DB807F1001E6801 /* DrinkTitle_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA8742DB807F1001E6801 /* DrinkTitle_V.swift */; };
@@ -65,9 +71,25 @@
 		F3BEA87F2DB820AB001E6801 /* DrinkWWW_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA87E2DB820AB001E6801 /* DrinkWWW_V.swift */; };
 		F3BEA8812DB82A9B001E6801 /* DrinkBack_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA8802DB82A9B001E6801 /* DrinkBack_V.swift */; };
 		F3C25B902DC17A920038FD84 /* SkladnikWDrinkach_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C25B8F2DC17A920038FD84 /* SkladnikWDrinkach_V.swift */; };
+		F3CF4A2F2FFC0AB500916E47 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = F3CF4A2E2FFC0AB500916E47 /* Auth */; };
+		F3CF4A312FFC0AB500916E47 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = F3CF4A302FFC0AB500916E47 /* Functions */; };
+		F3CF4A332FFC0AB500916E47 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = F3CF4A322FFC0AB500916E47 /* PostgREST */; };
+		F3CF4A352FFC0AB500916E47 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = F3CF4A342FFC0AB500916E47 /* Realtime */; };
+		F3CF4A372FFC0AB500916E47 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = F3CF4A362FFC0AB500916E47 /* Storage */; };
+		F3CF4A402FFC0EE100916E47 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = F3CF4A3F2FFC0EE100916E47 /* Supabase */; };
+		F3CF4A472FFC16CB00916E47 /* SupabaseDTO_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A452FFC16CB00916E47 /* SupabaseDTO_VM.swift */; };
+		F3CF4A482FFC16CB00916E47 /* AuthService_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A422FFC16CB00916E47 /* AuthService_VM.swift */; };
+		F3CF4A492FFC16CB00916E47 /* loadFromSupabase_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A432FFC16CB00916E47 /* loadFromSupabase_VM.swift */; };
+		AA000001000000000000001 /* UserNotes_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000002 /* UserNotes_VM.swift */; };
+		AA000001000000000000003 /* DrinkFeedback_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000004 /* DrinkFeedback_VM.swift */; };
+		AA000001000000000000005 /* SyncDrinki_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000006 /* SyncDrinki_VM.swift */; };
+		AA000001000000000000007 /* AppFeedback_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000008 /* AppFeedback_V.swift */; };
+		F3CF4A4A2FFC16CB00916E47 /* SupabaseClient_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A442FFC16CB00916E47 /* SupabaseClient_VM.swift */; };
+		F3CF4A4D2FFC176300916E47 /* AuthLogowanie_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A4B2FFC176300916E47 /* AuthLogowanie_V.swift */; };
+		F3CF4A4E2FFC176300916E47 /* AuthProfil_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A4C2FFC176300916E47 /* AuthProfil_V.swift */; };
+		F3CF4A502FFC179000916E47 /* DrinkZablokowany_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A4F2FFC179000916E47 /* DrinkZablokowany_V.swift */; };
 		F3DE992D2DC8884C00957537 /* Funkcje_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE992C2DC8884C00957537 /* Funkcje_VM.swift */; };
 		F3EC6DB02DC2CD8B008C03A5 /* SklZamiennik_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EC6DAF2DC2CD8B008C03A5 /* SklZamiennik_M.swift */; };
-		F3EFBC9A2DDA7A640084514C /* DrinkiListaAlkGl_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D8BBC2DD9353A007BB704 /* DrinkiListaAlkGl_V.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,7 +122,11 @@
 		F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkonaJestBrak_V.swift; sourceTree = "<group>"; };
 		F3095AA92DB6945200481E4F /* PrefClass_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefClass_VM.swift; sourceTree = "<group>"; };
 		F3095AAA2DB6945200481E4F /* Preferencje_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferencje_V.swift; sourceTree = "<group>"; };
-		F31D8BBC2DD9353A007BB704 /* DrinkiListaAlkGl_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkiListaAlkGl_V.swift; sourceTree = "<group>"; };
+		F310D91E2FFCEE4700EC6A18 /* DrinkiListaSort_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkiListaSort_V.swift; sourceTree = "<group>"; };
+		F310D91F2FFCEE4700EC6A18 /* DrinkListaRow_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkListaRow_V.swift; sourceTree = "<group>"; };
+		F310D9222FFCF1EC00EC6A18 /* ImageCache_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache_VM.swift; sourceTree = "<group>"; };
+		F310D9242FFCF21900EC6A18 /* DrinkotekaImage_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkotekaImage_V.swift; sourceTree = "<group>"; };
+		F3172D462FFC5B0100EEE52A /* DrinkDodaj_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDodaj_V.swift; sourceTree = "<group>"; };
 		F324A3092DB19E0C00B21F83 /* Drinkoteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drinkoteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F327D6D42DC368980080F897 /* DrinkPrzepis_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPrzepis_V.swift; sourceTree = "<group>"; };
 		F32ACBF62DCE6CCD00056186 /* Home_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_V.swift; sourceTree = "<group>"; };
@@ -125,6 +151,7 @@
 		F377B0A22DB8C40C00FE8CE3 /* DrinkFiltry_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFiltry_V.swift; sourceTree = "<group>"; };
 		F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab_V.swift; sourceTree = "<group>"; };
 		F377B0A72DB8D47500FE8CE3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		F3AA10002E0AB1230000A001 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F3BEA8742DB807F1001E6801 /* DrinkTitle_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTitle_V.swift; sourceTree = "<group>"; };
 		F3BEA8762DB80F91001E6801 /* DrinkDane_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDane_V.swift; sourceTree = "<group>"; };
 		F3BEA8782DB81435001E6801 /* DrinkFoto_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFoto_V.swift; sourceTree = "<group>"; };
@@ -133,6 +160,17 @@
 		F3BEA87E2DB820AB001E6801 /* DrinkWWW_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWWW_V.swift; sourceTree = "<group>"; };
 		F3BEA8802DB82A9B001E6801 /* DrinkBack_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrinkBack_V.swift; path = "Drinkoteka/View/Drinki View/DrinkBack_V.swift"; sourceTree = SOURCE_ROOT; };
 		F3C25B8F2DC17A920038FD84 /* SkladnikWDrinkach_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkladnikWDrinkach_V.swift; sourceTree = "<group>"; };
+		F3CF4A422FFC16CB00916E47 /* AuthService_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService_VM.swift; sourceTree = "<group>"; };
+		F3CF4A432FFC16CB00916E47 /* loadFromSupabase_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadFromSupabase_VM.swift; sourceTree = "<group>"; };
+		AA000001000000000000002 /* UserNotes_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotes_VM.swift; sourceTree = "<group>"; };
+		AA000001000000000000004 /* DrinkFeedback_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFeedback_VM.swift; sourceTree = "<group>"; };
+		AA000001000000000000006 /* SyncDrinki_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDrinki_VM.swift; sourceTree = "<group>"; };
+		AA000001000000000000008 /* AppFeedback_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedback_V.swift; sourceTree = "<group>"; };
+		F3CF4A442FFC16CB00916E47 /* SupabaseClient_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient_VM.swift; sourceTree = "<group>"; };
+		F3CF4A452FFC16CB00916E47 /* SupabaseDTO_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseDTO_VM.swift; sourceTree = "<group>"; };
+		F3CF4A4B2FFC176300916E47 /* AuthLogowanie_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLogowanie_V.swift; sourceTree = "<group>"; };
+		F3CF4A4C2FFC176300916E47 /* AuthProfil_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProfil_V.swift; sourceTree = "<group>"; };
+		F3CF4A4F2FFC179000916E47 /* DrinkZablokowany_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkZablokowany_V.swift; sourceTree = "<group>"; };
 		F3DE992C2DC8884C00957537 /* Funkcje_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funkcje_VM.swift; sourceTree = "<group>"; };
 		F3EC6DAF2DC2CD8B008C03A5 /* SklZamiennik_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SklZamiennik_M.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +180,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3CF4A332FFC0AB500916E47 /* PostgREST in Frameworks */,
+				F3CF4A312FFC0AB500916E47 /* Functions in Frameworks */,
+				F3CF4A402FFC0EE100916E47 /* Supabase in Frameworks */,
+				F3CF4A2F2FFC0AB500916E47 /* Auth in Frameworks */,
+				F3CF4A372FFC0AB500916E47 /* Storage in Frameworks */,
+				F3CF4A352FFC0AB500916E47 /* Realtime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,9 +251,12 @@
 		F3095A5B2DB3C1E000481E4F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F310D9222FFCF1EC00EC6A18 /* ImageCache_VM.swift */,
+				F3CF4A412FFC166F00916E47 /* New Group */,
 				F3095A592DB3C1E000481E4F /* LadowanieCSV */,
 				F3DE992C2DC8884C00957537 /* Funkcje_VM.swift */,
 				F3095AA92DB6945200481E4F /* PrefClass_VM.swift */,
+				F3CF4A462FFC16CB00916E47 /* Supabase */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -219,6 +266,7 @@
 			children = (
 				F3095A5C2DB3C1E000481E4F /* Assets.xcassets */,
 				F3095A5D2DB3C1E000481E4F /* Drinkoteka.entitlements */,
+				F3AA10002E0AB1230000A001 /* Localizable.xcstrings */,
 				F3095A472DB3C1E000481E4F /* Model */,
 				F3095A5B2DB3C1E000481E4F /* ViewModel */,
 				F3095A532DB3C1E000481E4F /* View */,
@@ -259,9 +307,11 @@
 		F3095A992DB66E1C00481E4F /* Wspolne View */ = {
 			isa = PBXGroup;
 			children = (
+				F310D9242FFCF21900EC6A18 /* DrinkotekaImage_V.swift */,
 				F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */,
 				F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */,
 				F3095AAA2DB6945200481E4F /* Preferencje_V.swift */,
+				AA000001000000000000008 /* AppFeedback_V.swift */,
 				F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */,
 				F3095A9A2DB66E2300481E4F /* Back_V.swift */,
 				F36F1E872DB7A651000775D6 /* Rejestracja */,
@@ -274,8 +324,10 @@
 		F3095AA02DB670B000481E4F /* Drinki View */ = {
 			isa = PBXGroup;
 			children = (
+				F310D91E2FFCEE4700EC6A18 /* DrinkiListaSort_V.swift */,
+				F310D91F2FFCEE4700EC6A18 /* DrinkListaRow_V.swift */,
+				F3CF4A4F2FFC179000916E47 /* DrinkZablokowany_V.swift */,
 				F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */,
-				F31D8BBC2DD9353A007BB704 /* DrinkiListaAlkGl_V.swift */,
 				F377B0A22DB8C40C00FE8CE3 /* DrinkFiltry_V.swift */,
 				F36F1E812DB77A29000775D6 /* Drink_V.swift */,
 				F3BEA8742DB807F1001E6801 /* DrinkTitle_V.swift */,
@@ -289,6 +341,7 @@
 				F3095AA12DB670B700481E4F /* DrinkPrzepisE_V.swift */,
 				F327D6D42DC368980080F897 /* DrinkPrzepis_V.swift */,
 				F3BEA8802DB82A9B001E6801 /* DrinkBack_V.swift */,
+				F3172D462FFC5B0100EEE52A /* DrinkDodaj_V.swift */,
 			);
 			path = "Drinki View";
 			sourceTree = "<group>";
@@ -297,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				F3095A5F2DB3C1E000481E4F /* Drinkoteka */,
+				F3CF4A3E2FFC0EE100916E47 /* Frameworks */,
 				F324A30A2DB19E0C00B21F83 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -320,6 +374,8 @@
 		F36F1E872DB7A651000775D6 /* Rejestracja */ = {
 			isa = PBXGroup;
 			children = (
+				F3CF4A4B2FFC176300916E47 /* AuthLogowanie_V.swift */,
+				F3CF4A4C2FFC176300916E47 /* AuthProfil_V.swift */,
 				F36F1E832DB78BC2000775D6 /* Logowanie_V.swift */,
 				F36F1E852DB78E4E000775D6 /* Rejestracja_v.swift */,
 				F36F1E882DB7A66A000775D6 /* Profil_V.swift */,
@@ -354,6 +410,34 @@
 			path = SearchBar;
 			sourceTree = "<group>";
 		};
+		F3CF4A3E2FFC0EE100916E47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F3CF4A412FFC166F00916E47 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		F3CF4A462FFC16CB00916E47 /* Supabase */ = {
+			isa = PBXGroup;
+			children = (
+				F3CF4A422FFC16CB00916E47 /* AuthService_VM.swift */,
+				F3CF4A432FFC16CB00916E47 /* loadFromSupabase_VM.swift */,
+				F3CF4A442FFC16CB00916E47 /* SupabaseClient_VM.swift */,
+				F3CF4A452FFC16CB00916E47 /* SupabaseDTO_VM.swift */,
+				AA000001000000000000002 /* UserNotes_VM.swift */,
+				AA000001000000000000004 /* DrinkFeedback_VM.swift */,
+				AA000001000000000000006 /* SyncDrinki_VM.swift */,
+			);
+			path = Supabase;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -371,6 +455,12 @@
 			);
 			name = Drinkoteka;
 			packageProductDependencies = (
+				F3CF4A2E2FFC0AB500916E47 /* Auth */,
+				F3CF4A302FFC0AB500916E47 /* Functions */,
+				F3CF4A322FFC0AB500916E47 /* PostgREST */,
+				F3CF4A342FFC0AB500916E47 /* Realtime */,
+				F3CF4A362FFC0AB500916E47 /* Storage */,
+				F3CF4A3F2FFC0EE100916E47 /* Supabase */,
 			);
 			productName = Drinkoteka;
 			productReference = F324A3092DB19E0C00B21F83 /* Drinkoteka.app */;
@@ -392,14 +482,18 @@
 				};
 			};
 			buildConfigurationList = F324A3042DB19E0C00B21F83 /* Build configuration list for PBXProject "Drinkoteka" */;
-			developmentRegion = en;
+			developmentRegion = pl;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				pl,
 				Base,
 			);
 			mainGroup = F324A3002DB19E0C00B21F83;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F3CF4A2D2FFC0AB500916E47 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F324A30A2DB19E0C00B21F83 /* Products */;
 			projectDirPath = "";
@@ -416,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3095A762DB3C1E000481E4F /* Assets.xcassets in Resources */,
+				F3AA10012E0AB1230000A002 /* Localizable.xcstrings in Resources */,
 				F3095A7F2DB3EBEF00481E4F /* DTeka - SkladnikiZamienniki.tsv in Resources */,
 				F34889CE2DD3F95800CE649D /* Launch Screen.storyboard in Resources */,
 				F3095A802DB3EBEF00481E4F /* DTeka - Drinki.tsv in Resources */,
@@ -439,6 +534,8 @@
 				F3095A942DB543F300481E4F /* loadSklZamiennikiCSV_VM.swift in Sources */,
 				F36F1E922DB7E085000775D6 /* SkladnikZamiennikLinia_V.swift in Sources */,
 				F3DE992D2DC8884C00957537 /* Funkcje_VM.swift in Sources */,
+				F3CF4A4D2FFC176300916E47 /* AuthLogowanie_V.swift in Sources */,
+				F3CF4A4E2FFC176300916E47 /* AuthProfil_V.swift in Sources */,
 				F3095A612DB3C1E000481E4F /* DrPrzepis_M.swift in Sources */,
 				F3095A622DB3C1E000481E4F /* DrSkladnik_M.swift in Sources */,
 				F327D6D52DC368980080F897 /* DrinkPrzepis_V.swift in Sources */,
@@ -449,7 +546,6 @@
 				F3BEA8812DB82A9B001E6801 /* DrinkBack_V.swift in Sources */,
 				F3095A632DB3C1E000481E4F /* EnumModel.swift in Sources */,
 				F3095A8D2DB3F8E900481E4F /* loadSklCSV_VM.swift in Sources */,
-				F3EFBC9A2DDA7A640084514C /* DrinkiListaAlkGl_V.swift in Sources */,
 				F3095A9F2DB66FF000481E4F /* ViewModifiers.swift in Sources */,
 				F32ACBF72DCE6CCD00056186 /* Home_V.swift in Sources */,
 				F36F1E892DB7A66A000775D6 /* Profil_V.swift in Sources */,
@@ -465,21 +561,35 @@
 				F3095A682DB3C1E000481E4F /* loadDrPrzepisyCSV_VM.swift in Sources */,
 				F3095AA82DB693AA00481E4F /* IkonaJestBrak_V.swift in Sources */,
 				F3BEA87A2DB81435001E6801 /* DrinkFoto_V.swift in Sources */,
+				F3172D472FFC5B0100EEE52A /* DrinkDodaj_V.swift in Sources */,
 				F3BEA87B2DB81435001E6801 /* DrinkSkala_V.swift in Sources */,
 				F3C25B902DC17A920038FD84 /* SkladnikWDrinkach_V.swift in Sources */,
 				F396F69F2DBA5D860030A329 /* DrinkiLista_V.swift in Sources */,
 				F33256142DC0AE7C00C4055A /* SkladnikiBack_V.swift in Sources */,
+				F310D9232FFCF1EC00EC6A18 /* ImageCache_VM.swift in Sources */,
+				F310D9252FFCF21900EC6A18 /* DrinkotekaImage_V.swift in Sources */,
 				F3095A6A2DB3C1E000481E4F /* loadDrSkladnikiCSV_VM.swift in Sources */,
 				F396F69E2DBA42040030A329 /* DrinkMock.swift in Sources */,
 				F377B0AC2DB8D88D00FE8CE3 /* CustomTab_V.swift in Sources */,
 				F36F1E8A2DB7AB8A000775D6 /* Preferencje_V.swift in Sources */,
 				F37319872DBBF60C0028F97C /* SearchBar_V.swift in Sources */,
 				F3095A872DB3EC5900481E4F /* Skl_M.swift in Sources */,
+				F3CF4A472FFC16CB00916E47 /* SupabaseDTO_VM.swift in Sources */,
+				F3CF4A502FFC179000916E47 /* DrinkZablokowany_V.swift in Sources */,
+				F3CF4A482FFC16CB00916E47 /* AuthService_VM.swift in Sources */,
+				F3CF4A492FFC16CB00916E47 /* loadFromSupabase_VM.swift in Sources */,
+				F3CF4A4A2FFC16CB00916E47 /* SupabaseClient_VM.swift in Sources */,
+				AA000001000000000000001 /* UserNotes_VM.swift in Sources */,
+				AA000001000000000000003 /* DrinkFeedback_VM.swift in Sources */,
+				AA000001000000000000005 /* SyncDrinki_VM.swift in Sources */,
+				AA000001000000000000007 /* AppFeedback_V.swift in Sources */,
 				F36F1E822DB783E6000775D6 /* PrefClass_VM.swift in Sources */,
 				F36F1E842DB78BC2000775D6 /* Logowanie_V.swift in Sources */,
 				F3095A8B2DB3ECB500481E4F /* SklStanModel.swift in Sources */,
 				F36F1E962DB7E356000775D6 /* SkladnikStan_V.swift in Sources */,
 				F3BEA8772DB80F91001E6801 /* DrinkDane_V.swift in Sources */,
+				F310D9202FFCEE4700EC6A18 /* DrinkiListaSort_V.swift in Sources */,
+				F310D9212FFCEE4700EC6A18 /* DrinkListaRow_V.swift in Sources */,
 				F36F1E862DB78E4E000775D6 /* Rejestracja_v.swift in Sources */,
 				F3095A9B2DB66E2300481E4F /* Back_V.swift in Sources */,
 				F34D9EAC2DBC2BE000D484DC /* SkladnikiLista_V.swift in Sources */,
@@ -620,7 +730,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Drinkoteka;
+				INFOPLIST_KEY_CFBundleDisplayName = "Drinkothèque";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -663,7 +773,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Drinkoteka;
+				INFOPLIST_KEY_CFBundleDisplayName = "Drinkothèque";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -716,6 +826,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F3CF4A2D2FFC0AB500916E47 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F3CF4A2E2FFC0AB500916E47 /* Auth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CF4A2D2FFC0AB500916E47 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Auth;
+		};
+		F3CF4A302FFC0AB500916E47 /* Functions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CF4A2D2FFC0AB500916E47 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Functions;
+		};
+		F3CF4A322FFC0AB500916E47 /* PostgREST */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CF4A2D2FFC0AB500916E47 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = PostgREST;
+		};
+		F3CF4A342FFC0AB500916E47 /* Realtime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CF4A2D2FFC0AB500916E47 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Realtime;
+		};
+		F3CF4A362FFC0AB500916E47 /* Storage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CF4A2D2FFC0AB500916E47 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Storage;
+		};
+		F3CF4A3F2FFC0EE100916E47 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3CF4A2D2FFC0AB500916E47 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F324A3012DB19E0C00B21F83 /* Project object */;
 }

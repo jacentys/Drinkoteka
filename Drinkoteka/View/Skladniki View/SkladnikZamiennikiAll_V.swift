@@ -17,8 +17,9 @@ struct SkladnikZamiennikiAll_V: View {
 			VStack(alignment: .leading) {
 					// MARK: NAGŁOWEK
 				HStack(alignment: .firstTextBaseline) {
-					Text("Zamienniki:".uppercased())
+					Text("Zamienniki:")
 						.TitleStyle()
+						.textCase(.uppercase)
 					Spacer()
 				}
 

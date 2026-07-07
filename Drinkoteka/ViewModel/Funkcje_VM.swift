@@ -317,7 +317,7 @@ func viewKategoria(kat: String) -> some View {
 				.fontWeight(.light)
 				.fontWidth(.condensed)
 			
-			Text("\(kat) ")
+			Text(LocalizedStringKey(kat))
 				.font(.headline)
 				.fontWeight(.black)
 				.fontWidth(.condensed)
@@ -366,7 +366,7 @@ func viewMiara(miara: miaraEnum) -> some View {
 			.fontWeight(.light)
 			.fontWidth(.condensed)
 		
-		Text("\(miara.rawValue)".lowercased())
+		Text("\(miara.opis)".lowercased())
 			.font(.headline)
 			.fontWeight(.black)
 			.fontWidth(.condensed)
@@ -626,6 +626,13 @@ func zmianaStanuSkladnika(context: ModelContext, zamiennik: Skl_M) {
 		for dr in drinki {
 			print(dr.drNazwa)
 		}
+
+		// Przelicz drBrakuje dla wszystkich drinków
+		let wszystkieDrinki2 = try context.fetch(FetchDescriptor<Dr_M>())
+		for drink in wszystkieDrinki2 {
+			drink.setBrakiDrinka()
+		}
+		try? context.save()
 	} catch {
 		print("Błąd w funkcji zmianaStanuSkladnika: ", error.localizedDescription)
 	}

@@ -19,11 +19,9 @@ struct DrinkFoto_V: View {
 				.frame(width: wysokosc, height: wysokosc)
 			
 				// MARK: FOTO
-			Image(!drink.drFoto.isEmpty ? drink.drFoto :  drink.drSzklo.foto)
-				.resizable()
+			DrinkotekaImage_V(nazwa: drink.drFoto, fallback: drink.drSzklo.foto)
 				.scaledToFit()
 				.frame(maxHeight: .infinity)
-//				.mask(Circle().frame(width: ekranSzer, height: wysokosc))
 				.frame(height: wysokosc-50)
 				.foregroundColor(Color.primary)
 			

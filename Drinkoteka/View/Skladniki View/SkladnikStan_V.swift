@@ -17,7 +17,7 @@ struct SkladnikStan_V: View {
 				
 				// MARK: IN BAR BUTTON
 				VStack {
-					Text("W barku:".uppercased())
+					Text("W barku:").textCase(.uppercase)
 						.font(.headline)
 					IkonaJestBrak_V(skladnik: skladnik, txtShow: false)
 				}

@@ -17,7 +17,8 @@ struct DrinkDane_V: View {
 						Spacer()
 						DrinkSkala_V(drink: drink, wielkosc: 25, etykieta: false)
 						Spacer()
-						Text("Słodycz".uppercased())
+						Text("Słodycz")
+							.textCase(.uppercase)
 							.font(.caption2)
 					}
 					.frame(maxWidth: .infinity)
@@ -39,7 +40,8 @@ struct DrinkDane_V: View {
 							.font(.largeTitle)
 							.fontWeight(.thin)
 						Spacer()
-						Text("Kalorie".uppercased())
+						Text("Kalorie")
+							.textCase(.uppercase)
 							.font(.caption2)
 					}
 					.frame(maxWidth: .infinity)
@@ -61,7 +63,8 @@ struct DrinkDane_V: View {
 								drink.ulubionyToggle()
 							}
 						Spacer()
-						Text("Ulubiony".uppercased())
+						Text("Ulubiony")
+							.textCase(.uppercase)
 							.font(.caption2)
 					}
 					.frame(maxWidth: .infinity)

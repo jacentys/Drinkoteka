@@ -1,11 +1,21 @@
 import SwiftUI
+import SwiftData
 
 	/// Taby aplikacji
 enum Tab: String, CaseIterable {
-	case home = "Home"
-	case drinki = "Drinki"
-	case skladniki = "Składn."
-	case opcje = "Opcje"
+	case home
+	case drinki
+	case skladniki
+	case opcje
+
+	var tytul: String {
+		switch self {
+			case .home: return "Home"
+			case .drinki: return "Drinki"
+			case .skladniki: return "Składn."
+			case .opcje: return "Opcje"
+		}
+	}
 
 	var systemImage: String {
 		switch self {
@@ -32,10 +42,14 @@ struct CustomTab_V: View {
 	@Namespace private var animation
 	@State var tabShapePosition: CGPoint = .zero
 
+	@Environment(\.modelContext) private var modelContext
+	@AppStorage("jezykAplikacji") private var jezykAplikacji: String = "pl"
+	@State private var przeladowujeJezyk: Bool = false
+
     var body: some View {
 		 VStack(spacing: 0) {
 			 TabView(selection: $activeTab) {
-				 Home_V()
+				 Home_V(activeTab: $activeTab)
 					 .tag(Tab.home)
 					 // Ukrycie natywnego tab bar
 					 .toolbar(.hidden, for: .tabBar)
@@ -61,6 +75,34 @@ struct CustomTab_V: View {
 			 }
 			 CustomTabBar()
 		 }
+		 .task(id: jezykAplikacji) {
+			 await zsynchronizujJezyk()
+		 }
+		 .overlay {
+			 if przeladowujeJezyk {
+				 ProgressView("Wczytuję przepisy…")
+					 .padding()
+					 .background(.regularMaterial)
+					 .cornerRadius(12)
+			 }
+		 }
+	 }
+
+		 // MARK: - ZMIANA JĘZYKA DANYCH
+	 private func zsynchronizujJezyk() async {
+		 // Tylko po pierwszym pełnym załadowaniu treści
+		 guard UserDefaults.standard.bool(forKey: "setupDone") else {
+			 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
+			 return
+		 }
+		 let dataLang = UserDefaults.standard.string(forKey: "dataLang") ?? "pl"
+		 guard dataLang != jezykAplikacji else { return }
+
+		 przeladowujeJezyk = true
+		 await zmienJezykDanych(modelContext: modelContext)
+		 await loadNotesFromSupabase(modelContext: modelContext)
+		 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
+		 przeladowujeJezyk = false
 	 }
 
 		///Custom TabBar - z większą ilością customizacji
@@ -123,7 +165,7 @@ struct TabItem: View {
 					}
 				}
 
-			Text(tab.rawValue)
+			Text(LocalizedStringKey(tab.tytul))
 				.font(.callout)
 				.foregroundStyle(activeTab == tab ? tint : .gray)
 		}

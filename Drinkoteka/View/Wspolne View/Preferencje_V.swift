@@ -3,6 +3,7 @@ import SwiftUI
 
 struct Preferencje_V: View {
 	@Environment(\.modelContext) private var modelContext
+	@StateObject private var auth = AuthService_VM.shared
 
 	@Query(sort: [SortDescriptor(\Dr_M.drNazwa)])
 	private var wszystkieDrinki: [Dr_M]
@@ -13,67 +14,22 @@ struct Preferencje_V: View {
 	@AppStorage("zalogowany") var zalogowany: Bool?
 	@AppStorage("uzytkownik") var uzytkownik: String?
 
-	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
-	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
-	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
-	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
-	
 	@AppStorage("blokujEkran") var blokujEkran: Bool = false
+	@AppStorage("jezykAplikacji") var jezykAplikacji: String = {
+		let kod = Locale.current.language.languageCode?.identifier ?? "en"
+		return kod == "pl" ? "pl" : "en"
+	}()
 
+	@State private var pokazPotwierdzenie: Bool = false
+	@State private var pokazFeedback: Bool = false
+	@State private var kodAktywacyjny: String = ""
+	@State private var komunikatKodu: String? = nil
+	@State private var aktywujeKod: Bool = false
 	let spacje: CGFloat = 10
 	
 	var body: some View {
 		NavigationStack {
 			Form {
-				Section( // MARK: TYLKO KOMPLETNE
-					header: Label("Dostępne", systemImage: tylkoDostepne ? "checkmark.circle.fill" : "checkmark.circle")
-						.font(.headline)
-						.foregroundStyle(tylkoDostepne ? Color.accent : Color.secondary),
-					footer: Text("Pokazuj tylko drinki które mogą zostać przyrządzone z dostępnych składników.\nTa opcja ukrywa pozostałe składniki gdy nie ma wszystkich składników.\n Dwie poniższe opcje są brane pod uwagę.")) {
-						Toggle(isOn: $tylkoDostepne) {
-							Text("Pokazuj tylko drinki dostępne")
-						}
-							//					.onChange(of: tylkoDostepne) { _, _ in
-							//						drinkiClass.setWszystkieBraki()
-							//					}
-					}
-
-				Section( // MARK: Ulubione
-					header: Label("Ulubione", systemImage: tylkoUlubione ? "star.circle.fill" : "star.circle")
-						.font(.headline)
-						.foregroundStyle(tylkoUlubione ? Color.accent : Color.secondary),
-					footer: Text("Pokazuj tylko drinki zaznaczone gwiazdką jako ulubione.")) {
-						Toggle(isOn: $tylkoUlubione) {
-							Text("Pokazuj tylko ulubione")
-						}
-					}
-
-				Section( // MARK: Zamienniki
-					header: Label("Zamienniki", systemImage: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
-						.font(.headline)
-						.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary),
-					footer: Text("Jeśli zaznaczono, przy sprawdzaniu dostępności składników brane są pod uwagę zamienniki. Zwiększa to ilość możliwych do zrobienia drinków. Trzeba liczyć się z delikatną zmianą smaku w stosunku do oryginału.")) {
-						Toggle(isOn: $zamiennikiDozwolone) {
-							Text("Dopuszczaj zamienniki")
-						}
-						.onChange(of: zamiennikiDozwolone) { _, _ in
-							setAllBraki(modelContext: modelContext)
-						}
-					}
-
-				Section( // MARK: Opcjonalne
-					header: Label("Opcjonalne", systemImage: opcjonalneWymagane ? "list.bullet.circle.fill" : "list.bullet.circle")
-						.font(.headline)
-						.foregroundStyle(opcjonalneWymagane ? Color.accent : Color.secondary),
-					footer: Text("Przy sprawdzaniu dostępności składników w drinku wymuszaj branie pod uwagę składników opcjonalnych. Składniki te często używane są do przyozdabiania drinków lub wzbogacania smaku.")) {
-						Toggle(isOn: $opcjonalneWymagane) {
-							Text("Składniki opcjonalne wymagane")
-						}
-						.onChange(of: opcjonalneWymagane) { _, _ in
-							setAllBraki(modelContext: modelContext)
-						}
-					}
-
 				Section( // MARK: Blokada ekranu
 					header: Label("Wygaszacz ekranu", systemImage: blokujEkran ? "lightswitch.on" : "lightswitch.off")
 						.font(.headline)
@@ -89,61 +45,148 @@ struct Preferencje_V: View {
 						}
 					}
 				
+				Section( // MARK: Język
+					header: Label("Język", systemImage: "globe")
+						.font(.headline)
+						.foregroundStyle(Color.secondary)) {
+						Picker("Język aplikacji", selection: $jezykAplikacji) {
+							Text("Polski").tag("pl")
+							Text("English").tag("en")
+						}
+					}
+
+				Section( // MARK: Konto
+					header: Label("Konto", systemImage: "person.crop.circle")
+						.font(.headline)
+						.foregroundStyle(Color.green),
+					footer: Text(auth.isLoggedIn ? "" : "Zaloguj się by mieć dostęp do większej ilości przepisów.").padding(.bottom, 30)) {
+						if auth.isLoggedIn {
+							NavigationLink(destination: AuthProfil_V()) {
+								VStack(alignment: .leading, spacing: 2) {
+									Text("Szczegóły konta")
+										.foregroundStyle(Color.green)
+										.font(.headline)
+									Text(auth.userEmail)
+										.font(.caption)
+										.foregroundStyle(.secondary)
+								}
+							}
+						} else {
+							NavigationLink(destination: Logowanie_V()) {
+								Text("Zarejestruj się / Zaloguj się")
+									.foregroundStyle(Color.green)
+									.font(.headline)
+							}
+						}
+					}
+
+				if auth.isLoggedIn {
+					Section( // MARK: Kod aktywacyjny
+						header: Label("Kod aktywacyjny", systemImage: "ticket")
+							.font(.headline)
+							.foregroundStyle(Color.secondary),
+						footer: Text("Wpisz kod otrzymany od twórcy aplikacji, aby odblokować Premium lub dodatkowe kategorie.").padding(.bottom, 30)) {
+							TextField("Wpisz kod", text: $kodAktywacyjny)
+								.textInputAutocapitalization(.characters)
+								.autocorrectionDisabled()
+							if let k = komunikatKodu {
+								Text(k)
+									.font(.caption)
+									.foregroundStyle(k.hasPrefix("✓") ? .green : .red)
+							}
+							Button {
+								Task { await aktywujKod() }
+							} label: {
+								if aktywujeKod {
+									ProgressView()
+								} else {
+									Text("Aktywuj")
+										.foregroundStyle(Color.accent)
+										.font(.headline)
+								}
+							}
+							.disabled(kodAktywacyjny.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || aktywujeKod)
+						}
+				}
+
+				Section( // MARK: Informacja zwrotna
+					header: Label("Opinia", systemImage: "bubble.left.and.text.bubble.right")
+						.font(.headline)
+						.foregroundStyle(Color.secondary),
+					footer: Text("Podziel się opinią, zgłoś błąd lub zaproponuj nową funkcję.").padding(.bottom, 30)) {
+						Button {
+							pokazFeedback = true
+						} label: {
+							Text("Prześlij opinię o aplikacji")
+								.foregroundStyle(Color.accent)
+								.font(.headline)
+						}
+					}
+
 				Section( // MARK: Reset składników
-					header: Label("Reset!!!", systemImage: opcjonalneWymagane ? "exclamationmark.square.fill" : "exclamationmark.square.fill")
+					header: Label("Reset!!!", systemImage: "exclamationmark.square.fill")
 						.font(.headline)
 						.foregroundStyle(Color.red),
 					footer: Text("Resetuje stan wszystkich składników! \nOpcja przydatna gdy chcesz od nowa wprowadzić składniki do programu.").padding(.bottom, 30)) {
 						Button {
-							resetAll()
-								//						drinkiClass.setWszystkieBraki()
+							pokazPotwierdzenie = true
 						} label: {
 							Text("Resetuj składniki")
 								.foregroundStyle(Color.red)
 								.font(.headline)
 						}
-					}
-				
-				Section( // MARK: Konto
-					header: Label("Konto", systemImage: opcjonalneWymagane ? "person.crop.circle.fill" : "person.crop.circle")
-						.font(.headline)
-						.foregroundStyle(Color.green),
-					footer: Text("Zaloguj się by mieć dostęp do większej ilości przepisów.").padding(.bottom, 30)) {
-						Button {
-							Logowanie_V()
-						} label: {
-							Text("Zarejestruj się")
-								.foregroundStyle(Color.green)
-								.font(.headline)
+						.confirmationDialog(
+							"Czy na pewno chcesz zresetować składniki?",
+							isPresented: $pokazPotwierdzenie,
+							titleVisibility: .visible
+						) {
+							Button("Resetuj", role: .destructive) { resetAll() }
+							Button("Anuluj", role: .cancel) {}
+						} message: {
+							Text("Wszystkie zaznaczone składniki zostaną odznaczone.")
 						}
 					}
 			}
 			.toggleStyle(iOSCheckboxToggleStyle())
 			.navigationTitle("Preferencje")
+			.sheet(isPresented: $pokazFeedback) {
+				AppFeedback_V()
+			}
 		}
+	}
+
+		// MARK: - AKTYWACJA KODU
+	private func aktywujKod() async {
+		aktywujeKod = true
+		komunikatKodu = nil
+		let wynik = await auth.redeemCode(kodAktywacyjny)
+		switch wynik {
+			case "ok":
+				komunikatKodu = "✓ Kod aktywowany."
+				kodAktywacyjny = ""
+				// Dociągnij drinki odblokowanej kategorii (idempotentne)
+				await loadFromSupabase(modelContext: modelContext)
+				await loadNotesFromSupabase(modelContext: modelContext)
+			case "invalid":       komunikatKodu = "Nieprawidłowy kod."
+			case "expired":       komunikatKodu = "Kod wygasł."
+			case "wrong_account": komunikatKodu = "Kod przypisany do innego konta."
+			case "already_used":  komunikatKodu = "Ten kod został już przez Ciebie użyty."
+			case "exhausted":     komunikatKodu = "Kod osiągnął limit użyć."
+			case "not_logged_in": komunikatKodu = "Musisz być zalogowany."
+			default:              komunikatKodu = "Błąd aktywacji. Spróbuj ponownie."
+		}
+		aktywujeKod = false
 	}
 
 		// MARK: - RESET ALL
 	private func resetAll() {
-//		print("Startuje resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
 		UserDefaults.standard.set(false, forKey: "setupDone")
-//		print("Zmiana wartości resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-			//							debugPobrane(miejsce: "Przed")
 		delAll()
-		loadSklCSV_VM(modelContext: modelContext)
-		loadSklZamiennikiCSV_VM(modelContext: modelContext)
-		loadDrCSV_VM(modelContext: modelContext)
-		loadDrSkladnikiCSV_VM(modelContext: modelContext)
-		loadDrAlkGlownyCSV_VM(modelContext: modelContext)
-		loadDrPrzepisyCSV_VM(modelContext: modelContext)
-		setAllBraki(modelContext: modelContext)
-		setAllDrinkKalorie(modelContext: modelContext)
-		setAllDrinkProcenty(modelContext: modelContext)
-		zmianaStanuSkladnikiAll(context: modelContext)
-		try? modelContext.save()
-			//							debugPobrane(miejsce: "Po")
-		UserDefaults.standard.set(true, forKey: "setupDone")
-//		print("Koniec resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+		Task {
+			await ImageCache.shared.clearAll()
+			await loadFromSupabase(modelContext: modelContext)
+			UserDefaults.standard.set(true, forKey: "setupDone")
+		}
 	}
 
 		// MARK: - DEL ALL

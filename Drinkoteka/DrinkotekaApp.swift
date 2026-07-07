@@ -5,17 +5,29 @@ import SwiftData
 struct DrinkotekaApp: App {
 
 	@AppStorage("blokujEkran") var blokujEkran: Bool = false
+	@AppStorage("jezykAplikacji") var jezykAplikacji: String = {
+		let kod = Locale.current.language.languageCode?.identifier ?? "en"
+		return kod == "pl" ? "pl" : "en"
+	}()
+
+    init() {
+        // URLCache: 50 MB RAM, 200 MB dysk
+        URLCache.shared = URLCache(
+            memoryCapacity: 50 * 1024 * 1024,
+            diskCapacity:  200 * 1024 * 1024
+        )
+    }
 
     var body: some Scene {
 		 
         WindowGroup {
 			  CustomTab_V()
+				  .id(jezykAplikacji)
+				  .environment(\.locale, Locale(identifier: jezykAplikacji))
 				  .onAppear {
-						  // Disable the idle timer when the view appears
 					  UIApplication.shared.isIdleTimerDisabled = blokujEkran
 				  }
 				  .onDisappear {
-						  // Re-enable the idle timer when the view disappears
 					  UIApplication.shared.isIdleTimerDisabled = blokujEkran
 				  }
         }

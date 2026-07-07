@@ -10,8 +10,9 @@ struct DrinkWWW_V: View {
 					
 						// MARK: Nagłówek
 					HStack(alignment: .firstTextBaseline) {
-						Text("Strona WWW:".uppercased())
+						Text("Strona WWW:")
 							.TitleStyle()
+							.textCase(.uppercase)
 						Spacer()
 					}
 					

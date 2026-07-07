@@ -130,7 +130,12 @@ class Dr_M: Identifiable {
 		self.drPolecany = drPolecany
 	}
 	
-		// MARK: - GET COLOR
+		// MARK: - CZY IBA (darmowy dostęp)
+	var czyIBA: Bool {
+		drZrodlo.hasPrefix("IBA")
+	}
+
+	// MARK: - GET COLOR
 	func getKolor() -> Color {
 		return strToColor(self.drKolor)
 	}

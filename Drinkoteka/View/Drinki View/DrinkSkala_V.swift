@@ -42,7 +42,7 @@ struct DrinkSkala_V: View {
 //				Spacer()
 
 				if etykieta {
-					Text("\(drink.drSlodycz.rawValue)".uppercased())
+					Text(LocalizedStringKey(drink.drSlodycz.opis)).textCase(.uppercase)
 						.font(.caption2)
 						.padding(.top, 8)
 				}

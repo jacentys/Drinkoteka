@@ -12,8 +12,9 @@ struct DrinkPrzepis_V: View {
 				
 					// MARK: Nagłówek
 				HStack(alignment: .firstTextBaseline) {
-					Text("Przepis:".uppercased())
+					Text("Przepis:")
 						.TitleStyle()
+						.textCase(.uppercase)
 					
 					Spacer()
 					
@@ -34,16 +35,19 @@ struct DrinkPrzepis_V: View {
 							.font(.headline)
 						
 							// MARK: OPIS
-						HStack(spacing: 0) {
+						if edycjaOn {
 							TextEditor(text: $skladniczek.przepOpis)
 								.fontWeight(.light)
 								.scrollContentBackground(.hidden)
 								.multilineTextAlignment(.leading)
 								.foregroundStyle(Color.primary)
-								.disabled(!edycjaOn)
-								.padding(.trailing, edycjaOn ? 0 : -6)
-								.padding(.vertical, edycjaOn ? 0 : -6)
-								.background(Color.primary.opacity(edycjaOn ? 0.2 : 0))
+								.background(Color.primary.opacity(0.2))
+						} else {
+							Text(przepisLinia.przepOpis)
+								.fontWeight(.light)
+								.multilineTextAlignment(.leading)
+								.foregroundStyle(Color.primary)
+								.fixedSize(horizontal: false, vertical: true)
 						}
 						Spacer()
 					}

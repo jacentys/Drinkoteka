@@ -7,8 +7,7 @@ struct DrinkBack_V: View {
 		ZStack {
 			Back_V(kolor: drink.getKolor())
 				.font(.largeTitle)
-			Image(drink.drFoto) // MARK: FOTA Z MASKĄ NA TŁO
-				.resizable()
+			DrinkotekaImage_V(nazwa: drink.drFoto, fallback: drink.drSzklo.foto) // MARK: FOTA Z MASKĄ NA TŁO
 				.scaledToFit()
 				.clipped()
 			

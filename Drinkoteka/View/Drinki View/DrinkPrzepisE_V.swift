@@ -13,8 +13,9 @@ struct DrinkPrzepis_V: View {
 		ZStack {
 			VStack(alignment: .leading) {
 				HStack {
-					Text("Przepis:".uppercased())
+					Text("Przepis:")
 						.TitleStyle()
+						.textCase(.uppercase)
 					
 					Spacer()
 					

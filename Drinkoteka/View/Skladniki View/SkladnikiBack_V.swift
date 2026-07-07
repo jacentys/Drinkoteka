@@ -7,8 +7,7 @@ struct SkladnikiBack_V: View {
 		ZStack {
 			Back_V(kolor: skladnik.getKolor())
 				.font(.largeTitle)
-			Image(skladnik.sklFoto) // MARK: FOTA Z MASKĄ NA TŁO
-				.resizable()
+			DrinkotekaImage_V(nazwa: skladnik.sklFoto) // MARK: FOTA Z MASKĄ NA TŁO
 				.scaledToFit()
 				.clipped()
 			

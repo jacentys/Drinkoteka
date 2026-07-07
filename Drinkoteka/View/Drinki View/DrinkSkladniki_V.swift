@@ -10,8 +10,9 @@ struct DrinkSkladniki_V: View {
 				
 					// MARK: Nagłówek
 				HStack(alignment: .firstTextBaseline) {
-					Text("Skład:".uppercased())
+					Text("Skład:")
 						.TitleStyle()
+						.textCase(.uppercase)
 					Spacer()
 				}
 				

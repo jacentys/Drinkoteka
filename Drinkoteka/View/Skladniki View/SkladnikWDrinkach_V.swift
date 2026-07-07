@@ -19,8 +19,9 @@ struct SkladnikWDrinkach_V: View {
 				VStack(alignment: .leading) {
 					
 					HStack(alignment: .firstTextBaseline) {
-						Text("Składnik drinków:".uppercased())
+						Text("Składnik drinków:")
 							.TitleStyle()
+							.textCase(.uppercase)
 						Spacer()
 					}
 					ForEach(skladnikiWDrinku) { drink in

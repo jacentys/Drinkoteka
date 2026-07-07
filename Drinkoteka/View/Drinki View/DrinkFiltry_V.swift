@@ -1,3 +1,4 @@
+import SwiftData
 import SwiftUI
 
 struct DrinkFiltry_V: View {
@@ -8,11 +9,9 @@ struct DrinkFiltry_V: View {
 	}
 
 	@Environment(\.dismiss) var dismiss
+	@Environment(\.modelContext) private var modelContext
 
 	@AppStorage("zalogowany") var zalogowany: Bool?
-
-	@AppStorage("sortowEnum") var sortowEnum: sortEnum?
-	@AppStorage("sortowRosn") var sortowRosn: Bool = true
 
 	@AppStorage("filtrAlkGlownyRum") var filtrAlkGlownyRum: Bool = true
 	@AppStorage("filtrAlkGlownyWhiskey") var filtrAlkGlownyWhiskey: Bool = true
@@ -41,6 +40,14 @@ struct DrinkFiltry_V: View {
 	@State var rodzajBledu: blad = blad.alkGlowny
 	@State var pokazBlad: Bool = false
 
+	@State private var infoDostepne: Bool = false
+	@State private var infoUlubione: Bool = false
+	@State private var infoZamienniki: Bool = false
+	@State private var infoOpcjonalne: Bool = false
+	@State private var infoAlkGlowny: Bool = false
+	@State private var infoSlodkosc: Bool = false
+	@State private var infoMoc: Bool = false
+
 	@State var toggleAlkGlowny: Bool = true
 	@State var toggleSlodkosc: Bool = true
 	@State var toggleMoc: Bool = true
@@ -57,37 +64,102 @@ struct DrinkFiltry_V: View {
 		NavigationStack {
 			ScrollView {
 				VStack {
-						// MARK: - SORTOWANIE
-					GroupBox(label: Label("Sortowanie", systemImage: "line.3.horizontal.decrease")
-						.foregroundColor(.accent)
-						.font(.headline)
-						.fontWeight(.light))
-					{
+						// MARK: - DOSTĘPNE
+					GroupBox(label: HStack {
+						Label("Dostępne", systemImage: tylkoDostepne ? "checkmark.circle.fill" : "checkmark.circle")
+							.foregroundColor(tylkoDostepne ? .accent : .secondary)
+							.font(.headline).fontWeight(.light)
+						Spacer()
+						Button { infoDostepne = true } label: {
+							Image(systemName: "info.circle").foregroundStyle(.secondary)
+						}
+						.popover(isPresented: $infoDostepne) {
+							Text("Pokazuj tylko drinki które mogą zostać przyrządzone z posiadanych składników.")
+								.font(.footnote).frame(width: 260, alignment: .leading).padding().presentationCompactAdaptation(.popover)
+						}
+					}) {
 						VStack(spacing: 6) {
-							HStack {
-								Picker("Sortuj wg.", selection: $sortowEnum) {
-									Text("Nazwa").tag(sortEnum.nazwa)
-									Text("Słodkość").tag(sortEnum.slodycz)
-									Text("Moc").tag(sortEnum.procenty)
-									Text("Ilość Kalorii").tag(sortEnum.kcal)
-									Text("Skład").tag(sortEnum.sklad)
-								}
-									//							.onChange(of: pref.sortowEnum) { oldValue, newValue in
-									//								drClass.sortujDrinki()
-
-								Button {
-									sortowRosn.toggle()
-								} label: {
-									Image(systemName: sortowRosn ? "chevron.up" : "chevron.down")
-										.foregroundStyle(Color.accent)
-								}
+							Toggle(isOn: $tylkoDostepne) {
+								Text("Tylko z dost. składn.")
 							}
-							Divider()
-							Text("Sortuj wg. nazwy, słodkości, zawartości alkoholu, kalorii lub ilości składników dostępnych do zrobienia drinka.\nKliknij na strzałkę aby zmienić kierunek sortowania")
-								.padding(.top, 8)
-								.foregroundStyle(.secondary)
-								.font(.footnote)
-								.multilineTextAlignment(.center)
+						}
+						.padding(.horizontal, paddingHoriz)
+						.padding(.vertical, paddingVert)
+					}
+					.backgroundStyle(.regularMaterial)
+
+						// MARK: - ULUBIONE
+					GroupBox(label: HStack {
+						Label("Ulubione", systemImage: tylkoUlubione ? "star.circle.fill" : "star.circle")
+							.foregroundColor(tylkoUlubione ? .accent : .secondary)
+							.font(.headline).fontWeight(.light)
+						Spacer()
+						Button { infoUlubione = true } label: {
+							Image(systemName: "info.circle").foregroundStyle(.secondary)
+						}
+						.popover(isPresented: $infoUlubione) {
+							Text("Pokazuj tylko drinki zaznaczone gwiazdką jako ulubione.")
+								.font(.footnote).frame(width: 260, alignment: .leading).padding().presentationCompactAdaptation(.popover)
+						}
+					}) {
+						VStack(spacing: 6) {
+							Toggle(isOn: $tylkoUlubione) {
+								Text("Tylko ulubione")
+							}
+						}
+						.padding(.horizontal, paddingHoriz)
+						.padding(.vertical, paddingVert)
+					}
+					.backgroundStyle(.regularMaterial)
+
+						// MARK: - ZAMIENNIKI
+					GroupBox(label: HStack {
+						Label("Zamienniki", systemImage: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
+							.foregroundColor(zamiennikiDozwolone ? .accent : .secondary)
+							.font(.headline).fontWeight(.light)
+						Spacer()
+						Button { infoZamienniki = true } label: {
+							Image(systemName: "info.circle").foregroundStyle(.secondary)
+						}
+						.popover(isPresented: $infoZamienniki) {
+							Text("Jeśli zaznaczono, przy sprawdzaniu dostępności składników brane są pod uwagę zamienniki. Zwiększa to ilość możliwych do zrobienia drinków. Trzeba liczyć się z delikatną zmianą smaku w stosunku do oryginału.")
+								.font(.footnote).frame(width: 260, alignment: .leading).padding().presentationCompactAdaptation(.popover)
+						}
+					}) {
+						VStack(spacing: 6) {
+							Toggle(isOn: $zamiennikiDozwolone) {
+								Text("Dopuszczaj zamienniki")
+							}
+							.onChange(of: zamiennikiDozwolone) { _, _ in
+								setAllBraki(modelContext: modelContext)
+							}
+						}
+						.padding(.horizontal, paddingHoriz)
+						.padding(.vertical, paddingVert)
+					}
+					.backgroundStyle(.regularMaterial)
+
+						// MARK: - OPCJONALNE
+					GroupBox(label: HStack {
+						Label("Opcjonalne", systemImage: opcjonalneWymagane ? "list.bullet.circle.fill" : "list.bullet.circle")
+							.foregroundColor(opcjonalneWymagane ? .accent : .secondary)
+							.font(.headline).fontWeight(.light)
+						Spacer()
+						Button { infoOpcjonalne = true } label: {
+							Image(systemName: "info.circle").foregroundStyle(.secondary)
+						}
+						.popover(isPresented: $infoOpcjonalne) {
+							Text("Przy sprawdzaniu składników drinka bierz pod uwagę składniki opcjonalne. Składniki te często używane są do przyozdabiania drinków lub wzbogacania smaku.")
+								.font(.footnote).frame(width: 260, alignment: .leading).padding().presentationCompactAdaptation(.popover)
+						}
+					}) {
+						VStack(spacing: 6) {
+							Toggle(isOn: $opcjonalneWymagane) {
+								Text("Skł. opcjonalne wymagane")
+							}
+							.onChange(of: opcjonalneWymagane) { _, _ in
+								setAllBraki(modelContext: modelContext)
+							}
 						}
 						.padding(.horizontal, paddingHoriz)
 						.padding(.vertical, paddingVert)
@@ -95,10 +167,18 @@ struct DrinkFiltry_V: View {
 					.backgroundStyle(.regularMaterial)
 
 						// MARK: - ALKOHOL GŁÓWNY
-					GroupBox(label: Label("Alkohol główny", systemImage: "bubbles.and.sparkles.fill")
-						.foregroundColor(.accent)
-						.font(.headline)
-						.fontWeight(.light))
+					GroupBox(label: HStack {
+						Label("Alkohol główny", systemImage: "bubbles.and.sparkles.fill")
+							.foregroundColor(.accent).font(.headline).fontWeight(.light)
+						Spacer()
+						Button { infoAlkGlowny = true } label: {
+							Image(systemName: "info.circle").foregroundStyle(.secondary)
+						}
+						.popover(isPresented: $infoAlkGlowny) {
+							Text("Wybierz alkohol, który ma być głównym składnikiem drinków.")
+								.font(.footnote).frame(width: 260, alignment: .leading).padding().presentationCompactAdaptation(.popover)
+						}
+					})
 					{
 						VStack(spacing: 6) {
 							HStack {
@@ -153,25 +233,26 @@ struct DrinkFiltry_V: View {
 							}
 							.onChange(of: filtrAlkGlownyInny) { _, _ in SprawdzCzyJestJeden() }
 
-							Divider()
+												}
+					.padding(.horizontal, paddingHoriz)
+					.padding(.vertical, paddingVert)
+				}
+				.toggleStyle(iOSCheckboxToggleStyle())
+				.backgroundStyle(.regularMaterial)
 
-							Text("Wybierz alkohol, który ma być głównym składnikiem drinków")
-								.padding(.top, 8)
-								.foregroundStyle(.secondary)
-								.font(.footnote)
-								.multilineTextAlignment(.center)
+					// MARK: - SŁODKOŚĆ
+					GroupBox(label: HStack {
+						Label("Słodkość drinka", systemImage: "drop.degreesign.fill")
+							.foregroundColor(.accent).font(.headline).fontWeight(.light)
+						Spacer()
+						Button { infoSlodkosc = true } label: {
+							Image(systemName: "info.circle").foregroundStyle(.secondary)
 						}
-						.padding(.horizontal, paddingHoriz)
-						.padding(.vertical, paddingVert)
-					}
-					.toggleStyle(iOSCheckboxToggleStyle())
-					.backgroundStyle(.regularMaterial)
-
-						// MARK: - SŁODKOŚĆ
-					GroupBox(label: Label("Słodkość drinka", systemImage: "drop.degreesign.fill")
-						.foregroundColor(.accent)
-						.font(.headline)
-						.fontWeight(.light))
+						.popover(isPresented: $infoSlodkosc) {
+							Text("Wybierz poziom słodkości drinka.")
+								.font(.footnote).frame(width: 260, alignment: .leading).padding().presentationCompactAdaptation(.popover)
+						}
+					})
 					{
 						VStack(spacing: 6) {
 							HStack {
@@ -186,44 +267,45 @@ struct DrinkFiltry_V: View {
 							}
 
 							Toggle(isOn: $filtrSlodkoscNieSlodki) {
-								Text(drSlodyczEnum.nieSlodki.rawValue)
+								Text(LocalizedStringKey(drSlodyczEnum.nieSlodki.opis))
 							}
 							.onChange(of: filtrSlodkoscNieSlodki) { _, _ in SprawdzCzyJestJeden() }
 
 							Toggle(isOn: $filtrSlodkoscLekkoSlodki) {
-								Text(drSlodyczEnum.lekkoSlodki.rawValue)
+								Text(LocalizedStringKey(drSlodyczEnum.lekkoSlodki.opis))
 							}
 							.onChange(of: filtrSlodkoscLekkoSlodki) { _, _ in SprawdzCzyJestJeden() }
 
 							Toggle(isOn: $filtrSlodkoscSlodki) {
-								Text(drSlodyczEnum.slodki.rawValue)
+								Text(LocalizedStringKey(drSlodyczEnum.slodki.opis))
 							}
 							.onChange(of: filtrSlodkoscSlodki) { _, _ in SprawdzCzyJestJeden() }
 
 							Toggle(isOn: $filtrSlodkoscBardzoSlodki) {
-								Text(drSlodyczEnum.bardzoSlodki.rawValue)
+								Text(LocalizedStringKey(drSlodyczEnum.bardzoSlodki.opis))
 							}
 							.onChange(of: filtrSlodkoscBardzoSlodki) { _, _ in SprawdzCzyJestJeden() }
 
-							Divider()
+												}
+					.padding(.horizontal, paddingHoriz)
+					.padding(.vertical, paddingVert)
+				}
+				.toggleStyle(iOSCheckboxToggleStyle())
+				.backgroundStyle(.regularMaterial)
 
-							Text("Wybierz poziom słodkości drinka")
-								.padding(.top, 8)
-								.foregroundStyle(.secondary)
-								.font(.footnote)
-								.multilineTextAlignment(.center)
+					// MARK: - MOC
+					GroupBox(label: HStack {
+						Label("Moc drinka", systemImage: "bolt.fill")
+							.foregroundColor(.accent).font(.headline).fontWeight(.light)
+						Spacer()
+						Button { infoMoc = true } label: {
+							Image(systemName: "info.circle").foregroundStyle(.secondary)
 						}
-						.padding(.horizontal, paddingHoriz)
-						.padding(.vertical, paddingVert)
-					}
-					.toggleStyle(iOSCheckboxToggleStyle())
-					.backgroundStyle(.regularMaterial)
-
-						// MARK: - MOC
-					GroupBox(label: Label("Moc drinka", systemImage: "bolt.fill")
-						.foregroundColor(.accent)
-						.font(.headline)
-						.fontWeight(.light))
+						.popover(isPresented: $infoMoc) {
+							Text("Wybierz poziom zawartości alkoholu w drinku.")
+								.font(.footnote).frame(width: 260, alignment: .leading).padding().presentationCompactAdaptation(.popover)
+						}
+					})
 					{
 						VStack(spacing: 6) {
 							HStack {
@@ -258,16 +340,9 @@ struct DrinkFiltry_V: View {
 							}
 							.onChange(of: filtrMocMocny) { _, _ in SprawdzCzyJestJeden() }
 
-							Divider()
-
-							Text("Wybierz poziom zawartości alkoholu w drinku")
-								.padding(.top, 8)
-								.foregroundStyle(.secondary)
-								.font(.footnote)
-								.multilineTextAlignment(.center)
-						}
-						.padding(.horizontal, paddingHoriz)
-						.padding(.vertical, paddingVert)
+												}
+					.padding(.horizontal, paddingHoriz)
+					.padding(.vertical, paddingVert)
 					}
 					.toggleStyle(iOSCheckboxToggleStyle()) // Moc
 				}

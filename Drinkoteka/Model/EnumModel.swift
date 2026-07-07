@@ -20,7 +20,6 @@ enum sklKatEnum: String, CaseIterable, Codable, Identifiable {
 			case .przyprawy: return "Przyprawy"
 			case .owoce: return "Owoce"
 			case .inne: return "Inne"
-
 		}
 	}
 }
@@ -144,18 +143,36 @@ enum drMocEnum: String, CaseIterable, Codable {
 
 // MARK: DR KAT
 enum drKatEnum: String, CaseIterable, Codable {
-	case koktail = "Koktail"
-	case shot = "Shot"
-	case brakDanych = "Brak Danych"
+	case koktail
+	case shot
+	case brakDanych
+
+	var opis: String {
+		switch self {
+			case .koktail: return "Koktail"
+			case .shot: return "Shot"
+			case .brakDanych: return "Brak Danych"
+		}
+	}
 }
 
 // MARK: DR SLODYCZ
 enum drSlodyczEnum: String, CaseIterable, Codable  {
-	case nieSlodki = "Nie Słodki"
-	case lekkoSlodki = "Lekko Słodki"
-	case slodki = "Słodki"
-	case bardzoSlodki = "Bardzo Słodki"
-	case brakDanych = "Brak Danych"
+	case nieSlodki
+	case lekkoSlodki
+	case slodki
+	case bardzoSlodki
+	case brakDanych
+
+	var opis: String {
+		switch self {
+			case .nieSlodki: return "Nie Słodki"
+			case .lekkoSlodki: return "Lekko Słodki"
+			case .slodki: return "Słodki"
+			case .bardzoSlodki: return "Bardzo Słodki"
+			case .brakDanych: return "Brak Danych"
+		}
+	}
 
 	var sort: Int {
 		switch self {
@@ -199,7 +216,7 @@ enum szkloEnum: String, CaseIterable, Codable {
 			default: return "Brak danyh"
 		}
 	}
-	
+
 	var foto: String {
 		switch self {
 			case .collins: return "szkloCollins"
@@ -213,7 +230,7 @@ enum szkloEnum: String, CaseIterable, Codable {
 			default: return "szkloBlackglass"
 		}
 	}
-	
+
 	var obj: Int {
 		switch self {
 			case .collins: return 350
@@ -305,7 +322,7 @@ enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 			case .inny: return "Inne"
 		}
 	}
-	
+
 	var opisPL: String {
 		switch self {
 			case .whiskey: return "Whiskey"
@@ -318,7 +335,7 @@ enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 			case .inny: return "Inne"
 		}
 	}
-	
+
 	var foto: String {
 		switch self {
 			case .whiskey: return "whiskey"
@@ -331,4 +348,5 @@ enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 			case .inny: return "inne"
 		}
 	}
+
 }

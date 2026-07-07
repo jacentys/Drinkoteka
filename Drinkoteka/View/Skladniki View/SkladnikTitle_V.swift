@@ -25,7 +25,7 @@ struct SkladnikTitle_V: View {
 				Divider().padding(4)
 				
 				HStack {
-					viewKategoria(kat: skladnik.sklKat.rawValue)
+					viewKategoria(kat: skladnik.sklKat.opis)
 					viewProcenty(proc: skladnik.sklProc)
 					viewKalorie(kal: skladnik.sklKal)
 //					viewMiara(miara: skladnik.sklMiara)

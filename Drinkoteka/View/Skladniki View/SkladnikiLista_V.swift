@@ -68,9 +68,12 @@ struct SkladnikiLista_V: View {
 									}
 								} header: {
 									HStack(alignment: .firstTextBaseline, spacing: 0) {
-										Text("\(kategoria.rawValue) ".uppercased())
+										Text(LocalizedStringKey(kategoria.opis))
+											.textCase(.uppercase)
 											.font(.title2)
-										Text("\(macierz.count) skł.")
+										Text(" \(macierz.count) ")
+											.font(.title2)
+										Text("skł.")
 											.font(.footnote)
 										Spacer()
 									}
@@ -98,38 +101,25 @@ struct SkladnikiLista_V: View {
 			.toolbar {
 					// MARK: - TOOLBAR
 				ToolbarItem(placement: .navigationBarLeading) {
-					HStack{
-							// Przycisk zamienników
-						Button {
-							zamiennikiDozwolone.toggle()
-							setAllBraki(modelContext: modelContext)
-						} label: {
+					Button {
+						zamiennikiDozwolone.toggle()
+						setAllBraki(modelContext: modelContext)
+					} label: {
+						HStack(spacing: 4) {
 							Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
-								.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
+							Text("Dopuszczaj zamienniki")
+								.font(.footnote)
 						}
-						
-							// Przycisk resetu
-						Button {
-							wylaczWszystkieSkladniki(context: modelContext)
-						} label: {
-							Image(systemName: "checkmark.circle")
-								.foregroundStyle(Color.secondary)
-						}
-						
+						.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
 					}
 				}
 				ToolbarItem(placement: .navigationBarTrailing) {
-					HStack{
-							// Przycisk sortowania
-						HStack(spacing: 0) {
-							Button { /// Przycisk filtra
-								sortowanieAlfabetyczne.toggle()
-							} label: {
-								Image(systemName: sortowanieAlfabetyczne ? "characters.uppercase" : "square.3.layers.3d")
-									.font(.headline)
-							}
-						}
+					Picker("", selection: $sortowanieAlfabetyczne) {
+						Image(systemName: "textformat.abc").tag(true)
+						Image(systemName: "square.3.layers.3d").tag(false)
 					}
+					.pickerStyle(.segmented)
+					.frame(width: 90)
 				}
 			}
 			.toolbarBackgroundVisibility(.visible)
