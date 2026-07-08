@@ -53,13 +53,15 @@ func loadFromSupabase(modelContext: ModelContext) async {
 // oraz ulubione. Notatki wracają z loadNotesFromSupabase.
 
 func zmienJezykDanych(modelContext: ModelContext) async {
-    // Zachowaj stan użytkownika
-    let (stany, ulubione): ([String: sklStanEnum], [String: Bool]) = await MainActor.run {
+    // Zachowaj stan użytkownika + snapshot własnej treści (nie ma jej na serwerze)
+    let (stany, ulubione, wlasneSkl, wlasneDr) = await MainActor.run {
         let skl = (try? modelContext.fetch(FetchDescriptor<Skl_M>())) ?? []
         let dr  = (try? modelContext.fetch(FetchDescriptor<Dr_M>())) ?? []
+        let snap = snapshotWlasnejTresci(modelContext)
         return (
             Dictionary(uniqueKeysWithValues: skl.map { ($0.sklID, $0.sklStan) }),
-            Dictionary(uniqueKeysWithValues: dr.map { ($0.drinkID, $0.drUlubiony) })
+            Dictionary(uniqueKeysWithValues: dr.map { ($0.drinkID, $0.drUlubiony) }),
+            snap.0, snap.1
         )
     }
 
@@ -73,7 +75,7 @@ func zmienJezykDanych(modelContext: ModelContext) async {
     // Załaduj ponownie w bieżącym języku (czytany z UserDefaults)
     await loadFromSupabase(modelContext: modelContext)
 
-    // Przywróć stan użytkownika
+    // Przywróć stan użytkownika + własną treść (z zachowaniem stanu barku)
     await MainActor.run {
         let skl = (try? modelContext.fetch(FetchDescriptor<Skl_M>())) ?? []
         for s in skl { if let st = stany[s.sklID] { s.sklStan = st } }
@@ -83,7 +85,118 @@ func zmienJezykDanych(modelContext: ModelContext) async {
             d.setBrakiDrinka()
         }
         try? modelContext.save()
+        przywrocWlasnaTresc(wlasneSkl, wlasneDr, resetujStan: false, ctx: modelContext)
     }
+}
+
+// MARK: - Zachowanie własnej treści (drinki i składniki użytkownika)
+//
+// Własne drinki (drZrodlo == "Własny") i składniki (sklWlasny) nie istnieją na
+// serwerze, więc reload z Supabase by je usunął. Robimy więc ich snapshot do
+// struktur wartościowych przed czyszczeniem bazy i odtwarzamy po reloadzie.
+
+struct SnapSkl {
+    let sklID, sklNazwa, sklKolor, sklFoto, sklOpis, sklWWW: String
+    let sklKat: sklKatEnum
+    let sklProc, sklKal: Int
+    let sklMiara: miaraEnum
+    let sklStan: sklStanEnum
+}
+struct SnapPoz {
+    let sklID: String
+    let sklNo: Int
+    let sklIlosc: Double
+    let sklMiara: miaraEnum
+    let sklInfo: String
+    let sklOpcja: Bool
+}
+struct SnapKrok { let przepNo: Int; let przepOpis: String; let przepOpcja: Bool }
+struct SnapDrink {
+    let drinkID, drNazwa, drZrodlo, drKolor, drFoto, drNotatka, drUwagi, drWWW: String
+    let drKat: drKatEnum
+    let drSlodycz: drSlodyczEnum
+    let drSzklo: szkloEnum
+    let drMoc: drMocEnum
+    let drProc, drKal: Int
+    let drUlubiony, drPolecany: Bool
+    let drAlkGlowny: [alkGlownyEnum]
+    let pozycje: [SnapPoz]
+    let kroki: [SnapKrok]
+}
+
+// Zbiera własne składniki i drinki do struktur wartościowych. Wołać na MainActor.
+func snapshotWlasnejTresci(_ ctx: ModelContext) -> ([SnapSkl], [SnapDrink]) {
+    let skl = ((try? ctx.fetch(FetchDescriptor<Skl_M>())) ?? []).filter { $0.sklWlasny }
+    let snapSkl = skl.map {
+        SnapSkl(sklID: $0.sklID, sklNazwa: $0.sklNazwa, sklKolor: $0.sklKolor,
+                sklFoto: $0.sklFoto, sklOpis: $0.sklOpis, sklWWW: $0.sklWWW,
+                sklKat: $0.sklKat, sklProc: $0.sklProc, sklKal: $0.sklKal,
+                sklMiara: $0.sklMiara, sklStan: $0.sklStan)
+    }
+    let dr = ((try? ctx.fetch(FetchDescriptor<Dr_M>())) ?? []).filter { $0.drZrodlo == "Własny" }
+    let snapDr = dr.map { d in
+        SnapDrink(
+            drinkID: d.drinkID, drNazwa: d.drNazwa, drZrodlo: d.drZrodlo, drKolor: d.drKolor,
+            drFoto: d.drFoto, drNotatka: d.drNotatka, drUwagi: d.drUwagi, drWWW: d.drWWW,
+            drKat: d.drKat, drSlodycz: d.drSlodycz, drSzklo: d.drSzklo, drMoc: d.drMoc,
+            drProc: d.drProc, drKal: d.drKal, drUlubiony: d.drUlubiony, drPolecany: d.drPolecany,
+            drAlkGlowny: d.drAlkGlowny,
+            pozycje: d.drSklad.map {
+                SnapPoz(sklID: $0.skladnik.sklID, sklNo: $0.sklNo, sklIlosc: $0.sklIlosc,
+                        sklMiara: $0.sklMiara, sklInfo: $0.sklInfo, sklOpcja: $0.sklOpcja)
+            },
+            kroki: d.drPrzepis.map {
+                SnapKrok(przepNo: $0.przepNo, przepOpis: $0.przepOpis, przepOpcja: $0.przepOpcja)
+            }
+        )
+    }
+    return (snapSkl, snapDr)
+}
+
+// Odtwarza własne składniki i drinki, których nie ma po reloadzie. Wołać na MainActor.
+// resetujStan == true → własne składniki wracają ze stanem .brak (jak przy resecie barku).
+func przywrocWlasnaTresc(_ skl: [SnapSkl], _ dr: [SnapDrink], resetujStan: Bool, ctx: ModelContext) {
+    guard !skl.isEmpty || !dr.isEmpty else { return }
+
+    var mapa = Dictionary(uniqueKeysWithValues:
+        ((try? ctx.fetch(FetchDescriptor<Skl_M>())) ?? []).map { ($0.sklID, $0) })
+
+    // Odtwórz brakujące własne składniki
+    for s in skl where mapa[s.sklID] == nil {
+        let nowy = Skl_M(
+            sklID: s.sklID, sklNazwa: s.sklNazwa, sklKat: s.sklKat, sklProc: s.sklProc,
+            sklKolor: s.sklKolor, sklFoto: s.sklFoto, sklStan: resetujStan ? .brak : s.sklStan,
+            sklOpis: s.sklOpis, sklKal: s.sklKal, sklMiara: s.sklMiara, sklWWW: s.sklWWW
+        )
+        nowy.sklWlasny = true
+        ctx.insert(nowy)
+        mapa[s.sklID] = nowy
+    }
+
+    // Odtwórz brakujące własne drinki (z pozycjami i krokami)
+    let istniejaceDrinki = Set(((try? ctx.fetch(FetchDescriptor<Dr_M>())) ?? []).map { $0.drinkID })
+    for d in dr where !istniejaceDrinki.contains(d.drinkID) {
+        let drink = Dr_M(
+            drinkID: d.drinkID, drNazwa: d.drNazwa, drKat: d.drKat, drZrodlo: d.drZrodlo,
+            drKolor: d.drKolor, drFoto: d.drFoto, drProc: d.drProc, drSlodycz: d.drSlodycz,
+            drSzklo: d.drSzklo, drUlubiony: d.drUlubiony, drNotatka: d.drNotatka, drUwagi: d.drUwagi,
+            drWWW: d.drWWW, drKal: d.drKal, drMoc: d.drMoc, drBrakuje: 0, drAlkGlowny: d.drAlkGlowny,
+            drSklad: [], drPrzepis: [], drPolecany: d.drPolecany
+        )
+        ctx.insert(drink)
+        for p in d.pozycje {
+            guard let sklad = mapa[p.sklID] else { continue }
+            ctx.insert(DrSkladnik_M(relacjaDrink: drink, skladnik: sklad, sklNo: p.sklNo,
+                                    sklIlosc: p.sklIlosc, sklMiara: p.sklMiara,
+                                    sklInfo: p.sklInfo, sklOpcja: p.sklOpcja))
+        }
+        for k in d.kroki {
+            ctx.insert(DrPrzepis_M(relacjaDrink: drink, drinkID: d.drinkID, przepNo: k.przepNo,
+                                   przepOpis: k.przepOpis, przepOpcja: k.przepOpcja))
+        }
+        drink.setBrakiDrinka()
+    }
+    try? ctx.save()
 }
 
 // MARK: - Fetch z Supabase

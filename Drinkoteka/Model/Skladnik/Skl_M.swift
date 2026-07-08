@@ -18,6 +18,9 @@ class Skl_M: Identifiable, ObservableObject {
 	var sklKal: Int
 	var sklMiara: miaraEnum
 	var sklWWW: String
+	// Składnik utworzony przez użytkownika (nie pochodzi z serwera).
+	// Chroniony przed usunięciem przy reloadzie i zachowywany przy zmianie języka.
+	var sklWlasny: Bool = false
 	@Relationship(deleteRule: .cascade, inverse: \SklZamiennik_M.skladnikZ)
 	var relacjeZamiennikow: [SklZamiennik_M] = []
 

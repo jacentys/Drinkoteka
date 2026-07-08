@@ -437,6 +437,7 @@ struct NowySkladnik_V: View {
             sklMiara: miara,
             sklWWW:   ""
         )
+        skl.sklWlasny = true
         onUtworz(skl)
         dismiss()
     }

@@ -126,12 +126,19 @@ struct Preferencje_V: View {
 
 		// MARK: - RESET ALL
 	private func resetAll() {
-		UserDefaults.standard.set(false, forKey: "setupDone")
-		delAll()
 		Task {
+			// Zachowaj własne drinki/składniki (reset barku ich nie kasuje, tylko czyści stany)
+			let wlasne = await MainActor.run { snapshotWlasnejTresci(modelContext) }
+			await MainActor.run {
+				UserDefaults.standard.set(false, forKey: "setupDone")
+				delAll()
+			}
 			await ImageCache.shared.clearAll()
 			await loadFromSupabase(modelContext: modelContext)
-			UserDefaults.standard.set(true, forKey: "setupDone")
+			await MainActor.run {
+				przywrocWlasnaTresc(wlasne.0, wlasne.1, resetujStan: true, ctx: modelContext)
+				UserDefaults.standard.set(true, forKey: "setupDone")
+			}
 		}
 	}
 
