@@ -3053,6 +3053,16 @@
           }
         }
       }
+    },
+    "Ulubione:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites:"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

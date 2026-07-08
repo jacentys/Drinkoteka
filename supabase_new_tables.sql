@@ -406,3 +406,13 @@ create policy "Admins manage drink_translations" on drink_translations
 drop policy if exists "Admins manage drink_ingredient_translations" on drink_ingredient_translations;
 create policy "Admins manage drink_ingredient_translations" on drink_ingredient_translations
   for all using (public.is_admin()) with check (public.is_admin());
+
+
+-- ============================================================
+-- USUNIĘCIE POLA recommended (Polecane liczone losowo w aplikacji)
+-- ============================================================
+-- Sekcja "Polecane" na ekranie głównym losuje drinki codziennie po stronie
+-- klienta (stabilny hash + data dnia) zamiast korzystać z ręcznie ustawianej
+-- flagi. Kolumna nie jest już zapisywana ani odczytywana przez aplikację.
+
+alter table drinks drop column if exists recommended;

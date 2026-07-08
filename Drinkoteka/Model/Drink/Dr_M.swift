@@ -89,7 +89,6 @@ class Dr_M: Identifiable {
 	var drAlkGlowny: [alkGlownyEnum]
 	@Relationship(deleteRule: .cascade, inverse: \DrSkladnik_M.relacjaDrink) var drSklad: [DrSkladnik_M] = []
 	@Relationship(deleteRule: .cascade, inverse: \DrPrzepis_M.relacjaDrink) var drPrzepis: [DrPrzepis_M] = []
-	var drPolecany: Bool
 
 	init(
 		id: String = UUID().uuidString,
@@ -111,8 +110,7 @@ class Dr_M: Identifiable {
 		drBrakuje: Int,
 		drAlkGlowny: [alkGlownyEnum],
 		drSklad: [DrSkladnik_M],
-		drPrzepis: [DrPrzepis_M],
-		drPolecany: Bool
+		drPrzepis: [DrPrzepis_M]
 	) {
 		self.id = id
 		self.drinkID = drinkID
@@ -134,7 +132,6 @@ class Dr_M: Identifiable {
 		self.drAlkGlowny = drAlkGlowny
 		self.drSklad = drSklad
 		self.drPrzepis = drPrzepis
-		self.drPolecany = drPolecany
 	}
 	
 		// MARK: - CZY IBA (darmowy dostęp)

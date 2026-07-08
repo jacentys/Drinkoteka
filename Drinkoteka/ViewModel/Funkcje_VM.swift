@@ -737,3 +737,23 @@ func dprint(_ items: Any..., separator: String = " ", terminator: String = "\n")
     print(items.map { "\($0)" }.joined(separator: separator), terminator: terminator)
 #endif
 }
+
+// MARK: - Stabilny hash i data dnia (losowanie "Polecane" na Home)
+// String.hashValue jest losowany co uruchomienie procesu (ochrona przed atakami
+// hash-flooding), więc NIE nadaje się do stabilnego w ciągu dnia losowania.
+// FNV-1a jest deterministyczny — ten sam dzień zawsze daje tę samą kolejność.
+func stabilnyHash(_ tekst: String) -> UInt64 {
+	var hash: UInt64 = 0xcbf29ce484222325
+	for bajt in tekst.utf8 {
+		hash ^= UInt64(bajt)
+		hash = hash &* 0x100000001b3
+	}
+	return hash
+}
+
+func dzisiejszaDataString() -> String {
+	let formatter = DateFormatter()
+	formatter.dateFormat = "yyyy-MM-dd"
+	formatter.timeZone = .current
+	return formatter.string(from: Date())
+}

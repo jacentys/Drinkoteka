@@ -146,7 +146,6 @@ private struct DrinkPolaPushDTO: Encodable {
     let glass: String
     let remarks: String
     let url: String
-    let recommended: Bool
     let alcohol_pct: Int
     let calories: Int
 }
@@ -164,7 +163,7 @@ func pushPolaAdmin(drink: Dr_M) async -> Bool {
         (drink.drinkID, DrinkPolaPushDTO(
             name: drink.drNazwa, category: drink.drKat.rawValue, sweetness: drink.drSlodycz.rawValue,
             glass: drink.drSzklo.rawValue, remarks: drink.drUwagi, url: drink.drWWW,
-            recommended: drink.drPolecany, alcohol_pct: drink.drProc, calories: drink.drKal))
+            alcohol_pct: drink.drProc, calories: drink.drKal))
     }
     do {
         if lang == "pl" {
@@ -172,10 +171,10 @@ func pushPolaAdmin(drink: Dr_M) async -> Bool {
         } else {
             let tr = DrinkTrPushDTO(drink_id: drinkID, lang: lang, name: dto.name, remarks: dto.remarks)
             try await supabase.from("drink_translations").upsert(tr, onConflict: "drink_id,lang").execute()
-            // Moc/kalorie/kategoria/słodycz/szkło/polecany/url są językowo-niezależne — zawsze do PL
+            // Moc/kalorie/kategoria/słodycz/szkło/url są językowo-niezależne — zawsze do PL
             try await supabase.from("drinks").update(
                 DrinkPolaJezykNiezalezneDTO(category: dto.category, sweetness: dto.sweetness, glass: dto.glass,
-                                            url: dto.url, recommended: dto.recommended,
+                                            url: dto.url,
                                             alcohol_pct: dto.alcohol_pct, calories: dto.calories)
             ).eq("id", value: drinkID).execute()
         }
@@ -190,7 +189,6 @@ private struct DrinkPolaJezykNiezalezneDTO: Encodable {
     let sweetness: String
     let glass: String
     let url: String
-    let recommended: Bool
     let alcohol_pct: Int
     let calories: Int
 }
@@ -277,7 +275,6 @@ private struct DrinkInsertDTO: Encodable {
     let remarks: String
     let url: String
     let calories: Int
-    let recommended: Bool
 }
 
 @discardableResult
@@ -287,7 +284,7 @@ func pushNowyDrinkDoKatalogu(drink: Dr_M) async -> Bool {
             id: drink.drinkID, name: drink.drNazwa, category: drink.drKat.rawValue,
             source: drink.drZrodlo, alcohol_pct: drink.drProc, sweetness: drink.drSlodycz.rawValue,
             glass: drink.drSzklo.rawValue, remarks: drink.drUwagi, url: drink.drWWW,
-            calories: drink.drKal, recommended: drink.drPolecany)
+            calories: drink.drKal)
     }
     do {
         try await supabase.from("drinks").insert(dto).execute()

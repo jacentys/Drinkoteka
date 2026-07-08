@@ -279,8 +279,7 @@ struct DrinkDodaj_V: View {
             drBrakuje:  0,
             drAlkGlowny: [],
             drSklad:    [],
-            drPrzepis:  [],
-            drPolecany: false
+            drPrzepis:  []
         )
         modelContext.insert(drink)
 

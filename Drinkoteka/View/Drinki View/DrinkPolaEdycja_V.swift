@@ -13,7 +13,6 @@ struct DrinkPolaEdycja_V: View {
     @State private var szklo: szkloEnum = .koktailowy
     @State private var uwagi: String = ""
     @State private var www: String = ""
-    @State private var polecany: Bool = false
     @State private var zapisuje: Bool = false
 
     var body: some View {
@@ -37,7 +36,6 @@ struct DrinkPolaEdycja_V: View {
                             Text($0.opis).tag($0)
                         }
                     }
-                    Toggle("Polecany na stronie głównej", isOn: $polecany)
                 }
 
                 Section(
@@ -74,7 +72,6 @@ struct DrinkPolaEdycja_V: View {
             szklo = drink.drSzklo
             uwagi = drink.drUwagi
             www = drink.drWWW
-            polecany = drink.drPolecany
         }
     }
 
@@ -85,7 +82,6 @@ struct DrinkPolaEdycja_V: View {
         drink.drSzklo = szklo
         drink.drUwagi = uwagi.trimmingCharacters(in: .whitespacesAndNewlines)
         drink.drWWW = www.trimmingCharacters(in: .whitespaces)
-        drink.drPolecany = polecany
         // Szkło mogło się zmienić — moc liczona jest też z pojemności szkła
         przeliczMocIKalorie(drink)
 

@@ -51,10 +51,9 @@ struct DrinkDTO: Codable {
     let remarks: String?
     let url: String?
     let calories: Int?
-    let recommended: Bool?
 
     enum CodingKeys: String, CodingKey {
-        case id, name, category, source, color, photo, sweetness, glass, favorite, note, remarks, url, calories, recommended
+        case id, name, category, source, color, photo, sweetness, glass, favorite, note, remarks, url, calories
         case alcoholPct = "alcohol_pct"
     }
 }

@@ -121,7 +121,7 @@ struct SnapDrink {
     let drSzklo: szkloEnum
     let drMoc: drMocEnum
     let drProc, drKal: Int
-    let drUlubiony, drPolecany: Bool
+    let drUlubiony: Bool
     let drAlkGlowny: [alkGlownyEnum]
     let pozycje: [SnapPoz]
     let kroki: [SnapKrok]
@@ -142,7 +142,7 @@ func snapshotWlasnejTresci(_ ctx: ModelContext) -> ([SnapSkl], [SnapDrink]) {
             drinkID: d.drinkID, drNazwa: d.drNazwa, drZrodlo: d.drZrodlo, drKolor: d.drKolor,
             drFoto: d.drFoto, drNotatka: d.drNotatka, drUwagi: d.drUwagi, drWWW: d.drWWW,
             drKat: d.drKat, drSlodycz: d.drSlodycz, drSzklo: d.drSzklo, drMoc: d.drMoc,
-            drProc: d.drProc, drKal: d.drKal, drUlubiony: d.drUlubiony, drPolecany: d.drPolecany,
+            drProc: d.drProc, drKal: d.drKal, drUlubiony: d.drUlubiony,
             drAlkGlowny: d.drAlkGlowny,
             pozycje: d.drSklad.map {
                 SnapPoz(sklID: $0.skladnik.sklID, sklNo: $0.sklNo, sklIlosc: $0.sklIlosc,
@@ -184,7 +184,7 @@ func przywrocWlasnaTresc(_ skl: [SnapSkl], _ dr: [SnapDrink], resetujStan: Bool,
             drKolor: d.drKolor, drFoto: d.drFoto, drProc: d.drProc, drSlodycz: d.drSlodycz,
             drSzklo: d.drSzklo, drUlubiony: d.drUlubiony, drNotatka: d.drNotatka, drUwagi: d.drUwagi,
             drWWW: d.drWWW, drKal: d.drKal, drMoc: d.drMoc, drBrakuje: 0, drAlkGlowny: d.drAlkGlowny,
-            drSklad: [], drPrzepis: [], drPolecany: d.drPolecany
+            drSklad: [], drPrzepis: []
         )
         ctx.insert(drink)
         for p in d.pozycje {
@@ -310,8 +310,7 @@ private func insertDrinks(_ dtos: [DrinkDTO], trans: Tlumaczenia, context: Model
             drBrakuje: 0,
             drAlkGlowny: [],
             drSklad:   [],
-            drPrzepis: [],
-            drPolecany: dto.recommended ?? false
+            drPrzepis: []
         )
         context.insert(dr)
     }
