@@ -11,7 +11,8 @@ func aktualnyJezykDanych() -> String {
 
 // MARK: - Główna funkcja ładowania
 
-func loadFromSupabase(modelContext: ModelContext) async {
+@discardableResult
+func loadFromSupabase(modelContext: ModelContext) async -> Bool {
     let lang = aktualnyJezykDanych()
     do {
         async let ingredientsDTOs   = fetchIngredients()
@@ -42,8 +43,10 @@ func loadFromSupabase(modelContext: ModelContext) async {
             setAllDrinkKalorie(modelContext: modelContext)
             try? modelContext.save()
         }
+        return true
     } catch {
         dprint("Błąd ładowania z Supabase: \(error)")
+        return false
     }
 }
 

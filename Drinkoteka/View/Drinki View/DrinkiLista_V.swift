@@ -101,8 +101,8 @@ struct DrinkiLista_V: View {
 								ForEach(filtrujDrinki().sorted {
 									sortowRosn ? $0.drNazwa < $1.drNazwa : $0.drNazwa > $1.drNazwa
 								}) { drink in
-									DrinkListaWiersz_V(drink: drink, isLoggedIn: auth.isLoggedIn)
-										.listRowBackground(Color.white.opacity(drink.czyIBA || auth.isLoggedIn ? 0.4 : 0.2))
+									DrinkListaWiersz_V(drink: drink, mozeOtworzyc: auth.mozeOtworzyc(drink))
+										.listRowBackground(Color.white.opacity(auth.mozeOtworzyc(drink) ? 0.4 : 0.2))
 								}
 							}
 						}
@@ -177,9 +177,6 @@ struct DrinkiLista_V: View {
 			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
 			.navigationViewStyle(.automatic)
 			.navigationTitle("Drinki")
-			.onAppear() {
-				loadAllDrinks()
-			}
 			.task(id: auth.session?.user.id) {
 				await loadNotesFromSupabase(modelContext: modelContext)
 				await sprawdzAktualizacje()
@@ -195,7 +192,7 @@ struct DrinkiLista_V: View {
 
 		// MARK: - SPRAWDŹ AKTUALIZACJE
 	private func sprawdzAktualizacje() async {
-		// Pomijamy przy pierwszym uruchomieniu — wtedy loadAllDrinks robi pełne ładowanie
+		// Pomijamy do czasu pierwszego pełnego załadowania (robi je CustomTab_V w korzeniu)
 		guard UserDefaults.standard.bool(forKey: "setupDone") else { return }
 		if let count = await sprawdzAktualizacjeDrinkow(modelContext: modelContext), count > 0 {
 			noweDrinkiCount = count
@@ -212,26 +209,6 @@ struct DrinkiLista_V: View {
 			await loadNotesFromSupabase(modelContext: modelContext)
 		}
 	}
-		// MARK: - LOAD ALL DRINKS
-	private func loadAllDrinks() {
-		guard !UserDefaults.standard.bool(forKey: "setupDone") else { return }
-		delAll()
-		Task {
-			await loadFromSupabase(modelContext: modelContext)
-			UserDefaults.standard.set(true, forKey: "setupDone")
-		}
-	}
-	
-		// MARK: - DEL ALL
-	private func delAll() {
-		do {
-			try modelContext.delete(model: Skl_M.self)
-			try modelContext.delete(model: Dr_M.self)
-		} catch {
-			dprint("Błąd przy usuwaniu drinków: \(error)")
-		}
-	}
-	
 		// MARK: - DEBUG POBRANE
 	private func debugPobrane(miejsce: String) {
 		do {

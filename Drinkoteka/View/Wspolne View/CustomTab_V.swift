@@ -46,9 +46,12 @@ struct CustomTab_V: View {
 
 	@Environment(\.modelContext) private var modelContext
 	@AppStorage("jezykAplikacji") private var jezykAplikacji: String = "pl"
+	@AppStorage("setupDone") private var setupDone: Bool = false
 	@State private var przeladowujeJezyk: Bool = false
+	@State private var bladPolaczenia: Bool = false
 
     var body: some View {
+		 ZStack {
 		 VStack(spacing: 0) {
 			 TabView(selection: $activeTab) {
 				 Home_V(activeTab: $activeTab)
@@ -87,6 +90,39 @@ struct CustomTab_V: View {
 					 .background(.regularMaterial)
 					 .cornerRadius(12)
 			 }
+		 }
+
+		 // Ekran ładowania nad całą aplikacją do czasu pierwszego pobrania danych
+		 if !setupDone {
+			 LadowanieEkran_V(blad: bladPolaczenia) {
+				 Task { await wykonajPierwszeLadowanie() }
+			 }
+			 .transition(.opacity)
+		 }
+		 } // ZStack
+		 .animation(.easeInOut(duration: 0.35), value: setupDone)
+		 .task { await pierwszeLadowanie() }
+	 }
+
+		 // MARK: - PIERWSZE ŁADOWANIE DANYCH (w korzeniu, niezależnie od zakładki)
+	 private func pierwszeLadowanie() async {
+		 guard !setupDone else { return }
+		 await wykonajPierwszeLadowanie()
+	 }
+
+	 private func wykonajPierwszeLadowanie() async {
+		 bladPolaczenia = false
+		 await MainActor.run {
+			 try? modelContext.delete(model: Skl_M.self)
+			 try? modelContext.delete(model: Dr_M.self)
+			 try? modelContext.save()
+		 }
+		 let ok = await loadFromSupabase(modelContext: modelContext)
+		 if ok {
+			 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
+			 setupDone = true                // ukrywa loader (z animacją)
+		 } else {
+			 bladPolaczenia = true
 		 }
 	 }
 
@@ -254,6 +290,83 @@ struct TabShape: Shape {
 
 
 
+// MARK: - Ekran ładowania (animowany)
+
+struct LadowanieEkran_V: View {
+	var blad: Bool = false
+	var ponow: () -> Void = {}
+
+	@State private var puls = false
+
+	var body: some View {
+		ZStack {
+			// Tło marki (spójne z Launch Screen i ikoną)
+			LinearGradient(
+				colors: [Color(red: 1.0, green: 0.42, blue: 0.06),
+						 Color(red: 0.85, green: 0.33, blue: 0.0)],
+				startPoint: .top, endPoint: .bottom)
+			.ignoresSafeArea()
+
+			VStack(spacing: 22) {
+				Image(systemName: "wineglass.fill")
+					.font(.system(size: 92))
+					.foregroundStyle(.white)
+					.scaleEffect(puls ? 1.06 : 0.94)
+					.animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: puls)
+
+				Text("Drinkotheque")
+					.font(.largeTitle).fontWeight(.bold)
+					.foregroundStyle(.white)
+
+				if blad {
+					// Stan offline z możliwością ponowienia
+					VStack(spacing: 12) {
+						Image(systemName: "wifi.slash")
+							.font(.title)
+							.foregroundStyle(.white.opacity(0.9))
+						Text("Brak połączenia z internetem")
+							.font(.headline).foregroundStyle(.white)
+						Text("Przy pierwszym uruchomieniu potrzebne jest połączenie, aby pobrać przepisy.")
+							.font(.footnote).foregroundStyle(.white.opacity(0.85))
+							.multilineTextAlignment(.center)
+							.padding(.horizontal, 40)
+						Button(action: ponow) {
+							Text("Spróbuj ponownie")
+								.font(.headline).foregroundStyle(Color(red: 1, green: 0.4, blue: 0))
+								.padding(.horizontal, 24).padding(.vertical, 12)
+								.background(.white).clipShape(Capsule())
+						}
+						.padding(.top, 4)
+					}
+					.padding(.top, 8)
+				} else {
+					// Delikatna animacja „fali” z trzech kropek
+					HStack(spacing: 10) {
+						ForEach(0..<3, id: \.self) { i in
+							Circle()
+								.fill(.white)
+								.frame(width: 11, height: 11)
+								.scaleEffect(puls ? 1.0 : 0.5)
+								.opacity(puls ? 1.0 : 0.4)
+								.animation(.easeInOut(duration: 0.6).repeatForever()
+									.delay(Double(i) * 0.18), value: puls)
+						}
+					}
+					.padding(.top, 6)
+
+					Text("Pobieram przepisy…")
+						.font(.footnote).foregroundStyle(.white.opacity(0.85))
+				}
+			}
+		}
+		.onAppear { puls = true }
+	}
+}
+
 #Preview {
 	CustomTab_V()
+}
+
+#Preview("Ładowanie") {
+	LadowanieEkran_V()
 }

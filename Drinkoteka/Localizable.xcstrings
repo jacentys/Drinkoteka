@@ -1,2770 +1,2882 @@
 {
-  "sourceLanguage": "pl",
-  "strings": {
-    "": {},
-    " - %lld ": {},
-    " (%lld%%) | %lld kCal": {
-      "localizations": {
-        "pl": {
-          "stringUnit": {
-            "state": "new",
-            "value": " (%1$lld%%) | %2$lld kCal"
+  "sourceLanguage" : "pl",
+  "strings" : {
+    "" : {
+
+    },
+    " - %lld " : {
+
+    },
+    " (%lld%%) | %lld kCal" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : " (%1$lld%%) | %2$lld kCal"
+          }
+        }
+      }
+    },
+    " %lld " : {
+
+    },
+    "%@" : {
+
+    },
+    "%@ " : {
+
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@ %@ %@" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@ %3$@ %4$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "%lld " : {
+
+    },
+    "%lld kCal." : {
+
+    },
+    "%lld." : {
+
+    },
+    "%lld%%" : {
+
+    },
+    "%lld%% " : {
+
+    },
+    "✓ Kod aktywowany." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "✓ Code activated."
+          }
+        }
+      }
+    },
+    "0" : {
+
+    },
+    "Absynt - Brak" : {
+      "comment" : "Mock/preview data",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Absinthe - Missing"
+          }
+        }
+      }
+    },
+    "Aby skorzystać z Premium, musisz być zalogowany." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You need to be logged in to use Premium."
+          }
+        }
+      }
+    },
+    "Aby używać tej aplikacji musisz być pełnoletni!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must be of legal age to use this app!"
           }
         }
       }
     },
-    " %lld ": {},
-    "%@": {},
-    "%@ ": {},
-    "%@ %@": {
-      "localizations": {
-        "pl": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@ %2$@"
+    "Aktywuj" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activate"
           }
         }
       }
     },
-    "%@ %@ %@ %@": {
-      "localizations": {
-        "pl": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@ %2$@ %3$@ %4$@"
+    "alk.:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "alc.:"
           }
         }
       }
     },
-    "%lld": {},
-    "%lld ": {},
-    "%lld kCal.": {},
-    "%lld.": {},
-    "%lld%%": {},
-    "%lld%% ": {},
-    "✓ Kod aktywowany.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "✓ Code activated."
+    "Alkohol" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alcohol"
           }
         }
       }
     },
-    "0": {},
-    "Absynt - Brak": {
-      "comment": "Mock/preview data",
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Absinthe - Missing"
+    "Alkohol %" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alcohol %"
           }
         }
       }
     },
-    "Aby skorzystać z Premium, musisz być zalogowany.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You need to be logged in to use Premium."
+    "Alkohol główny" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Main spirit"
           }
         }
       }
     },
-    "Aby używać tej aplikacji musisz być pełnoletni!": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You must be of legal age to use this app!"
+    "Anuluj" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
           }
         }
       }
     },
-    "Aktywuj": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Activate"
+    "B.Danych" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N/A"
           }
         }
       }
     },
-    "alk.:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "alc.:"
+    "Bardzo Słodki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very Sweet"
           }
         }
       }
     },
-    "Alkohol": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alcohol"
+    "Bezalk." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N-alc."
           }
         }
       }
     },
-    "Alkohol %": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alcohol %"
+    "Bezalkoholowe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non-alcoholic"
           }
         }
       }
     },
-    "Alkohol główny": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Main spirit"
+    "Bezalkoholowy (0%)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non-alcoholic (0%)"
           }
         }
       }
     },
-    "Anuluj": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
+    "Błąd aktywacji. Spróbuj ponownie." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activation failed. Please try again."
           }
         }
       }
     },
-    "B.Danych": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "N/A"
+    "Błąd wysyłki. Spróbuj ponownie." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send failed. Please try again."
           }
         }
       }
     },
-    "Bardzo Słodki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Very Sweet"
+    "Blokada wygaszacza aktywna" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen lock active"
           }
         }
       }
     },
-    "Bezalk.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "N-alc."
+    "Blokada wygaszacza nieaktywna" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen lock inactive"
           }
         }
       }
     },
-    "Bezalkoholowe": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Non-alcoholic"
+    "brak" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "none"
           }
         }
       }
     },
-    "Bezalkoholowy (0%)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Non-alcoholic (0%)"
+    "Brak" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Missing"
           }
         }
       }
     },
-    "Błąd aktywacji. Spróbuj ponownie.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Activation failed. Please try again."
+    "Brak %lld skł." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Missing %lld ingr."
           }
         }
       }
     },
-    "Błąd wysyłki. Spróbuj ponownie.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send failed. Please try again."
+    "Brak Danych" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Data"
           }
         }
       }
     },
-    "Blokada wygaszacza aktywna": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Screen lock active"
+    "Brak danyh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No data"
           }
         }
       }
     },
-    "Blokada wygaszacza nieaktywna": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Screen lock inactive"
+    "Brak dostępu" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No access"
           }
         }
       }
     },
-    "brak": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "none"
+    "brak drinków" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "no drinks"
           }
         }
       }
     },
-    "Brak": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Missing"
+    "Brak połączenia z internetem" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No internet connection"
           }
         }
       }
     },
-    "Brak %lld skł.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Missing %lld ingr."
+    "Brak zamienników" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No substitutes"
           }
         }
       }
     },
-    "Brak Danych": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No Data"
+    "Brandy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brandy"
           }
         }
       }
     },
-    "Brak danyh": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No data"
+    "Champagne" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Champagne"
           }
         }
       }
     },
-    "Brak dostępu": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No access"
+    "Co najmniej jeden z alkoholi głównych powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At least one of the main spirits must be selected. \nOtherwise the displayed \nlist will be empty"
           }
         }
       }
     },
-    "brak drinków": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "no drinks"
+    "Co najmniej jeden z poziomów mocy drinka powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At least one strength level must be selected. \nOtherwise the displayed \nlist will be empty"
           }
         }
       }
     },
-    "Brak zamienników": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No substitutes"
+    "Co najmniej jeden z poziomów słodkości powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At least one sweetness level must be selected. \nOtherwise the displayed \nlist will be empty"
           }
         }
       }
     },
-    "Brandy": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Brandy"
+    "ćwiartki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "quarters"
           }
         }
       }
     },
-    "Champagne": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Champagne"
+    "Czy na pewno chcesz usunąć konto?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete your account?"
           }
         }
       }
     },
-    "Co najmniej jeden z alkoholi głównych powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "At least one of the main spirits must be selected. \nOtherwise the displayed \nlist will be empty"
+    "Czy na pewno chcesz zresetować składniki?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to reset ingredients?"
           }
         }
       }
     },
-    "Co najmniej jeden z poziomów mocy drinka powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "At least one strength level must be selected. \nOtherwise the displayed \nlist will be empty"
+    "Default" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default"
           }
         }
       }
     },
-    "Co najmniej jeden z poziomów słodkości powinien być wybrany. \nW innym wypadku wyświetlana \nlista będzie pusta": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "At least one sweetness level must be selected. \nOtherwise the displayed \nlist will be empty"
+    "Delik." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
           }
         }
       }
     },
-    "ćwiartki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "quarters"
+    "Delikatne" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
           }
         }
       }
     },
-    "Czy na pewno chcesz usunąć konto?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Are you sure you want to delete your account?"
+    "Delikatny (1%% - %lld%%)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delicate (1%% - %lld%%)"
           }
         }
       }
     },
-    "Czy na pewno chcesz zresetować składniki?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Are you sure you want to reset ingredients?"
+    "Dodaj" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
           }
         }
       }
     },
-    "Default": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Default"
+    "Dodaj krok" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add step"
           }
         }
       }
     },
-    "Delik.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Light"
+    "Dodaj notatkę" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add note"
           }
         }
       }
     },
-    "Delikatne": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Light"
+    "Dodaj Notatkę" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Note"
           }
         }
       }
     },
-    "Delikatny (1%% - %lld%%)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delicate (1%% - %lld%%)"
+    "Dodaj pozycję do przepisu" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add recipe step"
           }
         }
       }
     },
-    "Dodaj": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add"
+    "Dodaj składnik" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add ingredient"
           }
         }
       }
     },
-    "Dodaj krok": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add step"
+    "Dodaj zdjęcie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add photo"
           }
         }
       }
     },
-    "Dodaj notatkę": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add note"
+    "Dodawanie własnych drinków — ze zdjęciem, składnikami i przepisem — jest dostępne w planie Premium." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adding your own drinks — with a photo, ingredients and recipe — is available in the Premium plan."
           }
         }
       }
     },
-    "Dodaj Notatkę": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add Note"
+    "Domyślna miara" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default unit"
           }
         }
       }
+    },
+    "dopełnienie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "top up"
+          }
+        }
+      }
+    },
+    "Dopuszczaj zamienniki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow substitutes"
+          }
+        }
+      }
+    },
+    "Dostęp" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Access"
+          }
+        }
+      }
+    },
+    "Dostęp do kategorii" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category access"
+          }
+        }
+      }
+    },
+    "Dostęp do kategorii specjalnych przyznaje administrator." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Access to special categories is granted by the administrator."
+          }
+        }
+      }
+    },
+    "Dostępne" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
+          }
+        }
+      }
+    },
+    "Dostępnych jest %lld nowych drinków. Pobrać teraz?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld new drinks are available. Download now?"
+          }
+        }
+      }
+    },
+    "Drinki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drinks"
+          }
+        }
+      }
+    },
+    "Drinkoteka" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drinkotheque"
+          }
+        }
+      }
+    },
+    "Drinkotheque" : {
+
     },
-    "Dodaj pozycję do przepisu": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add recipe step"
+    "e-mail..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "email..."
           }
         }
       }
     },
-    "Dodaj składnik": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add ingredient"
+    "Edytuj" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
           }
         }
       }
     },
-    "dopełnienie": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "top up"
+    "Edytuj notatkę" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit note"
           }
         }
       }
     },
-    "Dopuszczaj zamienniki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Allow substitutes"
+    "Ekran" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen"
           }
         }
       }
     },
-    "Dostęp": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Access"
+    "English" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
           }
         }
       }
     },
-    "Dostęp do kategorii": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category access"
+    "Filtry" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filters"
           }
         }
       }
     },
-    "Dostęp do kategorii specjalnych przyznaje administrator.": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Access to special categories is granted by the administrator."
+    "Funkcja Premium" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium Feature"
           }
         }
       }
     },
-    "Dostępne": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Available"
+    "gałązki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sprigs"
           }
         }
       }
     },
-    "Dostępnych jest %lld nowych drinków. Pobrać teraz?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld new drinks are available. Download now?"
+    "Gdy włączone, ekran nie gaśnie podczas korzystania z aplikacji — przydatne przy przyrządzaniu drinka. Gdy wyłączone, obowiązuje autoblokada telefonu." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When on, the screen stays awake while using the app — handy while making a drink. When off, your phone's auto-lock applies."
           }
         }
       }
     },
-    "Drinki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drinks"
+    "Gin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gin"
           }
         }
       }
     },
-    "Drinkoteka": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drinkotheque"
+    "gr." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "g."
           }
         }
       }
     },
-    "e-mail...": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "email..."
+    "hasło..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "password…"
           }
         }
       }
     },
-    "Edytuj": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit"
+    "Home" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
           }
         }
       }
     },
-    "Edytuj notatkę": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit note"
+    "Ilość" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quantity"
           }
         }
       }
     },
-    "English": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "English"
+    "Ilość Kalorii" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calorie Count"
           }
         }
       }
     },
-    "Filtry": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Filters"
+    "Imię lub nick..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name or nickname..."
           }
         }
       }
     },
-    "Funkcja Premium": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Premium Feature"
+    "Info" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
           }
         }
       }
     },
-    "gałązki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "sprigs"
+    "Inne" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
           }
         }
       }
     },
-    "Gin": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gin"
+    "Jeśli włączone, blokada ekranu jest nieaktywna." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When enabled, the screen lock is inactive."
           }
         }
       }
     },
-    "gr.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "g."
+    "Jeśli zaznaczono, przy sprawdzaniu dostępności składników brane są pod uwagę zamienniki. Zwiększa to ilość możliwych do zrobienia drinków. Trzeba liczyć się z delikatną zmianą smaku w stosunku do oryginału." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When checked, substitutes are taken into account when checking ingredient availability. This increases the number of drinks you can make. Expect a slight change in taste compared to the original."
           }
         }
       }
     },
-    "hasło...": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "password…"
+    "Język" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
           }
         }
       }
     },
-    "Home": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Home"
+    "Język aplikacji" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App language"
           }
         }
       }
     },
-    "Ilość": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quantity"
+    "Już potwierdziłem — zaloguj się" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I've confirmed — log in"
           }
         }
       }
     },
-    "Ilość Kalorii": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Calorie Count"
+    "Kalorie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
           }
         }
       }
     },
-    "Imię lub nick...": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name or nickname..."
+    "Kalorie / 100" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories / 100"
           }
         }
       }
     },
-    "Info": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Info"
+    "kat.:" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cat.:"
           }
         }
       }
     },
-    "Inne": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Other"
+    "kat.: " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cat.: "
           }
         }
       }
     },
-    "Jeśli włączone, blokada ekranu jest nieaktywna.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When enabled, the screen lock is inactive."
+    "Kategoria" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
           }
         }
       }
     },
-    "Jeśli zaznaczono, przy sprawdzaniu dostępności składników brane są pod uwagę zamienniki. Zwiększa to ilość możliwych do zrobienia drinków. Trzeba liczyć się z delikatną zmianą smaku w stosunku do oryginału.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When checked, substitutes are taken into account when checking ingredient availability. This increases the number of drinks you can make. Expect a slight change in taste compared to the original."
+    "kawałki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pieces"
           }
         }
       }
     },
-    "Język": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Language"
+    "kCal.:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kCal.:"
           }
         }
       }
     },
-    "Język aplikacji": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "App language"
+    "Kieliszek do Margarity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Margarita Glass"
           }
         }
       }
     },
-    "Już potwierdziłem — zaloguj się": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I've confirmed — log in"
+    "Kieliszek do Wina" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wine Glass"
           }
         }
       }
     },
-    "Kalorie": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Calories"
+    "Kieliszek do Wódki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shot Glass"
           }
         }
       }
     },
-    "kat.:": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "cat.:"
+    "Kieliszek Koktailowy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktail Glass"
           }
         }
       }
     },
-    "kat.: ": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "cat.: "
+    "Kielliszek do Szampana" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Champagne Glass"
           }
         }
       }
     },
-    "Kategoria": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Category"
+    "Kod aktywacyjny" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activation code"
           }
         }
       }
     },
-    "kawałki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "pieces"
+    "Kod osiągnął limit użyć." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code has reached its usage limit."
           }
         }
       }
     },
-    "kCal.:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kCal.:"
+    "Kod przypisany do innego konta." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code assigned to a different account."
           }
         }
       }
     },
-    "Kieliszek do Margarity": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Margarita Glass"
+    "Kod wygasł." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code expired."
           }
         }
       }
     },
-    "Kieliszek do Wina": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wine Glass"
+    "Koktail" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocktail"
           }
         }
       }
     },
-    "Kieliszek do Wódki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shot Glass"
+    "Koniec" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
           }
         }
       }
     },
-    "Kieliszek Koktailowy": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cocktail Glass"
+    "Konto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
           }
         }
       }
     },
-    "Kielliszek do Szampana": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Champagne Glass"
+    "Konto Premium" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium Account"
           }
         }
       }
     },
-    "Kod aktywacyjny": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Activation code"
+    "kostki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cubes"
           }
         }
       }
     },
-    "Kod osiągnął limit użyć.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Code has reached its usage limit."
+    "krople" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "drops"
           }
         }
       }
     },
-    "Kod przypisany do innego konta.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Code assigned to a different account."
+    "Kup Premium" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Premium"
           }
         }
       }
     },
-    "Kod wygasł.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Code expired."
+    "Lekko Słodki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slightly Sweet"
           }
         }
       }
     },
-    "Koktail": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cocktail"
+    "Likiery" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liqueurs"
           }
         }
       }
     },
-    "Koniec": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Done"
+    "listki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "leaves"
           }
         }
       }
     },
-    "Konto": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account"
+    "Malejąco" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descending"
           }
         }
       }
     },
-    "Konto Premium": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Premium Account"
+    "Mały błąd" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oops"
           }
         }
       }
     },
-    "kostki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "cubes"
+    "Mam 18 lat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I am 18 years old"
           }
         }
       }
     },
-    "krople": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "drops"
+    "Masz dostęp do dodatkowych kategorii przyznany przez administratora." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have access to additional categories granted by the administrator."
           }
         }
       }
     },
-    "Kup Premium": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Get Premium"
+    "Masz już konto? Zaloguj się" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you have account? Login"
           }
         }
       }
     },
-    "Lekko Słodki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Slightly Sweet"
+    "Masz wszystkie skł." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have all ingr."
           }
         }
       }
     },
-    "Likiery": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Liqueurs"
+    "miara:" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unit:"
           }
         }
       }
     },
-    "listki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "leaves"
+    "miara: " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "measure:"
           }
         }
       }
     },
-    "Malejąco": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Descending"
+    "ml." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ml."
           }
         }
       }
     },
-    "Mały błąd": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Oops"
+    "Moc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strength"
           }
         }
       }
     },
-    "Mam 18 lat": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I am 18 years old"
+    "Moc drinka" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drink strength"
           }
         }
       }
     },
-    "Masz dostęp do dodatkowych kategorii przyznany przez administratora.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You have access to additional categories granted by the administrator."
+    "Mocne" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strong"
           }
         }
       }
     },
-    "Masz już konto? Zaloguj się": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Do you have account? Login"
+    "Mocny" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strong"
           }
         }
       }
     },
-    "Masz wszystkie skł.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You have all ingr."
+    "Mocny (powyżej %lld%%" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strong (above %lld%%"
           }
         }
       }
     },
-    "miara:": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "unit:"
+    "Musisz być zalogowany." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must be logged in."
           }
         }
       }
     },
-    "miara: ": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "measure:"
+    "Następny" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
           }
         }
       }
     },
-    "ml.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ml."
+    "Nazwa" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
           }
         }
       }
     },
-    "Moc": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Strength"
+    "Nazwa drinka" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drink name"
           }
         }
       }
     },
-    "Moc drinka": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drink strength"
+    "Nie masz konta? Zarejestruj się" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You don’t have account? Register"
           }
         }
       }
     },
-    "Mocne": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Strong"
+    "Nie Słodki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Sweet"
           }
         }
       }
     },
-    "Mocny": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Strong"
+    "Nie wygaszaj ekranu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep screen on"
           }
         }
       }
     },
-    "Mocny (powyżej %lld%%": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Strong (above %lld%%"
+    "Nieprawidłowy kod." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid code."
           }
         }
       }
     },
-    "Musisz być zalogowany.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You must be logged in."
+    "Notatka" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note"
           }
         }
       }
     },
-    "Następny": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Next"
+    "Notatka:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note:"
           }
         }
       }
     },
-    "Nazwa": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name"
+    "Notatki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes"
           }
         }
       }
     },
-    "Nazwa drinka": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drink name"
+    "Notatki do drinków są dostępne w planie Premium. Twoje notatki są synchronizowane między urządzeniami i przypisane do Twojego konta." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drink notes are available in the Premium plan. Your notes are synced across devices and tied to your account."
           }
         }
       }
     },
-    "Nie masz konta? Zarejestruj się": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You don’t have account? Register"
+    "Nowe drinki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New drinks"
           }
         }
       }
     },
-    "Nie Słodki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Not Sweet"
+    "Nowe hasło" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New password"
           }
         }
       }
     },
-    "Nieprawidłowy kod.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Invalid code."
+    "Nowy drink" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New drink"
           }
         }
       }
     },
-    "Notatka": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Note"
+    "Nowy krok" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New step"
           }
         }
       }
     },
-    "Notatka:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Note:"
+    "Nowy składnik" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New ingredient"
           }
         }
       }
     },
-    "Notatki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notes"
+    "odrobina" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a dash"
           }
         }
       }
     },
-    "Notatki do drinków są dostępne w planie Premium. Twoje notatki są synchronizowane między urządzeniami i przypisane do Twojego konta.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drink notes are available in the Premium plan. Your notes are synced across devices and tied to your account."
+    "OK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }
     },
-    "Nowe drinki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New drinks"
+    "opcj." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "opt."
           }
         }
       }
     },
-    "Nowe hasło": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New password"
+    "Opcje" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options"
           }
         }
       }
     },
-    "Nowy drink": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New drink"
+    "Opcjonalne" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional"
           }
         }
       }
     },
-    "Nowy krok": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New step"
+    "Opcjonalny" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional"
           }
         }
       }
     },
-    "odrobina": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "a dash"
+    "Opinia" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback"
           }
         }
       }
     },
-    "OK": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+    "Opinia wysłana. Dziękujemy!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback sent. Thank you!"
           }
         }
       }
     },
-    "opcj.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "opt."
+    "Opis (opcjonalnie)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description (optional)"
           }
         }
       }
     },
-    "Opcje": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Options"
+    "Opis kroku" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step description"
           }
         }
       }
     },
-    "Opcjonalne": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Optional"
+    "Opis składnika" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredient description"
           }
         }
       }
     },
-    "Opcjonalny": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Optional"
+    "Opis:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description:"
           }
         }
       }
     },
-    "Opinia": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feedback"
+    "owoce" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fruits"
           }
         }
       }
     },
-    "Opinia wysłana. Dziękujemy!": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feedback sent. Thank you!"
+    "Owoce" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fruits"
           }
         }
       }
     },
-    "Opis kroku": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Step description"
+    "plastry" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "slices"
           }
         }
       }
     },
-    "Opis:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Description:"
+    "Plastry" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slices"
           }
         }
       }
     },
-    "owoce": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "fruits"
+    "Pobieram przepisy…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fetching recipes…"
           }
         }
       }
     },
-    "Owoce": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fruits"
+    "Pobierz" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download"
           }
         }
       }
     },
-    "plastry": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "slices"
+    "Podaj swoje dane" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your details"
           }
         }
       }
     },
-    "Plastry": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Slices"
+    "Podstawowe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basic"
           }
         }
       }
     },
-    "Pobierz": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Download"
+    "Podziel się opinią, zgłoś błąd lub zaproponuj nową funkcję." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share your feedback, report a bug or suggest a new feature."
           }
         }
       }
     },
-    "Podaj swoje dane": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter your details"
+    "Pokaż zamienniki" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show substitutes"
           }
         }
       }
     },
-    "Podstawowe": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Basic"
+    "Pokazuj tylko drinki dostępne" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show only available drinks"
           }
         }
       }
     },
-    "Podziel się opinią, zgłoś błąd lub zaproponuj nową funkcję.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Share your feedback, report a bug or suggest a new feature."
+    "Pokazuj tylko drinki które mogą zostać przyrządzone z dostępnych składników.\nTa opcja ukrywa pozostałe składniki gdy nie ma wszystkich składników.\n Dwie poniższe opcje są brane pod uwagę." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show only drinks that can be made from the ingredients you have.\nThis option hides other drinks when not all ingredients are available.\n The two options below are taken into account."
           }
         }
       }
     },
-    "Pokaż zamienniki": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show substitutes"
+    "Pokazuj tylko drinki które mogą zostać przyrządzone z posiadanych składników." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show only drinks that can be made with ingredients you have."
           }
         }
       }
     },
-    "Pokazuj tylko drinki dostępne": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show only available drinks"
+    "Pokazuj tylko drinki zaznaczone gwiazdką jako ulubione." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show only drinks marked with a star as favorites."
           }
         }
       }
     },
-    "Pokazuj tylko drinki które mogą zostać przyrządzone z dostępnych składników.\nTa opcja ukrywa pozostałe składniki gdy nie ma wszystkich składników.\n Dwie poniższe opcje są brane pod uwagę.": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show only drinks that can be made from the ingredients you have.\nThis option hides other drinks when not all ingredients are available.\n The two options below are taken into account."
+    "Pokazuj tylko ulubione" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show only favorites"
           }
         }
       }
     },
-    "Pokazuj tylko drinki które mogą zostać przyrządzone z posiadanych składników.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show only drinks that can be made with ingredients you have."
+    "Polecane:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recommended:"
           }
         }
       }
     },
-    "Pokazuj tylko drinki zaznaczone gwiazdką jako ulubione.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show only drinks marked with a star as favorites."
+    "połówki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "halves"
           }
         }
       }
     },
-    "Pokazuj tylko ulubione": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show only favorites"
+    "Polski" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polish"
           }
         }
       }
     },
-    "Polecane:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Recommended:"
+    "Poszukaj swoich smaków" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discover your flavors"
           }
         }
       }
     },
-    "połówki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "halves"
+    "Potwierdź hasło" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm password"
           }
         }
       }
     },
-    "Polski": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Polish"
+    "Później" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Later"
           }
         }
       }
     },
-    "Poszukaj swoich smaków": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Discover your flavors"
+    "Preferencje" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferences"
           }
         }
       }
     },
-    "Potwierdź hasło": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confirm password"
+    "Premium odblokujesz kodem aktywacyjnym otrzymanym od twórcy aplikacji. Wpisz go w Preferencje → Kod aktywacyjny." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can unlock Premium with an activation code from the app's creator. Enter it in Preferences → Activation code."
           }
         }
       }
     },
-    "Później": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Later"
+    "Problem z linkiem: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problem with link: %@"
           }
         }
       }
     },
-    "Preferencje": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preferences"
+    "przep." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rec."
           }
         }
       }
     },
-    "Premium odblokujesz kodem aktywacyjnym otrzymanym od twórcy aplikacji. Wpisz go w Preferencje → Kod aktywacyjny.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You can unlock Premium with an activation code from the app's creator. Enter it in Preferences → Activation code."
+    "przep.." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "rec."
           }
         }
       }
     },
-    "Problem z linkiem: %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Problem with link: %@"
+    "Przepis" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recipe"
           }
         }
       }
     },
-    "przep.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "rec."
+    "Przepis:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recipe:"
           }
         }
       }
     },
-    "przep..": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "rec."
+    "Prześlij opinię" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send feedback"
           }
         }
       }
     },
-    "Przepis": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Recipe"
+    "Prześlij opinię o aplikacji" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send app feedback"
           }
         }
       }
     },
-    "Przepis:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Recipe:"
+    "Przy pierwszym uruchomieniu potrzebne jest połączenie, aby pobrać przepisy." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An internet connection is required on first launch to download the recipes."
           }
         }
       }
     },
-    "Prześlij opinię": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send feedback"
+    "Przy sprawdzaniu składników drinka bierz pod uwagę składniki opcjonalne. Składniki te często używane są do przyozdabiania drinków lub wzbogacania smaku." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When checking a drink's ingredients, include optional ingredients. These are often used for garnishing or enhancing flavor."
           }
         }
       }
     },
-    "Prześlij opinię o aplikacji": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send app feedback"
+    "Przyprawy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spices"
           }
         }
       }
     },
-    "Przy sprawdzaniu składników drinka bierz pod uwagę składniki opcjonalne. Składniki te często używane są do przyozdabiania drinków lub wzbogacania smaku.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When checking a drink's ingredients, include optional ingredients. These are often used for garnishing or enhancing flavor."
+    "Reset!!!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset!!!"
           }
         }
       }
     },
-    "Przyprawy": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spices"
+    "Resetuj" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
           }
         }
       }
     },
-    "Reset!!!": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset!!!"
+    "Resetuj składniki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset ingredients"
           }
         }
       }
     },
-    "Resetuj": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset"
+    "Resetuje stan wszystkich składników! \nOpcja przydatna gdy chcesz od nowa wprowadzić składniki do programu." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resets the status of all ingredients! \nUseful when you want to re-enter your ingredients from scratch."
           }
         }
       }
     },
-    "Resetuj składniki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset ingredients"
+    "Rosnąco" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ascending"
           }
         }
       }
     },
-    "Resetuje stan wszystkich składników! \nOpcja przydatna gdy chcesz od nowa wprowadzić składniki do programu.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Resets the status of all ingredients! \nUseful when you want to re-enter your ingredients from scratch."
+    "Rum" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rum"
           }
         }
       }
     },
-    "Rosnąco": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ascending"
+    "Shot" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shot"
           }
         }
       }
     },
-    "Rum": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rum"
+    "skł." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ingr."
           }
         }
       }
     },
-    "Shot": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shot"
+    "Skł. opcjonalne wymagane" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional ingr. required"
           }
         }
       }
     },
-    "skł.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ingr."
+    "Skład" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredients"
           }
         }
       }
     },
-    "Skł. opcjonalne wymagane": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Optional ingr. required"
+    "Skład:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredients:"
           }
         }
       }
     },
-    "Skład": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingredients"
+    "Składn." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingr."
           }
         }
       }
     },
-    "Skład:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingredients:"
+    "Składnik drinków:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Used in drinks:"
           }
         }
       }
     },
-    "Składn.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingr."
+    "Składnik o tej nazwie już istnieje." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An ingredient with this name already exists."
           }
         }
       }
     },
-    "Składnik drinków:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Used in drinks:"
+    "Skladniki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredients"
           }
         }
       }
     },
-    "Skladniki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingredients"
+    "Składniki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredients"
           }
         }
       }
     },
-    "Składniki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingredients"
+    "Składniki opcjonalne wymagane" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional ingredients required"
           }
         }
       }
     },
-    "Składniki opcjonalne wymagane": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Optional ingredients required"
+    "Słodki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sweet"
           }
         }
       }
     },
-    "Słodki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sweet"
+    "Słodkość" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sweetness"
           }
         }
       }
     },
-    "Słodkość": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sweetness"
+    "Słodkość drinka" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drink sweetness"
           }
         }
       }
     },
-    "Słodkość drinka": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drink sweetness"
+    "Słodycz" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sweetness"
           }
         }
       }
     },
-    "Słodycz": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sweetness"
+    "Soki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juices"
           }
         }
       }
     },
-    "Soki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Juices"
+    "Sortowanie" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorting"
           }
         }
       }
     },
-    "Sortowanie": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sorting"
+    "Sortuj wg." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort by"
           }
         }
       }
     },
-    "Sortuj wg.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sort by"
+    "Sortuj wg. nazwy, słodkości, zawartości alkoholu, kalorii lub ilości składników dostępnych do zrobienia drinka.\nKliknij na strzałkę aby zmienić kierunek sortowania" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort by name, sweetness, alcohol content, calories, or the number of available ingredients needed to make the drink.\nTap the arrow to change the sort direction"
           }
         }
       }
     },
-    "Sortuj wg. nazwy, słodkości, zawartości alkoholu, kalorii lub ilości składników dostępnych do zrobienia drinka.\nKliknij na strzałkę aby zmienić kierunek sortowania": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sort by name, sweetness, alcohol content, calories, or the number of available ingredients needed to make the drink.\nTap the arrow to change the sort direction"
+    "Sprawdź skrzynkę mailową i kliknij link potwierdzający, aby aktywować konto." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check your inbox and click the confirmation link to activate your account."
           }
         }
       }
     },
-    "Sprawdź skrzynkę mailową i kliknij link potwierdzający, aby aktywować konto.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Check your inbox and click the confirmation link to activate your account."
+    "Spróbuj ponownie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
           }
         }
       }
     },
-    "Średni": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Medium"
+    "Średni" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium"
           }
         }
       }
     },
-    "Średni (%lld%% - %lld%%)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Medium (%1$lld%% - %2$lld%%)"
+    "Średni (%lld%% - %lld%%)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium (%1$lld%% - %2$lld%%)"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Średni (%1$lld%% - %2$lld%%)"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Średni (%1$lld%% - %2$lld%%)"
           }
         }
       }
     },
-    "Średnie": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Medium"
+    "Średnie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium"
           }
         }
       }
     },
-    "Strona WWW:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Website:"
+    "Strona WWW:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Website:"
           }
         }
       }
     },
-    "Syropy": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Syrups"
+    "Syropy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Syrups"
           }
         }
       }
     },
-    "Szczegóły konta": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account details"
+    "Szczegóły konta" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account details"
           }
         }
       }
     },
-    "szczypty": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "pinches"
+    "szczypty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pinches"
           }
         }
       }
     },
-    "Szklanka Collins": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Collins Glass"
+    "Szklanka Collins" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collins Glass"
           }
         }
       }
     },
-    "Szklanka Old Fashioned": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Old Fashioned Glass"
+    "Szklanka Old Fashioned" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Old Fashioned Glass"
           }
         }
       }
     },
-    "Szklanka Whiskey": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Whiskey Glass"
+    "Szklanka Whiskey" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Whiskey Glass"
           }
         }
       }
     },
-    "Szkło": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glass"
+    "Szkło" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glass"
           }
         }
       }
     },
-    "sztukia": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "pieces"
+    "sztukia" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pieces"
           }
         }
       }
     },
-    "Szukaj składnika": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search ingredient"
+    "Szukaj składnika" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search ingredient"
           }
         }
       }
     },
-    "Szukaj...": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search..."
+    "Szukaj..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search..."
           }
         }
       }
     },
-    "Ta operacja jest nieodwracalna.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This action is irreversible."
+    "Ta operacja jest nieodwracalna." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action is irreversible."
           }
         }
       }
     },
-    "Ten kod został już przez Ciebie użyty.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You have already used this code."
+    "Ten drink jest dostępny w planie Premium. Odblokuj Premium kodem aktywacyjnym, aby zobaczyć przepis." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This drink is available in the Premium plan. Unlock Premium with an activation code to see the recipe."
           }
         }
       }
     },
-    "Tequila / Mezcal": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tequila / Mezcal"
+    "Ten kod został już przez Ciebie użyty." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have already used this code."
           }
         }
       }
     },
-    "Twoja opinia trafi bezpośrednio do dewelopera. Możesz zgłosić błąd, sugestię lub pomysł na nową funkcję Drinkoteki.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your feedback goes directly to the developer. You can report a bug, a suggestion or an idea for a new Drinkoteka feature."
+    "Tequila / Mezcal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tequila / Mezcal"
           }
         }
       }
     },
-    "Twoja uwaga trafi bezpośrednio do dewelopera. Możesz zgłosić błąd, sugestię lub brakujące dane dotyczące tego drinka.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your feedback goes directly to the developer. You can report a bug, suggestion, or missing data about this drink."
+    "Twoja opinia trafi bezpośrednio do dewelopera. Możesz zgłosić błąd, sugestię lub pomysł na nową funkcję Drinkoteki." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your feedback goes directly to the developer. You can report a bug, a suggestion or an idea for a new Drinkoteka feature."
           }
         }
       }
     },
-    "Twoje kategorie": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your categories"
+    "Twoja uwaga trafi bezpośrednio do dewelopera. Możesz zgłosić błąd, sugestię lub brakujące dane dotyczące tego drinka." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your feedback goes directly to the developer. You can report a bug, suggestion, or missing data about this drink."
           }
         }
       }
     },
-    "Tylko ulubione": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favorites only"
+    "Twoje kategorie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your categories"
           }
         }
       }
     },
-    "Tylko z dost. składn.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Available ingr. only"
+    "Tylko ulubione" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites only"
           }
         }
       }
     },
-    "Ulubione": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favorites"
+    "Tylko z dost. składn." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available ingr. only"
           }
         }
       }
     },
-    "Ulubiony": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favorite"
+    "Ulubione" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
           }
         }
       }
     },
-    "Usuń konto": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete account"
+    "Ulubiony" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorite"
           }
         }
       }
     },
-    "Usunięcie konta jest nieodwracalne. Wszystkie Twoje dane zostaną trwale usunięte.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account deletion is irreversible. All your data will be permanently deleted."
+    "Usuń konto" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete account"
           }
         }
       }
     },
-    "Uwaga wysłana. Dziękujemy!": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feedback sent. Thank you!"
+    "Usunięcie konta jest nieodwracalne. Wszystkie Twoje dane zostaną trwale usunięte." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account deletion is irreversible. All your data will be permanently deleted."
           }
         }
       }
     },
-    "Uwagi": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notes"
+    "Uwaga wysłana. Dziękujemy!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback sent. Thank you!"
           }
         }
       }
     },
-    "Vodka": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vodka"
+    "Uwagi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notes"
           }
         }
       }
     },
-    "W Barku": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In Stock"
+    "Vodka" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vodka"
           }
         }
       }
     },
-    "W barku:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In stock:"
+    "W Barku" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Stock"
           }
         }
       }
     },
-    "W tej aplikacji znajdziesz przepisy na drinki. Zarówno alkoholowe jak i bezaklkoholowe. Możesz wyszukiwać ich filtrując poziom słodkości, moc drinka oraz podstawowy użyty alkohol. Oprócz tego po zaznaczeniu które składniki posiadasz aplikacja pokaże Ci które drinki możesz zrobić, lub ile składników brakuje w poszczególnych drinkach.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In this app you'll find drink recipes, both alcoholic and non-alcoholic. You can search them by filtering sweetness level, drink strength, and main spirit used. You can also mark which ingredients you have, and the app will show you which drinks you can make, or how many ingredients are missing for each drink."
+    "W barku:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In stock:"
           }
         }
       }
     },
-    "Wczytuję przepisy…": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loading recipes…"
+    "W tej aplikacji znajdziesz przepisy na drinki. Zarówno alkoholowe jak i bezaklkoholowe. Możesz wyszukiwać ich filtrując poziom słodkości, moc drinka oraz podstawowy użyty alkohol. Oprócz tego po zaznaczeniu które składniki posiadasz aplikacja pokaże Ci które drinki możesz zrobić, lub ile składników brakuje w poszczególnych drinkach." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In this app you'll find drink recipes, both alcoholic and non-alcoholic. You can search them by filtering sweetness level, drink strength, and main spirit used. You can also mark which ingredients you have, and the app will show you which drinks you can make, or how many ingredients are missing for each drink."
           }
         }
       }
     },
-    "Według alkoholu": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "By spirit"
+    "Wczytuję przepisy…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading recipes…"
           }
         }
       }
     },
-    "Whiskey": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Whiskey"
+    "Według alkoholu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By spirit"
           }
         }
       }
     },
-    "Wpisz e-mail w poprawnym formacie.": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter a valid email address."
+    "Whiskey" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Whiskey"
           }
         }
       }
     },
-    "Wpisz imię lub nick": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter a name or nickname"
+    "Wpisz e-mail w poprawnym formacie." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid email address."
           }
         }
       }
     },
-    "Wpisz kod": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter code"
+    "Wpisz imię lub nick" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a name or nickname"
           }
         }
       }
     },
-    "Wpisz kod otrzymany od twórcy aplikacji, aby odblokować Premium lub dodatkowe kategorie.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter a code from the app's creator to unlock Premium or extra categories."
+    "Wpisz kod" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter code"
           }
         }
       }
     },
-    "Wszystkie zaznaczone składniki zostaną odznaczone.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All checked ingredients will be unchecked."
+    "Wpisz kod otrzymany od twórcy aplikacji, aby odblokować Premium lub dodatkowe kategorie." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a code from the app's creator to unlock Premium or extra categories."
           }
         }
       }
     },
-    "Wybierz alkohol, który ma być głównym składnikiem drinków": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose the spirit that should be the main ingredient of the drinks"
+    "Wszystkie zaznaczone składniki zostaną odznaczone." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All checked ingredients will be unchecked."
           }
         }
       }
     },
-    "Wybierz alkohol, który ma być głównym składnikiem drinków.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose the main spirit for the drinks."
+    "Wybierz alkohol, który ma być głównym składnikiem drinków" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the spirit that should be the main ingredient of the drinks"
           }
         }
       }
     },
-    "Wybierz poziom słodkości drinka": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose the drink's sweetness level"
+    "Wybierz alkohol, który ma być głównym składnikiem drinków." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the main spirit for the drinks."
           }
         }
       }
     },
-    "Wybierz poziom słodkości drinka.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose the drink's sweetness level."
+    "Wybierz poziom słodkości drinka" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the drink's sweetness level"
           }
         }
       }
     },
-    "Wybierz poziom zawartości alkoholu w drinku": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose the drink's alcohol strength level"
+    "Wybierz poziom słodkości drinka." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the drink's sweetness level."
           }
         }
       }
     },
-    "Wybierz poziom zawartości alkoholu w drinku.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose the drink's alcohol content level."
+    "Wybierz poziom zawartości alkoholu w drinku" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the drink's alcohol strength level"
           }
         }
       }
     },
-    "Wybierz składnik": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Select ingredient"
+    "Wybierz poziom zawartości alkoholu w drinku." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the drink's alcohol content level."
           }
         }
       }
     },
-    "Wygaszacz ekranu": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Screen lock"
+    "Wybierz składnik" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select ingredient"
           }
         }
       }
     },
-    "Wyloguj się": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Log out"
+    "Wygaszacz ekranu" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen lock"
           }
         }
       }
     },
-    "Wyrejestruj": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Log out"
+    "Wyloguj się" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log out"
           }
         }
       }
     },
-    "Wyślij": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send"
+    "Wyrejestruj" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log out"
           }
         }
       }
     },
-    "Zakończ": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Finish"
+    "Wyślij" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send"
           }
         }
       }
     },
-    "Zaloguj się": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Log in"
+    "Zakończ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finish"
           }
         }
       }
     },
-    "Zaloguj się by mieć dostęp do większej ilości przepisów.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Log in to access more recipes."
+    "Zaloguj się" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in"
           }
         }
       }
     },
-    "zam:": {
-      "extractionState": "stale",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "sub:"
+    "Zaloguj się by mieć dostęp do większej ilości przepisów." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in to access more recipes."
           }
         }
       }
     },
-    "Zamienniki": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Substitutes"
+    "zam:" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sub:"
           }
         }
       }
     },
-    "Zamienniki:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Substitutes:"
+    "Zamienniki" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Substitutes"
           }
         }
       }
     },
-    "Zamknij": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Close"
+    "Zamienniki:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Substitutes:"
           }
         }
       }
     },
-    "Zapisz": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save"
+    "Zamknij" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
           }
         }
       }
     },
-    "Zapisz nowe hasło": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save new password"
+    "Zapisz" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
           }
         }
       }
     },
-    "Zarejestruj się": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign up"
+    "Zapisz nowe hasło" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save new password"
           }
         }
       }
     },
-    "Zarejestruj się / Zaloguj się": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign up / Log in"
+    "Zarejestruj się" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
           }
         }
       }
     },
-    "Zmiana hasła": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Change password"
+    "Zarejestruj się / Zaloguj się" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up / Log in"
           }
         }
       }
     },
-    "Zmień hasło": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Change password"
+    "Zdjęcie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo"
           }
         }
       }
     },
-    "Zdjęcie": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photo"
+    "Zmiana hasła" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change password"
           }
         }
       }
     },
-    "Dodaj zdjęcie": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add photo"
+    "Zmień hasło" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change password"
           }
         }
       }
     },
-    "Zmień zdjęcie": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Change photo"
-          }
-        }
-      }
-    },
-    "Dodawanie własnych drinków — ze zdjęciem, składnikami i przepisem — jest dostępne w planie Premium.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Adding your own drinks — with a photo, ingredients and recipe — is available in the Premium plan."
-          }
-        }
-      }
-    },
-    "Nowy składnik": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New ingredient"
-          }
-        }
-      }
-    },
-    "Kalorie / 100": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Calories / 100"
-          }
-        }
-      }
-    },
-    "Domyślna miara": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Default unit"
-          }
-        }
-      }
-    },
-    "Opis (opcjonalnie)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Description (optional)"
-          }
-        }
-      }
-    },
-    "Opis składnika": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ingredient description"
-          }
-        }
-      }
-    },
-    "Składnik o tej nazwie już istnieje.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "An ingredient with this name already exists."
+    "Zmień zdjęcie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change photo"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

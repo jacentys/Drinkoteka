@@ -28,18 +28,18 @@ struct Preferencje_V: View {
 	var body: some View {
 		NavigationStack {
 			Form {
-				Section( // MARK: Blokada ekranu
-					header: Label("Wygaszacz ekranu", systemImage: blokujEkran ? "lightswitch.on" : "lightswitch.off")
+				Section( // MARK: Wygaszanie ekranu
+					header: Label("Ekran", systemImage: "sun.max")
 						.font(.headline)
 						.foregroundStyle(Color.secondary),
-					footer: Text("Jeśli włączone, blokada ekranu jest nieaktywna.").padding(.bottom, 30)) {
-						Button {
-							blokujEkran.toggle()
-							UIApplication.shared.isIdleTimerDisabled = blokujEkran
-						} label: {
-							Text(blokujEkran ? "Blokada wygaszacza aktywna" : "Blokada wygaszacza nieaktywna")
-								.foregroundStyle(blokujEkran ? Color.red : Color.secondary)
+					footer: Text("Gdy włączone, ekran nie gaśnie podczas korzystania z aplikacji — przydatne przy przyrządzaniu drinka. Gdy wyłączone, obowiązuje autoblokada telefonu.").padding(.bottom, 30)) {
+						Toggle(isOn: $blokujEkran) {
+							Text("Nie wygaszaj ekranu")
 								.font(.headline)
+						}
+						.toggleStyle(.switch)
+						.onChange(of: blokujEkran) { _, nowy in
+							UIApplication.shared.isIdleTimerDisabled = nowy
 						}
 					}
 				
