@@ -117,6 +117,18 @@ class AuthService_VM: ObservableObject {
         maDostepDoZrodla(drink.drZrodlo)
     }
 
+    // Czy użytkownik może OTWORZYĆ przepis drinka. Trzy poziomy:
+    // 1) IBA — darmowe dla każdego,
+    // 2) kategoria specjalna (restricted_sources) — decyduje kod kategorii (nie Premium),
+    // 3) zwykłe nie-IBA — wymaga Premium.
+    func mozeOtworzyc(_ drink: Dr_M) -> Bool {
+        if drink.czyIBA { return true }
+        if let rs = restrictedSources.first(where: { $0.source == drink.drZrodlo }) {
+            return permissions.contains(rs.permission)
+        }
+        return isPremium
+    }
+
     // Blokowane kategorie, do których użytkownik MA dostęp.
     // Tylko te pokazujemy w profilu — użytkownik nie powinien wiedzieć o istnieniu
     // kategorii, do których nie ma dostępu.

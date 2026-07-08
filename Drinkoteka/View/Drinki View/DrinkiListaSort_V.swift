@@ -67,10 +67,12 @@ private func filtrujDrinki(
 
 struct DrinkListaWiersz_V: View {
     let drink: Dr_M
-    let isLoggedIn: Bool
+    let mozeOtworzyc: Bool
 
     var body: some View {
-        if isLoggedIn || drink.czyIBA {
+        // IBA darmowe; kategorie specjalne wg kodu; reszta nie-IBA wg Premium.
+        // Zablokowane (nie-IBA bez Premium) są widoczne, ale prowadzą do ekranu Premium.
+        if mozeOtworzyc {
             NavigationLink(destination: Drink_V(drink: drink)) {
                 DrinkListaRow_V(drink: drink)
             }
@@ -167,7 +169,7 @@ struct SortSlodyczView: View {
             if !sekcja.isEmpty {
                 Section(header: SortSekcjaHeader_V(tytul: LocalizedStringKey(slodycz.opis), ilosc: sekcja.count)) {
                     ForEach(sekcja) { drink in
-                        DrinkListaWiersz_V(drink: drink, isLoggedIn: auth.isLoggedIn)
+                        DrinkListaWiersz_V(drink: drink, mozeOtworzyc: auth.mozeOtworzyc(drink))
                     }
                 }
             }
@@ -237,7 +239,7 @@ struct SortMocView: View {
             if !sekcja.isEmpty {
                 Section(header: SortSekcjaHeader_V(tytul: LocalizedStringKey(moc.opisLong), ilosc: sekcja.count)) {
                     ForEach(sekcja) { drink in
-                        DrinkListaWiersz_V(drink: drink, isLoggedIn: auth.isLoggedIn)
+                        DrinkListaWiersz_V(drink: drink, mozeOtworzyc: auth.mozeOtworzyc(drink))
                     }
                 }
             }
@@ -296,7 +298,7 @@ struct SortKcalView: View {
 
     var body: some View {
         ForEach(posortowane) { drink in
-            DrinkListaWiersz_V(drink: drink, isLoggedIn: auth.isLoggedIn)
+            DrinkListaWiersz_V(drink: drink, mozeOtworzyc: auth.mozeOtworzyc(drink))
         }
     }
 }
@@ -368,7 +370,7 @@ struct SortSkladView: View {
                     : "Brak \(idx) skł."
                 Section(header: SortSekcjaHeader_V(tytul: tytul, ilosc: sekcja.count)) {
                     ForEach(sekcja) { drink in
-                        DrinkListaWiersz_V(drink: drink, isLoggedIn: auth.isLoggedIn)
+                        DrinkListaWiersz_V(drink: drink, mozeOtworzyc: auth.mozeOtworzyc(drink))
                     }
                 }
             }

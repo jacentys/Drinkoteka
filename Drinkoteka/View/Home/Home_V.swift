@@ -32,6 +32,7 @@ struct Home_V: View {
 	@AppStorage("filtrMocMocny") var filtrMocMocny: Bool = true
 	
 	@StateObject private var auth = AuthService_VM.shared
+	@State private var pokazPremium: Bool = false
 	let columns: [GridItem] = [GridItem(.adaptive(minimum: 100, maximum: 200), spacing: 12, alignment: nil)]
 
 	var body: some View {
@@ -116,7 +117,7 @@ struct Home_V: View {
 										}
 									}
 									
-									let zablokowany = !auth.isLoggedIn && !drink.czyIBA
+									let zablokowany = !auth.mozeOtworzyc(drink)
 
 									DrinkotekaImage_V(nazwa: drink.drFoto, fallback: drink.drSzklo.foto)
 										.aspectRatio(contentMode: .fit)
@@ -151,13 +152,15 @@ struct Home_V: View {
 									}
 									.padding(.bottom, 6)
 									
-									if auth.isLoggedIn || drink.czyIBA {
+									if auth.mozeOtworzyc(drink) {
 										NavigationLink(destination: Drink_V(drink: drink)) {
 											Rectangle()
 												.fill(Color.clear)
 										}
 									} else {
-										NavigationLink(destination: AuthLogowanie_V()) {
+										Button {
+											pokazPremium = true
+										} label: {
 											Rectangle()
 												.fill(Color.clear)
 										}
@@ -183,9 +186,12 @@ struct Home_V: View {
 			.padding(.horizontal, 12)
 			.background(Back_V().ignoresSafeArea())
 			.navigationViewStyle(.automatic)
-			.navigationTitle("Drinkoteka")
+			.navigationTitle("Drinkotheque")
 			.toolbarBackground(.visible, for: .navigationBar)
 			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
+			.sheet(isPresented: $pokazPremium) {
+				PremiumInfo_V(opis: "Ten drink jest dostępny w planie Premium. Odblokuj Premium kodem aktywacyjnym, aby zobaczyć przepis.")
+			}
 		}
 	}
 		// Funkcja wyboru alko.
