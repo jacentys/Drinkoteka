@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pomoc / Support — Drinkotheque</title>
+<style>
+  :root { --accent:#FF6600; --ink:#1a1a1a; --muted:#666; --line:#eee; }
+  * { box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         color:var(--ink); line-height:1.7; max-width:760px; margin:0 auto; padding:32px 20px 64px; }
+  header { border-bottom:3px solid var(--accent); padding-bottom:16px; margin-bottom:8px; }
+  h1 { font-size:1.7rem; margin:0 0 4px; }
+  h2 { font-size:1.15rem; margin:28px 0 6px; }
+  .meta { color:var(--muted); font-size:.9rem; }
+  .lang { margin:16px 0 8px; }
+  .lang button { border:1px solid var(--line); background:#fff; padding:6px 14px; border-radius:20px;
+                 cursor:pointer; font-size:.9rem; margin-right:6px; }
+  .lang button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  a { color:var(--accent); }
+  .box { background:#fff7f0; border:1px solid #ffd9b0; border-radius:10px; padding:14px 16px; margin:14px 0; }
+  .q { font-weight:600; margin-top:18px; }
+  footer { margin-top:40px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
+  section[hidden] { display:none; }
+</style>
+</head>
+<body>
+
+<div class="lang">
+  <button id="btn-pl" class="active" onclick="setLang('pl')">Polski</button>
+  <button id="btn-en" onclick="setLang('en')">English</button>
+</div>
+
+<!-- ===================== POLSKI ===================== -->
+<section id="pl">
+  <header>
+    <h1>Pomoc — Drinkotheque</h1>
+    <p class="meta">Wsparcie użytkownika aplikacji</p>
+  </header>
+
+  <p>Drinkotheque to aplikacja z przepisami na drinki i zarządzaniem zapasem składników.
+  Poniżej znajdziesz odpowiedzi na najczęstsze pytania. W razie problemów napisz do nas.</p>
+
+  <div class="box">
+    <strong>Kontakt:</strong> <a href="mailto:jacek+support@post.film">jacek+support@post.film</a><br>
+    Odpowiadamy zwykle w ciągu kilku dni roboczych.
+  </div>
+
+  <h2>Najczęstsze pytania</h2>
+
+  <p class="q">Rejestracja i logowanie</p>
+  <p>Konto zakładasz e-mailem i hasłem. Po rejestracji wyślemy link potwierdzający —
+  kliknij go na urządzeniu z zainstalowaną aplikacją, aby aktywować konto.</p>
+
+  <p class="q">Premium i kody aktywacyjne</p>
+  <p>Funkcje Premium (m.in. notatki do drinków, dodawanie własnych drinków) odblokowujesz
+  kodem aktywacyjnym. Wpisz go w aplikacji: <em>Szczegóły konta → Kod aktywacyjny → Aktywuj</em>.</p>
+
+  <p class="q">Usuwanie konta</p>
+  <p>Konto wraz z danymi usuniesz samodzielnie: <em>Szczegóły konta → Usuń konto</em>.
+  Operacja jest nieodwracalna.</p>
+
+  <p class="q">Zmiana języka</p>
+  <p>Język aplikacji i przepisów zmienisz w <em>Preferencjach → Język</em>.</p>
+
+  <p class="q">Własne drinki i składniki (Premium)</p>
+  <p>Możesz dodać własny drink ze zdjęciem, składnikami i przepisem. Twoje własne pozycje
+  pozostają na urządzeniu i nie są usuwane przy aktualizacji przepisów.</p>
+
+  <p class="q">Zgłoszenie błędu lub sugestii</p>
+  <p>Skorzystaj z opcji w aplikacji (<em>Preferencje → Prześlij opinię</em> lub „Przekaż uwagę”
+  w szczegółach drinka) albo napisz na adres kontaktowy powyżej.</p>
+
+  <footer>
+    POST sp. z o.o. • <a href="mailto:jacek+support@post.film">jacek+support@post.film</a> •
+    <a href="/drinkotheque/privacy/">Polityka prywatności</a>
+  </footer>
+</section>
+
+<!-- ===================== ENGLISH ===================== -->
+<section id="en" hidden>
+  <header>
+    <h1>Support — Drinkotheque</h1>
+    <p class="meta">User support</p>
+  </header>
+
+  <p>Drinkotheque is an app for drink recipes and managing your ingredient stock.
+  Below are answers to common questions. If you run into any problems, get in touch.</p>
+
+  <div class="box">
+    <strong>Contact:</strong> <a href="mailto:jacek+support@post.film">jacek+support@post.film</a><br>
+    We usually reply within a few business days.
+  </div>
+
+  <h2>Frequently asked questions</h2>
+
+  <p class="q">Registration and sign-in</p>
+  <p>You create an account with an email and password. After registering we send a confirmation
+  link — open it on the device with the app installed to activate your account.</p>
+
+  <p class="q">Premium and activation codes</p>
+  <p>Premium features (drink notes, adding your own drinks, etc.) are unlocked with an activation
+  code. Enter it in the app: <em>Account details → Activation code → Activate</em>.</p>
+
+  <p class="q">Deleting your account</p>
+  <p>You can delete your account and data yourself: <em>Account details → Delete account</em>.
+  This action is permanent.</p>
+
+  <p class="q">Changing the language</p>
+  <p>Change the app and recipe language in <em>Preferences → Language</em>.</p>
+
+  <p class="q">Custom drinks and ingredients (Premium)</p>
+  <p>You can add your own drink with a photo, ingredients and recipe. Your custom items stay on
+  the device and are not removed when recipes are updated.</p>
+
+  <p class="q">Reporting a bug or suggestion</p>
+  <p>Use the in-app options (<em>Preferences → Send feedback</em> or “Send feedback” in a drink’s
+  details), or email us at the address above.</p>
+
+  <footer>
+    POST sp. z o.o. • <a href="mailto:jacek+support@post.film">jacek+support@post.film</a> •
+    <a href="/drinkotheque/privacy/">Privacy policy</a>
+  </footer>
+</section>
+
+<script>
+  function setLang(l){
+    document.getElementById('pl').hidden = (l!=='pl');
+    document.getElementById('en').hidden = (l!=='en');
+    document.getElementById('btn-pl').classList.toggle('active', l==='pl');
+    document.getElementById('btn-en').classList.toggle('active', l==='en');
+    document.documentElement.lang = l;
+  }
+</script>
+</body>
+</html>
