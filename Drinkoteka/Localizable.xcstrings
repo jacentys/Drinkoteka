@@ -85,6 +85,16 @@
         }
       }
     },
+    "Administrator": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Administrator"
+          }
+        }
+      }
+    },
     "Aktywuj": {
       "localizations": {
         "en": {
@@ -458,6 +468,16 @@
         }
       }
     },
+    "Dodaj do wspólnego katalogu": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to shared catalog"
+          }
+        }
+      }
+    },
     "Dodaj krok": {
       "localizations": {
         "en": {
@@ -612,6 +632,16 @@
         }
       }
     },
+    "Drink zostanie zapisany na serwerze i będzie widoczny dla wszystkich użytkowników, zamiast pozostać tylko na tym urządzeniu.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The drink will be saved on the server and visible to all users, instead of staying only on this device."
+          }
+        }
+      }
+    },
     "Drinki": {
       "localizations": {
         "en": {
@@ -650,6 +680,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Edit"
+          }
+        }
+      }
+    },
+    "Edytuj drink": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit drink"
           }
         }
       }
@@ -735,7 +775,6 @@
       }
     },
     "Gotowe": {
-      "extractionState": "stale",
       "localizations": {
         "en": {
           "stringUnit": {
@@ -1172,6 +1211,16 @@
         }
       }
     },
+    "Link (WWW)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link (URL)"
+          }
+        }
+      }
+    },
     "listki": {
       "localizations": {
         "en": {
@@ -1289,6 +1338,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Drink strength"
+          }
+        }
+      }
+    },
+    "Moc i kaloryczność liczone są automatycznie na podstawie listy składników.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Strength and calories are calculated automatically from the ingredient list."
           }
         }
       }
@@ -1788,6 +1847,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Recommended:"
+          }
+        }
+      }
+    },
+    "Polecany na stronie głównej": {
+      "extractionState": "stale",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Featured on home screen"
           }
         }
       }
@@ -2505,6 +2575,16 @@
         }
       }
     },
+    "Ulubione:": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites:"
+          }
+        }
+      }
+    },
     "Ulubiony": {
       "localizations": {
         "en": {
@@ -2515,6 +2595,7 @@
         }
       }
     },
+    "Usuń": {},
     "Usuń konto": {
       "localizations": {
         "en": {
@@ -2551,6 +2632,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Notes"
+          }
+        }
+      }
+    },
+    "Uwagi do przepisu": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recipe remarks"
           }
         }
       }
@@ -2974,92 +3065,72 @@
         }
       }
     },
-    "Edytuj drink": {
+    "Główna": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Edit drink"
+            "value": "Home"
           }
         }
       }
     },
-    "Polecany na stronie głównej": {
+    "Systemowy": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Featured on home screen"
+            "value": "System"
           }
         }
       }
     },
-    "Uwagi do przepisu": {
+    "Jasny": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Recipe remarks"
+            "value": "Light"
           }
         }
       }
     },
-    "Moc i kaloryczność liczone są automatycznie na podstawie listy składników.": {
+    "Ciemny": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Strength and calories are calculated automatically from the ingredient list."
+            "value": "Dark"
           }
         }
       }
     },
-    "Link (WWW)": {
+    "Wygląd": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Link (URL)"
+            "value": "Appearance"
           }
         }
       }
     },
-    "Administrator": {
+    "Wygaszacz: gdy włączone, ekran nie gaśnie podczas korzystania z aplikacji — przydatne przy przyrządzaniu drinka. Gdy wyłączone, obowiązuje autoblokada telefonu.\n\nWygląd: wybierz tryb jasny/ciemny na stałe, albo zostaw \"Systemowy\", by aplikacja podążała za ustawieniem telefonu.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Administrator"
+            "value": "Screen: when on, the screen stays awake while using the app — handy while making a drink. When off, your phone's auto-lock applies.\n\nAppearance: choose a fixed light/dark theme, or leave \"System\" to follow your phone's setting."
           }
         }
       }
     },
-    "Dodaj do wspólnego katalogu": {
+    "Język treści w aplikacji (nazwy drinków, składników, przepisy). Zmiana przeładowuje treść — Twój bark i ulubione zostają zachowane.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Add to shared catalog"
-          }
-        }
-      }
-    },
-    "Drink zostanie zapisany na serwerze i będzie widoczny dla wszystkich użytkowników, zamiast pozostać tylko na tym urządzeniu.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The drink will be saved on the server and visible to all users, instead of staying only on this device."
-          }
-        }
-      }
-    },
-    "Ulubione:": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favorites:"
+            "value": "The language of app content (drink names, ingredients, recipes). Changing it reloads content — your bar and favorites are kept."
           }
         }
       }

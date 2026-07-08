@@ -16,6 +16,7 @@ struct Preferencje_V: View {
 	@AppStorage("uzytkownik") var uzytkownik: String?
 
 	@AppStorage("blokujEkran") var blokujEkran: Bool = false
+	@AppStorage("wygladAplikacji") var wygladAplikacji: wygladEnum = .systemowy
 	@AppStorage("jezykAplikacji") var jezykAplikacji: String = {
 		let kod = Locale.current.language.languageCode?.identifier ?? "en"
 		return kod == "pl" ? "pl" : "en"
@@ -24,17 +25,21 @@ struct Preferencje_V: View {
 	@State private var pokazPotwierdzenie: Bool = false
 	@State private var pokazFeedback: Bool = false
 	@State private var infoEkran: Bool = false
+	@State private var infoJezyk: Bool = false
 	@State private var infoKonto: Bool = false
 	@State private var infoOpinia: Bool = false
 	@State private var infoReset: Bool = false
 	let spacje: CGFloat = 10
 
-		// Nagłówek sekcji z ikoną informacji + popoverem (jak w filtrach drinków)
+		// Nagłówek sekcji z ikoną informacji + popoverem (jak w filtrach drinków).
+		// Ten sam font (title2, light) co nagłówki sekcji na ekranie głównym —
+		// spójny styl nagłówków w całej aplikacji.
 	private func naglowek(_ tytul: LocalizedStringKey, systemImage: String, kolor: Color,
 						   opis: LocalizedStringKey, pokaz: Binding<Bool>) -> some View {
 		HStack {
 			Label(tytul, systemImage: systemImage)
-				.font(.headline)
+				.font(.title2)
+				.fontWeight(.light)
 				.foregroundStyle(kolor)
 			Spacer()
 			Button { pokaz.wrappedValue = true } label: {
@@ -44,6 +49,7 @@ struct Preferencje_V: View {
 			.popover(isPresented: pokaz) {
 				Text(opis)
 					.font(.footnote)
+					.textCase(nil)
 					.frame(width: 260, alignment: .leading)
 					.padding()
 					.presentationCompactAdaptation(.popover)
@@ -54,9 +60,9 @@ struct Preferencje_V: View {
 	var body: some View {
 		NavigationStack {
 			Form {
-				Section( // MARK: Wygaszanie ekranu
+				Section( // MARK: Wygaszanie ekranu i wygląd
 					header: naglowek("Ekran", systemImage: "sun.max", kolor: Color.secondary,
-									 opis: "Gdy włączone, ekran nie gaśnie podczas korzystania z aplikacji — przydatne przy przyrządzaniu drinka. Gdy wyłączone, obowiązuje autoblokada telefonu.",
+									 opis: "Wygaszacz: gdy włączone, ekran nie gaśnie podczas korzystania z aplikacji — przydatne przy przyrządzaniu drinka. Gdy wyłączone, obowiązuje autoblokada telefonu.\n\nWygląd: wybierz tryb jasny/ciemny na stałe, albo zostaw \"Systemowy\", by aplikacja podążała za ustawieniem telefonu.",
 									 pokaz: $infoEkran)) {
 						Toggle(isOn: $blokujEkran) {
 							Text("Nie wygaszaj ekranu")
@@ -66,27 +72,37 @@ struct Preferencje_V: View {
 						.onChange(of: blokujEkran) { _, nowy in
 							UIApplication.shared.isIdleTimerDisabled = nowy
 						}
+
+						Picker(selection: $wygladAplikacji) {
+							ForEach(wygladEnum.allCases, id: \.self) {
+								Text($0.opis).tag($0)
+							}
+						} label: {
+							Text("Wygląd").font(.headline)
+						}
 					}
 				
 				Section( // MARK: Język
-					header: Label("Język", systemImage: "globe")
-						.font(.headline)
-						.foregroundStyle(Color.secondary)) {
-						Picker("Język aplikacji", selection: $jezykAplikacji) {
+					header: naglowek("Język", systemImage: "globe", kolor: Color.secondary,
+									 opis: "Język treści w aplikacji (nazwy drinków, składników, przepisy). Zmiana przeładowuje treść — Twój bark i ulubione zostają zachowane.",
+									 pokaz: $infoJezyk)) {
+						Picker(selection: $jezykAplikacji) {
 							Text("Polski").tag("pl")
 							Text("English").tag("en")
+						} label: {
+							Text("Język aplikacji").font(.headline)
 						}
 					}
 
 				Section( // MARK: Konto
-					header: naglowek("Konto", systemImage: "person.crop.circle", kolor: Color.green,
+					header: naglowek("Konto", systemImage: "person.crop.circle", kolor: Color.secondary,
 									 opis: "Załóż konto lub zaloguj się, aby zapisywać notatki i mieć dostęp do dodatkowych treści. Konto możesz w każdej chwili usunąć w jego szczegółach.",
 									 pokaz: $infoKonto)) {
 						if auth.isLoggedIn {
 							NavigationLink(destination: AuthProfil_V()) {
 								VStack(alignment: .leading, spacing: 2) {
 									Text("Szczegóły konta")
-										.foregroundStyle(Color.green)
+										.foregroundStyle(Color.accent)
 										.font(.headline)
 									Text(auth.userEmail)
 										.font(.caption)
@@ -96,7 +112,7 @@ struct Preferencje_V: View {
 						} else {
 							NavigationLink(destination: Logowanie_V()) {
 								Text("Zarejestruj się / Zaloguj się")
-									.foregroundStyle(Color.green)
+									.foregroundStyle(Color.accent)
 									.font(.headline)
 							}
 						}
@@ -139,7 +155,18 @@ struct Preferencje_V: View {
 					}
 			}
 			.toggleStyle(iOSCheckboxToggleStyle())
-			.navigationTitle("Preferencje")
+			.navigationBarTitleDisplayMode(.inline)
+			.toolbar {
+				// Ten sam styl tytułu, co "Drinkotheque" na ekranie głównym —
+				// spójny wygląd nagłówków ekranów w całej aplikacji.
+				ToolbarItem(placement: .principal) {
+					Text("Preferencje")
+						.font(.largeTitle)
+						.fontWeight(.light)
+						.foregroundStyle(Color.primary)
+						.shadow(color: .black.opacity(0.6), radius: 6)
+				}
+			}
 			.sheet(isPresented: $pokazFeedback) {
 				AppFeedback_V()
 			}

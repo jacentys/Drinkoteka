@@ -96,19 +96,27 @@ struct SkladnikiLista_V: View {
 			.background(Back_V().ignoresSafeArea())
 			
 			.toolbar {
+					// MARK: - TYTUŁ (jak "Drinkotheque" na ekranie głównym)
+				ToolbarItem(placement: .principal) {
+					Text("Składniki")
+						.font(.largeTitle)
+						.fontWeight(.light)
+						.foregroundStyle(Color.primary)
+						.shadow(color: .black.opacity(0.6), radius: 6)
+				}
+
 					// MARK: - TOOLBAR
+				// Tylko ikona (jak gwiazdka "ulubione" na ekranie Drinki) — zwalnia miejsce
+				// dla większego, spójnego tytułu na środku paska nawigacji.
 				ToolbarItem(placement: .navigationBarLeading) {
 					Button {
 						zamiennikiDozwolone.toggle()
 						setAllBraki(modelContext: modelContext)
 					} label: {
-						HStack(spacing: 4) {
-							Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
-							Text("Dopuszczaj zamienniki")
-								.font(.footnote)
-						}
-						.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
+						Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
+							.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
 					}
+					.accessibilityLabel("Dopuszczaj zamienniki")
 				}
 				ToolbarItem(placement: .navigationBarTrailing) {
 					Picker("", selection: $sortowanieAlfabetyczne) {
@@ -121,7 +129,7 @@ struct SkladnikiLista_V: View {
 			}
 			.toolbarBackground(.visible, for: .navigationBar)
 			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
-			.navigationTitle("Składniki")
+			.navigationBarTitleDisplayMode(.inline)
 		}
 	}
 }

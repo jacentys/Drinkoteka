@@ -354,3 +354,27 @@ enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 	}
 
 }
+
+// MARK: WYGLĄD APLIKACJI — wybór trybu jasny/ciemny/systemowy (Preferencje)
+enum wygladEnum: String, CaseIterable, Codable {
+	case systemowy
+	case jasny
+	case ciemny
+
+	var opis: String {
+		switch self {
+			case .systemowy: return "Systemowy"
+			case .jasny: return "Jasny"
+			case .ciemny: return "Ciemny"
+		}
+	}
+
+	// nil = podąża za ustawieniem systemowym (ColorScheme opcjonalne w .preferredColorScheme)
+	var colorScheme: ColorScheme? {
+		switch self {
+			case .systemowy: return nil
+			case .jasny: return .light
+			case .ciemny: return .dark
+		}
+	}
+}

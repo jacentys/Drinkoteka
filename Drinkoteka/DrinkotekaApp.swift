@@ -8,6 +8,7 @@ struct DrinkotekaApp: App {
 
 	@Environment(\.scenePhase) private var scenePhase
 	@AppStorage("blokujEkran") var blokujEkran: Bool = false
+	@AppStorage("wygladAplikacji") var wygladAplikacji: wygladEnum = .systemowy
 	@AppStorage("jezykAplikacji") var jezykAplikacji: String = {
 		let kod = Locale.current.language.languageCode?.identifier ?? "en"
 		return kod == "pl" ? "pl" : "en"
@@ -27,6 +28,7 @@ struct DrinkotekaApp: App {
 			  CustomTab_V()
 				  .id(jezykAplikacji)
 				  .environment(\.locale, Locale(identifier: jezykAplikacji))
+				  .preferredColorScheme(wygladAplikacji.colorScheme)
 				  // „Nie wygaszaj ekranu" — flaga stosowana reaktywnie:
 				  // przy starcie, po zmianie ustawienia oraz po powrocie z tła
 				  // (iOS potrafi zresetować isIdleTimerDisabled przy przejściu w tło).

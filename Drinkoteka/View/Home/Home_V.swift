@@ -167,7 +167,21 @@ struct Home_V: View {
 			.scrollContentBackground(.hidden)
 			.background(Back_V().ignoresSafeArea())
 			.navigationViewStyle(.automatic)
-			.navigationTitle("Drinkotheque")
+			.navigationBarTitleDisplayMode(.inline)
+			.toolbar {
+				// Własny tytuł zamiast systemowego navigationTitle: tło to losowy,
+				// niekontrolowany gradient (Back_V) — domyślny kolor tekstu (Color.primary,
+				// czarny/biały zależnie od trybu) bywał niewidoczny na niektórych zestawieniach
+				// kolorów, zwłaszcza w trybie ciemnym. Biały tekst + poświata (jak przy nazwach
+				// kafelków) gwarantuje czytelność niezależnie od tła i trybu.
+				ToolbarItem(placement: .principal) {
+					Text("Drinkotheque")
+						.font(.largeTitle)
+						.fontWeight(.light)
+						.foregroundStyle(Color.primary)
+						.shadow(color: .black.opacity(0.6), radius: 6)
+				}
+			}
 			.toolbarBackground(.visible, for: .navigationBar)
 			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
 			.sheet(isPresented: $pokazPremium) {

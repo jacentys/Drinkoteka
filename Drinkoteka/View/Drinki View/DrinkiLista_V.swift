@@ -132,6 +132,15 @@ struct DrinkiLista_V: View {
 			.background(Back_V().ignoresSafeArea())
 			
 			.toolbar {
+					// MARK: - TYTUŁ (jak "Drinkotheque" na ekranie głównym)
+				ToolbarItem(placement: .principal) {
+					Text("Drinki")
+						.font(.largeTitle)
+						.fontWeight(.light)
+						.foregroundStyle(Color.primary)
+						.shadow(color: .black.opacity(0.6), radius: 6)
+				}
+
 					// MARK: - TOOLBAR LEWO: ulubione
 				ToolbarItem(placement: .navigationBarLeading) {
 					Button {
@@ -198,7 +207,7 @@ struct DrinkiLista_V: View {
 			.toolbarBackground(.visible, for: .navigationBar)
 			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
 			.navigationViewStyle(.automatic)
-			.navigationTitle("Drinki")
+			.navigationBarTitleDisplayMode(.inline)
 			.task(id: auth.session?.user.id) {
 				await loadNotesFromSupabase(modelContext: modelContext)
 				await sprawdzAktualizacje()
