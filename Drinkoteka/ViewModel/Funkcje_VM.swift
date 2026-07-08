@@ -458,18 +458,18 @@ func setAllDrinkKalorie(modelContext: ModelContext) {
 // a następnie uwzględnia rozcieńczenie/dolewkę do pojemności szkła (współczynnik 0.25
 // niewykorzystanej objętości szkła). Nadpisuje `drProc` każdego drinka.
 func setAllDrinkProcenty(modelContext: ModelContext) {
-	var procenty: Double = 0
-	var objetosc: Double = 0
-	
 		// Tworzymy FetchDescriptor dla typu Dr_M
 	let fetchDescriptor = FetchDescriptor<Dr_M>()
-	
+
 	do {
 			// Pobieramy wszystkie obiekty Dr_M za pomocą FetchDescriptor
 		let drinks: [Dr_M] = try modelContext.fetch(fetchDescriptor)
-		
+
 			// Iterujemy przez drinki i ustawiamy brak
 		for drink in drinks {
+				// Reset dla każdego drinka — bez tego sumy kumulowałyby się między drinkami
+			var procenty: Double = 0
+			var objetosc: Double = 0
 			if !drink.drSklad.isEmpty {
 				for drSkladnik in drink.drSklad {
 					if drSkladnik.sklMiara == miaraEnum.ml {

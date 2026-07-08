@@ -52,56 +52,66 @@ struct CustomTab_V: View {
 
     var body: some View {
 		 ZStack {
-		 VStack(spacing: 0) {
-			 TabView(selection: $activeTab) {
-				 Home_V(activeTab: $activeTab)
-					 .tag(Tab.home)
-					 // Ukrycie natywnego tab bar
-					 .toolbar(.hidden, for: .tabBar)
-				 DrinkiLista_V()
-					 .tag(Tab.drinki)
-					 // Ukrycie natywnego tab bar
+			 // TabView renderujemy TYLKO gdy dane są gotowe i nie trwa przeładowanie.
+			 // Podczas pierwszego ładowania i zmiany języka (delAll + reload) widoki
+			 // z @Query są usuwane z hierarchii, żeby nie sięgały do kasowanych
+			 // obiektów SwiftData (inaczej crash "backing data could no longer be found").
+			 if setupDone && !przeladowujeJezyk {
+				 VStack(spacing: 0) {
+					 TabView(selection: $activeTab) {
+						 Home_V(activeTab: $activeTab)
+							 .tag(Tab.home)
+							 .toolbar(.hidden, for: .tabBar)
+						 DrinkiLista_V()
+							 .tag(Tab.drinki)
 #if os(iOS)
-					 .toolbar(.hidden, for: .tabBar)
+							 .toolbar(.hidden, for: .tabBar)
 #endif
-				 Text("Skladniki")
-				 SkladnikiLista_V()
-					 .tag(Tab.skladniki)
-					 // Ukrycie natywnego tab bar
+						 Text("Skladniki")
+						 SkladnikiLista_V()
+							 .tag(Tab.skladniki)
 #if os(iOS)
-					 .toolbar(.hidden, for: .tabBar)
+							 .toolbar(.hidden, for: .tabBar)
 #endif
-				 Preferencje_V()
-					 .tag(Tab.opcje)
-					 // Ukrycie natywnego tab bar
+						 Preferencje_V()
+							 .tag(Tab.opcje)
 #if os(iOS)
-					 .toolbar(.hidden, for: .tabBar)
+							 .toolbar(.hidden, for: .tabBar)
 #endif
-			 }
-			 CustomTabBar()
-		 }
-		 .task(id: jezykAplikacji) {
-			 await zsynchronizujJezyk()
-		 }
-		 .overlay {
-			 if przeladowujeJezyk {
-				 ProgressView("Wczytuję przepisy…")
-					 .padding()
-					 .background(.regularMaterial)
-					 .cornerRadius(12)
+					 }
+					 CustomTabBar()
+				 }
+				 .transition(.opacity)
+			 } else {
+				 // Loader: offline z ponowieniem tylko przy pierwszym ładowaniu
+				 LadowanieEkran_V(blad: bladPolaczenia && !setupDone) {
+					 Task { await wykonajPierwszeLadowanie() }
+				 }
+				 .transition(.opacity)
 			 }
 		 }
-
-		 // Ekran ładowania nad całą aplikacją do czasu pierwszego pobrania danych
-		 if !setupDone {
-			 LadowanieEkran_V(blad: bladPolaczenia) {
-				 Task { await wykonajPierwszeLadowanie() }
-			 }
-			 .transition(.opacity)
-		 }
-		 } // ZStack
-		 .animation(.easeInOut(duration: 0.35), value: setupDone)
+		 .animation(.easeInOut(duration: 0.3), value: setupDone)
+		 .animation(.easeInOut(duration: 0.3), value: przeladowujeJezyk)
 		 .task { await pierwszeLadowanie() }
+		 // Krok 1: decyzja — czy potrzebne przeładowanie treści w nowym języku.
+		 // Ustawienie flagi usuwa TabView z hierarchii (patrz body).
+		 .task(id: jezykAplikacji) {
+			 guard UserDefaults.standard.bool(forKey: "setupDone") else {
+				 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
+				 return
+			 }
+			 let dataLang = UserDefaults.standard.string(forKey: "dataLang") ?? "pl"
+			 if dataLang != jezykAplikacji { przeladowujeJezyk = true }
+		 }
+		 // Krok 2: właściwe przeładowanie — odpala się w OSOBNYM cyklu, gdy TabView
+		 // jest już usunięty, więc delAll nie unieważnia obserwowanych obiektów.
+		 .task(id: przeladowujeJezyk) {
+			 guard przeladowujeJezyk else { return }
+			 await zmienJezykDanych(modelContext: modelContext)
+			 await loadNotesFromSupabase(modelContext: modelContext)
+			 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
+			 przeladowujeJezyk = false
+		 }
 	 }
 
 		 // MARK: - PIERWSZE ŁADOWANIE DANYCH (w korzeniu, niezależnie od zakładki)
@@ -124,23 +134,6 @@ struct CustomTab_V: View {
 		 } else {
 			 bladPolaczenia = true
 		 }
-	 }
-
-		 // MARK: - ZMIANA JĘZYKA DANYCH
-	 private func zsynchronizujJezyk() async {
-		 // Tylko po pierwszym pełnym załadowaniu treści
-		 guard UserDefaults.standard.bool(forKey: "setupDone") else {
-			 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
-			 return
-		 }
-		 let dataLang = UserDefaults.standard.string(forKey: "dataLang") ?? "pl"
-		 guard dataLang != jezykAplikacji else { return }
-
-		 przeladowujeJezyk = true
-		 await zmienJezykDanych(modelContext: modelContext)
-		 await loadNotesFromSupabase(modelContext: modelContext)
-		 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
-		 przeladowujeJezyk = false
 	 }
 
 		///Custom TabBar - z większą ilością customizacji

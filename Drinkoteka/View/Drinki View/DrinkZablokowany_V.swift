@@ -13,7 +13,7 @@ struct DrinkZablokowany_V: View {
                     Text(drink.drNazwa)
                         .font(.headline)
                         .foregroundStyle(.primary.opacity(0.4))
-                    Text(drink.drZrodlo)
+                    Text(LocalizedStringKey(drink.drZrodlo))
                         .font(.caption)
                         .foregroundStyle(.secondary.opacity(0.4))
                 }

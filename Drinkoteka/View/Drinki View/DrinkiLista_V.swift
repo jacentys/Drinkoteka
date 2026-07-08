@@ -103,6 +103,17 @@ struct DrinkiLista_V: View {
 								}) { drink in
 									DrinkListaWiersz_V(drink: drink, mozeOtworzyc: auth.mozeOtworzyc(drink))
 										.listRowBackground(Color.white.opacity(auth.mozeOtworzyc(drink) ? 0.4 : 0.2))
+										.swipeActions(edge: .trailing, allowsFullSwipe: true) {
+											// Własny drink: usuwalny lokalnie przez każdego.
+											// Drink katalogowy/serwerowy: usuwalny tylko przez admina (kasuje też z serwera).
+											if drink.drZrodlo == "Własny" || auth.isAdmin {
+												Button(role: .destructive) {
+													usunDrink(drink)
+												} label: {
+													Label("Usuń", systemImage: "trash")
+												}
+											}
+										}
 								}
 							}
 						}
@@ -121,12 +132,23 @@ struct DrinkiLista_V: View {
 			.background(Back_V().ignoresSafeArea())
 			
 			.toolbar {
+					// MARK: - TOOLBAR LEWO: ulubione
+				ToolbarItem(placement: .navigationBarLeading) {
+					Button {
+						tylkoUlubione.toggle()
+					} label: {
+						Image(systemName: tylkoUlubione ? "star.fill" : "star")
+							.foregroundStyle(tylkoUlubione ? Color.accent : Color.secondary)
+					}
+					.accessibilityLabel(tylkoUlubione ? "Pokaż wszystkie" : "Tylko ulubione")
+				}
+
 					// MARK: - TOOLBAR PRAWO
 				if auth.isLoggedIn {
 					ToolbarItem(placement: .navigationBarTrailing) {
 						Button {
-							// Dodawanie własnych drinków to funkcja Premium
-							if auth.isPremium {
+							// Dodawanie własnych drinków: Premium lub admin
+							if auth.mozeTworzyc {
 								pokazDodajDrink = true
 							} else {
 								pokazPremiumDodaj = true
@@ -197,6 +219,17 @@ struct DrinkiLista_V: View {
 		if let count = await sprawdzAktualizacjeDrinkow(modelContext: modelContext), count > 0 {
 			noweDrinkiCount = count
 			pokazAktualizacje = true
+		}
+	}
+
+		// MARK: - USUŃ DRINK
+	private func usunDrink(_ drink: Dr_M) {
+		let byłNaSerwerze = drink.drZrodlo != "Własny"
+		let drinkID = drink.drinkID
+		modelContext.delete(drink)
+		try? modelContext.save()
+		if byłNaSerwerze {
+			Task { await usunDrinkZServera(drinkId: drinkID) }
 		}
 	}
 

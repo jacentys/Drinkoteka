@@ -35,14 +35,12 @@ struct DrinkFiltry_V: View {
 
 	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
 	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
-	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
 	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
 
 	@State var rodzajBledu: blad = blad.alkGlowny
 	@State var pokazBlad: Bool = false
 
 	@State private var infoDostepne: Bool = false
-	@State private var infoUlubione: Bool = false
 	@State private var infoZamienniki: Bool = false
 	@State private var infoOpcjonalne: Bool = false
 	@State private var infoAlkGlowny: Bool = false
@@ -82,30 +80,6 @@ struct DrinkFiltry_V: View {
 						VStack(spacing: 6) {
 							Toggle(isOn: $tylkoDostepne) {
 								Text("Tylko z dost. składn.")
-							}
-						}
-						.padding(.horizontal, paddingHoriz)
-						.padding(.vertical, paddingVert)
-					}
-					.backgroundStyle(.regularMaterial)
-
-						// MARK: - ULUBIONE
-					GroupBox(label: HStack {
-						Label("Ulubione", systemImage: tylkoUlubione ? "star.circle.fill" : "star.circle")
-							.foregroundColor(tylkoUlubione ? .accent : .secondary)
-							.font(.headline).fontWeight(.light)
-						Spacer()
-						Button { infoUlubione = true } label: {
-							Image(systemName: "info.circle").foregroundStyle(.secondary)
-						}
-						.popover(isPresented: $infoUlubione) {
-							Text("Pokazuj tylko drinki zaznaczone gwiazdką jako ulubione.")
-								.font(.footnote).frame(width: 260, alignment: .leading).padding().presentationCompactAdaptation(.popover)
-						}
-					}) {
-						VStack(spacing: 6) {
-							Toggle(isOn: $tylkoUlubione) {
-								Text("Tylko ulubione")
 							}
 						}
 						.padding(.horizontal, paddingHoriz)

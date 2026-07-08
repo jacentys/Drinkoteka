@@ -23,16 +23,41 @@ struct Preferencje_V: View {
 
 	@State private var pokazPotwierdzenie: Bool = false
 	@State private var pokazFeedback: Bool = false
+	@State private var infoEkran: Bool = false
+	@State private var infoKonto: Bool = false
+	@State private var infoOpinia: Bool = false
+	@State private var infoReset: Bool = false
 	let spacje: CGFloat = 10
-	
+
+		// Nagłówek sekcji z ikoną informacji + popoverem (jak w filtrach drinków)
+	private func naglowek(_ tytul: LocalizedStringKey, systemImage: String, kolor: Color,
+						   opis: LocalizedStringKey, pokaz: Binding<Bool>) -> some View {
+		HStack {
+			Label(tytul, systemImage: systemImage)
+				.font(.headline)
+				.foregroundStyle(kolor)
+			Spacer()
+			Button { pokaz.wrappedValue = true } label: {
+				Image(systemName: "info.circle").foregroundStyle(.secondary)
+			}
+			.buttonStyle(.plain)
+			.popover(isPresented: pokaz) {
+				Text(opis)
+					.font(.footnote)
+					.frame(width: 260, alignment: .leading)
+					.padding()
+					.presentationCompactAdaptation(.popover)
+			}
+		}
+	}
+
 	var body: some View {
 		NavigationStack {
 			Form {
 				Section( // MARK: Wygaszanie ekranu
-					header: Label("Ekran", systemImage: "sun.max")
-						.font(.headline)
-						.foregroundStyle(Color.secondary),
-					footer: Text("Gdy włączone, ekran nie gaśnie podczas korzystania z aplikacji — przydatne przy przyrządzaniu drinka. Gdy wyłączone, obowiązuje autoblokada telefonu.").padding(.bottom, 30)) {
+					header: naglowek("Ekran", systemImage: "sun.max", kolor: Color.secondary,
+									 opis: "Gdy włączone, ekran nie gaśnie podczas korzystania z aplikacji — przydatne przy przyrządzaniu drinka. Gdy wyłączone, obowiązuje autoblokada telefonu.",
+									 pokaz: $infoEkran)) {
 						Toggle(isOn: $blokujEkran) {
 							Text("Nie wygaszaj ekranu")
 								.font(.headline)
@@ -54,10 +79,9 @@ struct Preferencje_V: View {
 					}
 
 				Section( // MARK: Konto
-					header: Label("Konto", systemImage: "person.crop.circle")
-						.font(.headline)
-						.foregroundStyle(Color.green),
-					footer: Text(auth.isLoggedIn ? "" : "Zaloguj się by mieć dostęp do większej ilości przepisów.").padding(.bottom, 30)) {
+					header: naglowek("Konto", systemImage: "person.crop.circle", kolor: Color.green,
+									 opis: "Załóż konto lub zaloguj się, aby zapisywać notatki i mieć dostęp do dodatkowych treści. Konto możesz w każdej chwili usunąć w jego szczegółach.",
+									 pokaz: $infoKonto)) {
 						if auth.isLoggedIn {
 							NavigationLink(destination: AuthProfil_V()) {
 								VStack(alignment: .leading, spacing: 2) {
@@ -79,10 +103,9 @@ struct Preferencje_V: View {
 					}
 
 				Section( // MARK: Informacja zwrotna
-					header: Label("Opinia", systemImage: "bubble.left.and.text.bubble.right")
-						.font(.headline)
-						.foregroundStyle(Color.secondary),
-					footer: Text("Podziel się opinią, zgłoś błąd lub zaproponuj nową funkcję.").padding(.bottom, 30)) {
+					header: naglowek("Opinia", systemImage: "bubble.left.and.text.bubble.right", kolor: Color.secondary,
+									 opis: "Podziel się opinią, zgłoś błąd lub zaproponuj nową funkcję. Wiadomość trafi bezpośrednio do twórcy aplikacji.",
+									 pokaz: $infoOpinia)) {
 						Button {
 							pokazFeedback = true
 						} label: {
@@ -93,10 +116,9 @@ struct Preferencje_V: View {
 					}
 
 				Section( // MARK: Reset składników
-					header: Label("Reset!!!", systemImage: "exclamationmark.square.fill")
-						.font(.headline)
-						.foregroundStyle(Color.red),
-					footer: Text("Resetuje stan wszystkich składników! \nOpcja przydatna gdy chcesz od nowa wprowadzić składniki do programu.").padding(.bottom, 30)) {
+					header: naglowek("Reset!!!", systemImage: "exclamationmark.square.fill", kolor: Color.red,
+									 opis: "Resetuje stan wszystkich składników (odznacza barek). Przydatne, gdy chcesz wprowadzić składniki od nowa. Twoje własne drinki i przepisy pozostają.",
+									 pokaz: $infoReset)) {
 						Button {
 							pokazPotwierdzenie = true
 						} label: {

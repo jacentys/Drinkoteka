@@ -13,6 +13,7 @@ class AuthService_VM: ObservableObject {
     @Published var errorMessage: String? = nil
     @Published var oczekujeNaPotwierdzenieMaila: Bool = false
     @Published var isPremium: Bool = false
+    @Published var isAdmin: Bool = false
     @Published var permissions: Set<String> = []
     @Published var restrictedSources: [RestrictedSource] = []
 
@@ -50,23 +51,29 @@ class AuthService_VM: ObservableObject {
     // MARK: - Status premium
 
     func refreshPremiumStatus() async {
-        guard session != nil else { isPremium = false; return }
+        guard session != nil else { isPremium = false; isAdmin = false; return }
         do {
             struct ProfileDTO: Decodable {
                 let isPremium: Bool
-                enum CodingKeys: String, CodingKey { case isPremium = "is_premium" }
+                let isAdmin: Bool?
+                enum CodingKeys: String, CodingKey {
+                    case isPremium = "is_premium"
+                    case isAdmin = "is_admin"
+                }
             }
             let profile: ProfileDTO = try await supabase
                 .from("profiles")
-                .select("is_premium")
+                .select("is_premium, is_admin")
                 .single()
                 .execute()
                 .value
             isPremium = profile.isPremium
-            dprint("[Premium] isPremium = \(isPremium)")
+            isAdmin = profile.isAdmin ?? false
+            dprint("[Premium] isPremium = \(isPremium), isAdmin = \(isAdmin)")
         } catch {
             dprint("[Premium] błąd: \(error)")
             isPremium = false
+            isAdmin = false
         }
     }
 
@@ -127,6 +134,17 @@ class AuthService_VM: ObservableObject {
             return permissions.contains(rs.permission)
         }
         return isPremium
+    }
+
+    // Czy użytkownik może DODAWAĆ własne drinki (Premium lub admin).
+    var mozeTworzyc: Bool { isPremium || isAdmin }
+
+    // Czy użytkownik może EDYTOWAĆ/usuwać dany drink.
+    // Admin — wszystkie; Premium — tylko własne (drZrodlo == "Własny").
+    // (v1: edycja jest lokalna; zapis na serwer w przyszłej fazie.)
+    func mozeEdytowac(_ drink: Dr_M) -> Bool {
+        if isAdmin { return true }
+        return isPremium && drink.drZrodlo == "Własny"
     }
 
     // Blokowane kategorie, do których użytkownik MA dostęp.

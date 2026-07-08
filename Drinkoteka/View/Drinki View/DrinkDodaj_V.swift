@@ -24,7 +24,12 @@ private struct NowySkladnik: Identifiable {
 struct DrinkDodaj_V: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @StateObject private var auth = AuthService_VM.shared
     @Query(sort: \Skl_M.sklNazwa) private var wszystkieSkladniki: [Skl_M]
+
+    // Admin: dodaj do wspólnego katalogu (widoczne dla wszystkich) zamiast lokalnie
+    @State private var doKatalogu: Bool = false
+    @State private var zapisuje: Bool = false
 
     // Podstawowe
     @State private var nazwa: String = ""
@@ -188,6 +193,16 @@ struct DrinkDodaj_V: View {
                     TextField("Uwagi", text: $uwagi, axis: .vertical)
                         .lineLimit(3...6)
                 }
+
+                // MARK: Admin — publikacja w katalogu
+                if auth.isAdmin {
+                    Section(
+                        header: Text("Administrator"),
+                        footer: Text("Drink zostanie zapisany na serwerze i będzie widoczny dla wszystkich użytkowników, zamiast pozostać tylko na tym urządzeniu.")
+                    ) {
+                        Toggle("Dodaj do wspólnego katalogu", isOn: $doKatalogu)
+                    }
+                }
             }
             .navigationTitle("Nowy drink")
             .navigationBarTitleDisplayMode(.inline)
@@ -196,18 +211,33 @@ struct DrinkDodaj_V: View {
                     Button("Anuluj") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Dodaj") {
-                        dodajDrink()
-                        dismiss()
+                    if zapisuje {
+                        ProgressView()
+                    } else {
+                        Button("Dodaj") {
+                            let drink = dodajDrink()
+                            if auth.isAdmin && doKatalogu {
+                                zapisuje = true
+                                Task {
+                                    await pushNowyDrinkDoKatalogu(drink: drink)
+                                    await MainActor.run { dismiss() }
+                                }
+                            } else {
+                                dismiss()
+                            }
+                        }
+                        .disabled(nazwa.trimmingCharacters(in: .whitespaces).isEmpty)
                     }
-                    .disabled(nazwa.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
             }
             .sheet(isPresented: $pokazWyborSkladnika) {
-                WyborSkladnika_V(wszystkie: wszystkieSkladniki) { wybrany in
+                // Do katalogu: tylko składniki obecne na serwerze (FK ingredient_id)
+                let doKatalog = auth.isAdmin && doKatalogu
+                let dostepne = doKatalog ? wszystkieSkladniki.filter { !$0.sklWlasny } : wszystkieSkladniki
+                WyborSkladnika_V(wszystkie: dostepne, dozwolNowy: !doKatalog) { wybrany in
                     skladniki.append(NowySkladnik(skladnik: wybrany))
                 }
             }
@@ -222,16 +252,19 @@ struct DrinkDodaj_V: View {
         }
     }
 
-    private func dodajDrink() {
+    @discardableResult
+    private func dodajDrink() -> Dr_M {
         let proc = Int(procAlk) ?? 0
         let drinkID = UUID().uuidString
+        let doKatalog = auth.isAdmin && doKatalogu
         // Własne zdjęcie (zapisane do Documents) albo domyślna grafika szkła
+        // (drinki katalogowe nie synchronizują zdjęcia — fallback do szkła u innych)
         let foto = wybraneZdjecie.flatMap { DrinkPhotoStore.save($0) } ?? szklo.foto
         let drink = Dr_M(
             drinkID:    drinkID,
             drNazwa:    nazwa.trimmingCharacters(in: .whitespaces),
             drKat:      kategoria,
-            drZrodlo:   "Własny",
+            drZrodlo:   doKatalog ? "Katalog" : "Własny",
             drKolor:    "",
             drFoto:     foto,
             drProc:     proc,
@@ -276,7 +309,9 @@ struct DrinkDodaj_V: View {
         }
 
         drink.drBrakuje = 0
+        przeliczMocIKalorie(drink)
         try? modelContext.save()
+        return drink
     }
 }
 
@@ -285,6 +320,8 @@ struct DrinkDodaj_V: View {
 struct WyborSkladnika_V: View {
     let wszystkie: [Skl_M]
     let onWybor: (Skl_M) -> Void
+    // false przy edycji drinka katalogowego — nowy lokalny składnik naruszyłby FK na serwerze
+    var dozwolNowy: Bool = true
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
@@ -321,11 +358,13 @@ struct WyborSkladnika_V: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Anuluj") { dismiss() }
                 }
-                ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        pokazNowy = true
-                    } label: {
-                        Label("Nowy składnik", systemImage: "plus")
+                if dozwolNowy {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button {
+                            pokazNowy = true
+                        } label: {
+                            Label("Nowy składnik", systemImage: "plus")
+                        }
                     }
                 }
             }

@@ -4,7 +4,8 @@ import SwiftUI
 
 struct DrinkPrzepis_V: View {
 	@Environment(\.modelContext) private var modelContext
-	
+	@StateObject private var auth = AuthService_VM.shared
+
 	@Binding var drink: Dr_M
 
 	@State private var isEditing = false
@@ -18,37 +19,56 @@ struct DrinkPrzepis_V: View {
 						.textCase(.uppercase)
 					
 					Spacer()
-					
-					Button(action: {
-						withAnimation {
-							isEditing.toggle()
+
+					// Edycja: admin — wszystkie przepisy; Premium — tylko własne
+					if auth.mozeEdytowac(drink) {
+						Button(action: {
+							let konczeEdycje = isEditing
+							withAnimation {
+								isEditing.toggle()
+							}
+							// Admin edytujący treść serwerową → wypchnij kroki na serwer (dla wszystkich)
+							if konczeEdycje && auth.isAdmin && drink.drZrodlo != "Własny" {
+								Task { await pushKrokiAdmin(drink: drink) }
+							}
+						}) {
+							Text(isEditing ? "Gotowe" : "Edytuj")
 						}
-					}) {
-						Text("Edytuj")
 					}
 				}
 				
 				List {
 					ForEach(drink.drPrzepis) { linia in
-						HStack {
+						HStack(alignment: .top) {
 							Image(systemName: linia.przepOpcja
 									? "\(linia.przepNo).circle"
 									: "\(linia.przepNo).circle.fill")
 							.foregroundColor(linia.przepOpcja ? .secondary : .accentColor)
 							.font(.headline)
-							
+
 							if isEditing {
-								TextField("Opis", text: Binding(
-									get: { linia.przepOpis },
-									set: { linia.przepOpis = $0 }
-								))
-								.textFieldStyle(.roundedBorder)
+								VStack(alignment: .leading, spacing: 6) {
+									// Pole wieloliniowe — rośnie z treścią kroku
+									TextField("Opis kroku", text: Binding(
+										get: { linia.przepOpis },
+										set: { linia.przepOpis = $0 }
+									), axis: .vertical)
+									.textFieldStyle(.roundedBorder)
+									.lineLimit(1...6)
+
+									Toggle("Krok opcjonalny", isOn: Binding(
+										get: { linia.przepOpcja },
+										set: { linia.przepOpcja = $0 }
+									))
+									.font(.caption)
+									.tint(.secondary)
+								}
 							} else {
 								Text(linia.przepOpis)
 									.fontWeight(.light)
 									.foregroundStyle(!linia.przepOpcja ? Color.primary : Color.secondary)
+								Spacer()
 							}
-							Spacer()
 						}
 						.listRowBackground(Color.clear)
 					}

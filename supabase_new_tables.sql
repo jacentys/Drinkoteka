@@ -328,3 +328,81 @@ end $$;
 -- Tylko zalogowani mogą wywołać (usuwają samych siebie); odbierz anonimom.
 revoke execute on function delete_user() from anon, public;
 grant execute on function delete_user() to authenticated;
+
+
+-- ============================================================
+-- ROLA ADMINISTRATORA (edycja wszystkich przepisów)
+-- ============================================================
+-- Flaga admina na profilu. Nadaj RĘCZNIE swojemu kontu w SQL Editor:
+--   update profiles set is_admin = true where user_id =
+--     (select id from auth.users where email = 'jacek@skrobisz.com');
+-- (v1: edycja przepisów jest lokalna w aplikacji; is_admin steruje tylko UI.
+--  Przy przyszłym zapisie treści na serwer trzeba dodać RLS zależne od is_admin.)
+
+alter table profiles add column if not exists is_admin boolean default false;
+
+
+-- ============================================================
+-- ZAPIS EDYCJI PRZEZ ADMINA (kroki przepisu)
+-- ============================================================
+-- Rola admina egzekwowana po stronie serwera (nie ufamy fladze z klienta).
+
+create or replace function public.is_admin()
+returns boolean
+language sql
+security definer
+set search_path = public
+stable
+as $$
+  select coalesce((select is_admin from profiles where user_id = auth.uid()), false);
+$$;
+
+-- Admin może dodawać/edytować/usuwać kroki przepisów (baza PL) i ich tłumaczenia.
+drop policy if exists "Admins manage drink_steps" on drink_steps;
+create policy "Admins manage drink_steps" on drink_steps
+  for all using (public.is_admin()) with check (public.is_admin());
+
+drop policy if exists "Admins manage drink_step_translations" on drink_step_translations;
+create policy "Admins manage drink_step_translations" on drink_step_translations
+  for all using (public.is_admin()) with check (public.is_admin());
+
+
+-- ============================================================
+-- INDEKSY WYMAGANE DLA UPSERT ADMINA (kroki, składniki drinków)
+-- ============================================================
+-- UWAGA/NAPRAWA: upsert z onConflict wymaga unikalnego indeksu na tych
+-- kolumnach — bez niego Postgres odrzuca zapytanie ("no unique or exclusion
+-- constraint matching ON CONFLICT specification"). Brakowało indeksu dla
+-- drink_steps (błąd z poprzedniej wersji tego pliku) — naprawione poniżej.
+
+create unique index if not exists drink_steps_drink_step_idx
+  on drink_steps (drink_id, step_no);
+
+create unique index if not exists drink_ingredients_drink_sort_idx
+  on drink_ingredients (drink_id, sort_order);
+
+
+-- ============================================================
+-- ZAPIS EDYCJI PRZEZ ADMINA (pola drinka, składniki, tłumaczenia)
+-- ============================================================
+-- Rozszerzenie roli admina (is_admin() zdefiniowane wyżej) na resztę
+-- edytowalnych treści katalogu: podstawowe pola drinka i lista składników.
+-- Moc (drProc) i kaloryczność (drKal/calories) są wyliczane w aplikacji
+-- z listy składników — admin ich nie edytuje ręcznie, ale wynik przelicznika
+-- jest zapisywany razem z resztą pól drinka.
+
+drop policy if exists "Admins manage drinks" on drinks;
+create policy "Admins manage drinks" on drinks
+  for all using (public.is_admin()) with check (public.is_admin());
+
+drop policy if exists "Admins manage drink_ingredients" on drink_ingredients;
+create policy "Admins manage drink_ingredients" on drink_ingredients
+  for all using (public.is_admin()) with check (public.is_admin());
+
+drop policy if exists "Admins manage drink_translations" on drink_translations;
+create policy "Admins manage drink_translations" on drink_translations
+  for all using (public.is_admin()) with check (public.is_admin());
+
+drop policy if exists "Admins manage drink_ingredient_translations" on drink_ingredient_translations;
+create policy "Admins manage drink_ingredient_translations" on drink_ingredient_translations
+  for all using (public.is_admin()) with check (public.is_admin());

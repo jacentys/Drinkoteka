@@ -2,9 +2,11 @@ import SwiftUI
 
 struct DrinkTitle_V: View {
 	@Bindable var drink: Dr_M
+	@StateObject private var auth = AuthService_VM.shared
+	@State private var pokazEdycje = false
 
 	var body: some View {
-		
+
 		ZStack {
 			VStack(spacing: 0) {
 				VStack{
@@ -16,12 +18,23 @@ struct DrinkTitle_V: View {
 								.fontWeight(.black)
 								.foregroundColor(Color.primary)
 								.multilineTextAlignment(.center)
-							Text(drink.drZrodlo)
+							Text(LocalizedStringKey(drink.drZrodlo))
 								.font(.footnote)
 								.foregroundStyle(.secondary)
 						}
 
 						Spacer()
+
+						// Edycja pól: admin — wszystkie drinki; premium — tylko własne
+						if auth.mozeEdytowac(drink) {
+							Button {
+								pokazEdycje = true
+							} label: {
+								Image(systemName: "pencil.circle")
+									.font(.title3)
+									.foregroundStyle(.secondary)
+							}
+						}
 					}
 				}  // MARK: NAZWA
 				
@@ -39,6 +52,9 @@ struct DrinkTitle_V: View {
 		.background(RoundedRectangle(cornerRadius: 12)
 			.foregroundStyle(.regularMaterial)
 			)
+		.sheet(isPresented: $pokazEdycje) {
+			DrinkPolaEdycja_V(drink: drink)
+		}
 	}
 }
 
