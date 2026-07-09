@@ -56,8 +56,10 @@ Centralny serwis: `ViewModel/Supabase/AuthService_VM.swift` (`@MainActor`, singl
 - **Premium**: `@Published isPremium` z tabeli `profiles` (`refreshPremiumStatus`). Notatki drinków są Premium-only.
 - **Blokowane kategorie**: sterowane bazą przez tabelę `restricted_sources (source → permission)`. `restrictedSources` + `permissions` (z `user_permissions`) ładowane w `refreshSession`/`signIn`. `canAccessDrink(_)` / `maDostepDoZrodla(_)` decydują o widoczności. Drinki z niedostępnych źródeł są ukrywane w `DrinkiLista_V`/`Home_V`, a przez RLS **nie są nawet pobierane** z serwera. Ekran „Szczegóły konta" (`AuthProfil_V`) pokazuje `zablokowaneZrodla` z oznaczeniem dostępu.
 - **Kody aktywacyjne**: pole w Preferencjach → `AuthService_VM.redeemCode(_)` → RPC `redeem_code` (SECURITY DEFINER) na serwerze. Klient NIGDY nie przyznaje sobie uprawnień bezpośrednio (RLS to blokuje). Po `ok` odświeżane są premium+uprawnienia i dociągane odblokowane drinki.
-- **Synchronizacja drinków**: `ViewModel/Supabase/SyncDrinki_VM.swift` — `sprawdzAktualizacjeDrinkow` po cichu usuwa drinki bez dostępu i zwraca liczbę nowych; `DrinkiLista_V` pokazuje alert „Nowe drinki" (pobranie = idempotentny `loadFromSupabase`).
+- **Synchronizacja drinków**: `ViewModel/Supabase/SyncDrinki_VM.swift` — `sprawdzAktualizacjeDrinkow` po cichu usuwa drinki bez dostępu i zwraca liczbę nowych; `DrinkiLista_V` pokazuje alert „Nowe drinki" (pobranie = idempotentny `loadFromSupabase`). Drinki ze źródła `"Własny"` są zawsze wykluczone z tego kasowania (nigdy nie istniały na serwerze).
 - **Feedback**: `sendDrinkFeedback` (per drink) i `sendAppFeedback` (ogólny, z Preferencji) → tabele `drink_feedback` / `app_feedback` (insert-only, odczyt tylko service_role).
+- **Rola admina**: `profiles.is_admin` (nadawana ręcznie w SQL), `@Published isAdmin` w `AuthService_VM`. Reguły dostępu do edycji: `mozeTworzyc` (dodawanie własnych drinków — Premium lub admin), `mozeEdytowac(_:)` (admin → wszystkie drinki; Premium → tylko własne, `drZrodlo == "Własny"`), `mozeOtworzyc(_:)` (czytanie — IBA zawsze, reszta wg Premium/uprawnień kategorii).
+- **Faza serwerowa B** (edycja treści katalogu przez admina, v1 częściowo zrobiona): admin edytuje kroki przepisu / pola drinka / listę składników w UI, zmiany są **wypychane na serwer** (`SyncDrinki_VM.swift`: `pushKrokiAdmin`, `pushPolaAdmin`, `pushSkladnikiAdmin`) językowo-świadomie (PL → tabele bazowe, inny język → `*_translations`). Admin może też dodać nowy drink od razu do wspólnego katalogu (`pushNowyDrinkDoKatalogu`, `drZrodlo = "Katalog"`) i usunąć dowolny drink z serwera (`usunDrinkZServera`, kaskada przez FK). Premium robi te same edycje, ale **tylko lokalnie** na własnych drinkach ("Własny") — synchronizacja treści Premium to kolejna faza, jeszcze niezrobiona. Moc (%) i kaloryczność są liczone automatycznie z listy składników (`przeliczMocIKalorie`) — nieedytowalne ręcznie. Pole `recommended`/`drPolecany` zostało całkowicie usunięte; „Polecane" na Home losowane jest codziennie po stronie klienta (stabilny hash `drinkID+data`, funkcja `stabilnyHash` w `Funkcje_VM.swift` — **nie** używać `String.hashValue`, bo jest losowany co proces).
 
 ## Baza danych (SQL)
 
@@ -88,6 +90,8 @@ Pliki tłumaczeń (generowane, idempotentne `on conflict do update`): `supabase_
 
 Ustawienia i filtry to `@AppStorage` (obecne w `PrefClass_VM.swift` oraz bezpośrednio w widokach). Filtry działające w całej aplikacji (kategorie alkoholu, słodycz, moc, ulubione/dostępne, sortowanie, `jezykAplikacji`, `blokujEkran`, `setupDone`, `dataLang`) mają być spójne między widokami.
 
+`wygladAplikacji` (`wygladEnum`: systemowy/jasny/ciemny) steruje `.preferredColorScheme` na korzeniu aplikacji (`DrinkotekaApp.swift`). Tytuły ekranów (Home, Drinki, Składniki, Preferencje) używają wspólnego, ręcznie stylowanego `ToolbarItem(.principal)` (`.largeTitle`, `.fontWeight(.light)`, `Color.primary`, cień) zamiast systemowego `navigationTitle` — systemowy tytuł bywał niewidoczny na losowym tle `Back_V` (mesh gradient) w niektórych zestawieniach kolorów/trybów.
+
 ## Struktura widoków
 
 - `Drinki View/` — lista, szczegóły, przepis, filtry (`DrinkFiltry_V`), notatka (`DrinkNotatka_V`, Premium-only), uwaga (`DrinkUwaga_V`).
@@ -99,16 +103,18 @@ Ustawienia i filtry to `@AppStorage` (obecne w `PrefClass_VM.swift` oraz bezpoś
 
 `Assets.xcassets`: `szklo`, `alkGlowny`, `male`, `skladnikiImage`, `kolory`. `Bllenderownia/` — źródła Blender/rendery (nie część targetu).
 
+## Gałąź robocza
+
+Cała praca nad i18n/premium/adminem dzieje się na gałęzi **`feature/backend-i18n-premium`**, nie na `main`. Po dokończeniu App Store trzeba ją zmergować.
+
 ## TODO: wdrożenie do App Store
 
 Kluczowe braki/blokery przed wysyłką:
 
 - **„Kup Premium" to placeholder** (`DrinkNotatka_V`) — albo IAP przez StoreKit (Guideline 3.1.1), albo na v1 ukryć i dawać Premium tylko przez darmowe kody.
 - **Usuwanie konta**: `deleteAccount()` woła RPC `delete_user` — potwierdzić, że funkcja istnieje na serwerze i kasuje `auth.users` (wymóg Apple).
-- **`IPHONEOS_DEPLOYMENT_TARGET = 18.4`** — prawdopodobnie za wysoko; rozważyć obniżenie.
-- **Ikona**: `AppIcon.appiconset` ma tylko `ikonka.png` — potrzebne 1024×1024 bez alpha.
-- **Ocena 17+** (alkohol), **Privacy Policy URL** + App Privacy labels (email, notatki, feedback).
-- Obsługa offline przy 1. uruchomieniu (recenzent na słabym wifi).
+- **Ocena 17+** (alkohol), **App Privacy labels** (ściąga: `docs/app-store-privacy-labels.md`).
+- Dokończyć zrzuty ekranu, Apple Developer enrollment, App Store Connect, TestFlight.
 - Sign in with Apple NIE jest wymagane (tylko email/hasło).
 
-Zrobione w ramach przygotowania v1: ukryty placeholder „Kup Premium", `IPHONEOS_DEPLOYMENT_TARGET` obniżony do 17.0 (z fallbackami dla API iOS 18: `MeshGradient`, `toolbarBackgroundVisibility`), logi `print` zamienione na `dprint` (aktywne tylko w Debug — definicja w `Funkcje_VM.swift`), usunięty duplikat DTO i martwe loadery TSV.
+Zrobione: ukryty placeholder „Kup Premium", `IPHONEOS_DEPLOYMENT_TARGET` obniżony do 17.0 (z fallbackami dla API iOS 18: `MeshGradient`, `toolbarBackgroundVisibility`), logi `print` zamienione na `dprint` (aktywne tylko w Debug — definicja w `Funkcje_VM.swift`), usunięty duplikat DTO i martwe loadery TSV, ikona (pop-art, 1024×1024), nazwa ujednolicona na „Drinkotheque" (bez akcentu — łatwiejsze wyszukiwanie), Privacy Policy + strona wsparcia wgrane na 530.pl, metadane App Store (`docs/app-store-metadata.md`), deep link potwierdzenia maila (`drinkoteka://login-callback`), animowany ekran ładowania + obsługa offline przy 1. uruchomieniu, model dostępu B (Premium wymagane dla nie-IBA, widoczne-ale-zablokowane), rola admina + faza serwerowa B (patrz wyżej), ustawienie wyglądu (systemowy/jasny/ciemny) i spójne tytuły ekranów.
