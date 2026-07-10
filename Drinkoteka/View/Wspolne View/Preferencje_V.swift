@@ -1,8 +1,10 @@
+// Ustawienia: język, konto, kod aktywacyjny, opinia o aplikacji, reset składników.
 import SwiftData
 import SwiftUI
 
 struct Preferencje_V: View {
 	@Environment(\.modelContext) private var modelContext
+	@StateObject private var auth = AuthService_VM.shared
 
 	@Query(sort: [SortDescriptor(\Dr_M.drNazwa)])
 	private var wszystkieDrinki: [Dr_M]
@@ -13,147 +15,189 @@ struct Preferencje_V: View {
 	@AppStorage("zalogowany") var zalogowany: Bool?
 	@AppStorage("uzytkownik") var uzytkownik: String?
 
-	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
-	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
-	@AppStorage("tylkoUlubione") var tylkoUlubione: Bool = false
-	@AppStorage("tylkoDostepne") var tylkoDostepne: Bool = false
-	
 	@AppStorage("blokujEkran") var blokujEkran: Bool = false
+	@AppStorage("wygladAplikacji") var wygladAplikacji: wygladEnum = .systemowy
+	@AppStorage("jezykAplikacji") var jezykAplikacji: String = {
+		let kod = Locale.current.language.languageCode?.identifier ?? "en"
+		return kod == "pl" ? "pl" : "en"
+	}()
 
+	@State private var pokazPotwierdzenie: Bool = false
+	@State private var pokazFeedback: Bool = false
+	@State private var infoEkran: Bool = false
+	@State private var infoJezyk: Bool = false
+	@State private var infoKonto: Bool = false
+	@State private var infoOpinia: Bool = false
+	@State private var infoReset: Bool = false
 	let spacje: CGFloat = 10
-	
+
+		// Nagłówek sekcji z ikoną informacji + popoverem (jak w filtrach drinków).
+		// Ten sam font (title2, light) co nagłówki sekcji na ekranie głównym —
+		// spójny styl nagłówków w całej aplikacji.
+	private func naglowek(_ tytul: LocalizedStringKey, systemImage: String, kolor: Color,
+						   opis: LocalizedStringKey, pokaz: Binding<Bool>) -> some View {
+		HStack {
+			Label(tytul, systemImage: systemImage)
+				.font(.title2)
+				.fontWeight(.light)
+				.foregroundStyle(kolor)
+			Spacer()
+			Button { pokaz.wrappedValue = true } label: {
+				Image(systemName: "info.circle").foregroundStyle(.secondary)
+			}
+			.buttonStyle(.plain)
+			.popover(isPresented: pokaz) {
+				Text(opis)
+					.font(.footnote)
+					.textCase(nil)
+					.frame(width: 260, alignment: .leading)
+					.padding()
+					.presentationCompactAdaptation(.popover)
+			}
+		}
+	}
+
 	var body: some View {
 		NavigationStack {
 			Form {
-				Section( // MARK: TYLKO KOMPLETNE
-					header: Label("Dostępne", systemImage: tylkoDostepne ? "checkmark.circle.fill" : "checkmark.circle")
-						.font(.headline)
-						.foregroundStyle(tylkoDostepne ? Color.accent : Color.secondary),
-					footer: Text("Pokazuj tylko drinki które mogą zostać przyrządzone z dostępnych składników.\nTa opcja ukrywa pozostałe składniki gdy nie ma wszystkich składników.\n Dwie poniższe opcje są brane pod uwagę.")) {
-						Toggle(isOn: $tylkoDostepne) {
-							Text("Pokazuj tylko drinki dostępne")
-						}
-							//					.onChange(of: tylkoDostepne) { _, _ in
-							//						drinkiClass.setWszystkieBraki()
-							//					}
-					}
-
-				Section( // MARK: Ulubione
-					header: Label("Ulubione", systemImage: tylkoUlubione ? "star.circle.fill" : "star.circle")
-						.font(.headline)
-						.foregroundStyle(tylkoUlubione ? Color.accent : Color.secondary),
-					footer: Text("Pokazuj tylko drinki zaznaczone gwiazdką jako ulubione.")) {
-						Toggle(isOn: $tylkoUlubione) {
-							Text("Pokazuj tylko ulubione")
-						}
-					}
-
-				Section( // MARK: Zamienniki
-					header: Label("Zamienniki", systemImage: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
-						.font(.headline)
-						.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary),
-					footer: Text("Jeśli zaznaczono, przy sprawdzaniu dostępności składników brane są pod uwagę zamienniki. Zwiększa to ilość możliwych do zrobienia drinków. Trzeba liczyć się z delikatną zmianą smaku w stosunku do oryginału.")) {
-						Toggle(isOn: $zamiennikiDozwolone) {
-							Text("Dopuszczaj zamienniki")
-						}
-						.onChange(of: zamiennikiDozwolone) { _, _ in
-							setAllBraki(modelContext: modelContext)
-						}
-					}
-
-				Section( // MARK: Opcjonalne
-					header: Label("Opcjonalne", systemImage: opcjonalneWymagane ? "list.bullet.circle.fill" : "list.bullet.circle")
-						.font(.headline)
-						.foregroundStyle(opcjonalneWymagane ? Color.accent : Color.secondary),
-					footer: Text("Przy sprawdzaniu dostępności składników w drinku wymuszaj branie pod uwagę składników opcjonalnych. Składniki te często używane są do przyozdabiania drinków lub wzbogacania smaku.")) {
-						Toggle(isOn: $opcjonalneWymagane) {
-							Text("Składniki opcjonalne wymagane")
-						}
-						.onChange(of: opcjonalneWymagane) { _, _ in
-							setAllBraki(modelContext: modelContext)
-						}
-					}
-
-				Section( // MARK: Blokada ekranu
-					header: Label("Wygaszacz ekranu", systemImage: blokujEkran ? "lightswitch.on" : "lightswitch.off")
-						.font(.headline)
-						.foregroundStyle(Color.secondary),
-					footer: Text("Jeśli włączone, blokada ekranu jest nieaktywna.").padding(.bottom, 30)) {
-						Button {
-							blokujEkran.toggle()
-							UIApplication.shared.isIdleTimerDisabled = blokujEkran
-						} label: {
-							Text(blokujEkran ? "Blokada wygaszacza aktywna" : "Blokada wygaszacza nieaktywna")
-								.foregroundStyle(blokujEkran ? Color.red : Color.secondary)
+				Section( // MARK: Wygaszanie ekranu i wygląd
+					header: naglowek("Ekran", systemImage: "sun.max", kolor: Color.secondary,
+									 opis: "Wygaszacz: gdy włączone, ekran nie gaśnie podczas korzystania z aplikacji — przydatne przy przyrządzaniu drinka. Gdy wyłączone, obowiązuje autoblokada telefonu.\n\nWygląd: wybierz tryb jasny/ciemny na stałe, albo zostaw \"Systemowy\", by aplikacja podążała za ustawieniem telefonu.",
+									 pokaz: $infoEkran)) {
+						Toggle(isOn: $blokujEkran) {
+							Text("Nie wygaszaj ekranu")
 								.font(.headline)
+						}
+						.toggleStyle(.switch)
+						.onChange(of: blokujEkran) { _, nowy in
+							UIApplication.shared.isIdleTimerDisabled = nowy
+						}
+
+						Picker(selection: $wygladAplikacji) {
+							ForEach(wygladEnum.allCases, id: \.self) {
+								Text($0.opis).tag($0)
+							}
+						} label: {
+							Text("Wygląd").font(.headline)
 						}
 					}
 				
-				Section( // MARK: Reset składników
-					header: Label("Reset!!!", systemImage: opcjonalneWymagane ? "exclamationmark.square.fill" : "exclamationmark.square.fill")
-						.font(.headline)
-						.foregroundStyle(Color.red),
-					footer: Text("Resetuje stan wszystkich składników! \nOpcja przydatna gdy chcesz od nowa wprowadzić składniki do programu.").padding(.bottom, 30)) {
+				Section( // MARK: Język
+					header: naglowek("Język", systemImage: "globe", kolor: Color.secondary,
+									 opis: "Język treści w aplikacji (nazwy drinków, składników, przepisy). Zmiana przeładowuje treść — Twój bark i ulubione zostają zachowane.",
+									 pokaz: $infoJezyk)) {
+						Picker(selection: $jezykAplikacji) {
+							Text("Polski").tag("pl")
+							Text("English").tag("en")
+						} label: {
+							Text("Język aplikacji").font(.headline)
+						}
+					}
+
+				Section( // MARK: Konto
+					header: naglowek("Konto", systemImage: "person.crop.circle", kolor: Color.secondary,
+									 opis: "Załóż konto lub zaloguj się, aby zapisywać notatki i mieć dostęp do dodatkowych treści. Konto możesz w każdej chwili usunąć w jego szczegółach.",
+									 pokaz: $infoKonto)) {
+						if auth.isLoggedIn {
+							NavigationLink(destination: AuthProfil_V()) {
+								VStack(alignment: .leading, spacing: 2) {
+									Text("Szczegóły konta")
+										.foregroundStyle(Color.accent)
+										.font(.headline)
+									Text(auth.userEmail)
+										.font(.caption)
+										.foregroundStyle(.secondary)
+								}
+							}
+						} else {
+							NavigationLink(destination: Logowanie_V()) {
+								Text("Zarejestruj się / Zaloguj się")
+									.foregroundStyle(Color.accent)
+									.font(.headline)
+							}
+						}
+					}
+
+				Section( // MARK: Informacja zwrotna
+					header: naglowek("Opinia", systemImage: "bubble.left.and.text.bubble.right", kolor: Color.secondary,
+									 opis: "Podziel się opinią, zgłoś błąd lub zaproponuj nową funkcję. Wiadomość trafi bezpośrednio do twórcy aplikacji.",
+									 pokaz: $infoOpinia)) {
 						Button {
-							resetAll()
-								//						drinkiClass.setWszystkieBraki()
+							pokazFeedback = true
+						} label: {
+							Text("Prześlij opinię o aplikacji")
+								.foregroundStyle(Color.accent)
+								.font(.headline)
+						}
+					}
+
+				Section( // MARK: Reset składników
+					header: naglowek("Reset!!!", systemImage: "exclamationmark.square.fill", kolor: Color.red,
+									 opis: "Resetuje stan wszystkich składników (odznacza barek). Przydatne, gdy chcesz wprowadzić składniki od nowa. Twoje własne drinki i przepisy pozostają.",
+									 pokaz: $infoReset)) {
+						Button {
+							pokazPotwierdzenie = true
 						} label: {
 							Text("Resetuj składniki")
 								.foregroundStyle(Color.red)
 								.font(.headline)
 						}
-					}
-				
-				Section( // MARK: Konto
-					header: Label("Konto", systemImage: opcjonalneWymagane ? "person.crop.circle.fill" : "person.crop.circle")
-						.font(.headline)
-						.foregroundStyle(Color.green),
-					footer: Text("Zaloguj się by mieć dostęp do większej ilości przepisów.").padding(.bottom, 30)) {
-						Button {
-							Logowanie_V()
-						} label: {
-							Text("Zarejestruj się")
-								.foregroundStyle(Color.green)
-								.font(.headline)
+						.confirmationDialog(
+							"Czy na pewno chcesz zresetować składniki?",
+							isPresented: $pokazPotwierdzenie,
+							titleVisibility: .visible
+						) {
+							Button("Resetuj", role: .destructive) { resetAll() }
+							Button("Anuluj", role: .cancel) {}
+						} message: {
+							Text("Wszystkie zaznaczone składniki zostaną odznaczone.")
 						}
 					}
 			}
 			.toggleStyle(iOSCheckboxToggleStyle())
-			.navigationTitle("Preferencje")
+			.navigationBarTitleDisplayMode(.inline)
+			.toolbar {
+				// Ten sam styl tytułu, co "Drinkotheque" na ekranie głównym —
+				// spójny wygląd nagłówków ekranów w całej aplikacji.
+				ToolbarItem(placement: .principal) {
+					Text("Preferencje")
+						.font(.largeTitle)
+						.fontWeight(.light)
+						.foregroundStyle(Color.primary)
+						.shadow(color: .black.opacity(0.6), radius: 6)
+				}
+			}
+			.sheet(isPresented: $pokazFeedback) {
+				AppFeedback_V()
+			}
 		}
 	}
 
 		// MARK: - RESET ALL
 	private func resetAll() {
-//		print("Startuje resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-		UserDefaults.standard.set(false, forKey: "setupDone")
-//		print("Zmiana wartości resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
-			//							debugPobrane(miejsce: "Przed")
-		delAll()
-		loadSklCSV_VM(modelContext: modelContext)
-		loadSklZamiennikiCSV_VM(modelContext: modelContext)
-		loadDrCSV_VM(modelContext: modelContext)
-		loadDrSkladnikiCSV_VM(modelContext: modelContext)
-		loadDrAlkGlownyCSV_VM(modelContext: modelContext)
-		loadDrPrzepisyCSV_VM(modelContext: modelContext)
-		setAllBraki(modelContext: modelContext)
-		setAllDrinkKalorie(modelContext: modelContext)
-		setAllDrinkProcenty(modelContext: modelContext)
-		zmianaStanuSkladnikiAll(context: modelContext)
-		try? modelContext.save()
-			//							debugPobrane(miejsce: "Po")
-		UserDefaults.standard.set(true, forKey: "setupDone")
-//		print("Koniec resetAll, setupDone: \(UserDefaults.standard.bool(forKey: "setupDone"))")
+		Task {
+			// Zachowaj własne drinki/składniki (reset barku ich nie kasuje, tylko czyści stany)
+			let wlasne = await MainActor.run { snapshotWlasnejTresci(modelContext) }
+			await MainActor.run {
+				UserDefaults.standard.set(false, forKey: "setupDone")
+				delAll()
+			}
+			await ImageCache.shared.clearAll()
+			await loadFromSupabase(modelContext: modelContext)
+			await MainActor.run {
+				przywrocWlasnaTresc(wlasne.0, wlasne.1, resetujStan: true, ctx: modelContext)
+				UserDefaults.standard.set(true, forKey: "setupDone")
+			}
+		}
 	}
 
 		// MARK: - DEL ALL
 	private func delAll() {
-//		print("Funkcja delAll uruchomiona")
 		do {
 			try modelContext.delete(model: Skl_M.self)
 			try modelContext.delete(model: Dr_M.self)
 		} catch {
-			print("Błąd przy usuwaniu drinków: \(error)")
+			dprint("Błąd przy usuwaniu drinków: \(error)")
 		}
 	}
 }

@@ -10,7 +10,6 @@ struct DrinkSkala_V: View {
 		if drink.drSlodycz != drSlodyczEnum.brakDanych {
 
 			VStack(spacing: 3) {
-//				Spacer()
 				RoundedRectangle(cornerRadius: 2)
 					.fill(
 						drink.drSlodycz == drSlodyczEnum.bardzoSlodki ? kolor : Color.primary
@@ -39,10 +38,9 @@ struct DrinkSkala_V: View {
 					.opacity(drink.drSlodycz != drSlodyczEnum.nieSlodki ? 1 : 0.2)
 					.rotationEffect(.degrees(-20))
 				
-//				Spacer()
 
 				if etykieta {
-					Text("\(drink.drSlodycz.rawValue)".uppercased())
+					Text(LocalizedStringKey(drink.drSlodycz.opis)).textCase(.uppercase)
 						.font(.caption2)
 						.padding(.top, 8)
 				}

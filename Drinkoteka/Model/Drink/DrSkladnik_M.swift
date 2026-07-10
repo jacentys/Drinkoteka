@@ -1,6 +1,8 @@
 import SwiftData
 import Foundation
 
+/// Pozycja składnika w konkretnym drinku (model łączący `Dr_M` ze `Skl_M`).
+/// Trzyma ilość, miarę, kolejność (`sklNo`), notkę oraz flagę `sklOpcja` (składnik opcjonalny).
 @Model
 class DrSkladnik_M: Identifiable {
 	@Attribute(.unique) var id: String

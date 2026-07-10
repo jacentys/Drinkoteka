@@ -1,11 +1,23 @@
+// Główny kontener z własnym paskiem zakładek. Tu też następuje przeładowanie
+// treści przy zmianie języka (zsynchronizujJezyk), niezależnie od aktywnej zakładki.
 import SwiftUI
+import SwiftData
 
 	/// Taby aplikacji
 enum Tab: String, CaseIterable {
-	case home = "Home"
-	case drinki = "Drinki"
-	case skladniki = "Składn."
-	case opcje = "Opcje"
+	case home
+	case drinki
+	case skladniki
+	case opcje
+
+	var tytul: String {
+		switch self {
+			case .home: return "Główna"
+			case .drinki: return "Drinki"
+			case .skladniki: return "Składn."
+			case .opcje: return "Opcje"
+		}
+	}
 
 	var systemImage: String {
 		switch self {
@@ -32,34 +44,95 @@ struct CustomTab_V: View {
 	@Namespace private var animation
 	@State var tabShapePosition: CGPoint = .zero
 
+	@Environment(\.modelContext) private var modelContext
+	@AppStorage("jezykAplikacji") private var jezykAplikacji: String = "pl"
+	@AppStorage("setupDone") private var setupDone: Bool = false
+	@State private var przeladowujeJezyk: Bool = false
+	@State private var bladPolaczenia: Bool = false
+
     var body: some View {
-		 VStack(spacing: 0) {
-			 TabView(selection: $activeTab) {
-				 Home_V()
-					 .tag(Tab.home)
-					 // Ukrycie natywnego tab bar
-					 .toolbar(.hidden, for: .tabBar)
-				 DrinkiLista_V()
-					 .tag(Tab.drinki)
-					 // Ukrycie natywnego tab bar
+		 ZStack {
+			 // TabView renderujemy TYLKO gdy dane są gotowe i nie trwa przeładowanie.
+			 // Podczas pierwszego ładowania i zmiany języka (delAll + reload) widoki
+			 // z @Query są usuwane z hierarchii, żeby nie sięgały do kasowanych
+			 // obiektów SwiftData (inaczej crash "backing data could no longer be found").
+			 if setupDone && !przeladowujeJezyk {
+				 VStack(spacing: 0) {
+					 TabView(selection: $activeTab) {
+						 Home_V(activeTab: $activeTab)
+							 .tag(Tab.home)
+							 .toolbar(.hidden, for: .tabBar)
+						 DrinkiLista_V()
+							 .tag(Tab.drinki)
 #if os(iOS)
-					 .toolbar(.hidden, for: .tabBar)
+							 .toolbar(.hidden, for: .tabBar)
 #endif
-				 Text("Skladniki")
-				 SkladnikiLista_V()
-					 .tag(Tab.skladniki)
-					 // Ukrycie natywnego tab bar
+						 Text("Skladniki")
+						 SkladnikiLista_V()
+							 .tag(Tab.skladniki)
 #if os(iOS)
-					 .toolbar(.hidden, for: .tabBar)
+							 .toolbar(.hidden, for: .tabBar)
 #endif
-				 Preferencje_V()
-					 .tag(Tab.opcje)
-					 // Ukrycie natywnego tab bar
+						 Preferencje_V()
+							 .tag(Tab.opcje)
 #if os(iOS)
-					 .toolbar(.hidden, for: .tabBar)
+							 .toolbar(.hidden, for: .tabBar)
 #endif
+					 }
+					 CustomTabBar()
+				 }
+				 .transition(.opacity)
+			 } else {
+				 // Loader: offline z ponowieniem tylko przy pierwszym ładowaniu
+				 LadowanieEkran_V(blad: bladPolaczenia && !setupDone) {
+					 Task { await wykonajPierwszeLadowanie() }
+				 }
+				 .transition(.opacity)
 			 }
-			 CustomTabBar()
+		 }
+		 .animation(.easeInOut(duration: 0.3), value: setupDone)
+		 .animation(.easeInOut(duration: 0.3), value: przeladowujeJezyk)
+		 .task { await pierwszeLadowanie() }
+		 // Krok 1: decyzja — czy potrzebne przeładowanie treści w nowym języku.
+		 // Ustawienie flagi usuwa TabView z hierarchii (patrz body).
+		 .task(id: jezykAplikacji) {
+			 guard UserDefaults.standard.bool(forKey: "setupDone") else {
+				 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
+				 return
+			 }
+			 let dataLang = UserDefaults.standard.string(forKey: "dataLang") ?? "pl"
+			 if dataLang != jezykAplikacji { przeladowujeJezyk = true }
+		 }
+		 // Krok 2: właściwe przeładowanie — odpala się w OSOBNYM cyklu, gdy TabView
+		 // jest już usunięty, więc delAll nie unieważnia obserwowanych obiektów.
+		 .task(id: przeladowujeJezyk) {
+			 guard przeladowujeJezyk else { return }
+			 await zmienJezykDanych(modelContext: modelContext)
+			 await loadNotesFromSupabase(modelContext: modelContext)
+			 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
+			 przeladowujeJezyk = false
+		 }
+	 }
+
+		 // MARK: - PIERWSZE ŁADOWANIE DANYCH (w korzeniu, niezależnie od zakładki)
+	 private func pierwszeLadowanie() async {
+		 guard !setupDone else { return }
+		 await wykonajPierwszeLadowanie()
+	 }
+
+	 private func wykonajPierwszeLadowanie() async {
+		 bladPolaczenia = false
+		 await MainActor.run {
+			 try? modelContext.delete(model: Skl_M.self)
+			 try? modelContext.delete(model: Dr_M.self)
+			 try? modelContext.save()
+		 }
+		 let ok = await loadFromSupabase(modelContext: modelContext)
+		 if ok {
+			 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
+			 setupDone = true                // ukrywa loader (z animacją)
+		 } else {
+			 bladPolaczenia = true
 		 }
 	 }
 
@@ -123,7 +196,7 @@ struct TabItem: View {
 					}
 				}
 
-			Text(tab.rawValue)
+			Text(LocalizedStringKey(tab.tytul))
 				.font(.callout)
 				.foregroundStyle(activeTab == tab ? tint : .gray)
 		}
@@ -210,6 +283,83 @@ struct TabShape: Shape {
 
 
 
+// MARK: - Ekran ładowania (animowany)
+
+struct LadowanieEkran_V: View {
+	var blad: Bool = false
+	var ponow: () -> Void = {}
+
+	@State private var puls = false
+
+	var body: some View {
+		ZStack {
+			// Tło marki (spójne z Launch Screen i ikoną)
+			LinearGradient(
+				colors: [Color(red: 1.0, green: 0.42, blue: 0.06),
+						 Color(red: 0.85, green: 0.33, blue: 0.0)],
+				startPoint: .top, endPoint: .bottom)
+			.ignoresSafeArea()
+
+			VStack(spacing: 22) {
+				Image(systemName: "wineglass.fill")
+					.font(.system(size: 92))
+					.foregroundStyle(.white)
+					.scaleEffect(puls ? 1.06 : 0.94)
+					.animation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: puls)
+
+				Text("Drinkotheque")
+					.font(.largeTitle).fontWeight(.bold)
+					.foregroundStyle(.white)
+
+				if blad {
+					// Stan offline z możliwością ponowienia
+					VStack(spacing: 12) {
+						Image(systemName: "wifi.slash")
+							.font(.title)
+							.foregroundStyle(.white.opacity(0.9))
+						Text("Brak połączenia z internetem")
+							.font(.headline).foregroundStyle(.white)
+						Text("Przy pierwszym uruchomieniu potrzebne jest połączenie, aby pobrać przepisy.")
+							.font(.footnote).foregroundStyle(.white.opacity(0.85))
+							.multilineTextAlignment(.center)
+							.padding(.horizontal, 40)
+						Button(action: ponow) {
+							Text("Spróbuj ponownie")
+								.font(.headline).foregroundStyle(Color(red: 1, green: 0.4, blue: 0))
+								.padding(.horizontal, 24).padding(.vertical, 12)
+								.background(.white).clipShape(Capsule())
+						}
+						.padding(.top, 4)
+					}
+					.padding(.top, 8)
+				} else {
+					// Delikatna animacja „fali” z trzech kropek
+					HStack(spacing: 10) {
+						ForEach(0..<3, id: \.self) { i in
+							Circle()
+								.fill(.white)
+								.frame(width: 11, height: 11)
+								.scaleEffect(puls ? 1.0 : 0.5)
+								.opacity(puls ? 1.0 : 0.4)
+								.animation(.easeInOut(duration: 0.6).repeatForever()
+									.delay(Double(i) * 0.18), value: puls)
+						}
+					}
+					.padding(.top, 6)
+
+					Text("Pobieram przepisy…")
+						.font(.footnote).foregroundStyle(.white.opacity(0.85))
+				}
+			}
+		}
+		.onAppear { puls = true }
+	}
+}
+
 #Preview {
 	CustomTab_V()
+}
+
+#Preview("Ładowanie") {
+	LadowanieEkran_V()
 }

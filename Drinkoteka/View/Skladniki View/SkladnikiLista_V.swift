@@ -1,3 +1,4 @@
+// Lista składników (barek): alfabetycznie lub wg kategorii, przełącznik zamienników.
 import SwiftData
 import SwiftUI
 
@@ -7,7 +8,6 @@ struct SkladnikiLista_V: View {
 	@Query(sort: \Dr_M.drNazwa) private var drinki: [Dr_M]
 	@Query(sort: \Skl_M.sklNazwa) private var skladniki: [Skl_M]
 	
-//	var skladniki = sklMockArray()
 	
 	@AppStorage("opcjonalneWymagane") var opcjonalneWymagane: Bool = false
 	@AppStorage("zamiennikiDozwolone") var zamiennikiDozwolone: Bool = false
@@ -17,9 +17,6 @@ struct SkladnikiLista_V: View {
 	@State var szukaj: String = ""
 	@State var sortowanieAlfabetyczne = true
 
-//	private var totalZamienniki: Int {
-//		skladniki.reduce(0) { $0 + $1.zamienniki.count }
-//	}
 	
 	var skladnikiFiltered: [Skl_M] {
 		if szukaj.isEmpty {
@@ -68,9 +65,12 @@ struct SkladnikiLista_V: View {
 									}
 								} header: {
 									HStack(alignment: .firstTextBaseline, spacing: 0) {
-										Text("\(kategoria.rawValue) ".uppercased())
+										Text(LocalizedStringKey(kategoria.opis))
+											.textCase(.uppercase)
 											.font(.title2)
-										Text("\(macierz.count) skł.")
+										Text(" \(macierz.count) ")
+											.font(.title2)
+										Text("skł.")
 											.font(.footnote)
 										Spacer()
 									}
@@ -96,45 +96,40 @@ struct SkladnikiLista_V: View {
 			.background(Back_V().ignoresSafeArea())
 			
 			.toolbar {
+					// MARK: - TYTUŁ (jak "Drinkotheque" na ekranie głównym)
+				ToolbarItem(placement: .principal) {
+					Text("Składniki")
+						.font(.largeTitle)
+						.fontWeight(.light)
+						.foregroundStyle(Color.primary)
+						.shadow(color: .black.opacity(0.6), radius: 6)
+				}
+
 					// MARK: - TOOLBAR
+				// Tylko ikona (jak gwiazdka "ulubione" na ekranie Drinki) — zwalnia miejsce
+				// dla większego, spójnego tytułu na środku paska nawigacji.
 				ToolbarItem(placement: .navigationBarLeading) {
-					HStack{
-							// Przycisk zamienników
-						Button {
-							zamiennikiDozwolone.toggle()
-							setAllBraki(modelContext: modelContext)
-						} label: {
-							Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
-								.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
-						}
-						
-							// Przycisk resetu
-						Button {
-							wylaczWszystkieSkladniki(context: modelContext)
-						} label: {
-							Image(systemName: "checkmark.circle")
-								.foregroundStyle(Color.secondary)
-						}
-						
+					Button {
+						zamiennikiDozwolone.toggle()
+						setAllBraki(modelContext: modelContext)
+					} label: {
+						Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
+							.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)
 					}
+					.accessibilityLabel("Dopuszczaj zamienniki")
 				}
 				ToolbarItem(placement: .navigationBarTrailing) {
-					HStack{
-							// Przycisk sortowania
-						HStack(spacing: 0) {
-							Button { /// Przycisk filtra
-								sortowanieAlfabetyczne.toggle()
-							} label: {
-								Image(systemName: sortowanieAlfabetyczne ? "characters.uppercase" : "square.3.layers.3d")
-									.font(.headline)
-							}
-						}
+					Picker("", selection: $sortowanieAlfabetyczne) {
+						Image(systemName: "textformat.abc").tag(true)
+						Image(systemName: "square.3.layers.3d").tag(false)
 					}
+					.pickerStyle(.segmented)
+					.frame(width: 90)
 				}
 			}
-			.toolbarBackgroundVisibility(.visible)
-			.toolbarBackground(Material.thinMaterial)
-			.navigationTitle("Składniki")
+			.toolbarBackground(.visible, for: .navigationBar)
+			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
+			.navigationBarTitleDisplayMode(.inline)
 		}
 	}
 }

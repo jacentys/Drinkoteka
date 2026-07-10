@@ -1,6 +1,10 @@
 import SwiftUI
 
-// MARK: SKL KATEGORIE
+// Centralne enumy domenowe używane przez modele i widoki.
+// `rawValue` (string) odpowiada wartości z bazy/CSV, a `opis` to etykieta do
+// wyświetlenia (lokalizowana przez String Catalog przez `LocalizedStringKey`).
+
+// MARK: SKL KATEGORIE — kategoria składnika (alkohol, syrop, sok, owoc...)
 enum sklKatEnum: String, CaseIterable, Codable, Identifiable {
 	var id: Self { self }
 	case alkohol = "alkohol"
@@ -20,12 +24,11 @@ enum sklKatEnum: String, CaseIterable, Codable, Identifiable {
 			case .przyprawy: return "Przyprawy"
 			case .owoce: return "Owoce"
 			case .inne: return "Inne"
-
 		}
 	}
 }
 
-// MARK: SKL STAN
+// MARK: SKL STAN — posiadanie składnika w barku (jest/brak + warianty z zamiennikiem)
 enum sklStanEnum: String, CaseIterable, Codable {
 	case jest = "jest"
 	case brak = "brak"
@@ -76,7 +79,7 @@ enum sklStanEnum: String, CaseIterable, Codable {
 	}
 }
 
-// MARK: DR MOC
+// MARK: DR MOC — moc drinka (bezalkoholowy/delikatny/średni/mocny), wyliczana z procentów
 enum drMocEnum: String, CaseIterable, Codable {
 	case bezalk = "bezalk"
 	case delik = "delik"
@@ -142,20 +145,38 @@ enum drMocEnum: String, CaseIterable, Codable {
 	}
 }
 
-// MARK: DR KAT
+// MARK: DR KAT — typ drinka (koktajl/shot)
 enum drKatEnum: String, CaseIterable, Codable {
-	case koktail = "Koktail"
-	case shot = "Shot"
-	case brakDanych = "Brak Danych"
+	case koktail
+	case shot
+	case brakDanych
+
+	var opis: String {
+		switch self {
+			case .koktail: return "Koktail"
+			case .shot: return "Shot"
+			case .brakDanych: return "Brak Danych"
+		}
+	}
 }
 
-// MARK: DR SLODYCZ
+// MARK: DR SLODYCZ — poziom słodkości drinka
 enum drSlodyczEnum: String, CaseIterable, Codable  {
-	case nieSlodki = "Nie Słodki"
-	case lekkoSlodki = "Lekko Słodki"
-	case slodki = "Słodki"
-	case bardzoSlodki = "Bardzo Słodki"
-	case brakDanych = "Brak Danych"
+	case nieSlodki
+	case lekkoSlodki
+	case slodki
+	case bardzoSlodki
+	case brakDanych
+
+	var opis: String {
+		switch self {
+			case .nieSlodki: return "Nie Słodki"
+			case .lekkoSlodki: return "Lekko Słodki"
+			case .slodki: return "Słodki"
+			case .bardzoSlodki: return "Bardzo Słodki"
+			case .brakDanych: return "Brak Danych"
+		}
+	}
 
 	var sort: Int {
 		switch self {
@@ -174,7 +195,7 @@ enum drSlodyczEnum: String, CaseIterable, Codable  {
 	}
 }
 
-// MARK: SZKLO
+// MARK: SZKLO — typ szkła; `foto` mapuje na asset obrazka szklanki
 enum szkloEnum: String, CaseIterable, Codable {
 	case collins = "collins"
 	case whiskey = "whiskey"
@@ -199,7 +220,7 @@ enum szkloEnum: String, CaseIterable, Codable {
 			default: return "Brak danyh"
 		}
 	}
-	
+
 	var foto: String {
 		switch self {
 			case .collins: return "szkloCollins"
@@ -213,7 +234,7 @@ enum szkloEnum: String, CaseIterable, Codable {
 			default: return "szkloBlackglass"
 		}
 	}
-	
+
 	var obj: Int {
 		switch self {
 			case .collins: return 350
@@ -229,7 +250,7 @@ enum szkloEnum: String, CaseIterable, Codable {
 	}
 }
 
-// MARK: SORTOWANIE
+// MARK: SORTOWANIE — kryterium sortowania listy drinków
 enum sortEnum: String {
 	case nazwa = "nazwa"
 	case slodycz = "slodycz"
@@ -238,7 +259,7 @@ enum sortEnum: String {
 	case sklad = "sklad"
 }
 
-// MARK: MIARA
+// MARK: MIARA — jednostka ilości składnika (ml, sztuki, łyżeczka...)
 enum miaraEnum: String, CaseIterable, Codable, Identifiable {
 	var id: Self { self }
 	case ml = "ml"
@@ -281,7 +302,7 @@ enum miaraEnum: String, CaseIterable, Codable, Identifiable {
 
 }
 
-// MARK: ALK GŁÓWNY
+// MARK: ALK GŁÓWNY — główny alkohol drinka; steruje filtrem i kafelkami na Home
 enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 	var id: Self { self }
 	case whiskey = "whiskey"
@@ -305,7 +326,7 @@ enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 			case .inny: return "Inne"
 		}
 	}
-	
+
 	var opisPL: String {
 		switch self {
 			case .whiskey: return "Whiskey"
@@ -318,7 +339,7 @@ enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 			case .inny: return "Inne"
 		}
 	}
-	
+
 	var foto: String {
 		switch self {
 			case .whiskey: return "whiskey"
@@ -329,6 +350,31 @@ enum alkGlownyEnum: String, CaseIterable, Codable, Identifiable {
 			case .vodka: return "wodka"
 			case .champagne: return "szampan"
 			case .inny: return "inne"
+		}
+	}
+
+}
+
+// MARK: WYGLĄD APLIKACJI — wybór trybu jasny/ciemny/systemowy (Preferencje)
+enum wygladEnum: String, CaseIterable, Codable {
+	case systemowy
+	case jasny
+	case ciemny
+
+	var opis: String {
+		switch self {
+			case .systemowy: return "Systemowy"
+			case .jasny: return "Jasny"
+			case .ciemny: return "Ciemny"
+		}
+	}
+
+	// nil = podąża za ustawieniem systemowym (ColorScheme opcjonalne w .preferredColorScheme)
+	var colorScheme: ColorScheme? {
+		switch self {
+			case .systemowy: return nil
+			case .jasny: return .light
+			case .ciemny: return .dark
 		}
 	}
 }

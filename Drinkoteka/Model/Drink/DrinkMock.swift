@@ -39,8 +39,7 @@ func drMock() -> Dr_M {
 		drBrakuje: 3,
 		drAlkGlowny: [.brandy],
 		drSklad: [],
-		drPrzepis: [],
-		drPolecany: true
+		drPrzepis: []
 	)
 
 	let drink2 = Dr_M(
@@ -63,8 +62,7 @@ func drMock() -> Dr_M {
 		drBrakuje: 3,
 		drAlkGlowny: [.brandy],
 		drSklad: [],
-		drPrzepis: [],
-		drPolecany: true
+		drPrzepis: []
 	)
 
 	let skladnik1 = Skl_M(sklID: "woda", sklNazwa: "Woda", sklKat: .inne, sklProc: 0, sklKolor: "bezbarwny", sklFoto: "", sklStan: .jest, sklOpis: "Najpowszechniejszy rozpuszczalnik na świecie", sklKal: 0, sklMiara: .ml, sklWWW: "www.woda.com")

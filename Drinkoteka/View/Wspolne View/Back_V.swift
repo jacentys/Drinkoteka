@@ -7,8 +7,6 @@ import AppKit
 typealias OSColor = NSColor
 #endif
 
-//let kolor1 = Color.accent
-//let kolor2 = Color.gray
 
 struct Back_V: View {
 	@Environment(\.colorScheme) var colorScheme
@@ -19,9 +17,19 @@ struct Back_V: View {
 	@State var punkty: [CGPoint] = []
 
 	var body: some View {
-		MeshGradient(width: xCount, height: yCount,
-						 points: dodajPunkty(xCount: xCount, yCount: yCount),
-						 colors: dodajKolory(xCount: xCount, yCount: yCount, tint: kolor))
+		Group {
+			if #available(iOS 18.0, *) {
+				MeshGradient(width: xCount, height: yCount,
+								 points: dodajPunkty(xCount: xCount, yCount: yCount),
+								 colors: dodajKolory(xCount: xCount, yCount: yCount, tint: kolor))
+			} else {
+				// Fallback dla iOS 17: gradient liniowy o tych samych kolorach
+				LinearGradient(
+					colors: dodajKolory(xCount: xCount, yCount: yCount, tint: kolor),
+					startPoint: .topLeading,
+					endPoint: .bottomTrailing)
+			}
+		}
 		.brightness(colorScheme == .dark ? -0.8 : 0)
 		.ignoresSafeArea()
 	}

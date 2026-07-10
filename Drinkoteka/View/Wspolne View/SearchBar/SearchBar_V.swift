@@ -37,13 +37,6 @@ struct SearchBar_V: View {
 			 }
 			 .font(.headline)
 			 .padding(10)
-//			 .background(
-//				RoundedRectangle(cornerRadius: 8)
-//					.fill(Color.white)
-//					.shadow(
-//						color: Color.accent.opacity(0.15),
-//						radius: 10, x: 0, y: 0)
-//			 )
 		 }
 		
     }
@@ -52,11 +45,9 @@ struct SearchBar_V: View {
 #Preview {
 	Group {
 		SearchBar_V(searchText: .constant(""))
-//			.previewLayout(.sizeThatFits)
 			.preferredColorScheme(.light)
 		
 		SearchBar_V(searchText: .constant(""))
-//			.previewLayout(.sizeThatFits)
 			.preferredColorScheme(.dark)
 		
 	}

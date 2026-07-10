@@ -12,8 +12,7 @@ struct DrinkSkladnikLinijka_V: View {
 				skladnik: skladnik,
 				wielkosc: 17,
 				wlaczTrybZamiennikow: true)
-			Text("\(drSkladnik.sklNo)")
-				// MARK: Prostokąt przed tekstem
+			// MARK: Prostokąt przed tekstem
 			Rectangle()
 				.frame(width: 5, height: 15)
 				.cornerRadius(2)
@@ -37,7 +36,7 @@ struct DrinkSkladnikLinijka_V: View {
 			
 				// MARK: Opcje
 			if drSkladnik.sklOpcja {
-				Text("opcj.".uppercased())
+				Text("opcj.").textCase(.uppercase)
 					.foregroundColor(Color.secondary)
 					.font(.caption)
 			}

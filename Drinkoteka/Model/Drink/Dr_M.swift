@@ -1,17 +1,24 @@
 import SwiftData
 import SwiftUI
 
+/// Model SwiftData pojedynczego drinka.
+/// Powiązane modele: `DrSkladnik_M` (pozycje składników) i `DrPrzepis_M` (kroki przepisu)
+/// dołączone relacjami z regułą `.cascade` (usunięcie drinka kasuje jego składniki i kroki).
+/// Dane wypełniane są z Supabase (`loadFromSupabase`), nie z lokalnych plików.
 @Model
 class Dr_M: Identifiable {
+	// Klucze ustawień filtrowania w UserDefaults. Model odczytuje je bezpośrednio,
+	// bo `setBrakiDrinka()` musi znać aktualne preferencje (opcjonalne/zamienniki),
+	// żeby policzyć ile składników brakuje — bez przekazywania ich z widoku.
 	private var opcjonalneWymaganeKey = "opcjonalneWymagane"
 	private var zamiennikiDozwoloneKey = "zamiennikiDozwolone"
 	private var tylkoUlubioneKey = "tylkoUlubione"
 	private var tylkoDostepneKey = "tylkoDostepne"
-	
+
 	private var sklBrakiMinKey = "sklBrakiMin"
 	private var sklBrakiMaxKey = "sklBrakiMax"
-	
-		// Pobieranie wartości z UserDefaults
+
+		// Lustro ustawień z UserDefaults (współdzielone z @AppStorage w widokach)
 	var opcjonalneWymagane: Bool {
 		get {
 			return UserDefaults.standard.bool(forKey: opcjonalneWymaganeKey)
@@ -82,7 +89,6 @@ class Dr_M: Identifiable {
 	var drAlkGlowny: [alkGlownyEnum]
 	@Relationship(deleteRule: .cascade, inverse: \DrSkladnik_M.relacjaDrink) var drSklad: [DrSkladnik_M] = []
 	@Relationship(deleteRule: .cascade, inverse: \DrPrzepis_M.relacjaDrink) var drPrzepis: [DrPrzepis_M] = []
-	var drPolecany: Bool
 
 	init(
 		id: String = UUID().uuidString,
@@ -104,8 +110,7 @@ class Dr_M: Identifiable {
 		drBrakuje: Int,
 		drAlkGlowny: [alkGlownyEnum],
 		drSklad: [DrSkladnik_M],
-		drPrzepis: [DrPrzepis_M],
-		drPolecany: Bool
+		drPrzepis: [DrPrzepis_M]
 	) {
 		self.id = id
 		self.drinkID = drinkID
@@ -127,10 +132,15 @@ class Dr_M: Identifiable {
 		self.drAlkGlowny = drAlkGlowny
 		self.drSklad = drSklad
 		self.drPrzepis = drPrzepis
-		self.drPolecany = drPolecany
 	}
 	
-		// MARK: - GET COLOR
+		// MARK: - CZY IBA (darmowy dostęp)
+	// Drinki ze źródeł "IBA..." są dostępne bez logowania (darmowy rdzeń oferty).
+	var czyIBA: Bool {
+		drZrodlo.hasPrefix("IBA")
+	}
+
+	// MARK: - GET COLOR
 	func getKolor() -> Color {
 		return strToColor(self.drKolor)
 	}
@@ -150,10 +160,6 @@ class Dr_M: Identifiable {
 		self.drNotatka = tekst
 	}
 	
-		// MARK: - SET BRAKUJE
-//	func setBrakuje(brak: Int) {
-//		self.drBrakuje = brak
-//	}
 	
 		// MARK: - SET KALORIE
 	func setKalorie(kalorie: Int) {
@@ -171,6 +177,9 @@ class Dr_M: Identifiable {
 	}
 	
 		// MARK: - GET SKL DIFFERENCE
+	// Przelicza `drBrakuje` = ile składników drinka NIE ma użytkownik w barku.
+	// Uwzględnia ustawienia: czy liczyć składniki opcjonalne i czy dopuszczać zamienniki.
+	// Wywoływane po zmianie stanu składników / ustawień filtrów.
 	func setBrakiDrinka() {
 		var ileSkladnikow: Int = 0
 		var ileNaStanie: Int = 0
