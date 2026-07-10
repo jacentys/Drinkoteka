@@ -492,13 +492,14 @@ private func DrinkListaRow(drink: Dr_M) -> some View {
 			.shadow(color: .white, radius: 20)
 			.shadow(color: .white, radius: 20)
 			.padding(.leading, 8)
+
 			// MARK: - GWIAZDKA
 		Image(systemName: drink.drUlubiony ? "star.fill" : "star")
 			.font(.system(size: 23))
 			.foregroundStyle(drink.drUlubiony ? Color.accent : Color.gray)
-									.onTapGesture {
-										drink.ulubionyToggle()
-									}
+			.onTapGesture {
+				drink.ulubionyToggle()
+			}
 	}
 }
 

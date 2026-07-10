@@ -13,10 +13,12 @@ struct SearchBar_V: View {
 				 
 				 TextField("Szukaj...", text: $searchText)
 					 .foregroundColor(Color.primary)
+					 .autocorrectionDisabled(true)
+					 .disableAutocorrection(true)
 #if os(iOS)
+					 .textInputAutocapitalization(.never)
 					 .autocapitalization(.none)
 #endif
-					 .disableAutocorrection(true)
 					 .overlay(
 						Image(systemName: "xmark.circle.fill")
 							.padding()
