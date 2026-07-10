@@ -105,16 +105,33 @@ Ustawienia i filtry to `@AppStorage` (obecne w `PrefClass_VM.swift` oraz bezpoś
 
 ## Gałąź robocza
 
-Cała praca nad i18n/premium/adminem dzieje się na gałęzi **`feature/backend-i18n-premium`**, nie na `main`. Po dokończeniu App Store trzeba ją zmergować.
+Praca nad i18n/premium/adminem odbywała się na gałęzi `feature/backend-i18n-premium` — **już zmergowana do `main` i skasowana** (commit `37c8a4b`). Od teraz praca dzieje się bezpośrednio na `main`.
 
-## TODO: wdrożenie do App Store
+## Status wdrożenia do App Store
 
-Kluczowe braki/blokery przed wysyłką:
+**Konto Developer Program**: aktywne, opłacone. Team ID `Q379RQR2M7` (w projekcie było wcześniej błędnie `86K9YKET34` z poprzedniej konfiguracji — Xcode nadpisał na właściwy po naprawieniu podpisywania).
 
-- **„Kup Premium" to placeholder** (`DrinkNotatka_V`) — albo IAP przez StoreKit (Guideline 3.1.1), albo na v1 ukryć i dawać Premium tylko przez darmowe kody.
-- **Usuwanie konta**: `deleteAccount()` woła RPC `delete_user` — potwierdzić, że funkcja istnieje na serwerze i kasuje `auth.users` (wymóg Apple).
-- **Ocena 17+** (alkohol), **App Privacy labels** (ściąga: `docs/app-store-privacy-labels.md`).
-- Dokończyć zrzuty ekranu, Apple Developer enrollment, App Store Connect, TestFlight.
-- Sign in with Apple NIE jest wymagane (tylko email/hasło).
+**App Store Connect**: rekord aplikacji utworzony — nazwa „Drinkotheque", bundle ID `film.post.Drinkoteka`, SKU `drinkotheque-001`, Apple ID `6789599579`. Company/Seller Name: **`POST sp. z o.o.`** (pole jednorazowe, nieodwracalne bez kontaktu z Apple).
 
-Zrobione: ukryty placeholder „Kup Premium", `IPHONEOS_DEPLOYMENT_TARGET` obniżony do 17.0 (z fallbackami dla API iOS 18: `MeshGradient`, `toolbarBackgroundVisibility`), logi `print` zamienione na `dprint` (aktywne tylko w Debug — definicja w `Funkcje_VM.swift`), usunięty duplikat DTO i martwe loadery TSV, ikona (pop-art, 1024×1024), nazwa ujednolicona na „Drinkotheque" (bez akcentu — łatwiejsze wyszukiwanie), Privacy Policy + strona wsparcia wgrane na 530.pl, metadane App Store (`docs/app-store-metadata.md`), deep link potwierdzenia maila (`drinkoteka://login-callback`), animowany ekran ładowania + obsługa offline przy 1. uruchomieniu, model dostępu B (Premium wymagane dla nie-IBA, widoczne-ale-zablokowane), rola admina + faza serwerowa B (patrz wyżej), ustawienie wyglądu (systemowy/jasny/ciemny) i spójne tytuły ekranów.
+**TestFlight**: build `1.0 (1)` wysłany i przetworzony, przypisany do grupy External Testing, wysłany do **Beta App Review** (status „Waiting for Review" na dzień wysyłki). Grupa Internal Testing „Zespół" też istnieje (do szybkich testów bez czekania na review).
+
+**Test/reviewer konto**: `black@530.pl`, Premium aktywowane jednorazowym kodem (wygenerowanym przez `scripts/generate_codes.py --insert`). Hasło NIE jest zapisane tutaj — ustawione ręcznie przy rejestracji, do sprawdzenia u użytkownika jeśli potrzebne przy kolejnym demo review.
+
+**Zrobione w tej rundzie**:
+- „Kup Premium" — potwierdzone, że jest fizycznie usunięty z kodu (nie tylko ukryty), Premium wyłącznie przez kody aktywacyjne.
+- `delete_user` RPC — potwierdzone: istnieje w `supabase_new_tables.sql:315-330`, `SECURITY DEFINER`, realnie kasuje `auth.users`.
+- Dodano `INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO` do `project.pbxproj` (Debug+Release) — eliminuje ręczne pytanie o Export Compliance przy każdym uploadzie (apka używa tylko standardowego HTTPS/TLS).
+- Age Rating (17+) i App Privacy (nutrition label: Email/User ID/User Content, wszystkie Linked to Identity, App Functionality, brak trackingu) uzupełnione w App Store Connect.
+- DSA „trader status" (wymóg UE, Business → Agreements w App Store Connect) potwierdzony jako trader — bez tego External Testing/dystrybucja w UE jest zablokowana.
+
+**Pułapki napotkane przy pierwszym wdrożeniu (na przyszłość)**:
+- Xcode „does not have an associated developer team" → trzeba dodać płatne konto Apple ID w Xcode → Settings → Accounts i ręcznie wybrać Team w Signing & Capabilities.
+- Xcode „no devices from which to generate a provisioning profile" → wymaga podłączenia chociaż jednego fizycznego iPhone'a raz (albo ręcznego dodania UDID w developer.apple.com), nawet do zwykłego Archive/dystrybucji.
+- Xcode „App Record Creation failed... missing companyName" przy Distribute App → trzeba najpierw ręcznie założyć appkę na appstoreconnect.apple.com (tam pyta o Company/Seller Name), potem wrócić do Xcode i powtórzyć Distribute App.
+- Privacy Policy URL nie jest na stronie „App Information" — jest na osobnej zakładce **App Privacy**.
+- External Testing (TestFlight) bywa niedostępne dopóki nie uzupełni się DSA trader compliance (Business → Agreements, czerwony baner) — dopiero po tym pojawia się sekcja External Testing w menu.
+- Przy dodawaniu testera do grupy Internal/External — pole Name w Users and Access nie może zawierać nietypowych znaków (np. dwukropka), inaczej tester zostanie odrzucony jako „invalid name".
+
+**Wciąż do zrobienia**: zrzuty ekranu (wymagane do pełnego App Store listing, niekoniecznie do samego TestFlight), oczekiwanie na wynik Beta App Review.
+
+Zrobione wcześniej: `IPHONEOS_DEPLOYMENT_TARGET` obniżony do 17.0 (z fallbackami dla API iOS 18: `MeshGradient`, `toolbarBackgroundVisibility`), logi `print` zamienione na `dprint` (aktywne tylko w Debug — definicja w `Funkcje_VM.swift`), usunięty duplikat DTO i martwe loadery TSV, ikona (pop-art, 1024×1024), nazwa ujednolicona na „Drinkotheque" (bez akcentu — łatwiejsze wyszukiwanie), Privacy Policy + strona wsparcia wgrane na 530.pl, metadane App Store (`docs/app-store-metadata.md`), deep link potwierdzenia maila (`drinkoteka://login-callback`), animowany ekran ładowania + obsługa offline przy 1. uruchomieniu, model dostępu B (Premium wymagane dla nie-IBA, widoczne-ale-zablokowane), rola admina + faza serwerowa B (patrz wyżej), ustawienie wyglądu (systemowy/jasny/ciemny) i spójne tytuły ekranów. Sign in with Apple NIE jest wymagane (tylko email/hasło).

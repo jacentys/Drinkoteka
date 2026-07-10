@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77FF0CD884674BD0AAC6B257 /* DrinkPolaEdycja_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310071BC77AE4BC0991E7905 /* DrinkPolaEdycja_V.swift */; };
+		AA000001000000000000001 /* UserNotes_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000002 /* UserNotes_VM.swift */; };
+		AA000001000000000000003 /* DrinkFeedback_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000004 /* DrinkFeedback_VM.swift */; };
+		AA000001000000000000005 /* SyncDrinki_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000006 /* SyncDrinki_VM.swift */; };
+		AA000001000000000000007 /* AppFeedback_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000008 /* AppFeedback_V.swift */; };
+		D8154301A7824CF885C918CF /* DrinkSkladnikLinijkaE_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C02AED8B8A4EBB8FFB4DF9 /* DrinkSkladnikLinijkaE_V.swift */; };
 		F3095A602DB3C1E000481E4F /* Dr_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A412DB3C1E000481E4F /* Dr_M.swift */; };
 		F3095A612DB3C1E000481E4F /* DrPrzepis_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A422DB3C1E000481E4F /* DrPrzepis_M.swift */; };
 		F3095A622DB3C1E000481E4F /* DrSkladnik_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A432DB3C1E000481E4F /* DrSkladnik_M.swift */; };
@@ -40,8 +46,6 @@
 		F36F1E892DB7A66A000775D6 /* Profil_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E882DB7A66A000775D6 /* Profil_V.swift */; };
 		F36F1E8A2DB7AB8A000775D6 /* Preferencje_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AAA2DB6945200481E4F /* Preferencje_V.swift */; };
 		F36F1E8B2DB7BAFE000775D6 /* DrinkSkladnikLinijka_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA42DB68EA900481E4F /* DrinkSkladnikLinijka_V.swift */; };
-		77FF0CD884674BD0AAC6B257 /* DrinkPolaEdycja_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310071BC77AE4BC0991E7905 /* DrinkPolaEdycja_V.swift */; };
-		D8154301A7824CF885C918CF /* DrinkSkladnikLinijkaE_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C02AED8B8A4EBB8FFB4DF9 /* DrinkSkladnikLinijkaE_V.swift */; };
 		F36F1E902DB7DF32000775D6 /* SkladnikOpis_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E8F2DB7DF32000775D6 /* SkladnikOpis_V.swift */; };
 		F36F1E922DB7E085000775D6 /* SkladnikZamiennikLinia_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E912DB7E085000775D6 /* SkladnikZamiennikLinia_V.swift */; };
 		F36F1E942DB7E21E000775D6 /* SkladnikZamiennikiAll_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E932DB7E21E000775D6 /* SkladnikZamiennikiAll_V.swift */; };
@@ -76,10 +80,6 @@
 		F3CF4A472FFC16CB00916E47 /* SupabaseDTO_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A452FFC16CB00916E47 /* SupabaseDTO_VM.swift */; };
 		F3CF4A482FFC16CB00916E47 /* AuthService_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A422FFC16CB00916E47 /* AuthService_VM.swift */; };
 		F3CF4A492FFC16CB00916E47 /* loadFromSupabase_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A432FFC16CB00916E47 /* loadFromSupabase_VM.swift */; };
-		AA000001000000000000001 /* UserNotes_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000002 /* UserNotes_VM.swift */; };
-		AA000001000000000000003 /* DrinkFeedback_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000004 /* DrinkFeedback_VM.swift */; };
-		AA000001000000000000005 /* SyncDrinki_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000006 /* SyncDrinki_VM.swift */; };
-		AA000001000000000000007 /* AppFeedback_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000008 /* AppFeedback_V.swift */; };
 		F3CF4A4A2FFC16CB00916E47 /* SupabaseClient_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A442FFC16CB00916E47 /* SupabaseClient_VM.swift */; };
 		F3CF4A4D2FFC176300916E47 /* AuthLogowanie_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A4B2FFC176300916E47 /* AuthLogowanie_V.swift */; };
 		F3CF4A4E2FFC176300916E47 /* AuthProfil_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A4C2FFC176300916E47 /* AuthProfil_V.swift */; };
@@ -89,6 +89,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16C02AED8B8A4EBB8FFB4DF9 /* DrinkSkladnikLinijkaE_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladnikLinijkaE_V.swift; sourceTree = "<group>"; };
+		310071BC77AE4BC0991E7905 /* DrinkPolaEdycja_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPolaEdycja_V.swift; sourceTree = "<group>"; };
+		AA000001000000000000002 /* UserNotes_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotes_VM.swift; sourceTree = "<group>"; };
+		AA000001000000000000004 /* DrinkFeedback_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFeedback_VM.swift; sourceTree = "<group>"; };
+		AA000001000000000000006 /* SyncDrinki_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDrinki_VM.swift; sourceTree = "<group>"; };
+		AA000001000000000000008 /* AppFeedback_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedback_V.swift; sourceTree = "<group>"; };
 		F3095A412DB3C1E000481E4F /* Dr_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dr_M.swift; sourceTree = "<group>"; };
 		F3095A422DB3C1E000481E4F /* DrPrzepis_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrPrzepis_M.swift; sourceTree = "<group>"; };
 		F3095A432DB3C1E000481E4F /* DrSkladnik_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrSkladnik_M.swift; sourceTree = "<group>"; };
@@ -109,8 +115,6 @@
 		F3095AA12DB670B700481E4F /* DrinkPrzepisE_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPrzepisE_V.swift; sourceTree = "<group>"; };
 		F3095AA32DB68EA900481E4F /* DrinkSkladniki_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladniki_V.swift; sourceTree = "<group>"; };
 		F3095AA42DB68EA900481E4F /* DrinkSkladnikLinijka_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladnikLinijka_V.swift; sourceTree = "<group>"; };
-		310071BC77AE4BC0991E7905 /* DrinkPolaEdycja_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPolaEdycja_V.swift; sourceTree = "<group>"; };
-		16C02AED8B8A4EBB8FFB4DF9 /* DrinkSkladnikLinijkaE_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladnikLinijkaE_V.swift; sourceTree = "<group>"; };
 		F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkonaJestBrak_V.swift; sourceTree = "<group>"; };
 		F3095AA92DB6945200481E4F /* PrefClass_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefClass_VM.swift; sourceTree = "<group>"; };
 		F3095AAA2DB6945200481E4F /* Preferencje_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferencje_V.swift; sourceTree = "<group>"; };
@@ -154,10 +158,6 @@
 		F3C25B8F2DC17A920038FD84 /* SkladnikWDrinkach_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkladnikWDrinkach_V.swift; sourceTree = "<group>"; };
 		F3CF4A422FFC16CB00916E47 /* AuthService_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService_VM.swift; sourceTree = "<group>"; };
 		F3CF4A432FFC16CB00916E47 /* loadFromSupabase_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadFromSupabase_VM.swift; sourceTree = "<group>"; };
-		AA000001000000000000002 /* UserNotes_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotes_VM.swift; sourceTree = "<group>"; };
-		AA000001000000000000004 /* DrinkFeedback_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFeedback_VM.swift; sourceTree = "<group>"; };
-		AA000001000000000000006 /* SyncDrinki_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDrinki_VM.swift; sourceTree = "<group>"; };
-		AA000001000000000000008 /* AppFeedback_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedback_V.swift; sourceTree = "<group>"; };
 		F3CF4A442FFC16CB00916E47 /* SupabaseClient_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient_VM.swift; sourceTree = "<group>"; };
 		F3CF4A452FFC16CB00916E47 /* SupabaseDTO_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseDTO_VM.swift; sourceTree = "<group>"; };
 		F3CF4A4B2FFC176300916E47 /* AuthLogowanie_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLogowanie_V.swift; sourceTree = "<group>"; };
@@ -710,12 +710,13 @@
 				CODE_SIGN_ENTITLEMENTS = Drinkoteka/Drinkoteka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 86K9YKET34;
+				DEVELOPMENT_TEAM = Q379RQR2M7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Drinkoteka/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Drinkotheque";
+				INFOPLIST_KEY_CFBundleDisplayName = Drinkotheque;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -754,12 +755,13 @@
 				CODE_SIGN_ENTITLEMENTS = Drinkoteka/Drinkoteka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 86K9YKET34;
+				DEVELOPMENT_TEAM = Q379RQR2M7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Drinkoteka/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Drinkotheque";
+				INFOPLIST_KEY_CFBundleDisplayName = Drinkotheque;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
