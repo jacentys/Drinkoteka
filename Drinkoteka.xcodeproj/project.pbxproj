@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E6CC3D303B245A51C998B6E /* Toast_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244F29CB3C3C8E260E4EFC1 /* Toast_V.swift */; };
 		77FF0CD884674BD0AAC6B257 /* DrinkPolaEdycja_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310071BC77AE4BC0991E7905 /* DrinkPolaEdycja_V.swift */; };
 		AA000001000000000000001 /* UserNotes_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000002 /* UserNotes_VM.swift */; };
 		AA000001000000000000003 /* DrinkFeedback_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000004 /* DrinkFeedback_VM.swift */; };
@@ -59,7 +60,6 @@
 		F377B0A12DB8C17F00FE8CE3 /* SkladnikWWW_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377B09F2DB8BE6000FE8CE3 /* SkladnikWWW_V.swift */; };
 		F377B0A32DB8C40C00FE8CE3 /* DrinkFiltry_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377B0A22DB8C40C00FE8CE3 /* DrinkFiltry_V.swift */; };
 		F377B0AC2DB8D88D00FE8CE3 /* CustomTab_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */; };
-		0E6CC3D303B245A51C998B6E /* Toast_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244F29CB3C3C8E260E4EFC1 /* Toast_V.swift */; };
 		F396F69E2DBA42040030A329 /* DrinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E8C2DB7D7A0000775D6 /* DrinkMock.swift */; };
 		F396F69F2DBA5D860030A329 /* DrinkiLista_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */; };
 		F3AA10012E0AB1230000A002 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F3AA10002E0AB1230000A001 /* Localizable.xcstrings */; };
@@ -94,6 +94,7 @@
 /* Begin PBXFileReference section */
 		16C02AED8B8A4EBB8FFB4DF9 /* DrinkSkladnikLinijkaE_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSkladnikLinijkaE_V.swift; sourceTree = "<group>"; };
 		310071BC77AE4BC0991E7905 /* DrinkPolaEdycja_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPolaEdycja_V.swift; sourceTree = "<group>"; };
+		4244F29CB3C3C8E260E4EFC1 /* Toast_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast_V.swift; sourceTree = "<group>"; };
 		AA000001000000000000002 /* UserNotes_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotes_VM.swift; sourceTree = "<group>"; };
 		AA000001000000000000004 /* DrinkFeedback_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFeedback_VM.swift; sourceTree = "<group>"; };
 		AA000001000000000000006 /* SyncDrinki_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDrinki_VM.swift; sourceTree = "<group>"; };
@@ -151,7 +152,6 @@
 		F377B09F2DB8BE6000FE8CE3 /* SkladnikWWW_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkladnikWWW_V.swift; sourceTree = "<group>"; };
 		F377B0A22DB8C40C00FE8CE3 /* DrinkFiltry_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFiltry_V.swift; sourceTree = "<group>"; };
 		F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab_V.swift; sourceTree = "<group>"; };
-		4244F29CB3C3C8E260E4EFC1 /* Toast_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast_V.swift; sourceTree = "<group>"; };
 		F377B0A72DB8D47500FE8CE3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		F3AA10002E0AB1230000A001 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F3AA20012E1A000100AA0001 /* StoreKit_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKit_VM.swift; sourceTree = "<group>"; };
@@ -731,7 +731,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Drinkoteka/Drinkoteka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = Q379RQR2M7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -776,7 +776,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Drinkoteka/Drinkoteka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = Q379RQR2M7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
