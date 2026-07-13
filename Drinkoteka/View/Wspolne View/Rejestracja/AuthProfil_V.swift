@@ -3,6 +3,7 @@ import SwiftUI
 
 struct AuthProfil_V: View {
     @StateObject private var auth = AuthService_VM.shared
+    @StateObject private var store = StoreKit_VM.shared
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
 
@@ -24,13 +25,43 @@ struct AuthProfil_V: View {
                         .foregroundStyle(.secondary)
                     Text(auth.userEmail)
                 }
+            }
+
+            Section(
+                header: Text("Premium"),
+                footer: Text("Premium odblokowuje wszystkie kategorie drinków, notatki i tworzenie własnych przepisów. Otrzymany za darmo kod aktywacyjny lub promocyjny kod Apple działa tak samo jak zakup.")
+            ) {
                 if auth.isPremium {
                     HStack {
                         Image(systemName: "crown.fill")
                             .foregroundStyle(.yellow)
-                        Text("Konto Premium")
-                            .foregroundStyle(.secondary)
+                        Text("Masz aktywne Premium")
                     }
+                } else if store.isLoadingProducts {
+                    ProgressView()
+                } else {
+                    ForEach(store.products, id: \.id) { product in
+                        Button {
+                            Task { await store.purchase(product) }
+                        } label: {
+                            HStack {
+                                Text(product.displayName)
+                                    .foregroundStyle(Color.accent)
+                                Spacer()
+                                Text(product.displayPrice)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                        .disabled(store.isPurchasing)
+                    }
+                }
+
+                Button {
+                    Task { await store.restorePurchases() }
+                } label: {
+                    Text("Przywróć zakupy")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                 }
             }
 

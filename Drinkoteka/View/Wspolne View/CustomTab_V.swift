@@ -47,11 +47,23 @@ struct CustomTab_V: View {
 	@Environment(\.modelContext) private var modelContext
 	@AppStorage("jezykAplikacji") private var jezykAplikacji: String = "pl"
 	@AppStorage("setupDone") private var setupDone: Bool = false
+	// Domyślnie true dla instalacji sprzed tego ekranu (setupDone już ustawione) —
+	// nie pokazujemy onboardingu wstecznie użytkownikom, którzy już korzystają z apki.
+	@AppStorage("jezykWybranyPrzezUzytkownika") private var jezykWybrany: Bool = UserDefaults.standard.bool(forKey: "setupDone")
 	@State private var przeladowujeJezyk: Bool = false
 	@State private var bladPolaczenia: Bool = false
 
     var body: some View {
 		 ZStack {
+			 // Ekran wyboru języka — pokazywany raz, przed pierwszym pobraniem treści,
+			 // żeby dane od razu ładowały się w wybranym języku.
+			 if !jezykWybrany {
+				 JezykWyboru_V { wybrany in
+					 jezykAplikacji = wybrany
+					 jezykWybrany = true
+				 }
+				 .transition(.opacity)
+			 } else
 			 // TabView renderujemy TYLKO gdy dane są gotowe i nie trwa przeładowanie.
 			 // Podczas pierwszego ładowania i zmiany języka (delAll + reload) widoki
 			 // z @Query są usuwane z hierarchii, żeby nie sięgały do kasowanych
@@ -92,7 +104,13 @@ struct CustomTab_V: View {
 		 }
 		 .animation(.easeInOut(duration: 0.3), value: setupDone)
 		 .animation(.easeInOut(duration: 0.3), value: przeladowujeJezyk)
-		 .task { await pierwszeLadowanie() }
+		 .animation(.easeInOut(duration: 0.3), value: jezykWybrany)
+		 // Pierwsze pobranie treści czeka na wybór języka, żeby dane od razu
+		 // ładowały się w wybranym języku (patrz JezykWyboru_V).
+		 .task(id: jezykWybrany) {
+			 guard jezykWybrany else { return }
+			 await pierwszeLadowanie()
+		 }
 		 // Krok 1: decyzja — czy potrzebne przeładowanie treści w nowym języku.
 		 // Ustawienie flagi usuwa TabView z hierarchii (patrz body).
 		 .task(id: jezykAplikacji) {

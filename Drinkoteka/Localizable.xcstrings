@@ -23,9 +23,6 @@
     "%@" : {
 
     },
-    "%@ " : {
-
-    },
     "%@ %@" : {
       "localizations" : {
         "pl" : {
@@ -65,6 +62,7 @@
 
     },
     "✓ Kod aktywowany." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -100,6 +98,7 @@
       }
     },
     "Aby używać tej aplikacji musisz być pełnoletni!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -140,6 +139,7 @@
       }
     },
     "Alkohol" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -180,6 +180,7 @@
       }
     },
     "B.Danych" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -190,6 +191,7 @@
       }
     },
     "Bardzo Słodki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -200,6 +202,7 @@
       }
     },
     "Bezalk." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -210,6 +213,7 @@
       }
     },
     "Bezalkoholowe" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -230,6 +234,7 @@
       }
     },
     "Błąd aktywacji. Spróbuj ponownie." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -272,6 +277,7 @@
       }
     },
     "brak" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -282,6 +288,7 @@
       }
     },
     "Brak" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -302,6 +309,7 @@
       }
     },
     "Brak Danych" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -312,6 +320,7 @@
       }
     },
     "Brak danyh" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -333,6 +342,7 @@
       }
     },
     "brak drinków" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -363,6 +373,7 @@
       }
     },
     "Brandy" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -373,6 +384,7 @@
       }
     },
     "Champagne" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -383,6 +395,7 @@
       }
     },
     "Ciemny" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -423,6 +436,7 @@
       }
     },
     "ćwiartki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -463,6 +477,7 @@
       }
     },
     "Delik." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -473,6 +488,7 @@
       }
     },
     "Delikatne" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -574,6 +590,7 @@
       }
     },
     "Dodawanie własnych drinków — ze zdjęciem, składnikami i przepisem — jest dostępne w planie Premium." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -594,6 +611,7 @@
       }
     },
     "dopełnienie" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -781,6 +799,7 @@
       }
     },
     "gałązki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -802,6 +821,7 @@
       }
     },
     "Gin" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -812,6 +832,7 @@
       }
     },
     "Główna" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -832,6 +853,7 @@
       }
     },
     "gr." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -874,6 +896,7 @@
       }
     },
     "IBA Niezapomniane" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -936,6 +959,7 @@
       }
     },
     "Inne" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -946,6 +970,7 @@
       }
     },
     "Jasny" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1068,6 +1093,7 @@
       }
     },
     "kawałki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1088,6 +1114,7 @@
       }
     },
     "Kieliszek do Margarity" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1098,6 +1125,7 @@
       }
     },
     "Kieliszek do Wina" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1108,6 +1136,7 @@
       }
     },
     "Kieliszek do Wódki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1118,6 +1147,7 @@
       }
     },
     "Kieliszek Koktailowy" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1128,6 +1158,7 @@
       }
     },
     "Kielliszek do Szampana" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1148,6 +1179,7 @@
       }
     },
     "Kod osiągnął limit użyć." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1158,6 +1190,7 @@
       }
     },
     "Kod przypisany do innego konta." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1168,6 +1201,7 @@
       }
     },
     "Kod wygasł." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1178,6 +1212,7 @@
       }
     },
     "Koktail" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1218,6 +1253,7 @@
       }
     },
     "kostki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1239,6 +1275,7 @@
       }
     },
     "krople" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1260,6 +1297,7 @@
       }
     },
     "Lekko Słodki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1270,6 +1308,7 @@
       }
     },
     "Likiery" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1290,6 +1329,7 @@
       }
     },
     "listki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1328,6 +1368,9 @@
           }
         }
       }
+    },
+    "Masz aktywne Premium" : {
+
     },
     "Masz dostęp do dodatkowych kategorii przyznany przez administratora." : {
       "localizations" : {
@@ -1381,6 +1424,7 @@
       }
     },
     "ml." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1421,6 +1465,7 @@
       }
     },
     "Mocne" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1431,6 +1476,7 @@
       }
     },
     "Mocny" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1451,6 +1497,7 @@
       }
     },
     "Musisz być zalogowany." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1501,6 +1548,7 @@
       }
     },
     "Nie Słodki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1521,6 +1569,7 @@
       }
     },
     "Nieprawidłowy kod." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1561,6 +1610,7 @@
       }
     },
     "Notatki do drinków są dostępne w planie Premium. Twoje notatki są synchronizowane między urządzeniami i przypisane do Twojego konta." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1622,6 +1672,7 @@
       }
     },
     "odrobina" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1652,6 +1703,7 @@
       }
     },
     "Opcje" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1742,6 +1794,7 @@
       }
     },
     "owoce" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1752,6 +1805,7 @@
       }
     },
     "Owoce" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1762,6 +1816,7 @@
       }
     },
     "plastry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1933,6 +1988,7 @@
       }
     },
     "połówki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1991,6 +2047,12 @@
           }
         }
       }
+    },
+    "Premium" : {
+
+    },
+    "Premium odblokowuje wszystkie kategorie drinków, notatki i tworzenie własnych przepisów. Otrzymany za darmo kod aktywacyjny lub promocyjny kod Apple działa tak samo jak zakup." : {
+
     },
     "Premium odblokujesz kodem aktywacyjnym otrzymanym od twórcy aplikacji. Wpisz go w Preferencje → Kod aktywacyjny." : {
       "localizations" : {
@@ -2104,6 +2166,7 @@
       }
     },
     "Przyprawy" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2112,6 +2175,9 @@
           }
         }
       }
+    },
+    "Przywróć zakupy" : {
+
     },
     "Reset!!!" : {
       "localizations" : {
@@ -2175,6 +2241,7 @@
       }
     },
     "Rum" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2185,6 +2252,7 @@
       }
     },
     "Shot" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2236,6 +2304,7 @@
       }
     },
     "Składn." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2256,6 +2325,7 @@
       }
     },
     "Składnik o tej nazwie już istnieje." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2297,6 +2367,7 @@
       }
     },
     "Słodki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2337,6 +2408,7 @@
       }
     },
     "Soki" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2399,6 +2471,7 @@
       }
     },
     "Średni" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2425,6 +2498,7 @@
       }
     },
     "Średnie" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2445,6 +2519,7 @@
       }
     },
     "Syropy" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2455,6 +2530,7 @@
       }
     },
     "Systemowy" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2475,6 +2551,7 @@
       }
     },
     "szczypty" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2485,6 +2562,7 @@
       }
     },
     "Szklanka Collins" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2495,6 +2573,7 @@
       }
     },
     "Szklanka Old Fashioned" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2505,6 +2584,7 @@
       }
     },
     "Szklanka Whiskey" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2525,6 +2605,7 @@
       }
     },
     "sztukia" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2565,6 +2646,7 @@
       }
     },
     "Ten drink jest dostępny w planie Premium. Odblokuj Premium kodem aktywacyjnym, aby zobaczyć przepis." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2575,6 +2657,7 @@
       }
     },
     "Ten kod został już przez Ciebie użyty." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2585,6 +2668,7 @@
       }
     },
     "Tequila / Mezcal" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2729,6 +2813,7 @@
       }
     },
     "Vodka" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2739,6 +2824,7 @@
       }
     },
     "W Barku" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2790,6 +2876,7 @@
       }
     },
     "Whiskey" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2811,6 +2898,7 @@
       }
     },
     "Własny" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2832,6 +2920,7 @@
       }
     },
     "Wpisz imię lub nick" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

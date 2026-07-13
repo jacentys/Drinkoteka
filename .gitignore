@@ -4,3 +4,9 @@ scripts/.supabase_service_key
 
 # Backupy Supabase (mogą zawierać dane użytkowników)
 scripts/backups/
+
+# Klucz prywatny In-App Purchase (App Store Server API) — nigdy nie commituj
+*.p8
+
+# Lokalny stan Supabase CLI (link do projektu) — nie część repo
+supabase/.temp/

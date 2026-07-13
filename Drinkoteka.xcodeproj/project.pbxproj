@@ -12,6 +12,7 @@
 		AA000001000000000000003 /* DrinkFeedback_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000004 /* DrinkFeedback_VM.swift */; };
 		AA000001000000000000005 /* SyncDrinki_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000006 /* SyncDrinki_VM.swift */; };
 		AA000001000000000000007 /* AppFeedback_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000008 /* AppFeedback_V.swift */; };
+		D4FE979F70654D0DB311CEE7 /* JezykWyboru_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949186ED2DC4805B77DF831 /* JezykWyboru_V.swift */; };
 		D8154301A7824CF885C918CF /* DrinkSkladnikLinijkaE_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C02AED8B8A4EBB8FFB4DF9 /* DrinkSkladnikLinijkaE_V.swift */; };
 		F3095A602DB3C1E000481E4F /* Dr_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A412DB3C1E000481E4F /* Dr_M.swift */; };
 		F3095A612DB3C1E000481E4F /* DrPrzepis_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095A422DB3C1E000481E4F /* DrPrzepis_M.swift */; };
@@ -61,6 +62,7 @@
 		F396F69E2DBA42040030A329 /* DrinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E8C2DB7D7A0000775D6 /* DrinkMock.swift */; };
 		F396F69F2DBA5D860030A329 /* DrinkiLista_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */; };
 		F3AA10012E0AB1230000A002 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F3AA10002E0AB1230000A001 /* Localizable.xcstrings */; };
+		F3AA20022E1A000100AA0001 /* StoreKit_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AA20012E1A000100AA0001 /* StoreKit_VM.swift */; };
 		F3BEA8712DB7FF91001E6801 /* DrinkSkladniki_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3095AA32DB68EA900481E4F /* DrinkSkladniki_V.swift */; };
 		F3BEA8732DB8067C001E6801 /* Drink_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E812DB77A29000775D6 /* Drink_V.swift */; };
 		F3BEA8752DB807F1001E6801 /* DrinkTitle_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEA8742DB807F1001E6801 /* DrinkTitle_V.swift */; };
@@ -95,6 +97,7 @@
 		AA000001000000000000004 /* DrinkFeedback_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFeedback_VM.swift; sourceTree = "<group>"; };
 		AA000001000000000000006 /* SyncDrinki_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDrinki_VM.swift; sourceTree = "<group>"; };
 		AA000001000000000000008 /* AppFeedback_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedback_V.swift; sourceTree = "<group>"; };
+		E949186ED2DC4805B77DF831 /* JezykWyboru_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JezykWyboru_V.swift; sourceTree = "<group>"; };
 		F3095A412DB3C1E000481E4F /* Dr_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dr_M.swift; sourceTree = "<group>"; };
 		F3095A422DB3C1E000481E4F /* DrPrzepis_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrPrzepis_M.swift; sourceTree = "<group>"; };
 		F3095A432DB3C1E000481E4F /* DrSkladnik_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrSkladnik_M.swift; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 		F324A3092DB19E0C00B21F83 /* Drinkoteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drinkoteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F327D6D42DC368980080F897 /* DrinkPrzepis_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPrzepis_V.swift; sourceTree = "<group>"; };
 		F32ACBF62DCE6CCD00056186 /* Home_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_V.swift; sourceTree = "<group>"; };
+		F32F32E630042CF300981953 /* StoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = StoreKitConfig.storekit; path = Drinkoteka/StoreKitConfig.storekit; sourceTree = "<group>"; };
 		F33256132DC0AE7C00C4055A /* SkladnikiBack_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkladnikiBack_V.swift; path = "Drinkoteka/View/Skladniki View/SkladnikiBack_V.swift"; sourceTree = SOURCE_ROOT; };
 		F34889CD2DD3F95800CE649D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F34D9EA82DBC250400D484DC /* SkladnikiLista_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkladnikiLista_V.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 		F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab_V.swift; sourceTree = "<group>"; };
 		F377B0A72DB8D47500FE8CE3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		F3AA10002E0AB1230000A001 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F3AA20012E1A000100AA0001 /* StoreKit_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKit_VM.swift; sourceTree = "<group>"; };
 		F3BEA8742DB807F1001E6801 /* DrinkTitle_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTitle_V.swift; sourceTree = "<group>"; };
 		F3BEA8762DB80F91001E6801 /* DrinkDane_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDane_V.swift; sourceTree = "<group>"; };
 		F3BEA8782DB81435001E6801 /* DrinkFoto_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFoto_V.swift; sourceTree = "<group>"; };
@@ -249,6 +254,7 @@
 				F3DE992C2DC8884C00957537 /* Funkcje_VM.swift */,
 				F3095AA92DB6945200481E4F /* PrefClass_VM.swift */,
 				F3CF4A462FFC16CB00916E47 /* Supabase */,
+				F3AA20032E1A000100AA0001 /* Store */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 				F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */,
 				F3095AAA2DB6945200481E4F /* Preferencje_V.swift */,
 				AA000001000000000000008 /* AppFeedback_V.swift */,
+				E949186ED2DC4805B77DF831 /* JezykWyboru_V.swift */,
 				F3095A9E2DB66FF000481E4F /* ViewModifiers.swift */,
 				F3095A9A2DB66E2300481E4F /* Back_V.swift */,
 				F36F1E872DB7A651000775D6 /* Rejestracja */,
@@ -337,6 +344,7 @@
 		F324A3002DB19E0C00B21F83 = {
 			isa = PBXGroup;
 			children = (
+				F32F32E630042CF300981953 /* StoreKitConfig.storekit */,
 				F3095A5F2DB3C1E000481E4F /* Drinkoteka */,
 				F3CF4A3E2FFC0EE100916E47 /* Frameworks */,
 				F324A30A2DB19E0C00B21F83 /* Products */,
@@ -396,6 +404,14 @@
 				F37319862DBBF60C0028F97C /* SearchBar_V.swift */,
 			);
 			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		F3AA20032E1A000100AA0001 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				F3AA20012E1A000100AA0001 /* StoreKit_VM.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		F3CF4A3E2FFC0EE100916E47 /* Frameworks */ = {
@@ -561,12 +577,14 @@
 				F3CF4A472FFC16CB00916E47 /* SupabaseDTO_VM.swift in Sources */,
 				F3CF4A502FFC179000916E47 /* DrinkZablokowany_V.swift in Sources */,
 				F3CF4A482FFC16CB00916E47 /* AuthService_VM.swift in Sources */,
+				F3AA20022E1A000100AA0001 /* StoreKit_VM.swift in Sources */,
 				F3CF4A492FFC16CB00916E47 /* loadFromSupabase_VM.swift in Sources */,
 				F3CF4A4A2FFC16CB00916E47 /* SupabaseClient_VM.swift in Sources */,
 				AA000001000000000000001 /* UserNotes_VM.swift in Sources */,
 				AA000001000000000000003 /* DrinkFeedback_VM.swift in Sources */,
 				AA000001000000000000005 /* SyncDrinki_VM.swift in Sources */,
 				AA000001000000000000007 /* AppFeedback_V.swift in Sources */,
+				D4FE979F70654D0DB311CEE7 /* JezykWyboru_V.swift in Sources */,
 				F36F1E822DB783E6000775D6 /* PrefClass_VM.swift in Sources */,
 				F36F1E842DB78BC2000775D6 /* Logowanie_V.swift in Sources */,
 				F3095A8B2DB3ECB500481E4F /* SklStanModel.swift in Sources */,
@@ -709,7 +727,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Drinkoteka/Drinkoteka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = Q379RQR2M7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -727,8 +745,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -754,7 +772,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Drinkoteka/Drinkoteka.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = Q379RQR2M7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -772,8 +790,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
