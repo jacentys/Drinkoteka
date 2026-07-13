@@ -103,6 +103,18 @@ Ustawienia i filtry to `@AppStorage` (obecne w `PrefClass_VM.swift` oraz bezpoś
 
 `Assets.xcassets`: `szklo`, `alkGlowny`, `male`, `skladnikiImage`, `kolory`. `Bllenderownia/` — źródła Blender/rendery (nie część targetu).
 
+## Monetyzacja: subskrypcja Premium (StoreKit 2)
+
+Docelowy model: apka darmowa, Premium przez **subskrypcję auto-renewable** (nie jednorazowy zakup) — dwa poziomy w jednej subscription group „Drinkotheque Premium" w App Store Connect: `film.post.Drinkoteka.premium.monthly` i `...yearly` (roczny jako „1 Year Upfront", nie „Monthly with 12-Month Commitment" — ta druga wymaga iOS 26.4+/SDK 26.5+).
+
+- `ViewModel/Store/StoreKit_VM.swift` — ładowanie produktów, zakup, nasłuch `Transaction.updates` (odnowienia), `restorePurchases()`. Klient **nigdy** nie ustawia `isPremium` sam — po zakupie woła Edge Function i dopiero wtedy odświeża status z serwera (`AuthService_VM.refreshPremiumStatus`).
+- UI zakupu: w `AuthProfil_V` („Szczegóły konta"), nie w Preferencjach — subskrypcja wymaga zalogowania, więc zgrupowana z resztą danych konta.
+- Weryfikacja server-side: `supabase/functions/verify-subscription/index.ts` (Deno/Supabase Edge Function) — klient wysyła JWS transakcji, funkcja buduje JWT (ES256) i woła Apple **App Store Server API**, potem `service_role` ustawia `profiles.is_premium`/`premium_expires_at`/`premium_product_id`/`premium_original_transaction_id` (kolumny z `supabase_subscriptions.sql`).
+- Klucz do JWT: **In-App Purchase Key** z App Store Connect → Users and Access → Integrations → **„In-App Purchase"** (NIE „App Store Connect API"/Team Keys — inny typ klucza, nie zadziała do tego API). Plik `.p8` żyje lokalnie w `scripts/SubscriptionKey_*.p8` (gitignored) i jako Supabase secrets: `APPLE_IAP_KEY_ID`, `APPLE_IAP_ISSUER_ID`, `APPLE_BUNDLE_ID`, `APPLE_IAP_PRIVATE_KEY` (te są wdrożone w chmurze Supabase — nie trzeba ich konfigurować per-komputer).
+- Test lokalny: `Drinkoteka/StoreKitConfig.storekit` (zsynchronizowany z ASC przez „Sync this file with an app in App Store Connect"), podpięty w Edit Scheme → Run → Options → StoreKit Configuration. Zakup w sandboxie działa niezależnie od stanu konta developerskiego.
+- **Known issue**: weryfikacja server-side wymaga aktywnej **Paid Applications Agreement** (Business → Agreements, Tax and Banking — bank account + tax form + odpowiedź „No" na pytanie DAC7 o „personal services", bo apka sprzedaje własną treść/subskrypcję, nie pośredniczy w usługach między userami). Bez aktywnej umowy Apple zwraca **401 z pustym body** na każde wywołanie App Store Server API, mimo w 100% poprawnego klucza/JWT/Issuer ID/Bundle ID/Team — a propagacja aktywacji umowy do backendu commerce API bywa wolniejsza niż zmiana statusu w UI ASC (może trwać godziny).
+- Kody aktywacyjne (`redeem_code`) zostają jako kanał dodatkowy (uprawnienia kategorii, konta recenzenckie/testowe) — docelowo głównym kanałem darmowego rozdawania Premium mają być Apple **Offer Codes** powiązane z realnym IAP (wymóg Apple: nie można oferować "Premium" tylko za darmo bez możliwości zakupu, bez zgłoszonego IAP — stąd w ogóle to wdrożenie).
+
 ## Gałąź robocza
 
 Praca nad i18n/premium/adminem odbywała się na gałęzi `feature/backend-i18n-premium` — **już zmergowana do `main` i skasowana** (commit `37c8a4b`). Od teraz praca dzieje się bezpośrednio na `main`.
@@ -137,3 +149,12 @@ Praca nad i18n/premium/adminem odbywała się na gałęzi `feature/backend-i18n-
 **Wciąż do zrobienia**: zrzuty ekranu (wymagane do pełnego App Store listing, niekoniecznie do samego TestFlight), wgranie nowego builda bez wsparcia iPada/Mac Catalyst i podmiana go w wersji, oczekiwanie na wynik Beta App Review.
 
 Zrobione wcześniej: `IPHONEOS_DEPLOYMENT_TARGET` obniżony do 17.0 (z fallbackami dla API iOS 18: `MeshGradient`, `toolbarBackgroundVisibility`), logi `print` zamienione na `dprint` (aktywne tylko w Debug — definicja w `Funkcje_VM.swift`), usunięty duplikat DTO i martwe loadery TSV, ikona (pop-art, 1024×1024), nazwa ujednolicona na „Drinkotheque" (bez akcentu — łatwiejsze wyszukiwanie), Privacy Policy + strona wsparcia wgrane na 530.pl, metadane App Store (`docs/app-store-metadata.md`), deep link potwierdzenia maila (`drinkoteka://login-callback`), animowany ekran ładowania + obsługa offline przy 1. uruchomieniu, model dostępu B (Premium wymagane dla nie-IBA, widoczne-ale-zablokowane), rola admina + faza serwerowa B (patrz wyżej), ustawienie wyglądu (systemowy/jasny/ciemny) i spójne tytuły ekranów. Sign in with Apple NIE jest wymagane (tylko email/hasło).
+
+## Praca z kilku komputerów
+
+Kod idzie przez git (`git pull` wystarczy), ale kilka rzeczy jest lokalnych per-maszyna i wymaga ręcznej konfiguracji przy przejściu na inny komputer:
+
+- **`scripts/.supabase_service_key`** i **`scripts/SubscriptionKey_*.p8`** — gitignored, trzeba skopiować ręcznie (albo wygenerować nowe — `.p8` klucza In-App Purchase da się pobrać z ASC tylko RAZ przy tworzeniu, więc jeśli zgubiony, trzeba wygenerować nowy i zaktualizować sekret `APPLE_IAP_PRIVATE_KEY`).
+- **Supabase CLI** — stan logowania per-maszyna: `supabase login` + `supabase link --project-ref beqxwdtkmzqonlsnbvlc`.
+- **Sekrety Edge Function** (`APPLE_IAP_KEY_ID`, `APPLE_IAP_ISSUER_ID`, `APPLE_BUNDLE_ID`, `APPLE_IAP_PRIVATE_KEY`) — **NIE trzeba** ich ponownie ustawiać, są wdrożone w chmurze Supabase niezależnie od komputera.
+- **Xcode signing** — przy pierwszej pracy nad projektem na nowym komputerze: dodać płatne konto Apple ID w Xcode → Settings → Accounts, wybrać Team `Q379RQR2M7` (POST sp. z o.o.) w Signing & Capabilities; może być potrzebne podłączenie fizycznego iPhone'a raz do wygenerowania provisioning profile.
