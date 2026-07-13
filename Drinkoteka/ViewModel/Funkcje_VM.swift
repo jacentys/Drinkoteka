@@ -382,11 +382,29 @@ func viewMiara(miara: miaraEnum) -> some View {
 	.foregroundStyle(Color.secondary)
 }
 
+	// MARK: - PRZELICZ STANY SKŁADNIKÓW WG ZAMIENNIKÓW
+// Dla każdego składnika mającego zamienniki przelicza jego stan (zmJest/zmBrak) wg
+// aktualnej dostępności zamienników. Bez tego, po samym przełączeniu "zamiennikiDozwolone"
+// (bez zmiany statusu jakiegokolwiek składnika), `sklStan` zostawał nieaktualny —
+// przeliczał się dopiero przy najbliższym tapnięciu (patrz `zmianaStanuSkladnika`).
+func recalculujStanyZamiennikow(modelContext: ModelContext) {
+	do {
+		let wszystkieSkladniki = try modelContext.fetch(FetchDescriptor<Skl_M>())
+		for skladnik in wszystkieSkladniki where !skladnik.zamienniki.isEmpty {
+			_ = updateStanPowiazanegoSkladnika(skladnik)
+		}
+	} catch {
+		dprint("Błąd przeliczania stanów zamienników: \(error)")
+	}
+}
+
 	// MARK: - SET WSZYSTKIE BRAKI
 func setAllBraki(modelContext: ModelContext) {
+	recalculujStanyZamiennikow(modelContext: modelContext)
+
 		// Tworzymy FetchDescriptor dla typu Dr_M
 	let fetchDescriptor = FetchDescriptor<Dr_M>()
-	
+
 	do {
 			// Pobieramy wszystkie obiekty Dr_M za pomocą FetchDescriptor
 		let drinks: [Dr_M] = try modelContext.fetch(fetchDescriptor)

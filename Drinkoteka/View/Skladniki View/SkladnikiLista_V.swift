@@ -16,6 +16,7 @@ struct SkladnikiLista_V: View {
 	
 	@State var szukaj: String = ""
 	@State var sortowanieAlfabetyczne = true
+	@State private var toastMessage: String? = nil
 
 	
 	var skladnikiFiltered: [Skl_M] {
@@ -94,7 +95,8 @@ struct SkladnikiLista_V: View {
 				.scrollContentBackground(.hidden)
 			}
 			.background(Back_V().ignoresSafeArea())
-			
+			.toast(message: $toastMessage)
+
 			.toolbar {
 					// MARK: - TYTUŁ (jak "Drinkotheque" na ekranie głównym)
 				ToolbarItem(placement: .principal) {
@@ -112,6 +114,7 @@ struct SkladnikiLista_V: View {
 					Button {
 						zamiennikiDozwolone.toggle()
 						setAllBraki(modelContext: modelContext)
+						toastMessage = zamiennikiDozwolone ? "Uwzględniam zamienniki" : "Bez zamienników"
 					} label: {
 						Image(systemName: zamiennikiDozwolone ? "repeat.circle.fill" : "repeat.circle")
 							.foregroundStyle(zamiennikiDozwolone ? Color.accent : Color.secondary)

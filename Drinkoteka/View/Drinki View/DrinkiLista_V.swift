@@ -48,6 +48,7 @@ struct DrinkiLista_V: View {
 	@State private var pokazPremiumDodaj: Bool = false
 	@State private var noweDrinkiCount: Int = 0
 	@State private var pokazAktualizacje: Bool = false
+	@State private var toastMessage: String? = nil
 
 	var drinkiFiltered: [Dr_M] {
 		if szukaj.isEmpty {
@@ -130,7 +131,8 @@ struct DrinkiLista_V: View {
 				.scrollContentBackground(.hidden)
 			}
 			.background(Back_V().ignoresSafeArea())
-			
+			.toast(message: $toastMessage)
+
 			.toolbar {
 					// MARK: - TYTUŁ (jak "Drinkotheque" na ekranie głównym)
 				ToolbarItem(placement: .principal) {
@@ -145,6 +147,7 @@ struct DrinkiLista_V: View {
 				ToolbarItem(placement: .navigationBarLeading) {
 					Button {
 						tylkoUlubione.toggle()
+						toastMessage = tylkoUlubione ? "Pokazuję tylko ulubione" : "Pokazuję wszystkie"
 					} label: {
 						Image(systemName: tylkoUlubione ? "star.fill" : "star")
 							.foregroundStyle(tylkoUlubione ? Color.accent : Color.secondary)

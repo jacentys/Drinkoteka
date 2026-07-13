@@ -59,6 +59,7 @@
 		F377B0A12DB8C17F00FE8CE3 /* SkladnikWWW_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377B09F2DB8BE6000FE8CE3 /* SkladnikWWW_V.swift */; };
 		F377B0A32DB8C40C00FE8CE3 /* DrinkFiltry_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377B0A22DB8C40C00FE8CE3 /* DrinkFiltry_V.swift */; };
 		F377B0AC2DB8D88D00FE8CE3 /* CustomTab_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */; };
+		0E6CC3D303B245A51C998B6E /* Toast_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244F29CB3C3C8E260E4EFC1 /* Toast_V.swift */; };
 		F396F69E2DBA42040030A329 /* DrinkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E8C2DB7D7A0000775D6 /* DrinkMock.swift */; };
 		F396F69F2DBA5D860030A329 /* DrinkiLista_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F1E7F2DB77A29000775D6 /* DrinkiLista_V.swift */; };
 		F3AA10012E0AB1230000A002 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F3AA10002E0AB1230000A001 /* Localizable.xcstrings */; };
@@ -150,6 +151,7 @@
 		F377B09F2DB8BE6000FE8CE3 /* SkladnikWWW_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkladnikWWW_V.swift; sourceTree = "<group>"; };
 		F377B0A22DB8C40C00FE8CE3 /* DrinkFiltry_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFiltry_V.swift; sourceTree = "<group>"; };
 		F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab_V.swift; sourceTree = "<group>"; };
+		4244F29CB3C3C8E260E4EFC1 /* Toast_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast_V.swift; sourceTree = "<group>"; };
 		F377B0A72DB8D47500FE8CE3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		F3AA10002E0AB1230000A001 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F3AA20012E1A000100AA0001 /* StoreKit_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKit_VM.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				F310D9242FFCF21900EC6A18 /* DrinkotekaImage_V.swift */,
 				F3095AA72DB693AA00481E4F /* IkonaJestBrak_V.swift */,
 				F377B0A62DB8D47500FE8CE3 /* CustomTab_V.swift */,
+				4244F29CB3C3C8E260E4EFC1 /* Toast_V.swift */,
 				F3095AAA2DB6945200481E4F /* Preferencje_V.swift */,
 				AA000001000000000000008 /* AppFeedback_V.swift */,
 				E949186ED2DC4805B77DF831 /* JezykWyboru_V.swift */,
@@ -571,6 +574,7 @@
 				F310D9252FFCF21900EC6A18 /* DrinkotekaImage_V.swift in Sources */,
 				F396F69E2DBA42040030A329 /* DrinkMock.swift in Sources */,
 				F377B0AC2DB8D88D00FE8CE3 /* CustomTab_V.swift in Sources */,
+				0E6CC3D303B245A51C998B6E /* Toast_V.swift in Sources */,
 				F36F1E8A2DB7AB8A000775D6 /* Preferencje_V.swift in Sources */,
 				F37319872DBBF60C0028F97C /* SearchBar_V.swift in Sources */,
 				F3095A872DB3EC5900481E4F /* Skl_M.swift in Sources */,
