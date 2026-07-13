@@ -39,12 +39,14 @@ async function buildAppleServerToken(): Promise<string> {
 async function fetchTransactionInfo(transactionId: string, appleToken: string) {
   const headers = { Authorization: `Bearer ${appleToken}` };
 
-  // Najpierw produkcja, przy 404 (transakcja sandboxowa) — sandbox.
+  // Najpierw produkcja; przy 404 (transakcja sandboxowa) lub 401 (Apple czasem
+  // odrzuca sandboxowe transakcje na endpointcie produkcyjnym jako nieautoryzowane
+  // zamiast zwrócić 404) — spróbuj sandboxa.
   let res = await fetch(
     `https://api.storekit.itunes.apple.com/inApps/v1/transactions/${transactionId}`,
     { headers }
   );
-  if (res.status === 404) {
+  if (res.status === 404 || res.status === 401) {
     res = await fetch(
       `https://api.storekit-sandbox.itunes.apple.com/inApps/v1/transactions/${transactionId}`,
       { headers }
