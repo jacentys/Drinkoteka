@@ -185,7 +185,7 @@ struct Home_V: View {
 			.toolbarBackground(.visible, for: .navigationBar)
 			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
 			.sheet(isPresented: $pokazPremium) {
-				PremiumInfo_V(opis: "Ten drink jest dostępny w planie Premium. Odblokuj Premium kodem aktywacyjnym, aby zobaczyć przepis.")
+				PremiumInfo_V(opis: "Ten drink jest dostępny w planie Premium. Wykup Premium, aby zobaczyć przepis.")
 			}
 		}
 	}

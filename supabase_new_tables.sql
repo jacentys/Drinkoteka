@@ -52,8 +52,9 @@ create table if not exists profiles (
 alter table profiles enable row level security;
 drop policy if exists "Users see own profile" on profiles;
 create policy "Users see own profile" on profiles for select using (auth.uid() = user_id);
--- UWAGA: brak polityki UPDATE dla klienta — is_premium ustawia wyłącznie
--- funkcja redeem_code (SECURITY DEFINER). Zapobiega samodzielnemu włączeniu premium.
+-- UWAGA: brak polityki UPDATE dla klienta — is_premium ustawia się wyłącznie
+-- ręcznie (SQL Editor / service_role) albo przez verify-subscription (service_role).
+-- Zapobiega samodzielnemu włączeniu premium przez użytkownika.
 
 -- Auto-tworzenie profilu przy rejestracji
 create or replace function public.handle_new_user()
@@ -231,75 +232,15 @@ create policy "Anyone can read ingredient translations" on ingredient_translatio
 
 
 -- ============================================================
--- KODY AKTYWACYJNE (premium / kategorie)
+-- PREMIUM / UPRAWNIENIA KATEGORII — przyznawane WYŁĄCZNIE ręcznie
 -- ============================================================
--- Realizacja WYŁĄCZNIE przez funkcję redeem_code (SECURITY DEFINER).
--- Klient nie ma bezpośredniego dostępu do tych tabel ani do zapisu
--- profiles.is_premium / user_permissions.
-
-create table if not exists redemption_codes (
-  code         text primary key,        -- np. 'PREMIUM-7K2Q'
-  reward_type  text not null,           -- 'premium' | 'permission'
-  reward_value text,                    -- permission: 'category:...'; premium: null
-  bound_email  text,                    -- null = dowolny; lub konkretny mail
-  max_uses     int  default 2,          -- kod ważny maks. 2 razy
-  used_count   int  default 0,
-  expires_at   timestamptz,             -- null = bez wygaśnięcia
-  created_at   timestamptz default now()
-);
-
-create table if not exists code_redemptions (
-  code        text references redemption_codes(code) on delete cascade,
-  user_id     uuid references auth.users(id) on delete cascade,
-  redeemed_at timestamptz default now(),
-  primary key (code, user_id)
-);
-
--- redemption_codes: brak policy = klient nie widzi/nie modyfikuje kodów
-alter table redemption_codes enable row level security;
-alter table code_redemptions enable row level security;
-drop policy if exists "See own redemptions" on code_redemptions;
-create policy "See own redemptions" on code_redemptions for select using (auth.uid() = user_id);
-
--- Funkcja realizująca kod (omija RLS, działa jako właściciel)
-create or replace function redeem_code(p_code text)
-returns text
-language plpgsql
-security definer
-set search_path = public
-as $$
-declare
-  c redemption_codes;
-  v_email text;
-begin
-  select email into v_email from auth.users where id = auth.uid();
-  if v_email is null then return 'not_logged_in'; end if;
-
-  select * into c from redemption_codes where code = p_code;
-  if not found then return 'invalid'; end if;
-  if c.expires_at is not null and c.expires_at < now() then return 'expired'; end if;
-  if c.bound_email is not null and lower(c.bound_email) <> lower(v_email) then return 'wrong_account'; end if;
-  if exists (select 1 from code_redemptions where code = p_code and user_id = auth.uid()) then
-    return 'already_used';
-  end if;
-  if c.used_count >= c.max_uses then return 'exhausted'; end if;
-
-  if c.reward_type = 'premium' then
-    update profiles set is_premium = true where user_id = auth.uid();
-  elsif c.reward_type = 'permission' then
-    insert into user_permissions (user_id, permission)
-      values (auth.uid(), c.reward_value) on conflict do nothing;
-  else
-    return 'invalid';
-  end if;
-
-  insert into code_redemptions (code, user_id) values (p_code, auth.uid());
-  update redemption_codes set used_count = used_count + 1 where code = p_code;
-  return 'ok';
-end $$;
+-- Kody aktywacyjne (redemption_codes/code_redemptions/redeem_code) zostały
+-- usunięte — patrz supabase_remove_activation_codes.sql. Premium i dostęp
+-- do kategorii przyznaje się teraz wyłącznie bezpośrednim UPDATE/INSERT
+-- w Supabase (SQL Editor albo service_role), nigdy z poziomu klienta.
 
 -- NAPRAWA LUKI: klient nie może sam ustawić is_premium.
--- Premium przyznaje wyłącznie redeem_code. Aplikacja tylko czyta profil.
+-- Premium przyznaje się wyłącznie ręcznie (SQL Editor / service_role). Aplikacja tylko czyta profil.
 drop policy if exists "Users update own profile" on profiles;
 
 
@@ -307,8 +248,8 @@ drop policy if exists "Users update own profile" on profiles;
 -- USUWANIE KONTA (wymóg Apple: usuwanie konta z poziomu aplikacji)
 -- ============================================================
 -- Funkcja usuwa WYŁĄCZNIE konto wywołującego (auth.uid()). Powiązane dane
--- (profiles, user_notes, user_permissions, code_redemptions) znikają kaskadowo
--- dzięki "on delete cascade"; feedback ma "on delete set null".
+-- (profiles, user_notes, user_permissions) znikają kaskadowo dzięki
+-- "on delete cascade"; feedback ma "on delete set null".
 -- Działa jako właściciel funkcji (SECURITY DEFINER) — klient z kluczem anon
 -- nie ma bezpośredniego dostępu do auth.users.
 

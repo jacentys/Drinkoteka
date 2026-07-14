@@ -44,8 +44,6 @@ TABLES = [
     "profiles",
     "user_permissions",
     "user_notes",
-    "redemption_codes",
-    "code_redemptions",
     "drink_feedback",
     "app_feedback",
 ]

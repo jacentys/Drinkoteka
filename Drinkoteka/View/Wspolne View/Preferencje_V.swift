@@ -1,4 +1,4 @@
-// Ustawienia: język, konto, kod aktywacyjny, opinia o aplikacji, reset składników.
+// Ustawienia: język, konto, opinia o aplikacji, reset składników.
 import SwiftData
 import SwiftUI
 

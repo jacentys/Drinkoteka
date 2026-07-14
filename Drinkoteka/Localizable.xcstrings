@@ -1243,6 +1243,7 @@
       }
     },
     "Konto Premium" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1495,6 +1496,9 @@
           }
         }
       }
+    },
+    "Możesz to później zmienić w Preferencjach.\nYou can change this later in Settings." : {
+
     },
     "Musisz być zalogowany." : {
       "extractionState" : "stale",
@@ -2980,6 +2984,9 @@
           }
         }
       }
+    },
+    "Wybierz język / Choose language" : {
+
     },
     "Wybierz poziom słodkości drinka" : {
       "extractionState" : "stale",

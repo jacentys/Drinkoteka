@@ -1,8 +1,7 @@
 -- Rozszerzenie profiles o dane subskrypcji Premium (StoreKit 2 + App Store Server API).
 -- Idempotentne — bezpieczne do wielokrotnego uruchomienia w Supabase SQL Editor.
--- Kolumny ustawiane WYŁĄCZNIE przez Edge Function "verify-subscription" (service_role),
--- analogicznie do is_premium ustawianego przez redeem_code — klient nigdy nie ma
--- polityki UPDATE na profiles (patrz supabase_new_tables.sql).
+-- Kolumny ustawiane WYŁĄCZNIE przez Edge Function "verify-subscription" (service_role)
+-- albo ręcznie — klient nigdy nie ma polityki UPDATE na profiles (patrz supabase_new_tables.sql).
 
 alter table profiles add column if not exists premium_product_id text;
 alter table profiles add column if not exists premium_expires_at timestamptz;

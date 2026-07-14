@@ -1,7 +1,6 @@
 // Zakupy Premium (subskrypcja) przez StoreKit 2.
 // Weryfikacja i przyznanie premium odbywa się server-side (Supabase Edge Function
-// "verify-subscription"), analogicznie do redeemCode — klient nigdy sam sobie
-// nie ustawia is_premium.
+// "verify-subscription") — klient nigdy sam sobie nie ustawia is_premium.
 import StoreKit
 import Foundation
 import Supabase

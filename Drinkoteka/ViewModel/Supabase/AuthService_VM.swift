@@ -157,29 +157,6 @@ class AuthService_VM: ObservableObject {
             .sorted()
     }
 
-    // MARK: - Kod aktywacyjny
-
-    // Realizuje kod przez funkcję redeem_code na serwerze.
-    // Zwraca: ok / invalid / expired / wrong_account / already_used / exhausted / not_logged_in / error
-    func redeemCode(_ code: String) async -> String {
-        let trimmed = code.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return "invalid" }
-        do {
-            let result: String = try await supabase
-                .rpc("redeem_code", params: ["p_code": trimmed])
-                .execute()
-                .value
-            if result == "ok" {
-                await refreshPremiumStatus()
-                await refreshPermissions()
-            }
-            return result
-        } catch {
-            dprint("[Kod] błąd: \(error)")
-            return "error"
-        }
-    }
-
     // MARK: - Deep link (potwierdzenie maila / callback auth)
 
     // Wywoływane z .onOpenURL, gdy system otworzy aplikację linkiem drinkoteka://...

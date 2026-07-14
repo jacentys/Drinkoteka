@@ -49,13 +49,13 @@ UI tłumaczone przez String Catalog `Localizable.xcstrings` (źródłowy język:
 - Loader pobiera tłumaczenia dla bieżącego języka (`aktualnyJezykDanych()` czyta `jezykAplikacji` z `UserDefaults`) i nakłada je na treść; brak tłumaczenia → fallback PL.
 - Zmiana języka: `CustomTab_V` ma `.task(id: jezykAplikacji)` → `zsynchronizujJezyk()` → `zmienJezykDanych(modelContext:)`, które przeładowuje treść w nowym języku, **zachowując `sklStan` i ulubione**. Śledzone przez `dataLang` w `UserDefaults`. (Logika jest w `CustomTab_V`, a nie w `DrinkiLista_V`, bo po zmianie języka aplikacja wraca na zakładkę Home.)
 
-## Uprawnienia, Premium, kody aktywacyjne
+## Uprawnienia, Premium
 
 Centralny serwis: `ViewModel/Supabase/AuthService_VM.swift` (`@MainActor`, singleton `AuthService_VM.shared`). Dostęp do jego właściwości z kontekstu async wymaga `await`.
 
 - **Premium**: `@Published isPremium` z tabeli `profiles` (`refreshPremiumStatus`). Notatki drinków są Premium-only.
 - **Blokowane kategorie**: sterowane bazą przez tabelę `restricted_sources (source → permission)`. `restrictedSources` + `permissions` (z `user_permissions`) ładowane w `refreshSession`/`signIn`. `canAccessDrink(_)` / `maDostepDoZrodla(_)` decydują o widoczności. Drinki z niedostępnych źródeł są ukrywane w `DrinkiLista_V`/`Home_V`, a przez RLS **nie są nawet pobierane** z serwera. Ekran „Szczegóły konta" (`AuthProfil_V`) pokazuje `zablokowaneZrodla` z oznaczeniem dostępu.
-- **Kody aktywacyjne**: pole w Preferencjach → `AuthService_VM.redeemCode(_)` → RPC `redeem_code` (SECURITY DEFINER) na serwerze. Klient NIGDY nie przyznaje sobie uprawnień bezpośrednio (RLS to blokuje). Po `ok` odświeżane są premium+uprawnienia i dociągane odblokowane drinki.
+- **Nadawanie Premium/uprawnień**: wyłącznie ręcznie, bezpośrednio w Supabase (SQL Editor albo `service_role`) — `update profiles set is_premium = true where user_id = ...` / `insert into user_permissions (...)`. Mechanizm kodów aktywacyjnych (`redeem_code`, `redemption_codes`, `code_redemptions`, `scripts/generate_codes.py`) został **usunięty** (patrz `supabase_remove_activation_codes.sql`) — klient nadal nigdy nie przyznaje sobie uprawnień sam (RLS to blokuje), po prostu nie ma już samoobsługowej ścieżki „wpisz kod".
 - **Synchronizacja drinków**: `ViewModel/Supabase/SyncDrinki_VM.swift` — `sprawdzAktualizacjeDrinkow` po cichu usuwa drinki bez dostępu i zwraca liczbę nowych; `DrinkiLista_V` pokazuje alert „Nowe drinki" (pobranie = idempotentny `loadFromSupabase`). Drinki ze źródła `"Własny"` są zawsze wykluczone z tego kasowania (nigdy nie istniały na serwerze).
 - **Feedback**: `sendDrinkFeedback` (per drink) i `sendAppFeedback` (ogólny, z Preferencji) → tabele `drink_feedback` / `app_feedback` (insert-only, odczyt tylko service_role).
 - **Rola admina**: `profiles.is_admin` (nadawana ręcznie w SQL), `@Published isAdmin` w `AuthService_VM`. Reguły dostępu do edycji: `mozeTworzyc` (dodawanie własnych drinków — Premium lub admin), `mozeEdytowac(_:)` (admin → wszystkie drinki; Premium → tylko własne, `drZrodlo == "Własny"`), `mozeOtworzyc(_:)` (czytanie — IBA zawsze, reszta wg Premium/uprawnień kategorii).
@@ -65,19 +65,11 @@ Centralny serwis: `ViewModel/Supabase/AuthService_VM.swift` (`@MainActor`, singl
 
 Cały DDL nowych funkcji: **`supabase_new_tables.sql`** (idempotentny — każda polityka poprzedzona `drop policy if exists`, tabele `if not exists`, funkcje `create or replace`). Uruchamiać w Supabase → SQL Editor.
 
-Zawiera: `user_notes`, `drink_feedback`, `app_feedback`, `profiles` (+ trigger auto-tworzenia), `user_permissions`, `restricted_sources` + RLS na `drinks` i tabelach zależnych, tabele `*_translations` + RLS, `redemption_codes` + `code_redemptions` + funkcja `redeem_code`.
+Zawiera: `user_notes`, `drink_feedback`, `app_feedback`, `profiles` (+ trigger auto-tworzenia), `user_permissions`, `restricted_sources` + RLS na `drinks` i tabelach zależnych, tabele `*_translations` + RLS. **Kody aktywacyjne usunięte** — patrz `supabase_remove_activation_codes.sql` (jednorazowa migracja, dropuje `redeem_code`/`redemption_codes`/`code_redemptions`).
 
-**Bezpieczeństwo RLS:** premium/uprawnienia przyznaje wyłącznie `redeem_code` (SECURITY DEFINER). `profiles` NIE ma polityki UPDATE dla klienta (inaczej użytkownik sam włączyłby sobie premium). Tabele treści blokowanych kategorii są ukrywane przez RLS zależne od `user_permissions`. `ingredients`/`ingredient_substitutes` muszą mieć publiczny odczyt (nie są blokowane).
+**Bezpieczeństwo RLS:** premium/uprawnienia przyznaje się wyłącznie ręcznie w Supabase (SQL Editor / `service_role`). `profiles` NIE ma polityki UPDATE dla klienta (inaczej użytkownik sam włączyłby sobie premium). Tabele treści blokowanych kategorii są ukrywane przez RLS zależne od `user_permissions`. `ingredients`/`ingredient_substitutes` muszą mieć publiczny odczyt (nie są blokowane).
 
 Pliki tłumaczeń (generowane, idempotentne `on conflict do update`): `supabase_translations_ingredients_en.sql`, `_drinks_en.sql`, `_notes_en.sql`, `_steps_en.sql`. Poprawki literówek w bazowej treści PL: `supabase_fix_typos_pl.sql`.
-
-## Skrypty (Python)
-
-`scripts/generate_codes.py` — generator/menedżer kodów aktywacyjnych:
-
-- `--type premium|permission [--value category:...] [--email ...] [--uses N] [--expires-days N] [--prefix ...] --insert` — tworzy kody (domyślnie max 2 użycia); z `--insert` zapisuje wprost do bazy przez REST API, bez `--insert` drukuje SQL.
-- `--list` / `--list-categories` / `--revoke KOD...` — podgląd i usuwanie.
-- Klucz **service_role** czytany ze zmiennej `SUPABASE_SERVICE_KEY` lub z `scripts/.supabase_service_key` (w `.gitignore`, NIGDY w repo). SSL wymaga `certifi` (`pip3 install --user certifi`).
 
 ## Pipeline tłumaczeń treści (przy dodawaniu języka)
 
@@ -96,7 +88,7 @@ Ustawienia i filtry to `@AppStorage` (obecne w `PrefClass_VM.swift` oraz bezpoś
 
 - `Drinki View/` — lista, szczegóły, przepis, filtry (`DrinkFiltry_V`), notatka (`DrinkNotatka_V`, Premium-only), uwaga (`DrinkUwaga_V`).
 - `Skladniki View/` — lista, szczegóły, zamienniki.
-- `Wspolne View/` — `CustomTab_V` (zakładki + sync języka), `Rejestracja/` (logowanie, `AuthProfil_V`), `AppFeedback_V`, `Preferencje_V` (język, konto, kod aktywacyjny, opinia, reset).
+- `Wspolne View/` — `CustomTab_V` (zakładki + sync języka), `Rejestracja/` (logowanie, `AuthProfil_V` — konto, Premium, zmiana hasła, usunięcie konta), `AppFeedback_V`, `Preferencje_V` (język, konto, opinia, reset).
 - `Home/` — ekran startowy (kafelki alkoholi przełączają zakładkę na Drinki z filtrem, przez `@Binding activeTab`).
 
 ## Assety
@@ -114,7 +106,7 @@ Docelowy model: apka darmowa, Premium przez **subskrypcję auto-renewable** (nie
 - Test lokalny: `Drinkoteka/StoreKitConfig.storekit` (zsynchronizowany z ASC przez „Sync this file with an app in App Store Connect"), podpięty w Edit Scheme → Run → Options → StoreKit Configuration. **Uwaga:** zakup przez ten lokalny config w Symulatorze/Xcode tworzy transakcję czysto lokalną — realne App Store Server API jej nie zna i zwraca `404 Transaction id not found` (na prod i sandbox). Do realnego testu weryfikacji server-side trzeba zainstalować build **z TestFlight** — takie buildy automatycznie transakcjonują przez środowisko Sandbox, niezależnie jakim Apple ID jest zalogowany tester na urządzeniu (osobny Sandbox Tester, zakładany w Users and Access → Sandbox → Testers, jest potrzebny tylko przy testowaniu bezpośrednio z Xcode bez TestFlight).
 - `fetchTransactionInfo` w Edge Function próbuje prod, a przy **404 lub 401** przełącza się na sandbox (Apple czasem odrzuca sandboxowe transakcje na endpointcie produkcyjnym jako 401 zamiast 404).
 - **Rozwiązane (był „Known issue")**: świeżo aktywowana **Paid Applications Agreement** (Business → Agreements, Tax and Banking) potrafiła nie propagować się do backendu App Store Server API przez **kilka godzin** mimo statusu „Active" w UI ASC — w tym czasie każde wywołanie zwracało **401 z pustym body**, mimo w 100% poprawnego klucza/JWT/Issuer ID/Bundle ID/Team. Samo się rozwiązało po odczekaniu (bez zmiany konfiguracji) — potwierdzone działającym zakupem end-to-end przez TestFlight.
-- Kody aktywacyjne (`redeem_code`) zostają jako kanał dodatkowy (uprawnienia kategorii, konta recenzenckie/testowe) — docelowo głównym kanałem darmowego rozdawania Premium mają być Apple **Offer Codes** powiązane z realnym IAP (wymóg Apple: nie można oferować "Premium" tylko za darmo bez możliwości zakupu, bez zgłoszonego IAP — stąd w ogóle to wdrożenie).
+- Darmowe przyznanie Premium (konta recenzenckie/testowe) — teraz wyłącznie ręcznym `update profiles set is_premium = true ...` w Supabase (kody aktywacyjne usunięte). Docelowo głównym kanałem darmowego rozdawania Premium mają być Apple **Offer Codes** powiązane z realnym IAP (wymóg Apple: nie można oferować "Premium" tylko za darmo bez możliwości zakupu, bez zgłoszonego IAP — stąd w ogóle to wdrożenie).
 
 ## Gałąź robocza
 
@@ -128,10 +120,10 @@ Praca nad i18n/premium/adminem odbywała się na gałęzi `feature/backend-i18n-
 
 **TestFlight**: build `1.0 (1)` (bez StoreKit — wysłany przed wdrożeniem subskrypcji) wysłany i przetworzony, przypisany do grupy External Testing, wysłany do **Beta App Review** (status „Waiting for Review" na dzień wysyłki). Build `1.0 (3)` (pierwszy ze StoreKit + bez wsparcia iPada) wgrany później i przetestowany end-to-end (zakup Premium przez TestFlight → `verify-subscription` → `isPremium = true`, potwierdzone działające). Grupa Internal Testing „Internal Tester" ma włączone automatic distribution — każdy nowy build trafia tam sam, bez ręcznego przypisywania. Grupa External Testing „Testy zewnętrzne" — sprawdzić, czy build 3 wymaga osobnego zatwierdzenia przez Beta App Review (nowy build może, ale nie musi, wymagać ponownego review).
 
-**Test/reviewer konto**: `black@530.pl`, Premium aktywowane jednorazowym kodem (wygenerowanym przez `scripts/generate_codes.py --insert`). Hasło NIE jest zapisane tutaj — ustawione ręcznie przy rejestracji, do sprawdzenia u użytkownika jeśli potrzebne przy kolejnym demo review.
+**Test/reviewer konto**: `black@530.pl`, Premium przyznane (pierwotnie jednorazowym kodem aktywacyjnym — mechanizm od tamtej pory usunięty, `is_premium` w `profiles` zostaje przyznane niezależnie od tego jak). Hasło NIE jest zapisane tutaj — ustawione ręcznie przy rejestracji, do sprawdzenia u użytkownika jeśli potrzebne przy kolejnym demo review.
 
 **Zrobione w tej rundzie**:
-- „Kup Premium" — potwierdzone, że jest fizycznie usunięty z kodu (nie tylko ukryty), Premium wyłącznie przez kody aktywacyjne.
+- „Kup Premium" — potwierdzone, że jest fizycznie usunięty z kodu (nie tylko ukryty); Premium ówcześnie tylko przez kody aktywacyjne (mechanizm ten od tamtej pory usunięty — patrz sekcja „Uprawnienia, Premium" wyżej).
 - `delete_user` RPC — potwierdzone: istnieje w `supabase_new_tables.sql:315-330`, `SECURITY DEFINER`, realnie kasuje `auth.users`.
 - Dodano `INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO` do `project.pbxproj` (Debug+Release) — eliminuje ręczne pytanie o Export Compliance przy każdym uploadzie (apka używa tylko standardowego HTTPS/TLS).
 - Age Rating (17+) i App Privacy (nutrition label: Email/User ID/User Content, wszystkie Linked to Identity, App Functionality, brak trackingu) uzupełnione w App Store Connect.

@@ -146,9 +146,9 @@ struct PremiumInfo_V: View {
 						.padding(.horizontal)
 				} else {
 					HStack(alignment: .top, spacing: 10) {
-						Image(systemName: "ticket")
+						Image(systemName: "crown")
 							.foregroundStyle(Color.accent)
-						Text("Premium odblokujesz kodem aktywacyjnym otrzymanym od twórcy aplikacji. Wpisz go w Preferencje → Kod aktywacyjny.")
+						Text("Premium wykupisz w Szczegóły konta → Premium.")
 							.font(.footnote)
 							.foregroundStyle(.secondary)
 					}

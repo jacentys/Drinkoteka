@@ -35,11 +35,11 @@ ORDER = [
     "ingredient_translations", "drink_translations",
     "drink_step_translations", "drink_ingredient_translations",
     "profiles", "user_permissions", "user_notes",
-    "redemption_codes", "code_redemptions", "drink_feedback", "app_feedback",
+    "drink_feedback", "app_feedback",
 ]
 
 # Tabele zależne od kont użytkowników — pomijane przez --skip-user-data.
-USER_DATA = {"profiles", "user_permissions", "user_notes", "code_redemptions",
+USER_DATA = {"profiles", "user_permissions", "user_notes",
              "drink_feedback", "app_feedback"}
 
 BATCH = 500

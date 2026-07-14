@@ -27,7 +27,7 @@ struct DrinkZablokowany_V: View {
         }
         .buttonStyle(.plain)
         .sheet(isPresented: $pokazPremium) {
-            PremiumInfo_V(opis: "Ten drink jest dostępny w planie Premium. Odblokuj Premium kodem aktywacyjnym, aby zobaczyć przepis.")
+            PremiumInfo_V(opis: "Ten drink jest dostępny w planie Premium. Wykup Premium, aby zobaczyć przepis.")
         }
     }
 }
