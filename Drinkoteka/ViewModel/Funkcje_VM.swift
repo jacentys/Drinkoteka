@@ -632,6 +632,11 @@ func updateStanSkladnika(_ skladnik: Skl_M) {
 // zamiennikiem, 3) przelicza `drBrakuje` wszystkich drinków i zapisuje kontekst.
 func zmianaStanuSkladnika(context: ModelContext, zamiennik: Skl_M) {
 	updateStanSkladnika(zamiennik)
+
+	let skladnikId = zamiennik.sklID
+	let jest = zamiennik.sklStan == .jest
+	Task { await setIngredientStockInSupabase(ingredientId: skladnikId, owned: jest) }
+
 	do {
 			// Fetch all Skl_M and filter in memory
 		let wszystkieSkladniki = try context.fetch(FetchDescriptor<Skl_M>())

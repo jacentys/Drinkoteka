@@ -106,9 +106,16 @@ struct Home_V: View {
 									.aspectRatio(1, contentMode: .fit)
 									.mask(RoundedRectangle(cornerRadius: 6))
 									.overlay(RoundedRectangle(cornerRadius: 6).stroke(.white, lineWidth: 1))
+									.scrollTransition(.interactive, axis: .horizontal) { content, phase in
+										content
+											.scaleEffect(phase.isIdentity ? 1 : 0.82)
+											.opacity(phase.isIdentity ? 1 : 0.7)
+									}
 								} /// KONIEC FOREACH
+								.scrollTargetLayout()
 							} /// KONIEC LAZYVSTACK
 						} /// KONIEC VSCROLL
+						.scrollTargetBehavior(.viewAligned)
 						.scrollContentBackground(.hidden)
 						.frame(height: 150)
 					} header: {
@@ -120,26 +127,6 @@ struct Home_V: View {
 							Spacer()
 						}
 						.padding(.top, 20)
-					}
-
-					// MARK: - POLECANE (losowane codziennie)
-					if !polecaneDzisiaj.isEmpty {
-						Section {
-							LazyVGrid(columns: recommendedColumns, spacing: 10) {
-								ForEach(polecaneDzisiaj) { drink in
-									kafelekDrinka(drink)
-								}
-							}
-						} header: {
-							HStack {
-								Text("Polecane:").textCase(.uppercase)
-									.font(.title2)
-									.fontWeight(.light)
-									.foregroundStyle(Color.primary)
-								Spacer()
-							}
-							.padding(.top, 20)
-						}
 					}
 
 					// MARK: - ULUBIONE
@@ -161,10 +148,33 @@ struct Home_V: View {
 							.padding(.top, 20)
 						}
 					}
+
+					// MARK: - POLECANE (losowane codziennie)
+					if !polecaneDzisiaj.isEmpty {
+						Section {
+							LazyVGrid(columns: recommendedColumns, spacing: 10) {
+								ForEach(polecaneDzisiaj) { drink in
+									kafelekDrinka(drink)
+								}
+							}
+						} header: {
+							HStack {
+								Text("Polecane:").textCase(.uppercase)
+									.font(.title2)
+									.fontWeight(.light)
+									.foregroundStyle(Color.primary)
+								Spacer()
+							}
+							.padding(.top, 20)
+						}
+					}
 				} /// VStack END
 				.padding(.horizontal, 12)
 			} /// ScrollView END
 			.scrollContentBackground(.hidden)
+			.safeAreaInset(edge: .bottom) {
+				Color.clear.frame(height: 30)
+			}
 			.background(Back_V().ignoresSafeArea())
 			.navigationViewStyle(.automatic)
 			.navigationBarTitleDisplayMode(.inline)
@@ -183,7 +193,7 @@ struct Home_V: View {
 				}
 			}
 			.toolbarBackground(.visible, for: .navigationBar)
-			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
+			.toolbarBackground(Material.thickMaterial, for: .navigationBar)
 			.sheet(isPresented: $pokazPremium) {
 				PremiumInfo_V(opis: "Ten drink jest dostępny w planie Premium. Wykup Premium, aby zobaczyć przepis.")
 			}

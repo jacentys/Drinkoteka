@@ -127,6 +127,11 @@ struct CustomTab_V: View {
 			 guard przeladowujeJezyk else { return }
 			 await zmienJezykDanych(modelContext: modelContext)
 			 await loadNotesFromSupabase(modelContext: modelContext)
+			 // Odpalane tutaj (nie tylko w DrinkiLista_V), bo TabView bywa usunięty
+			 // z hierarchii podczas przeładowania — jeśli użytkownik nie jest akurat
+			 // na zakładce Drinki, jej .task mógłby się nie odpalić od razu.
+			 await loadFavoritesFromSupabase(modelContext: modelContext)
+			 await loadIngredientStockFromSupabase(modelContext: modelContext)
 			 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
 			 przeladowujeJezyk = false
 		 }

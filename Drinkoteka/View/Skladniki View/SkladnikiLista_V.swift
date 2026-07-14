@@ -93,6 +93,9 @@ struct SkladnikiLista_V: View {
 				.listStyle(.automatic)
 #endif
 				.scrollContentBackground(.hidden)
+				.safeAreaInset(edge: .bottom) {
+					Color.clear.frame(height: 30)
+				}
 			}
 			.background(Back_V().ignoresSafeArea())
 			.toast(message: $toastMessage)
@@ -131,7 +134,7 @@ struct SkladnikiLista_V: View {
 				}
 			}
 			.toolbarBackground(.visible, for: .navigationBar)
-			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
+			.toolbarBackground(Material.thickMaterial, for: .navigationBar)
 			.navigationBarTitleDisplayMode(.inline)
 		}
 	}

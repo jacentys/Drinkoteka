@@ -61,6 +61,9 @@ struct DrinkDane_V: View {
 							.foregroundStyle(drink.drUlubiony ? Color.accent : Color.gray)
 							.onTapGesture {
 								drink.ulubionyToggle()
+								let drinkId = drink.drinkID
+								let nowyStan = drink.drUlubiony
+								Task { await setFavoriteInSupabase(drinkId: drinkId, favorite: nowyStan) }
 							}
 						Spacer()
 						Text("Ulubiony")

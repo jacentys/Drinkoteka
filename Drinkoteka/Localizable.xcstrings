@@ -9,6 +9,12 @@
     },
     " (%lld%%) | %lld kCal" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " (%1$lld%%) | %2$lld kCal"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "new",
@@ -50,7 +56,14 @@
 
     },
     "%lld kCal." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kCal."
+          }
+        }
+      }
     },
     "%lld." : {
 
@@ -73,7 +86,14 @@
       }
     },
     "0" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        }
+      }
     },
     "Absynt - Brak" : {
       "comment" : "Mock/preview data",
@@ -118,7 +138,18 @@
         }
       }
     },
+    "Adres e-mail, na który zarejestrowane jest Twoje konto. Służy do logowania i synchronizacji danych." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The email address your account is registered with. Used for logging in and syncing your data."
+          }
+        }
+      }
+    },
     "Aktywuj" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -197,6 +228,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Very Sweet"
+          }
+        }
+      }
+    },
+    "Bez zamienników" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Without substitutes"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bez zamienników"
           }
         }
       }
@@ -716,7 +764,14 @@
       }
     },
     "Drinkotheque" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drinkotheque"
+          }
+        }
+      }
     },
     "e-mail..." : {
       "localizations" : {
@@ -1169,6 +1224,7 @@
       }
     },
     "Kod aktywacyjny" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1319,6 +1375,16 @@
         }
       }
     },
+    "Limit %lld urządzeń na koncie — chroni przed współdzieleniem loginu i hasła. Jeśli dodajesz nowe urządzenie ponad limit, usuń tu jedno ze starych." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limit of %lld devices per account — protects against sharing your login and password. If you're adding a new device over the limit, remove one of the old ones here."
+          }
+        }
+      }
+    },
     "Link (WWW)" : {
       "localizations" : {
         "en" : {
@@ -1336,6 +1402,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "leaves"
+          }
+        }
+      }
+    },
+    "Login / Rejestracja" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login / Sign Up"
           }
         }
       }
@@ -1369,9 +1445,6 @@
           }
         }
       }
-    },
-    "Masz aktywne Premium" : {
-
     },
     "Masz dostęp do dodatkowych kategorii przyznany przez administratora." : {
       "localizations" : {
@@ -1970,6 +2043,40 @@
         }
       }
     },
+    "Pokazuję tylko ulubione" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Showing favourites only"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokazuję tylko ulubione"
+          }
+        }
+      }
+    },
+    "Pokazuję wszystkie" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Showing all"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokazuję wszystkie"
+          }
+        }
+      }
+    },
     "Polecane:" : {
       "localizations" : {
         "en" : {
@@ -2032,6 +2139,16 @@
         }
       }
     },
+    "powtórz hasło..." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "repeat password..."
+          }
+        }
+      }
+    },
     "Później" : {
       "localizations" : {
         "en" : {
@@ -2053,17 +2170,52 @@
       }
     },
     "Premium" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium"
+          }
+        }
+      }
     },
-    "Premium odblokowuje wszystkie kategorie drinków, notatki i tworzenie własnych przepisów. Otrzymany za darmo kod aktywacyjny lub promocyjny kod Apple działa tak samo jak zakup." : {
-
+    "PREMIUM" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PREMIUM"
+          }
+        }
+      }
+    },
+    "Premium odblokowuje wszystkie kategorie drinków, notatki i tworzenie własnych przepisów. Promocyjny kod Apple działa tak samo jak zakup." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium unlocks all cocktail categories, notes, and creating your own recipes. An Apple promotional code works the same as a purchase."
+          }
+        }
+      }
     },
     "Premium odblokujesz kodem aktywacyjnym otrzymanym od twórcy aplikacji. Wpisz go w Preferencje → Kod aktywacyjny." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "You can unlock Premium with an activation code from the app's creator. Enter it in Preferences → Activation code."
+          }
+        }
+      }
+    },
+    "Premium wykupisz w Szczegóły konta → Premium." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can get Premium in Account Details → Premium."
           }
         }
       }
@@ -2181,7 +2333,14 @@
       }
     },
     "Przywróć zakupy" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore Purchases"
+          }
+        }
+      }
     },
     "Reset!!!" : {
       "localizations" : {
@@ -2682,6 +2841,26 @@
         }
       }
     },
+    "to urządzenie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "this device"
+          }
+        }
+      }
+    },
+    "To urządzenie przekroczyło limit %lld i nie ma dostępu do Premium. Usuń jedno z poniższych, żeby je odblokować." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This device is over the limit of %lld and doesn't have access to Premium. Remove one of the devices below to unlock it."
+          }
+        }
+      }
+    },
     "Twoja opinia trafi bezpośrednio do dewelopera. Możesz zgłosić błąd, sugestię lub pomysł na nową funkcję Drinkoteki." : {
       "localizations" : {
         "en" : {
@@ -2763,8 +2942,25 @@
         }
       }
     },
+    "Urządzenia" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devices"
+          }
+        }
+      }
+    },
     "Usuń" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
     },
     "Usuń konto" : {
       "localizations" : {
@@ -2812,6 +3008,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Recipe remarks"
+          }
+        }
+      }
+    },
+    "Uwzględniam zamienniki" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Including substitutes"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uwzględniam zamienniki"
           }
         }
       }
@@ -2935,6 +3148,7 @@
       }
     },
     "Wpisz kod" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2945,6 +3159,7 @@
       }
     },
     "Wpisz kod otrzymany od twórcy aplikacji, aby odblokować Premium lub dodatkowe kategorie." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3091,6 +3306,16 @@
         }
       }
     },
+    "Wysłaliśmy link do zresetowania hasła na Twój adres e-mail." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We've sent a password reset link to your email address."
+          }
+        }
+      }
+    },
     "Wyślij" : {
       "localizations" : {
         "en" : {
@@ -3133,11 +3358,22 @@
       }
     },
     "Załóż konto lub zaloguj się, aby zapisywać notatki i mieć dostęp do dodatkowych treści. Konto możesz w każdej chwili usunąć w jego szczegółach." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Create an account or sign in to save notes and access extra content. You can delete your account anytime from its details."
+          }
+        }
+      }
+    },
+    "Załóż konto lub zaloguj się, aby zapisywać notatki, wykupić Premium i mieć dostęp do dodatkowych treści. Konto możesz w każdej chwili usunąć w jego szczegółach." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create an account or log in to save notes, get Premium, and access extra content. You can delete your account anytime from its details screen."
           }
         }
       }
@@ -3203,6 +3439,16 @@
         }
       }
     },
+    "Zapomniałeś hasła?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forgot your password?"
+          }
+        }
+      }
+    },
     "Zarejestruj się" : {
       "localizations" : {
         "en" : {
@@ -3214,6 +3460,7 @@
       }
     },
     "Zarejestruj się / Zaloguj się" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

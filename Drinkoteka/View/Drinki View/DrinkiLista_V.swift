@@ -129,6 +129,9 @@ struct DrinkiLista_V: View {
 				.listStyle(.automatic)
 #endif
 				.scrollContentBackground(.hidden)
+				.safeAreaInset(edge: .bottom) {
+					Color.clear.frame(height: 30)
+				}
 			}
 			.background(Back_V().ignoresSafeArea())
 			.toast(message: $toastMessage)
@@ -208,11 +211,13 @@ struct DrinkiLista_V: View {
 				}
 			}
 			.toolbarBackground(.visible, for: .navigationBar)
-			.toolbarBackground(Material.thinMaterial, for: .navigationBar)
+			.toolbarBackground(Material.thickMaterial, for: .navigationBar)
 			.navigationViewStyle(.automatic)
 			.navigationBarTitleDisplayMode(.inline)
 			.task(id: auth.session?.user.id) {
 				await loadNotesFromSupabase(modelContext: modelContext)
+				await loadFavoritesFromSupabase(modelContext: modelContext)
+				await loadIngredientStockFromSupabase(modelContext: modelContext)
 				await sprawdzAktualizacje()
 			}
 			.alert("Nowe drinki", isPresented: $pokazAktualizacje) {
@@ -252,6 +257,8 @@ struct DrinkiLista_V: View {
 		Task {
 			await loadFromSupabase(modelContext: modelContext)
 			await loadNotesFromSupabase(modelContext: modelContext)
+			await loadFavoritesFromSupabase(modelContext: modelContext)
+			await loadIngredientStockFromSupabase(modelContext: modelContext)
 		}
 	}
 		// MARK: - DEBUG POBRANE

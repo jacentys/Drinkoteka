@@ -11,28 +11,66 @@ struct AuthProfil_V: View {
     @State private var pokazZmianeHasla: Bool = false
     @State private var pokazPotwierdzenieDelekcji: Bool = false
     @State private var komunikat: String? = nil
+    @State private var infoKonto: Bool = false
+    @State private var infoPremium: Bool = false
+    @State private var infoUsunKonto: Bool = false
+    @State private var infoUrzadzenia: Bool = false
+    @State private var urzadzenia: [UrzadzenieDTO] = []
+
+        // Nagłówek sekcji z ikoną informacji + popoverem (jak w Preferencjach/filtrach drinków).
+    private func naglowek(_ tytul: LocalizedStringKey, systemImage: String, kolor: Color,
+                           opis: LocalizedStringKey, pokaz: Binding<Bool>) -> some View {
+        HStack {
+            Label(tytul, systemImage: systemImage)
+                .font(.title2)
+                .fontWeight(.light)
+                .foregroundStyle(kolor)
+            Spacer()
+            Button { pokaz.wrappedValue = true } label: {
+                Image(systemName: "info.circle").foregroundStyle(.secondary)
+            }
+            .buttonStyle(.plain)
+            .popover(isPresented: pokaz) {
+                Text(opis)
+                    .font(.footnote)
+                    .textCase(nil)
+                    .frame(width: 260, alignment: .leading)
+                    .padding()
+                    .presentationCompactAdaptation(.popover)
+            }
+        }
+    }
 
     var body: some View {
         List {
-            Section(header: Text("Konto")) {
+            Section(header: naglowek("Konto", systemImage: "person.crop.circle", kolor: Color.secondary,
+                                      opis: "Adres e-mail, na który zarejestrowane jest Twoje konto. Służy do logowania i synchronizacji danych.",
+                                      pokaz: $infoKonto)) {
                 HStack {
                     Image(systemName: "envelope")
                         .foregroundStyle(.secondary)
                     Text(auth.userEmail)
+                    if auth.isPremium {
+                        Spacer()
+                        VStack(spacing: 2) {
+                            Image(systemName: "crown.fill")
+                                .foregroundStyle(.yellow)
+                            Text("PREMIUM")
+                                .font(.system(size: 8))
+                                .fontWeight(.bold)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                 }
             }
 
-            Section(
-                header: Text("Premium"),
-                footer: Text("Premium odblokowuje wszystkie kategorie drinków, notatki i tworzenie własnych przepisów. Promocyjny kod Apple działa tak samo jak zakup.")
-            ) {
-                if auth.isPremium {
-                    HStack {
-                        Image(systemName: "crown.fill")
-                            .foregroundStyle(.yellow)
-                        Text("Masz aktywne Premium")
-                    }
-                } else if store.isLoadingProducts {
+            if !auth.isPremium {
+                Section(
+                    header: naglowek("Premium", systemImage: "crown", kolor: Color.secondary,
+                                      opis: "Premium odblokowuje wszystkie kategorie drinków, notatki i tworzenie własnych przepisów. Promocyjny kod Apple działa tak samo jak zakup.",
+                                      pokaz: $infoPremium)
+                ) {
+                if store.isLoadingProducts {
                     ProgressView()
                 } else {
                     ForEach(store.products, id: \.id) { product in
@@ -46,17 +84,49 @@ struct AuthProfil_V: View {
                                 Text(product.displayPrice)
                                     .foregroundStyle(.secondary)
                             }
+                            .kapsulaTlo()
                         }
+                        .buttonStyle(.plain)
+                        .kapsulaWiersz()
                         .disabled(store.isPurchasing)
                     }
-                }
 
-                Button {
-                    Task { await store.restorePurchases() }
-                } label: {
-                    Text("Przywróć zakupy")
+                    Button {
+                        Task { await store.restorePurchases() }
+                    } label: {
+                        Text("Przywróć zakupy")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                }
+            }
+
+            Section(
+                header: naglowek("Urządzenia", systemImage: "iphone.gen3", kolor: Color.secondary,
+                                  opis: "Limit \(LIMIT_URZADZEN) urządzeń na koncie — chroni przed współdzieleniem loginu i hasła. Jeśli dodajesz nowe urządzenie ponad limit, usuń tu jedno ze starych.",
+                                  pokaz: $infoUrzadzenia)
+            ) {
+                if auth.isPremiumRaw && !auth.deviceAuthorized {
+                    Text("To urządzenie przekroczyło limit \(LIMIT_URZADZEN) i nie ma dostępu do Premium. Usuń jedno z poniższych, żeby je odblokować.")
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.red)
+                }
+                ForEach(urzadzenia) { urz in
+                    HStack {
+                        Image(systemName: "iphone")
+                            .foregroundStyle(.secondary)
+                        Text(urz.deviceName ?? "Urządzenie")
+                        Spacer()
+                        if urz.deviceId == aktualneUrzadzenieId() {
+                            Text("to urządzenie")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
+                .onDelete { indexSet in
+                    Task { await usunUrzadzenia(at: indexSet) }
                 }
             }
 
@@ -90,22 +160,43 @@ struct AuthProfil_V: View {
                     Button {
                         Task { await zmienHaslo() }
                     } label: {
-                        if auth.isLoading {
-                            ProgressView()
-                        } else {
-                            Text("Zapisz nowe hasło")
+                        Group {
+                            if auth.isLoading {
+                                ProgressView()
+                            } else {
+                                Text("Zapisz nowe hasło")
+                            }
                         }
+                        .kapsulaTlo()
                     }
-                    Button("Anuluj", role: .cancel) {
+                    .buttonStyle(.plain)
+                    .kapsulaWiersz()
+
+                    Button(role: .cancel) {
                         pokazZmianeHasla = false
                         noweHaslo = ""
                         potwierdzHaslo = ""
                         komunikat = nil
+                    } label: {
+                        Text("Anuluj")
+                            .kapsulaTlo()
                     }
+                    .buttonStyle(.plain)
+                    .kapsulaWiersz()
                 } else {
-                    Button("Zmień hasło") {
+                    Button {
                         pokazZmianeHasla = true
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "lock.rotation")
+                            Text("Zmień hasło")
+                            Spacer()
+                        }
+                        .kapsulaTlo()
                     }
+                    .buttonStyle(.plain)
+                    .kapsulaWiersz()
                 }
             }
 
@@ -116,24 +207,69 @@ struct AuthProfil_V: View {
                         dismiss()
                     }
                 } label: {
-                    if auth.isLoading {
-                        ProgressView()
-                    } else {
-                        Label("Wyloguj się", systemImage: "rectangle.portrait.and.arrow.right")
+                    Group {
+                        if auth.isLoading {
+                            ProgressView()
+                        } else {
+                            HStack {
+                                Spacer()
+                                Label("Wyloguj się", systemImage: "rectangle.portrait.and.arrow.right")
+                                Spacer()
+                            }
+                        }
                     }
+                    .kapsulaTlo()
                 }
+                .buttonStyle(.plain)
+                .kapsulaWiersz()
             }
 
-            Section(footer: Text("Usunięcie konta jest nieodwracalne. Wszystkie Twoje dane zostaną trwale usunięte.")) {
+            Section(
+                header: naglowek("Usuń konto", systemImage: "trash", kolor: Color.secondary,
+                                  opis: "Usunięcie konta jest nieodwracalne. Wszystkie Twoje dane zostaną trwale usunięte.",
+                                  pokaz: $infoUsunKonto)
+            ) {
                 Button(role: .destructive) {
                     pokazPotwierdzenieDelekcji = true
                 } label: {
-                    Label("Usuń konto", systemImage: "trash")
+                    HStack {
+                        Spacer()
+                        Image(systemName: "trash")
+                            .font(.footnote)
+                        Text("Usuń konto")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                    .foregroundStyle(.white)
+                    .kapsulaTlo(.red, obwodka: true)
                 }
+                .buttonStyle(.plain)
+                .kapsulaWiersz()
             }
         }
-        .navigationTitle("Szczegóły konta")
+        .scrollContentBackground(.hidden)
+        .safeAreaInset(edge: .bottom) {
+            Color.clear.frame(height: 30)
+        }
+        .background(Back_V().ignoresSafeArea())
+        .task {
+            urzadzenia = await listDevicesFromSupabase()
+        }
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            // Ten sam styl tytułu, co "Drinkotheque" na ekranie głównym —
+            // spójny wygląd nagłówków ekranów w całej aplikacji.
+            ToolbarItem(placement: .principal) {
+                Text("Szczegóły konta")
+                    .font(.largeTitle)
+                    .fontWeight(.light)
+                    .foregroundStyle(Color.primary)
+                    .shadow(color: .black.opacity(0.6), radius: 6)
+            }
+        }
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarBackground(Material.thickMaterial, for: .navigationBar)
         .confirmationDialog(
             "Czy na pewno chcesz usunąć konto?",
             isPresented: $pokazPotwierdzenieDelekcji,
@@ -149,6 +285,15 @@ struct AuthProfil_V: View {
         } message: {
             Text("Ta operacja jest nieodwracalna.")
         }
+    }
+
+    // MARK: - USUŃ URZĄDZENIE
+    private func usunUrzadzenia(at indexSet: IndexSet) async {
+        for index in indexSet {
+            await removeDeviceFromSupabase(deviceId: urzadzenia[index].deviceId)
+        }
+        urzadzenia = await listDevicesFromSupabase()
+        await auth.refreshPremiumStatus()
     }
 
     func zmienHaslo() async {

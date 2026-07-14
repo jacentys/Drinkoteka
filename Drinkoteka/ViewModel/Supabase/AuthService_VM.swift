@@ -1,5 +1,5 @@
 // Centralny serwis auth i uprawnień (singleton, @MainActor).
-// Sesja, Premium, uprawnienia do kategorii, blokowane źródła, realizacja kodów aktywacyjnych.
+// Sesja, Premium, uprawnienia do kategorii, blokowane źródła.
 import Supabase
 import SwiftUI
 
@@ -13,6 +13,8 @@ class AuthService_VM: ObservableObject {
     @Published var errorMessage: String? = nil
     @Published var oczekujeNaPotwierdzenieMaila: Bool = false
     @Published var isPremium: Bool = false
+    @Published var isPremiumRaw: Bool = false
+    @Published var deviceAuthorized: Bool = true
     @Published var isAdmin: Bool = false
     @Published var permissions: Set<String> = []
     @Published var restrictedSources: [RestrictedSource] = []
@@ -51,7 +53,10 @@ class AuthService_VM: ObservableObject {
     // MARK: - Status premium
 
     func refreshPremiumStatus() async {
-        guard session != nil else { isPremium = false; isAdmin = false; return }
+        guard session != nil else {
+            isPremium = false; isPremiumRaw = false; deviceAuthorized = true; isAdmin = false
+            return
+        }
         do {
             struct ProfileDTO: Decodable {
                 let isPremium: Bool
@@ -67,12 +72,17 @@ class AuthService_VM: ObservableObject {
                 .single()
                 .execute()
                 .value
-            isPremium = profile.isPremium
             isAdmin = profile.isAdmin ?? false
-            dprint("[Premium] isPremium = \(isPremium), isAdmin = \(isAdmin)")
+            isPremiumRaw = profile.isPremium
+            // Limit urządzeń: nawet opłacone Premium nie działa na urządzeniu,
+            // które przekroczyło limit zarejestrowanych na koncie (patrz UserDevices_VM.swift).
+            deviceAuthorized = await registerDeviceInSupabase()
+            isPremium = isPremiumRaw && deviceAuthorized
+            dprint("[Premium] isPremium = \(isPremium), isAdmin = \(isAdmin), deviceAuthorized = \(deviceAuthorized)")
         } catch {
             dprint("[Premium] błąd: \(error)")
             isPremium = false
+            isPremiumRaw = false
             isAdmin = false
         }
     }
@@ -213,6 +223,29 @@ class AuthService_VM: ObservableObject {
             errorMessage = error.localizedDescription
         }
         isLoading = false
+    }
+
+    // MARK: - Zapomniane hasło
+
+    // Wysyła mailem link resetujący hasło. Link otwiera appkę przez deep link
+    // (drinkoteka://login-callback), handleDeepLink() zakłada sesję z tokenu,
+    // a użytkownik ustawia nowe hasło w Szczegóły konta → Zmień hasło.
+    func resetPassword(email: String) async -> Bool {
+        isLoading = true
+        errorMessage = nil
+        do {
+            try await supabase.auth.resetPasswordForEmail(
+                email,
+                redirectTo: URL(string: "drinkoteka://login-callback")
+            )
+            isLoading = false
+            return true
+        } catch {
+            dprint("[Auth] resetPassword error: \(error)")
+            errorMessage = error.localizedDescription
+            isLoading = false
+            return false
+        }
     }
 
     // MARK: - Zmiana hasła

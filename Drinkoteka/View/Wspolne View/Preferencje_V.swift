@@ -67,6 +67,7 @@ struct Preferencje_V: View {
 						Toggle(isOn: $blokujEkran) {
 							Text("Nie wygaszaj ekranu")
 								.font(.headline)
+								.foregroundStyle(.secondary)
 						}
 						.toggleStyle(.switch)
 						.onChange(of: blokujEkran) { _, nowy in
@@ -79,6 +80,7 @@ struct Preferencje_V: View {
 							}
 						} label: {
 							Text("Wygląd").font(.headline)
+								.foregroundStyle(.secondary)
 						}
 					}
 				
@@ -92,18 +94,19 @@ struct Preferencje_V: View {
 						} label: {
 							Text("Język aplikacji").font(.headline)
 						}
+						.foregroundStyle(.secondary)
 					}
 
 				Section( // MARK: Konto
 					header: naglowek("Konto", systemImage: "person.crop.circle", kolor: Color.secondary,
-									 opis: "Załóż konto lub zaloguj się, aby zapisywać notatki i mieć dostęp do dodatkowych treści. Konto możesz w każdej chwili usunąć w jego szczegółach.",
+									 opis: "Załóż konto lub zaloguj się, aby zapisywać notatki, wykupić Premium i mieć dostęp do dodatkowych treści. Konto możesz w każdej chwili usunąć w jego szczegółach.",
 									 pokaz: $infoKonto)) {
 						if auth.isLoggedIn {
 							NavigationLink(destination: AuthProfil_V()) {
 								VStack(alignment: .leading, spacing: 2) {
 									Text("Szczegóły konta")
-										.foregroundStyle(Color.accent)
 										.font(.headline)
+										.foregroundStyle(.secondary)
 									Text(auth.userEmail)
 										.font(.caption)
 										.foregroundStyle(.secondary)
@@ -111,9 +114,10 @@ struct Preferencje_V: View {
 							}
 						} else {
 							NavigationLink(destination: Logowanie_V()) {
-								Text("Zarejestruj się / Zaloguj się")
-									.foregroundStyle(Color.accent)
+Spacer()
+								Text("Login / Rejestracja")
 									.font(.headline)
+									.foregroundStyle(.secondary)
 							}
 						}
 					}
@@ -125,23 +129,37 @@ struct Preferencje_V: View {
 						Button {
 							pokazFeedback = true
 						} label: {
-							Text("Prześlij opinię o aplikacji")
-								.foregroundStyle(Color.accent)
-								.font(.headline)
+							HStack {
+								Spacer()
+								Image(systemName: "paperplane")
+								Text("Prześlij opinię o aplikacji")
+								Spacer()
+							}
+							.foregroundStyle(Color(.darkGray))
+							.kapsulaTlo()
 						}
+						.buttonStyle(.plain)
+						.kapsulaWiersz()
 					}
 
 				Section( // MARK: Reset składników
-					header: naglowek("Reset!!!", systemImage: "exclamationmark.square.fill", kolor: Color.red,
+					header: naglowek("Reset!!!", systemImage: "exclamationmark.square", kolor: Color.secondary,
 									 opis: "Resetuje stan wszystkich składników (odznacza barek). Przydatne, gdy chcesz wprowadzić składniki od nowa. Twoje własne drinki i przepisy pozostają.",
 									 pokaz: $infoReset)) {
 						Button {
 							pokazPotwierdzenie = true
 						} label: {
-							Text("Resetuj składniki")
-								.foregroundStyle(Color.red)
-								.font(.headline)
+							HStack {
+								Spacer()
+								Image(systemName: "arrow.counterclockwise")
+								Text("Resetuj składniki")
+								Spacer()
+							}
+							.foregroundStyle(Color(.white))
+							.kapsulaTlo(.red, obwodka: true)
 						}
+						.buttonStyle(.plain)
+						.kapsulaWiersz()
 						.confirmationDialog(
 							"Czy na pewno chcesz zresetować składniki?",
 							isPresented: $pokazPotwierdzenie,
@@ -155,6 +173,11 @@ struct Preferencje_V: View {
 					}
 			}
 			.toggleStyle(iOSCheckboxToggleStyle())
+			.scrollContentBackground(.hidden)
+			.safeAreaInset(edge: .bottom) {
+				Color.clear.frame(height: 30)
+			}
+			.background(Back_V().ignoresSafeArea())
 			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
 				// Ten sam styl tytułu, co "Drinkotheque" na ekranie głównym —
@@ -167,6 +190,8 @@ struct Preferencje_V: View {
 						.shadow(color: .black.opacity(0.6), radius: 6)
 				}
 			}
+			.toolbarBackground(.visible, for: .navigationBar)
+			.toolbarBackground(Material.thickMaterial, for: .navigationBar)
 			.sheet(isPresented: $pokazFeedback) {
 				AppFeedback_V()
 			}

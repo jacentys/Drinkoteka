@@ -301,7 +301,7 @@ private func insertDrinks(_ dtos: [DrinkDTO], trans: Tlumaczenia, context: Model
             drProc:    dto.alcoholPct ?? 0,
             drSlodycz: strToDrSlodycz(dto.sweetness ?? ""),
             drSzklo:   strToDrSzklo(dto.glass ?? ""),
-            drUlubiony: dto.favorite ?? false,
+            drUlubiony: false,
             drNotatka: wybierz(tr?.note, dto.note ?? ""),
             drUwagi:   wybierz(tr?.remarks, dto.remarks ?? ""),
             drWWW:     dto.url ?? "",

@@ -7,6 +7,7 @@ struct Drink_V: View {
 	@Environment(\.modelContext) private var modelContext
 	@StateObject private var auth = AuthService_VM.shared
 	@State private var pokazUwagi: Bool = false
+	@State private var pokazTytulWNav: Bool = false
 
 	var body: some View {
 		ZStack {
@@ -15,6 +16,13 @@ struct Drink_V: View {
 			ScrollView {
 				VStack(spacing: 12) {
 					DrinkTitle_V(drink: drink)
+						.onGeometryChange(for: CGFloat.self) { geo in
+							geo.frame(in: .named("drinkScroll")).maxY
+						} action: { maxY in
+							withAnimation(.easeInOut(duration: 0.2)) {
+								pokazTytulWNav = maxY < 0
+							}
+						}
 					DrinkFoto_V(drink: drink)
 					DrinkDane_V(drink: drink)
 					DrinkNotatka_V(drink: drink)
@@ -24,9 +32,25 @@ struct Drink_V: View {
 				}
 				.padding(.vertical, 30)
 			}
+			.coordinateSpace(name: "drinkScroll")
+			.safeAreaInset(edge: .bottom) {
+				Color.clear.frame(height: 30)
+			}
 			.padding(.horizontal, 20)
 		}
 		.toolbar {
+			// Ten sam styl tytułu, co "Drinkotheque" na ekranie głównym — pokazywany
+			// dopiero gdy DrinkTitle_V w treści zniknie pod górną krawędzią, żeby
+			// nazwa drinka nie była widoczna dwa razy naraz.
+			ToolbarItem(placement: .principal) {
+				Text(drink.drNazwa)
+					.font(.largeTitle)
+					.fontWeight(.light)
+					.foregroundStyle(Color.primary)
+					.shadow(color: .black.opacity(0.6), radius: 6)
+					.lineLimit(1)
+					.opacity(pokazTytulWNav ? 1 : 0)
+			}
 			ToolbarItem(placement: .navigationBarTrailing) {
 				Button {
 					pokazUwagi = true
@@ -38,6 +62,9 @@ struct Drink_V: View {
 				}
 			}
 		}
+		.navigationBarTitleDisplayMode(.inline)
+		.toolbarBackground(.visible, for: .navigationBar)
+		.toolbarBackground(Material.thickMaterial, for: .navigationBar)
 		.task {
 			await loadNotesFromSupabase(modelContext: modelContext)
 		}

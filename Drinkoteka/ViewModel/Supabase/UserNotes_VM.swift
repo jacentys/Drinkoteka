@@ -70,6 +70,9 @@ func loadNotesFromSupabase(modelContext: ModelContext) async {
             }
             try? modelContext.save()
         }
+    } catch is CancellationError {
+        // Normalne: widok, który to wywołał, zniknął w trakcie (np. TabView
+        // usunięty z hierarchii przy zmianie języka) — nie błąd.
     } catch {
         dprint("Błąd ładowania notatek: \(error)")
     }

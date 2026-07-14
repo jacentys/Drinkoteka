@@ -10,6 +10,9 @@
 		0E6CC3D303B245A51C998B6E /* Toast_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4244F29CB3C3C8E260E4EFC1 /* Toast_V.swift */; };
 		77FF0CD884674BD0AAC6B257 /* DrinkPolaEdycja_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310071BC77AE4BC0991E7905 /* DrinkPolaEdycja_V.swift */; };
 		AA000001000000000000001 /* UserNotes_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000002 /* UserNotes_VM.swift */; };
+		100DD4C4B3445A81E91DAAC0 /* UserFavorites_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B52562A234094ED52CA09D /* UserFavorites_VM.swift */; };
+		2A3E480CA9C30295712E45D8 /* UserIngredientStock_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812B3F521E716D797246B44 /* UserIngredientStock_VM.swift */; };
+		5618DE0540BAC6E2BD371959 /* UserDevices_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F23361124572525CA4575CA /* UserDevices_VM.swift */; };
 		AA000001000000000000003 /* DrinkFeedback_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000004 /* DrinkFeedback_VM.swift */; };
 		AA000001000000000000005 /* SyncDrinki_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000006 /* SyncDrinki_VM.swift */; };
 		AA000001000000000000007 /* AppFeedback_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000008 /* AppFeedback_V.swift */; };
@@ -96,6 +99,9 @@
 		310071BC77AE4BC0991E7905 /* DrinkPolaEdycja_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPolaEdycja_V.swift; sourceTree = "<group>"; };
 		4244F29CB3C3C8E260E4EFC1 /* Toast_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast_V.swift; sourceTree = "<group>"; };
 		AA000001000000000000002 /* UserNotes_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotes_VM.swift; sourceTree = "<group>"; };
+		75B52562A234094ED52CA09D /* UserFavorites_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavorites_VM.swift; sourceTree = "<group>"; };
+		2812B3F521E716D797246B44 /* UserIngredientStock_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIngredientStock_VM.swift; sourceTree = "<group>"; };
+		6F23361124572525CA4575CA /* UserDevices_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDevices_VM.swift; sourceTree = "<group>"; };
 		AA000001000000000000004 /* DrinkFeedback_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFeedback_VM.swift; sourceTree = "<group>"; };
 		AA000001000000000000006 /* SyncDrinki_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDrinki_VM.swift; sourceTree = "<group>"; };
 		AA000001000000000000008 /* AppFeedback_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeedback_V.swift; sourceTree = "<group>"; };
@@ -439,6 +445,9 @@
 				F3CF4A442FFC16CB00916E47 /* SupabaseClient_VM.swift */,
 				F3CF4A452FFC16CB00916E47 /* SupabaseDTO_VM.swift */,
 				AA000001000000000000002 /* UserNotes_VM.swift */,
+				75B52562A234094ED52CA09D /* UserFavorites_VM.swift */,
+				2812B3F521E716D797246B44 /* UserIngredientStock_VM.swift */,
+				6F23361124572525CA4575CA /* UserDevices_VM.swift */,
 				AA000001000000000000004 /* DrinkFeedback_VM.swift */,
 				AA000001000000000000006 /* SyncDrinki_VM.swift */,
 			);
@@ -585,6 +594,9 @@
 				F3CF4A492FFC16CB00916E47 /* loadFromSupabase_VM.swift in Sources */,
 				F3CF4A4A2FFC16CB00916E47 /* SupabaseClient_VM.swift in Sources */,
 				AA000001000000000000001 /* UserNotes_VM.swift in Sources */,
+				100DD4C4B3445A81E91DAAC0 /* UserFavorites_VM.swift in Sources */,
+				2A3E480CA9C30295712E45D8 /* UserIngredientStock_VM.swift in Sources */,
+				5618DE0540BAC6E2BD371959 /* UserDevices_VM.swift in Sources */,
 				AA000001000000000000003 /* DrinkFeedback_VM.swift in Sources */,
 				AA000001000000000000005 /* SyncDrinki_VM.swift in Sources */,
 				AA000001000000000000007 /* AppFeedback_V.swift in Sources */,
