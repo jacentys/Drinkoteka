@@ -2,6 +2,9 @@
 # Klucz service_role Supabase — nigdy nie commituj
 scripts/.supabase_service_key
 
+# Dane logowania konta testowego/reviewera (App Store) — nigdy nie commituj
+scripts/.reviewer_credentials
+
 # Backupy Supabase (mogą zawierać dane użytkowników)
 scripts/backups/
 

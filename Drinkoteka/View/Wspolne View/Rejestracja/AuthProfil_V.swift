@@ -43,7 +43,7 @@ struct AuthProfil_V: View {
 
     var body: some View {
         List {
-            Section(header: naglowek("Konto", systemImage: "person.crop.circle", kolor: Color.secondary,
+            Section(header: naglowek("Konto", systemImage: "person.crop.circle", kolor: Color.white,
                                       opis: "Adres e-mail, na który zarejestrowane jest Twoje konto. Służy do logowania i synchronizacji danych.",
                                       pokaz: $infoKonto)) {
                 HStack {
@@ -66,7 +66,7 @@ struct AuthProfil_V: View {
 
             if !auth.isPremium {
                 Section(
-                    header: naglowek("Premium", systemImage: "crown", kolor: Color.secondary,
+                    header: naglowek("Premium", systemImage: "crown", kolor: Color.white,
                                       opis: "Premium odblokowuje wszystkie kategorie drinków, notatki i tworzenie własnych przepisów. Promocyjny kod Apple działa tak samo jak zakup.",
                                       pokaz: $infoPremium)
                 ) {
@@ -79,15 +79,12 @@ struct AuthProfil_V: View {
                         } label: {
                             HStack {
                                 Text(product.displayName)
-                                    .foregroundStyle(Color.accent)
                                 Spacer()
                                 Text(product.displayPrice)
                                     .foregroundStyle(.secondary)
                             }
-                            .kapsulaTlo()
                         }
                         .buttonStyle(.plain)
-                        .kapsulaWiersz()
                         .disabled(store.isPurchasing)
                     }
 
@@ -96,14 +93,13 @@ struct AuthProfil_V: View {
                     } label: {
                         Text("Przywróć zakupy")
                             .font(.footnote)
-                            .foregroundStyle(.secondary)
                     }
                 }
                 }
             }
 
             Section(
-                header: naglowek("Urządzenia", systemImage: "iphone.gen3", kolor: Color.secondary,
+                header: naglowek("Urządzenia", systemImage: "iphone.gen3", kolor: Color.white,
                                   opis: "Limit \(LIMIT_URZADZEN) urządzeń na koncie — chroni przed współdzieleniem loginu i hasła. Jeśli dodajesz nowe urządzenie ponad limit, usuń tu jedno ze starych.",
                                   pokaz: $infoUrzadzenia)
             ) {
@@ -121,7 +117,6 @@ struct AuthProfil_V: View {
                         if urz.deviceId == aktualneUrzadzenieId() {
                             Text("to urządzenie")
                                 .font(.caption)
-                                .foregroundStyle(.secondary)
                         }
                     }
                 }
@@ -167,10 +162,7 @@ struct AuthProfil_V: View {
                                 Text("Zapisz nowe hasło")
                             }
                         }
-                        .kapsulaTlo()
                     }
-                    .buttonStyle(.plain)
-                    .kapsulaWiersz()
 
                     Button(role: .cancel) {
                         pokazZmianeHasla = false
@@ -179,10 +171,7 @@ struct AuthProfil_V: View {
                         komunikat = nil
                     } label: {
                         Text("Anuluj")
-                            .kapsulaTlo()
                     }
-                    .buttonStyle(.plain)
-                    .kapsulaWiersz()
                 } else {
                     Button {
                         pokazZmianeHasla = true
@@ -193,15 +182,12 @@ struct AuthProfil_V: View {
                             Text("Zmień hasło")
                             Spacer()
                         }
-                        .kapsulaTlo()
                     }
-                    .buttonStyle(.plain)
-                    .kapsulaWiersz()
                 }
             }
 
             Section {
-                Button(role: .destructive) {
+                Button {
                     Task {
                         await auth.signOut()
                         dismiss()
@@ -218,14 +204,11 @@ struct AuthProfil_V: View {
                             }
                         }
                     }
-                    .kapsulaTlo()
                 }
-                .buttonStyle(.plain)
-                .kapsulaWiersz()
             }
 
             Section(
-                header: naglowek("Usuń konto", systemImage: "trash", kolor: Color.secondary,
+                header: naglowek("Usuń konto", systemImage: "trash", kolor: Color.white,
                                   opis: "Usunięcie konta jest nieodwracalne. Wszystkie Twoje dane zostaną trwale usunięte.",
                                   pokaz: $infoUsunKonto)
             ) {
@@ -237,15 +220,9 @@ struct AuthProfil_V: View {
                         Image(systemName: "trash")
                             .font(.footnote)
                         Text("Usuń konto")
-                            .font(.headline)
-                            .fontWeight(.bold)
                         Spacer()
                     }
-                    .foregroundStyle(.white)
-                    .kapsulaTlo(.red, obwodka: true)
                 }
-                .buttonStyle(.plain)
-                .kapsulaWiersz()
             }
         }
         .scrollContentBackground(.hidden)

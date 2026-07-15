@@ -61,13 +61,11 @@ struct Preferencje_V: View {
 		NavigationStack {
 			Form {
 				Section( // MARK: Wygaszanie ekranu i wygląd
-					header: naglowek("Ekran", systemImage: "sun.max", kolor: Color.secondary,
+					header: naglowek("Ekran", systemImage: "sun.max", kolor: Color.white,
 									 opis: "Wygaszacz: gdy włączone, ekran nie gaśnie podczas korzystania z aplikacji — przydatne przy przyrządzaniu drinka. Gdy wyłączone, obowiązuje autoblokada telefonu.\n\nWygląd: wybierz tryb jasny/ciemny na stałe, albo zostaw \"Systemowy\", by aplikacja podążała za ustawieniem telefonu.",
 									 pokaz: $infoEkran)) {
 						Toggle(isOn: $blokujEkran) {
 							Text("Nie wygaszaj ekranu")
-								.font(.headline)
-								.foregroundStyle(.secondary)
 						}
 						.toggleStyle(.switch)
 						.onChange(of: blokujEkran) { _, nowy in
@@ -79,13 +77,12 @@ struct Preferencje_V: View {
 								Text($0.opis).tag($0)
 							}
 						} label: {
-							Text("Wygląd").font(.headline)
-								.foregroundStyle(.secondary)
+							Text("Wygląd")
 						}
 					}
 				
 				Section( // MARK: Język
-					header: naglowek("Język", systemImage: "globe", kolor: Color.secondary,
+					header: naglowek("Język", systemImage: "globe", kolor: Color.white,
 									 opis: "Język treści w aplikacji (nazwy drinków, składników, przepisy). Zmiana przeładowuje treść — Twój bark i ulubione zostają zachowane.",
 									 pokaz: $infoJezyk)) {
 						Picker(selection: $jezykAplikacji) {
@@ -94,11 +91,10 @@ struct Preferencje_V: View {
 						} label: {
 							Text("Język aplikacji").font(.headline)
 						}
-						.foregroundStyle(.secondary)
 					}
 
 				Section( // MARK: Konto
-					header: naglowek("Konto", systemImage: "person.crop.circle", kolor: Color.secondary,
+					header: naglowek("Konto", systemImage: "person.crop.circle", kolor: Color.white,
 									 opis: "Załóż konto lub zaloguj się, aby zapisywać notatki, wykupić Premium i mieć dostęp do dodatkowych treści. Konto możesz w każdej chwili usunąć w jego szczegółach.",
 									 pokaz: $infoKonto)) {
 						if auth.isLoggedIn {
@@ -114,16 +110,15 @@ struct Preferencje_V: View {
 							}
 						} else {
 							NavigationLink(destination: Logowanie_V()) {
-Spacer()
+								Spacer()
 								Text("Login / Rejestracja")
 									.font(.headline)
-									.foregroundStyle(.secondary)
 							}
 						}
 					}
 
 				Section( // MARK: Informacja zwrotna
-					header: naglowek("Opinia", systemImage: "bubble.left.and.text.bubble.right", kolor: Color.secondary,
+					header: naglowek("Opinia", systemImage: "bubble.left.and.text.bubble.right", kolor: Color.white,
 									 opis: "Podziel się opinią, zgłoś błąd lub zaproponuj nową funkcję. Wiadomość trafi bezpośrednio do twórcy aplikacji.",
 									 pokaz: $infoOpinia)) {
 						Button {
@@ -131,19 +126,15 @@ Spacer()
 						} label: {
 							HStack {
 								Spacer()
-								Image(systemName: "paperplane")
 								Text("Prześlij opinię o aplikacji")
 								Spacer()
 							}
-							.foregroundStyle(Color(.darkGray))
-							.kapsulaTlo()
 						}
 						.buttonStyle(.plain)
-						.kapsulaWiersz()
 					}
 
 				Section( // MARK: Reset składników
-					header: naglowek("Reset!!!", systemImage: "exclamationmark.square", kolor: Color.secondary,
+					header: naglowek("Reset!!!", systemImage: "exclamationmark.square", kolor: Color.white,
 									 opis: "Resetuje stan wszystkich składników (odznacza barek). Przydatne, gdy chcesz wprowadzić składniki od nowa. Twoje własne drinki i przepisy pozostają.",
 									 pokaz: $infoReset)) {
 						Button {
@@ -151,15 +142,10 @@ Spacer()
 						} label: {
 							HStack {
 								Spacer()
-								Image(systemName: "arrow.counterclockwise")
 								Text("Resetuj składniki")
 								Spacer()
 							}
-							.foregroundStyle(Color(.white))
-							.kapsulaTlo(.red, obwodka: true)
 						}
-						.buttonStyle(.plain)
-						.kapsulaWiersz()
 						.confirmationDialog(
 							"Czy na pewno chcesz zresetować składniki?",
 							isPresented: $pokazPotwierdzenie,
@@ -172,6 +158,8 @@ Spacer()
 						}
 					}
 			}
+			.font(.headline)
+			.fontWeight(.regular)
 			.toggleStyle(iOSCheckboxToggleStyle())
 			.scrollContentBackground(.hidden)
 			.safeAreaInset(edge: .bottom) {

@@ -14,6 +14,8 @@ struct Home_V: View {
 	)
 	private var ulubione: [Dr_M]
 
+	@AppStorage("jezykAplikacji") var jezykAplikacji: String = "pl"
+
 	@AppStorage("filtrAlkGlownyRum") var filtrAlkGlownyRum: Bool = true
 	@AppStorage("filtrAlkGlownyWhiskey") var filtrAlkGlownyWhiskey: Bool = true
 	@AppStorage("filtrAlkGlownyTequila") var filtrAlkGlownyTequila: Bool = true
@@ -185,7 +187,7 @@ struct Home_V: View {
 				// kolorów, zwłaszcza w trybie ciemnym. Biały tekst + poświata (jak przy nazwach
 				// kafelków) gwarantuje czytelność niezależnie od tła i trybu.
 				ToolbarItem(placement: .principal) {
-					Text("Drinkotheque")
+					Text(jezykAplikacji == "pl" ? "Drinkoteka" : "Drinkotheque")
 						.font(.largeTitle)
 						.fontWeight(.light)
 						.foregroundStyle(Color.primary)
