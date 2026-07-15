@@ -89,6 +89,7 @@
 		F3CF4A4A2FFC16CB00916E47 /* SupabaseClient_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A442FFC16CB00916E47 /* SupabaseClient_VM.swift */; };
 		F3CF4A4D2FFC176300916E47 /* AuthLogowanie_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A4B2FFC176300916E47 /* AuthLogowanie_V.swift */; };
 		F3CF4A4E2FFC176300916E47 /* AuthProfil_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A4C2FFC176300916E47 /* AuthProfil_V.swift */; };
+		AECB21D4267EF99984055D0A /* AuthNowaHaslo_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1989E7400959E4E8D2D7607 /* AuthNowaHaslo_V.swift */; };
 		F3CF4A502FFC179000916E47 /* DrinkZablokowany_V.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CF4A4F2FFC179000916E47 /* DrinkZablokowany_V.swift */; };
 		F3DE992D2DC8884C00957537 /* Funkcje_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DE992C2DC8884C00957537 /* Funkcje_VM.swift */; };
 		F3EC6DB02DC2CD8B008C03A5 /* SklZamiennik_M.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EC6DAF2DC2CD8B008C03A5 /* SklZamiennik_M.swift */; };
@@ -175,6 +176,7 @@
 		F3CF4A452FFC16CB00916E47 /* SupabaseDTO_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseDTO_VM.swift; sourceTree = "<group>"; };
 		F3CF4A4B2FFC176300916E47 /* AuthLogowanie_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLogowanie_V.swift; sourceTree = "<group>"; };
 		F3CF4A4C2FFC176300916E47 /* AuthProfil_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProfil_V.swift; sourceTree = "<group>"; };
+		D1989E7400959E4E8D2D7607 /* AuthNowaHaslo_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNowaHaslo_V.swift; sourceTree = "<group>"; };
 		F3CF4A4F2FFC179000916E47 /* DrinkZablokowany_V.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkZablokowany_V.swift; sourceTree = "<group>"; };
 		F3DE992C2DC8884C00957537 /* Funkcje_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funkcje_VM.swift; sourceTree = "<group>"; };
 		F3EC6DAF2DC2CD8B008C03A5 /* SklZamiennik_M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SklZamiennik_M.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 			children = (
 				F3CF4A4B2FFC176300916E47 /* AuthLogowanie_V.swift */,
 				F3CF4A4C2FFC176300916E47 /* AuthProfil_V.swift */,
+				D1989E7400959E4E8D2D7607 /* AuthNowaHaslo_V.swift */,
 				F36F1E832DB78BC2000775D6 /* Logowanie_V.swift */,
 				F36F1E852DB78E4E000775D6 /* Rejestracja_v.swift */,
 				F36F1E882DB7A66A000775D6 /* Profil_V.swift */,
@@ -551,6 +554,7 @@
 				F3DE992D2DC8884C00957537 /* Funkcje_VM.swift in Sources */,
 				F3CF4A4D2FFC176300916E47 /* AuthLogowanie_V.swift in Sources */,
 				F3CF4A4E2FFC176300916E47 /* AuthProfil_V.swift in Sources */,
+				AECB21D4267EF99984055D0A /* AuthNowaHaslo_V.swift in Sources */,
 				F3095A612DB3C1E000481E4F /* DrPrzepis_M.swift in Sources */,
 				F3095A622DB3C1E000481E4F /* DrSkladnik_M.swift in Sources */,
 				F327D6D52DC368980080F897 /* DrinkPrzepis_V.swift in Sources */,

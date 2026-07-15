@@ -18,6 +18,9 @@ class AuthService_VM: ObservableObject {
     @Published var isAdmin: Bool = false
     @Published var permissions: Set<String> = []
     @Published var restrictedSources: [RestrictedSource] = []
+    // true po kliknięciu w link odzyskiwania hasła z maila — pokazuje ekran
+    // AuthNowaHaslo_V nad resztą appki, niezależnie od aktualnej nawigacji.
+    @Published var isPasswordRecoveryFlow: Bool = false
 
     struct RestrictedSource: Decodable, Identifiable {
         let source: String
@@ -30,6 +33,18 @@ class AuthService_VM: ObservableObject {
 
     private init() {
         Task { await refreshSession() }
+        Task { await observeAuthStateChanges() }
+    }
+
+    // Supabase emituje .passwordRecovery, gdy handleDeepLink() przetworzy link
+    // typu recovery — to jedyny pewny sposób odróżnienia go od zwykłego logowania
+    // (sam URL po redirectcie nie niesie już tej informacji w czytelnej formie).
+    private func observeAuthStateChanges() async {
+        for await (event, _) in supabase.auth.authStateChanges {
+            if event == .passwordRecovery {
+                isPasswordRecoveryFlow = true
+            }
+        }
     }
 
     // MARK: - Odświeżenie sesji przy starcie
@@ -177,6 +192,9 @@ class AuthService_VM: ObservableObject {
             await refreshSession()
         } catch {
             dprint("[Auth] deep link error: \(error)")
+            // Najczęstsza przyczyna: link jednorazowy już zużyty (np. Apple Mail
+            // Privacy Protection odwiedza linki w tle, zanim user kliknie).
+            errorMessage = "Link wygasł lub został już użyty. Spróbuj wysłać nowy."
         }
     }
 

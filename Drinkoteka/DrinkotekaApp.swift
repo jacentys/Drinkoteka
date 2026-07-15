@@ -7,6 +7,7 @@ import SwiftData
 struct DrinkotekaApp: App {
 
 	@Environment(\.scenePhase) private var scenePhase
+	@StateObject private var auth = AuthService_VM.shared
 	@AppStorage("blokujEkran") var blokujEkran: Bool = false
 	@AppStorage("wygladAplikacji") var wygladAplikacji: wygladEnum = .systemowy
 	@AppStorage("jezykAplikacji") var jezykAplikacji: String = {
@@ -43,9 +44,14 @@ struct DrinkotekaApp: App {
 						  UIApplication.shared.isIdleTimerDisabled = blokujEkran
 					  }
 				  }
-				  // Deep link po potwierdzeniu maila (drinkoteka://login-callback)
+				  // Deep link po potwierdzeniu maila / odzyskiwaniu hasła (drinkoteka://login-callback)
 				  .onOpenURL { url in
 					  Task { await AuthService_VM.shared.handleDeepLink(url) }
+				  }
+				  // Ekran "Ustaw nowe hasło" nad resztą appki — pokazywany, gdy
+				  // handleDeepLink przetworzy link typu recovery (patrz AuthService_VM).
+				  .fullScreenCover(isPresented: $auth.isPasswordRecoveryFlow) {
+					  AuthNowaHaslo_V()
 				  }
         }
 		  .modelContainer(
