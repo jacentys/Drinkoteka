@@ -13,3 +13,6 @@ scripts/backups/
 
 # Lokalny stan Supabase CLI (link do projektu) — nie część repo
 supabase/.temp/
+
+# Ustawienia Claude Code per-komputer (np. autoMemoryDirectory) — nigdy nie commituj
+.claude/settings.local.json
