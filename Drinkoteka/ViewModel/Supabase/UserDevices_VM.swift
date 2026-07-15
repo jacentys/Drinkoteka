@@ -1,6 +1,6 @@
 // Limit urządzeń na koncie (przeciwdziałanie współdzieleniu loginu/hasła).
 // Każde urządzenie rejestruje się w user_devices przy odświeżeniu sesji;
-// RLS pozwala dodać nowe urządzenie tylko do limitu (supabase_devices.sql).
+// RLS pozwala dodać nowe urządzenie tylko do limitu (scripts/supabase_devices.sql).
 // Po przekroczeniu limitu isPremium na nowym urządzeniu zostaje false,
 // dopóki użytkownik nie usunie jednego ze starych urządzeń (Szczegóły konta).
 import Foundation

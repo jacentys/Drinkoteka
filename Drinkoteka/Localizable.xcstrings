@@ -917,6 +917,9 @@
         }
       }
     },
+    "Hasło zostało zmienione." : {
+
+    },
     "hasło..." : {
       "localizations" : {
         "en" : {
@@ -1716,6 +1719,9 @@
         }
       }
     },
+    "nowe hasło..." : {
+
+    },
     "Nowy drink" : {
       "localizations" : {
         "en" : {
@@ -2148,6 +2154,9 @@
         }
       }
     },
+    "powtórz nowe hasło..." : {
+
+    },
     "Później" : {
       "localizations" : {
         "en" : {
@@ -2228,6 +2237,9 @@
           }
         }
       }
+    },
+    "Przejdź do aplikacji" : {
+
     },
     "przep." : {
       "localizations" : {
@@ -2950,6 +2962,9 @@
           }
         }
       }
+    },
+    "Ustaw nowe hasło" : {
+
     },
     "Usuń" : {
       "localizations" : {

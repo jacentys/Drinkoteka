@@ -16,3 +16,7 @@ supabase/.temp/
 
 # Ustawienia Claude Code per-komputer (np. autoMemoryDirectory) — nigdy nie commituj
 .claude/settings.local.json
+
+# Surowe screenshoty (źródło do docs/www/assets/screenshots/, ~33MB) — nie commitować
+docs/www/assets/ScreenshotEN/
+docs/www/assets/ScreenshotPL/

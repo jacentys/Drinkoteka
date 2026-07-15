@@ -1,6 +1,6 @@
 // Edge Function: weryfikuje transakcję StoreKit 2 (JWS) przez App Store Server API
 // i na tej podstawie ustawia is_premium/premium_expires_at w profiles (service_role,
-// klient nigdy nie ustawia tego sam — patrz RLS w supabase_new_tables.sql).
+// klient nigdy nie ustawia tego sam — patrz RLS w scripts/supabase_new_tables.sql).
 //
 // Wymagane sekrety (supabase secrets set ...):
 //   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY  (dostępne domyślnie w Edge Functions)

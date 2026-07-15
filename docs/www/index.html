@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drinkotheque — przepisy na drinki i Twój barek</title>
+<meta name="description" content="Drinkotheque to elegancki przewodnik po świecie drinków — przepisy krok po kroku, Twój barek i podpowiedzi, co zrobisz z tego, co masz w domu. Wkrótce w App Store.">
+<link rel="canonical" href="https://www.530.pl/drinkotheque/">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Drinkotheque — przepisy na drinki i Twój barek">
+<meta property="og:description" content="Elegancki przewodnik po świecie drinków — od klasyków IBA po autorskie receptury. Twój barek podpowie, co zrobisz z tego, co masz w domu.">
+<meta property="og:image" content="https://www.530.pl/drinkotheque/assets/icon-512.png">
+<meta property="og:url" content="https://www.530.pl/drinkotheque/">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Drinkotheque",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "iOS",
+  "description": "Elegancki przewodnik po świecie drinków — przepisy krok po kroku, zarządzanie barkiem i podpowiedzi na podstawie posiadanych składników.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "POST sp. z o.o." }
+}
+</script>
+
+<style>
+  :root { --accent:#FF6600; --accent2:#B0006B; --ink:#1a1a1a; --muted:#666; --line:#eee; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         color:var(--ink); line-height:1.6; margin:0; }
+  a { color:var(--accent); }
+
+  .lang { position:absolute; top:20px; right:20px; z-index:2; }
+  .lang button { border:1px solid rgba(255,255,255,.6); background:rgba(255,255,255,.15); color:#fff;
+                 padding:6px 14px; border-radius:20px; cursor:pointer; font-size:.85rem; margin-left:6px;
+                 backdrop-filter:blur(6px); }
+  .lang button.active { background:#fff; color:var(--accent); border-color:#fff; font-weight:600; }
+
+  header.hero {
+    position:relative; overflow:hidden; text-align:center; color:#fff;
+    padding:96px 20px 88px;
+    background:
+      radial-gradient(circle at 15% 20%, #FFB300 0%, transparent 45%),
+      radial-gradient(circle at 85% 15%, #B0006B 0%, transparent 50%),
+      radial-gradient(circle at 75% 85%, #7A2CE0 0%, transparent 50%),
+      radial-gradient(circle at 20% 90%, #00B3A4 0%, transparent 45%),
+      linear-gradient(135deg, #FF6600, #B0006B);
+  }
+  .icon { width:112px; height:112px; border-radius:26px; box-shadow:0 12px 32px rgba(0,0,0,.3);
+          margin-bottom:20px; }
+  header.hero h1 { font-size:2.4rem; margin:0 0 8px; font-weight:800; letter-spacing:-.5px; }
+  header.hero p.tagline { font-size:1.15rem; max-width:520px; margin:0 auto; opacity:.95; }
+  .badges { margin-top:32px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.18);
+           border:1px solid rgba(255,255,255,.5); backdrop-filter:blur(6px);
+           padding:10px 18px; border-radius:12px; font-size:.9rem; }
+  .badge.soon { opacity:.75; font-style:italic; }
+
+  main { max-width:920px; margin:0 auto; padding:64px 20px; }
+  section.block { margin-bottom:72px; }
+  h2.section-title { font-size:1.6rem; text-align:center; margin:0 0 8px; }
+  p.section-sub { text-align:center; color:var(--muted); max-width:520px; margin:0 auto 40px; }
+
+  .shots { display:flex; gap:20px; overflow-x:auto; padding:8px 4px 20px; scroll-snap-type:x mandatory;
+           -webkit-overflow-scrolling:touch; }
+  .shots img { height:480px; border-radius:22px; box-shadow:0 16px 40px rgba(0,0,0,.18);
+               scroll-snap-align:center; flex:0 0 auto; }
+  .shots::-webkit-scrollbar { height:6px; }
+  .shots::-webkit-scrollbar-thumb { background:var(--line); border-radius:3px; }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; }
+  .card { border:1px solid var(--line); border-radius:16px; padding:24px; }
+  .card .emoji { font-size:1.8rem; display:block; margin-bottom:10px; }
+  .card h3 { margin:0 0 6px; font-size:1.05rem; }
+  .card p { margin:0; color:var(--muted); font-size:.95rem; }
+
+  .premium { background:linear-gradient(135deg,#fff7f0,#fff); border:1px solid #ffd9b0;
+             border-radius:20px; padding:40px 32px; text-align:center; }
+  .premium h2 { margin-top:0; }
+  .premium ul { list-style:none; padding:0; margin:20px 0 0; display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; text-align:left; }
+  .premium li { padding-left:26px; position:relative; color:var(--ink); }
+  .premium li::before { content:"✓"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+
+  .cta { text-align:center; }
+  .cta .badges { margin-top:24px; }
+  .cta .badge { color:var(--ink); border-color:var(--line); background:#fafafa; }
+
+  footer { border-top:1px solid var(--line); color:var(--muted); font-size:.9rem;
+           text-align:center; padding:32px 20px 48px; }
+  footer a { color:var(--ink); text-decoration:none; margin:0 10px; }
+  footer a:hover { color:var(--accent); }
+  footer .legal { margin-top:14px; font-size:.8rem; }
+
+  section[hidden] { display:none; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="lang">
+    <button id="btn-pl" class="active" onclick="setLang('pl')">PL</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+
+  <img class="icon" src="assets/icon-180.png" alt="Ikona aplikacji Drinkotheque" width="112" height="112">
+
+  <div id="pl">
+    <h1>Drinkotheque</h1>
+    <p class="tagline">Przepisy na drinki i Twój barek. Bez zbędnych dodatków.</p>
+    <div class="badges">
+      <span class="badge soon">🍸 Wkrótce w App Store</span>
+    </div>
+  </div>
+
+  <div id="en" hidden>
+    <h1>Drinkotheque</h1>
+    <p class="tagline">Drink recipes and your bar. Nothing you don't need.</p>
+    <div class="badges">
+      <span class="badge soon">🍸 Coming soon to the App Store</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===================== POLSKI ===================== -->
+  <div id="content-pl">
+
+  <section class="block">
+    <div class="shots">
+      <img src="assets/screenshots/pl-1-home.png" alt="Ekran główny Drinkotheque — drinki wg alkoholu i polecane">
+      <img src="assets/screenshots/pl-2-recipe.png" alt="Przepis krok po kroku na drinka New York Sour">
+      <img src="assets/screenshots/pl-3-ingredients.png" alt="Lista składników — Twój barek">
+      <img src="assets/screenshots/pl-4-preferences.png" alt="Ekran Preferencje — kilka prostych opcji">
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">Prosto. Bez chaosu.</h2>
+    <p class="section-sub">Inne aplikacje barmańskie próbują robić wszystko naraz. Drinkotheque
+    robi dokładnie to, czego potrzebujesz przy barze — i nic ponadto.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="emoji">📖</span>
+        <h3>Przepisy krok po kroku</h3>
+        <p>Lista składników, ilości i wskazówki barmańskie do każdego drinka.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🧊</span>
+        <h3>Twój barek</h3>
+        <p>Zaznacz, co masz w domu — aplikacja pokaże, które drinki zrobisz od ręki.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🔄</span>
+        <h3>Zamienniki składników</h3>
+        <p>Więcej możliwych drinków bez wychodzenia do sklepu.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🎚️</span>
+        <h3>Filtry i sortowanie</h3>
+        <p>Po głównym alkoholu, słodkości, mocy, kaloriach czy dostępności.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">⭐</span>
+        <h3>Ulubione</h3>
+        <p>Zapisuj drinki, do których wracasz — synchronizowane z kontem.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🌍</span>
+        <h3>Dwa języki</h3>
+        <p>Polski i angielski, także w treści przepisów. Kolejne w drodze.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block premium">
+    <h2 class="section-title">Drinkotheque Premium</h2>
+    <p class="section-sub">Odblokuj pełnię możliwości aplikacji.</p>
+    <ul>
+      <li>Wszystkie kategorie drinków, bez ograniczeń</li>
+      <li>Notatki do drinków, synchronizowane z kontem</li>
+      <li>Dodawanie własnych drinków — ze zdjęciem i przepisem</li>
+      <li>Tworzenie własnych składników</li>
+    </ul>
+  </section>
+
+  <section class="block cta">
+    <h2 class="section-title">Bez reklam. Bez śledzenia.</h2>
+    <p class="section-sub">Konto jest opcjonalne i służy wyłącznie synchronizacji — możesz je
+    w każdej chwili usunąć z poziomu aplikacji. Aplikacja przeznaczona dla osób pełnoletnich.</p>
+    <div class="badges">
+      <span class="badge soon">🍸 Wkrótce w App Store</span>
+    </div>
+  </section>
+
+  </div>
+
+  <!-- ===================== ENGLISH ===================== -->
+  <div id="content-en" hidden>
+
+  <section class="block">
+    <div class="shots">
+      <img src="assets/screenshots/en-1-home.png" alt="Drinkotheque home screen — drinks by spirit and favourites">
+      <img src="assets/screenshots/en-2-drinks.png" alt="Drinks list with search and filters">
+      <img src="assets/screenshots/en-3-ingredient.png" alt="Ingredient detail screen with substitutes">
+      <img src="assets/screenshots/en-4-preferences.png" alt="Preferences screen — a handful of simple options">
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="section-title">Simple. No clutter.</h2>
+    <p class="section-sub">Other bartending apps try to do everything at once. Drinkotheque does
+    exactly what you need behind the bar — and nothing more.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="emoji">📖</span>
+        <h3>Step-by-step recipes</h3>
+        <p>Ingredients, amounts and bartender tips for every drink.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🧊</span>
+        <h3>Your bar</h3>
+        <p>Mark what you have at home — the app shows which drinks you can make right now.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🔄</span>
+        <h3>Ingredient substitutes</h3>
+        <p>More possible drinks without a trip to the store.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🎚️</span>
+        <h3>Filters and sorting</h3>
+        <p>By base spirit, sweetness, strength, calories or availability.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">⭐</span>
+        <h3>Favourites</h3>
+        <p>Save the drinks you keep coming back to — synced with your account.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🌍</span>
+        <h3>Two languages</h3>
+        <p>Polish and English, including recipe content. More on the way.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block premium">
+    <h2 class="section-title">Drinkotheque Premium</h2>
+    <p class="section-sub">Unlock the full potential of the app.</p>
+    <ul>
+      <li>All drink categories, unrestricted</li>
+      <li>Drink notes, synced with your account</li>
+      <li>Add your own drinks — with a photo and recipe</li>
+      <li>Create your own ingredients</li>
+    </ul>
+  </section>
+
+  <section class="block cta">
+    <h2 class="section-title">No ads. No tracking.</h2>
+    <p class="section-sub">An account is optional and used only for sync — you can delete it
+    anytime from within the app. Intended for adults.</p>
+    <div class="badges">
+      <span class="badge soon">🍸 Coming soon to the App Store</span>
+    </div>
+  </section>
+
+  </div>
+
+</main>
+
+<footer>
+  <div>
+    <a href="privacy/">Polityka prywatności / Privacy Policy</a>
+    <a href="support/">Pomoc / Support</a>
+  </div>
+  <div class="legal">
+    © 2026 POST sp. z o.o. — Drinkotheque
+  </div>
+</footer>
+
+<script>
+  function setLang(l){
+    var pl = l === 'pl';
+    document.getElementById('pl').hidden = !pl;
+    document.getElementById('en').hidden = pl;
+    document.getElementById('content-pl').hidden = !pl;
+    document.getElementById('content-en').hidden = pl;
+    document.getElementById('btn-pl').classList.toggle('active', pl);
+    document.getElementById('btn-en').classList.toggle('active', !pl);
+    document.documentElement.lang = l;
+    try { localStorage.setItem('drinkotheque-lang', l); } catch(e) {}
+  }
+  (function(){
+    try {
+      var saved = localStorage.getItem('drinkotheque-lang');
+      if (saved === 'en') setLang('en');
+    } catch(e) {}
+  })();
+</script>
+</body>
+</html>

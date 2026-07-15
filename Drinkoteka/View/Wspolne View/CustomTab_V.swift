@@ -123,16 +123,33 @@ struct CustomTab_V: View {
 		 }
 		 // Krok 2: właściwe przeładowanie — odpala się w OSOBNYM cyklu, gdy TabView
 		 // jest już usunięty, więc delAll nie unieważnia obserwowanych obiektów.
+		 //
+		 // Pętla (nie pojedynczy przebieg) jest tu celowa: `przeladowujeJezyk` to
+		 // zwykły Bool, więc gdyby użytkownik przełączył język drugi raz zanim ten
+		 // task się skończy, ustawienie flagi z powrotem na true byłoby dla SwiftUI
+		 // no-opem (`.task(id:)` odpala się tylko przy zmianie wartości) — drugie
+		 // żądanie przeładowania po prostu by zginęło, a `dataLang` zostałby
+		 // ustawiony na język, którego treść nigdy nie została wczytana (appka
+		 // przestałaby wykrywać potrzebę kolejnego przeładowania). Pętla sprawdza
+		 // po każdym przebiegu, czy jezykAplikacji zdążył się zmienić w trakcie,
+		 // i jeśli tak — ładuje ponownie, zamiast gubić żądanie. TabView zostaje
+		 // usunięty z hierarchii przez cały czas trwania pętli (nie tylko pojedynczego
+		 // przebiegu), co eliminuje też ryzyko crasha z krótkiego przywrócenia
+		 // TabView między dwoma szybko następującymi po sobie przeładowaniami.
 		 .task(id: przeladowujeJezyk) {
 			 guard przeladowujeJezyk else { return }
-			 await zmienJezykDanych(modelContext: modelContext)
-			 await loadNotesFromSupabase(modelContext: modelContext)
-			 // Odpalane tutaj (nie tylko w DrinkiLista_V), bo TabView bywa usunięty
-			 // z hierarchii podczas przeładowania — jeśli użytkownik nie jest akurat
-			 // na zakładce Drinki, jej .task mógłby się nie odpalić od razu.
-			 await loadFavoritesFromSupabase(modelContext: modelContext)
-			 await loadIngredientStockFromSupabase(modelContext: modelContext)
-			 UserDefaults.standard.set(jezykAplikacji, forKey: "dataLang")
+			 var celowyJezyk: String
+			 repeat {
+				 celowyJezyk = jezykAplikacji
+				 await zmienJezykDanych(modelContext: modelContext)
+				 await loadNotesFromSupabase(modelContext: modelContext)
+				 // Odpalane tutaj (nie tylko w DrinkiLista_V), bo TabView bywa usunięty
+				 // z hierarchii podczas przeładowania — jeśli użytkownik nie jest akurat
+				 // na zakładce Drinki, jej .task mógłby się nie odpalić od razu.
+				 await loadFavoritesFromSupabase(modelContext: modelContext)
+				 await loadIngredientStockFromSupabase(modelContext: modelContext)
+			 } while celowyJezyk != jezykAplikacji
+			 UserDefaults.standard.set(celowyJezyk, forKey: "dataLang")
 			 przeladowujeJezyk = false
 		 }
 	 }
